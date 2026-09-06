@@ -178,9 +178,11 @@ function renderListing(listing: ReturnType<typeof findListing> & object) {
           description: listing.description,
           url: canonical,
           telephone: listing.phone,
+          email: listing.email,
           sameAs: listing.website ? [listing.website] : undefined,
           address: {
             "@type": "PostalAddress",
+            streetAddress: listing.address,
             addressLocality: loc?.name ?? listing.neighbourhood,
             addressRegion: listing.region,
             addressCountry: "GH",
@@ -242,8 +244,11 @@ function renderListing(listing: ReturnType<typeof findListing> & object) {
             </h2>
             <ContactActions listing={listing} />
             <p className="mt-3 text-xs text-[color:var(--color-ink-mute)]">
-              Last updated {formatDate(listing.updatedAt)}. Information source:
-              publicly discovered listing.
+              Last updated {formatDate(listing.updatedAt)}
+              {listing.sourceUrls && listing.sourceUrls.length > 0
+                ? ` · Sourced from the school's own website${listing.sourceUrls.length > 1 ? "s" : ""}`
+                : " · Publicly discovered listing"}
+              .
             </p>
           </aside>
         </header>
@@ -282,6 +287,10 @@ function renderListing(listing: ReturnType<typeof findListing> & object) {
                 }
               />
               <FactRow
+                label="Hours"
+                value={listing.hours ?? <NotPublished />}
+              />
+              <FactRow
                 label="Admissions"
                 value={
                   listing.admissions === "open"
@@ -295,14 +304,78 @@ function renderListing(listing: ReturnType<typeof findListing> & object) {
               />
               <FactRow
                 label="Fees"
-                value={<NotPublished text="Fees not published — request from the school." />}
+                value={
+                  listing.feesHint ?? (
+                    <NotPublished text="Fees not published — request from the school." />
+                  )
+                }
+              />
+              <FactRow
+                label="Address"
+                value={listing.address ?? <NotPublished />}
               />
               <FactRow
                 label="Location"
                 value={`${loc?.name ?? listing.neighbourhood}, ${listing.region}`}
               />
+              {listing.website && (
+                <FactRow
+                  label="Website"
+                  value={
+                    <a
+                      href={listing.website}
+                      target="_blank"
+                      rel="nofollow noopener"
+                      className="text-[color:var(--color-sky-deep)] underline"
+                    >
+                      {new URL(listing.website).host.replace(/^www\./, "")}
+                    </a>
+                  }
+                />
+              )}
+              {listing.email && (
+                <FactRow
+                  label="Email"
+                  value={
+                    <a
+                      href={`mailto:${listing.email}`}
+                      className="text-[color:var(--color-sky-deep)] underline"
+                    >
+                      {listing.email}
+                    </a>
+                  }
+                />
+              )}
+              {listing.phones && listing.phones.length > 1 && (
+                <FactRow
+                  label="Phones"
+                  value={listing.phones.join(" · ")}
+                />
+              )}
             </dl>
           </div>
+
+          {listing.sourceUrls && listing.sourceUrls.length > 0 && (
+            <p className="mt-3 text-xs text-[color:var(--color-ink-mute)]">
+              <strong className="text-[color:var(--color-navy)]">
+                Information sources ({listing.sourceUrls.length}):
+              </strong>{" "}
+              {listing.sourceUrls.map((u, i) => (
+                <span key={u}>
+                  <a
+                    href={u}
+                    target="_blank"
+                    rel="nofollow noopener"
+                    className="underline hover:text-[color:var(--color-navy)]"
+                  >
+                    {new URL(u).host.replace(/^www\./, "")}
+                    {new URL(u).pathname !== "/" ? new URL(u).pathname : ""}
+                  </a>
+                  {i < listing.sourceUrls.length - 1 ? " · " : ""}
+                </span>
+              ))}
+            </p>
+          )}
         </section>
 
         <section className="mt-10 grid gap-6 lg:grid-cols-[1.4fr_1fr]">

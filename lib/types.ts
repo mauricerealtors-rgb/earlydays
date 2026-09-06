@@ -14,9 +14,11 @@ export type Curriculum =
   | "Montessori"
   | "Ghana Education Service"
   | "British"
+  | "Cambridge"
   | "International"
   | "Reggio Emilia"
-  | "Play-based";
+  | "Play-based"
+  | "Bilingual (French–English)";
 
 export type Service =
   | "Daycare"
@@ -80,8 +82,12 @@ export interface Listing {
   region: string;                // regionName
   country: "Ghana";
   phone?: string;
+  phones?: string[];               // additional numbers if listed
   whatsapp?: string;
+  email?: string;
   website?: string;
+  hours?: string;                  // human-readable, school-reported
+  feesHint?: string;               // "from GH₵600 per term" — school-reported only
   admissions: AdmissionsStatus;
   verification: VerificationStatus;
   claimed: boolean;

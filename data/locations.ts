@@ -11,6 +11,15 @@ export const LOCATIONS: Location[] = [
       "A large residential area in the east of Accra with a wide range of early years and primary options.",
   },
   {
+    slug: "east-legon-hills",
+    name: "East Legon Hills",
+    region: "accra",
+    regionName: "Greater Accra",
+    parent: "east-legon",
+    blurb:
+      "A newer residential area extending east of East Legon, with a growing base of early years and international schools.",
+  },
+  {
     slug: "adjiringanor",
     name: "Adjiringanor",
     region: "accra",
@@ -34,6 +43,15 @@ export const LOCATIONS: Location[] = [
     regionName: "Greater Accra",
     blurb:
       "Established residential area around Airport Residential, with international and local schools nearby.",
+  },
+  {
+    slug: "east-airport",
+    name: "East Airport",
+    region: "accra",
+    regionName: "Greater Accra",
+    parent: "airport",
+    blurb:
+      "Neighbourhood off Spintex Road near the Airport, with a mix of early years and primary schools.",
   },
   {
     slug: "cantonments",
@@ -104,6 +122,31 @@ export const LOCATIONS: Location[] = [
     region: "accra",
     regionName: "Greater Accra",
     blurb: "Growing residential area on the western edge of Accra.",
+  },
+  {
+    slug: "taifa",
+    name: "Taifa",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb:
+      "Residential area in the Ga East area of north-west Accra, near Atomic and Dome-Kwabenya.",
+  },
+  {
+    slug: "sakumono",
+    name: "Sakumono",
+    region: "accra",
+    regionName: "Greater Accra",
+    parent: "tema",
+    blurb:
+      "Residential area between Tema and Accra, along the coast.",
+  },
+  {
+    slug: "accra-central",
+    name: "Central Accra",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb:
+      "Central Accra — Ridge, Cantonments and the wider inner-city area.",
   },
   {
     slug: "kumasi",
