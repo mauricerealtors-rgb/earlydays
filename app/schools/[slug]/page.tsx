@@ -1,0 +1,473 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import {
+  allListings,
+  findListing,
+  findRegion,
+  listingsByRegion,
+  locationsInRegion,
+  relatedListings,
+} from "@/lib/query";
+import { REGIONS, LOCATIONS } from "@/data/locations";
+import { findCategoryByType } from "@/data/categories";
+import { findLocation } from "@/data/locations";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { VerifiedBadge } from "@/components/VerifiedBadge";
+import { FactRow } from "@/components/FactRow";
+import { ContactActions } from "@/components/ContactActions";
+import { ListingCard } from "@/components/ListingCard";
+import { LocationCard } from "@/components/LocationCard";
+import { PageHeading } from "@/components/PageHeading";
+import { JsonLd } from "@/components/JsonLd";
+import { SITE } from "@/lib/site";
+
+export const dynamicParams = false;
+export const revalidate = 3600;
+
+export async function generateStaticParams() {
+  const listingSlugs = allListings().map((l) => ({ slug: l.slug }));
+  const regionSlugs = REGIONS.map((r) => ({ slug: r.slug }));
+  return [...listingSlugs, ...regionSlugs];
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const listing = findListing(slug);
+  if (listing) {
+    const loc = findLocation(listing.neighbourhood);
+    const cat = findCategoryByType(listing.listingTypes[0]);
+    const title = `${listing.name} — ${cat?.singular ?? "School"} in ${loc?.name ?? listing.region}`;
+    return {
+      title,
+      description: listing.shortDescription,
+      alternates: { canonical: `${SITE.url}/schools/${listing.slug}` },
+      openGraph: {
+        title,
+        description: listing.shortDescription,
+        type: "article",
+        url: `${SITE.url}/schools/${listing.slug}`,
+      },
+    };
+  }
+  const region = findRegion(slug);
+  if (region) {
+    const count = listingsByRegion(region.slug).length;
+    return {
+      title: `Schools & learning centres in ${region.name}`,
+      description: `Discover ${count} school${count === 1 ? "" : "s"} and children's learning centres across ${region.name}, Ghana.`,
+      alternates: { canonical: `${SITE.url}/schools/${region.slug}` },
+    };
+  }
+  return {};
+}
+
+export default async function SchoolOrRegionPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const listing = findListing(slug);
+  if (listing) return renderListing(listing);
+  const region = findRegion(slug);
+  if (region) return renderRegion(region);
+  notFound();
+}
+
+/* ---------------- Region view ---------------- */
+
+function renderRegion(region: { slug: string; name: string }) {
+  const listings = listingsByRegion(region.slug);
+  const areas = locationsInRegion(region.slug);
+  return (
+    <div className="container-page pt-8 md:pt-12">
+      <Breadcrumbs
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Schools", href: "/schools" },
+          { label: region.name },
+        ]}
+      />
+      <PageHeading
+        eyebrow="Region"
+        title={`Schools & learning centres in ${region.name}`}
+        subtitle={`${listings.length} listing${listings.length === 1 ? "" : "s"} across ${areas.length} area${areas.length === 1 ? "" : "s"}.`}
+      />
+
+      {areas.length > 0 && (
+        <section className="mb-10">
+          <h2 className="mb-3 font-display text-xl">Areas in {region.name}</h2>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {areas.map((a) => {
+              const count = listings.filter((l) => l.neighbourhood === a.slug).length;
+              if (count === 0) return null;
+              return <LocationCard key={a.slug} location={a} count={count} />;
+            })}
+          </div>
+        </section>
+      )}
+
+      <section>
+        <h2 className="mb-3 font-display text-xl">All listings in {region.name}</h2>
+        {listings.length === 0 ? (
+          <p className="text-[color:var(--color-ink-mute)]">
+            No listings yet for {region.name}. Check back soon.
+          </p>
+        ) : (
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {listings.map((l) => (
+              <ListingCard key={l.id} listing={l} />
+            ))}
+          </div>
+        )}
+      </section>
+    </div>
+  );
+}
+
+/* ---------------- Listing view ---------------- */
+
+function renderListing(listing: ReturnType<typeof findListing> & object) {
+  const loc = findLocation(listing.neighbourhood);
+  const primaryCat = findCategoryByType(listing.listingTypes[0]);
+  const related = relatedListings(listing, 3);
+  const canonical = `${SITE.url}/schools/${listing.slug}`;
+
+  const faq = [
+    {
+      q: "What age groups does the school accept?",
+      a: listing.ageBlurb
+        ? `${listing.name} is listed as serving children ${listing.ageBlurb}.`
+        : "Age range has not been published for this listing yet.",
+    },
+    {
+      q: "Where is the school located?",
+      a: loc
+        ? `${listing.name} is in ${loc.name}, ${loc.regionName}, Ghana.`
+        : `${listing.name} is in ${listing.region}, Ghana.`,
+    },
+    {
+      q: "What curriculum does the school follow?",
+      a: listing.curriculum.length
+        ? `Curriculum(s) listed: ${listing.curriculum.join(", ")}.`
+        : "Curriculum has not been published for this listing yet.",
+    },
+    {
+      q: "How can I contact the school?",
+      a:
+        listing.phone || listing.whatsapp || listing.website
+          ? "Use the contact actions on this page."
+          : `${listing.name} has not published a public contact channel. Use "Request information" and we'll pass your enquiry on.`,
+    },
+  ];
+
+  return (
+    <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "EducationalOrganization",
+          "@id": canonical,
+          name: listing.name,
+          alternateName: listing.alternateNames,
+          description: listing.description,
+          url: canonical,
+          telephone: listing.phone,
+          sameAs: listing.website ? [listing.website] : undefined,
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: loc?.name ?? listing.neighbourhood,
+            addressRegion: listing.region,
+            addressCountry: "GH",
+          },
+          areaServed: loc?.name ?? listing.region,
+        }}
+      />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faq.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }}
+      />
+
+      <div className="container-page pt-8 md:pt-12">
+        <Breadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Schools", href: "/schools" },
+            loc
+              ? { label: loc.name, href: `/schools/${loc.region}/${loc.slug}` }
+              : { label: listing.region },
+            { label: listing.name },
+          ]}
+        />
+
+        <header className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
+          <div>
+            <div className="mb-3 flex flex-wrap items-center gap-2">
+              {primaryCat && <span className="chip chip-sky">{primaryCat.singular}</span>}
+              <VerifiedBadge status={listing.verification} />
+            </div>
+            <h1 className="font-display text-[36px] leading-tight tracking-tight md:text-[52px]">
+              {listing.name}
+            </h1>
+            <p className="mt-3 text-lg text-[color:var(--color-ink-mute)]">
+              {listing.shortDescription}
+            </p>
+            <p className="mt-3 flex items-center gap-2 text-[15px] font-semibold text-[color:var(--color-navy)]">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <path d="M12 22s7-6 7-12a7 7 0 1 0-14 0c0 6 7 12 7 12Z" stroke="currentColor" strokeWidth="1.6" />
+                <circle cx="12" cy="10" r="2.2" stroke="currentColor" strokeWidth="1.6" />
+              </svg>
+              {loc?.name ?? listing.neighbourhood}, {listing.region}
+            </p>
+          </div>
+
+          <aside
+            className="card p-5 lg:sticky lg:top-24 lg:self-start"
+            aria-labelledby="contact-heading"
+          >
+            <h2 id="contact-heading" className="mb-3 font-display text-lg">
+              Contact this school
+            </h2>
+            <ContactActions listing={listing} />
+            <p className="mt-3 text-xs text-[color:var(--color-ink-mute)]">
+              Last updated {formatDate(listing.updatedAt)}. Information source:
+              publicly discovered listing.
+            </p>
+          </aside>
+        </header>
+
+        <section className="mt-10">
+          <h2 className="mb-3 font-display text-2xl">Key facts</h2>
+          <div className="card-soft rounded-2xl bg-white p-5 md:p-6">
+            <dl>
+              <FactRow
+                label="Type"
+                value={listing.listingTypes
+                  .map((t) => findCategoryByType(t)?.singular ?? t)
+                  .join(", ")}
+              />
+              <FactRow label="Ages" value={listing.ageBlurb} />
+              <FactRow
+                label="Curriculum"
+                value={
+                  listing.curriculum.length
+                    ? listing.curriculum.join(", ")
+                    : <NotPublished />
+                }
+              />
+              <FactRow
+                label="Services"
+                value={
+                  listing.services.length ? (
+                    <div className="flex flex-wrap gap-1.5">
+                      {listing.services.map((s) => (
+                        <span key={s} className="chip">{s}</span>
+                      ))}
+                    </div>
+                  ) : (
+                    <NotPublished />
+                  )
+                }
+              />
+              <FactRow
+                label="Admissions"
+                value={
+                  listing.admissions === "open"
+                    ? "Open"
+                    : listing.admissions === "waitlist"
+                      ? "Waitlist"
+                      : listing.admissions === "closed"
+                        ? "Closed"
+                        : "Not published"
+                }
+              />
+              <FactRow
+                label="Fees"
+                value={<NotPublished text="Fees not published — request from the school." />}
+              />
+              <FactRow
+                label="Location"
+                value={`${loc?.name ?? listing.neighbourhood}, ${listing.region}`}
+              />
+            </dl>
+          </div>
+        </section>
+
+        <section className="mt-10 grid gap-6 lg:grid-cols-[1.4fr_1fr]">
+          <div>
+            <h2 className="mb-3 font-display text-2xl">About {listing.name}</h2>
+            <p className="text-[16px] leading-relaxed text-[color:var(--color-ink)]">
+              {listing.description}
+            </p>
+
+            {listing.listingTypes.length > 0 && (
+              <>
+                <h3 className="mt-8 mb-3 font-display text-xl">Programmes</h3>
+                <ul className="grid gap-3 sm:grid-cols-2">
+                  {listing.listingTypes.map((t) => {
+                    const c = findCategoryByType(t);
+                    return (
+                      <li
+                        key={t}
+                        className="card-soft rounded-2xl bg-white p-4"
+                      >
+                        <p className="font-display text-lg text-[color:var(--color-navy)]">
+                          {c?.singular ?? t}
+                        </p>
+                        <p className="mt-1 text-sm text-[color:var(--color-ink-mute)]">
+                          {c?.short ?? ""}
+                        </p>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </>
+            )}
+          </div>
+
+          <section id="faq">
+            <h2 className="mb-3 font-display text-2xl">Common questions</h2>
+            <div className="card-soft rounded-2xl bg-white p-2">
+              {faq.map((f) => (
+                <details
+                  key={f.q}
+                  className="group border-b border-[color:var(--color-line-2)] p-3 last:border-none"
+                >
+                  <summary className="cursor-pointer list-none font-semibold text-[color:var(--color-navy)]">
+                    <span className="mr-2 text-[color:var(--color-coral)] group-open:hidden">＋</span>
+                    <span className="mr-2 hidden text-[color:var(--color-coral)] group-open:inline">−</span>
+                    {f.q}
+                  </summary>
+                  <p className="mt-2 text-sm text-[color:var(--color-ink)]">
+                    {f.a}
+                  </p>
+                </details>
+              ))}
+            </div>
+          </section>
+        </section>
+
+        <section id="enquire" className="mt-14">
+          <div
+            className="card overflow-hidden p-6 md:p-10"
+            style={{
+              background:
+                "linear-gradient(120deg,#FFF3D1 0%,#FFE39B 55%,#FFC845 100%)",
+            }}
+          >
+            <div className="grid gap-6 md:grid-cols-[1fr_1fr]">
+              <div>
+                <span className="chip">Ask the school</span>
+                <h2 className="mt-2 font-display text-2xl md:text-3xl">
+                  Request information from {listing.name}
+                </h2>
+                <p className="mt-2 max-w-md text-sm text-[color:var(--color-navy-2)]/90">
+                  Send a short enquiry. We'll deliver it and — when the school
+                  responds — connect you directly.
+                </p>
+              </div>
+              <form className="grid gap-3">
+                <label className="grid gap-1 text-sm font-semibold">
+                  Your name
+                  <input
+                    name="name"
+                    required
+                    className="rounded-xl border border-[color:var(--color-line)] bg-white/90 px-3 py-2.5 text-sm"
+                  />
+                </label>
+                <div className="grid grid-cols-2 gap-3">
+                  <label className="grid gap-1 text-sm font-semibold">
+                    Child's age
+                    <input
+                      name="childAge"
+                      placeholder="e.g. 3"
+                      className="rounded-xl border border-[color:var(--color-line)] bg-white/90 px-3 py-2.5 text-sm"
+                    />
+                  </label>
+                  <label className="grid gap-1 text-sm font-semibold">
+                    Preferred start
+                    <input
+                      name="start"
+                      placeholder="e.g. Jan 2027"
+                      className="rounded-xl border border-[color:var(--color-line)] bg-white/90 px-3 py-2.5 text-sm"
+                    />
+                  </label>
+                </div>
+                <label className="grid gap-1 text-sm font-semibold">
+                  Phone or WhatsApp
+                  <input
+                    name="phone"
+                    required
+                    className="rounded-xl border border-[color:var(--color-line)] bg-white/90 px-3 py-2.5 text-sm"
+                  />
+                </label>
+                <label className="grid gap-1 text-sm font-semibold">
+                  Message (optional)
+                  <textarea
+                    name="message"
+                    rows={3}
+                    className="rounded-xl border border-[color:var(--color-line)] bg-white/90 px-3 py-2.5 text-sm"
+                    placeholder={`I'm interested in your ${primaryCat?.singular.toLowerCase() ?? "programme"} for my child.`}
+                  />
+                </label>
+                <button className="btn btn-primary">Send enquiry</button>
+                <p className="text-xs text-[color:var(--color-navy-2)]/80">
+                  By sending, you agree to our terms and to be contacted by the
+                  school regarding this enquiry.
+                </p>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        {related.length > 0 && (
+          <section className="mt-14">
+            <div className="mb-4 flex items-end justify-between">
+              <h2 className="font-display text-2xl">Similar schools nearby</h2>
+              <Link href="/schools" className="btn btn-ghost text-sm">
+                Browse all →
+              </Link>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {related.map((l) => (
+                <ListingCard key={l.id} listing={l} />
+              ))}
+            </div>
+          </section>
+        )}
+      </div>
+    </>
+  );
+}
+
+function NotPublished({ text = "Not published" }: { text?: string }) {
+  return (
+    <span className="italic font-normal text-[color:var(--color-ink-mute)]">
+      {text}
+    </span>
+  );
+}
+
+function formatDate(iso: string) {
+  try {
+    return new Intl.DateTimeFormat("en-GB", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    }).format(new Date(iso));
+  } catch {
+    return iso;
+  }
+}
