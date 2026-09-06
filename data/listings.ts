@@ -104,6 +104,20 @@ export const LISTINGS: Listing[] = [
     lastVerifiedAt: today,
     updatedAt: today,
     imageQuery: "daycare children East Legon Hills",
+    images: [
+      {
+        url: "https://justlikemamadaycare.com/wp-content/uploads/2021/12/justLikeMamaDayCare_0073.jpg",
+        alt: "A view of Just Like Mama Day Care's premises in East Legon Hills",
+        credit: "Photo: Just Like Mama Day Care (official site)",
+        sourceUrl: "https://justlikemamadaycare.com/gallery/",
+      },
+      {
+        url: "https://justlikemamadaycare.com/wp-content/uploads/2021/12/justLikeMamaDayCare_0214.jpg",
+        alt: "Children's play and learning space at Just Like Mama Day Care",
+        credit: "Photo: Just Like Mama Day Care (official site)",
+        sourceUrl: "https://justlikemamadaycare.com/gallery/",
+      },
+    ],
     featured: true,
   },
 
@@ -221,6 +235,15 @@ export const LISTINGS: Listing[] = [
     lastVerifiedAt: today,
     updatedAt: today,
     imageQuery: "Montessori Cambridge Teshie",
+    images: [
+      {
+        url:
+          "https://static.wixstatic.com/media/5d99b2_df61ae51cf02485e935268ea0a9b9cac~mv2.jpg/v1/fill/w_1280,h_880,al_c,q_85,enc_avif,quality_auto/5d99b2_df61ae51cf02485e935268ea0a9b9cac~mv2.jpg",
+        alt: "Aristoland Montessori Centre entrance in Teshie Nungua Estates",
+        credit: "Photo: Aristoland Montessori Centre (official site)",
+        sourceUrl: "https://www.aristolandmontessori.com/",
+      },
+    ],
     featured: true,
   },
 

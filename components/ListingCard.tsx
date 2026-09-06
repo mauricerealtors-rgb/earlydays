@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { findLocation } from "@/data/locations";
 import { findCategoryByType } from "@/data/categories";
@@ -20,6 +21,7 @@ export function ListingCard({ listing, compact = false }: { listing: Listing; co
   const loc = findLocation(listing.neighbourhood);
   const primaryCategory = findCategoryByType(listing.listingTypes[0]);
   const gradient = decor[listing.listingTypes[0]] ?? decor.preschool;
+  const heroImage = listing.images?.[0];
   return (
     <article
       className="card group flex h-full flex-col"
@@ -28,35 +30,48 @@ export function ListingCard({ listing, compact = false }: { listing: Listing; co
     >
       <Link
         href={`/schools/${listing.slug}`}
-        className="relative block h-32 w-full overflow-hidden"
-        style={{ background: gradient }}
+        className="relative block h-40 w-full overflow-hidden"
+        style={heroImage ? undefined : { background: gradient }}
         aria-label={`${listing.name} — view profile`}
       >
-        <div
-          aria-hidden
-          className="absolute inset-0 opacity-70"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 20% 30%, rgba(255,255,255,0.6), transparent 45%), radial-gradient(circle at 80% 70%, rgba(255,255,255,0.4), transparent 45%)",
-          }}
-        />
+        {heroImage ? (
+          <Image
+            src={heroImage.url}
+            alt={heroImage.alt}
+            fill
+            sizes="(min-width: 1280px) 380px, (min-width: 640px) 50vw, 100vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            unoptimized
+          />
+        ) : (
+          <>
+            <div
+              aria-hidden
+              className="absolute inset-0 opacity-70"
+              style={{
+                backgroundImage:
+                  "radial-gradient(circle at 20% 30%, rgba(255,255,255,0.6), transparent 45%), radial-gradient(circle at 80% 70%, rgba(255,255,255,0.4), transparent 45%)",
+              }}
+            />
+            <span
+              aria-hidden
+              className="absolute -right-6 -bottom-6 flex h-24 w-24 items-center justify-center rounded-full bg-white/60"
+            >
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M12 3 3 8l9 5 9-5-9-5Zm0 8-9-5v5l9 5 9-5V6l-9 5Z"
+                  fill="#0F2A4A"
+                  opacity=".35"
+                />
+              </svg>
+            </span>
+          </>
+        )}
         <span
           className="absolute left-3 top-3 chip"
-          style={{ background: "rgba(255,255,255,0.85)", borderColor: "transparent" }}
+          style={{ background: "rgba(255,255,255,0.9)", borderColor: "transparent" }}
         >
           {primaryCategory?.singular ?? "Programme"}
-        </span>
-        <span
-          aria-hidden
-          className="absolute -right-6 -bottom-6 flex h-24 w-24 items-center justify-center rounded-full bg-white/60"
-        >
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M12 3 3 8l9 5 9-5-9-5Zm0 8-9-5v5l9 5 9-5V6l-9 5Z"
-              fill="#0F2A4A"
-              opacity=".35"
-            />
-          </svg>
         </span>
       </Link>
 

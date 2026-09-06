@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -179,6 +180,7 @@ function renderListing(listing: ReturnType<typeof findListing> & object) {
           url: canonical,
           telephone: listing.phone,
           email: listing.email,
+          image: listing.images?.map((i) => i.url),
           sameAs: listing.website ? [listing.website] : undefined,
           address: {
             "@type": "PostalAddress",
@@ -213,6 +215,39 @@ function renderListing(listing: ReturnType<typeof findListing> & object) {
             { label: listing.name },
           ]}
         />
+
+        {listing.images && listing.images.length > 0 && (
+          <div className="mb-8 grid gap-2 overflow-hidden rounded-3xl md:grid-cols-[2fr_1fr] md:gap-2">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl md:aspect-auto md:h-[380px]">
+              <Image
+                src={listing.images[0].url}
+                alt={listing.images[0].alt}
+                fill
+                sizes="(min-width: 1024px) 720px, 100vw"
+                className="object-cover"
+                priority
+                unoptimized
+              />
+            </div>
+            {listing.images[1] && (
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl md:aspect-auto md:h-[380px]">
+                <Image
+                  src={listing.images[1].url}
+                  alt={listing.images[1].alt}
+                  fill
+                  sizes="(min-width: 1024px) 360px, 100vw"
+                  className="object-cover"
+                  unoptimized
+                />
+              </div>
+            )}
+          </div>
+        )}
+        {listing.images && listing.images.length > 0 && (
+          <p className="mb-4 text-xs text-[color:var(--color-ink-mute)]">
+            {listing.images[0].credit ?? `Photo: ${listing.name}`}
+          </p>
+        )}
 
         <header className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
           <div>

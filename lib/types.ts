@@ -63,6 +63,15 @@ export interface Category {
   accent: "sky" | "leaf" | "sun" | "coral" | "blossom";
 }
 
+export interface ListingImage {
+  url: string;                 // direct image URL
+  alt: string;                 // descriptive alt text
+  credit?: string;             // "Photo: <school>" — always attribute
+  sourceUrl?: string;          // where we sourced it (for auditability)
+  width?: number;
+  height?: number;
+}
+
 export interface Listing {
   id: string;
   slug: string;
@@ -95,5 +104,6 @@ export interface Listing {
   lastVerifiedAt?: string;       // ISO date
   updatedAt: string;             // ISO date
   imageQuery?: string;           // seed alt hint (no fake images shipped)
+  images?: ListingImage[];       // only real, sourced images — never fabricated
   featured?: boolean;
 }
