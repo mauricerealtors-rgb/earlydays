@@ -15,6 +15,8 @@
   --color-coral-soft: #FFDED2;
   --color-blossom: #FF9FC0;
   --color-blossom-soft: #FFE4EF;
+  --color-pink-hot: #EC1E7A;
+  --color-pink-hot-deep: #C4155F;
   --color-navy: #0F2A4A;
   --color-navy-2: #1F3A5F;
   --color-ink: #17253B;
@@ -145,6 +147,46 @@
   .btn-coral {
     background: var(--color-coral);
     color: white;
+  }
+  .btn-pink {
+    background: var(--color-pink-hot);
+    color: white;
+    box-shadow: 0 4px 0 var(--color-pink-hot-deep);
+  }
+  .btn-pink:hover { filter: brightness(1.03); }
+
+  /* Rainbow display text — multi-color words for playful headlines */
+  .rainbow-word-sky { color: var(--color-sky-deep); }
+  .rainbow-word-coral { color: var(--color-coral); }
+  .rainbow-word-leaf { color: #2F7C25; }
+  .rainbow-word-pink { color: var(--color-pink-hot); }
+  .rainbow-word-sun { color: #E5A800; }
+  .rainbow-word-navy { color: var(--color-navy); }
+
+  /* Little decorative stars, suns */
+  .decor-star {
+    position: absolute;
+    color: var(--color-sun);
+    opacity: 0.85;
+  }
+  .decor-heart {
+    position: absolute;
+    color: var(--color-pink-hot);
+    opacity: 0.6;
+  }
+  .callout-bubble {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 14px 18px;
+    border-radius: 999px;
+    font-family: var(--font-display);
+    line-height: 1.05;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: white;
+    box-shadow: 0 6px 20px rgba(15, 42, 74, 0.12);
   }
 
   .card {

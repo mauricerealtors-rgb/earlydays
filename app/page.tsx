@@ -3,6 +3,7 @@ import { SearchHero } from "@/components/SearchHero";
 import { CategoryCard } from "@/components/CategoryCard";
 import { LocationCard } from "@/components/LocationCard";
 import { ListingCard } from "@/components/ListingCard";
+import { AgeBandCard, AGE_BANDS } from "@/components/AgeBandCard";
 import {
   categoriesWithListings,
   categoryCounts,
@@ -22,11 +23,24 @@ export default function HomePage() {
     <>
       <SearchHero />
 
-      {/* Explore by need */}
+      {/* Who are you looking for? — age bands, big and bright, first thing */}
       <Section
-        eyebrow="Explore by programme"
-        title="What are you looking for?"
-        subtitle="From daycare for a 1-year-old to Montessori primary — pick a starting point."
+        eyebrow="Who are you looking for?"
+        title="Tell us about your child."
+        subtitle="Every age needs a different kind of place. Pick where your little one is right now."
+      >
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {AGE_BANDS.map((b) => (
+            <AgeBandCard key={b.slug} band={b} />
+          ))}
+        </div>
+      </Section>
+
+      {/* Explore by programme */}
+      <Section
+        eyebrow="Something specific in mind?"
+        title="Explore by programme."
+        subtitle="From Montessori to French classes to weekend coding — we help you find the right kind of place."
         seeAllHref="/schools"
         seeAllLabel="See all programmes"
       >
@@ -37,11 +51,11 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* Explore by location */}
+      {/* Explore by area */}
       <Section
-        eyebrow="Explore by area"
-        title="Popular areas in Accra"
-        subtitle="Start with the areas where families are actively searching."
+        eyebrow="Close to home"
+        title="Where do you live in Accra?"
+        subtitle="Start with your neighbourhood — most parents want somewhere they can pick up in ten minutes."
         seeAllHref="/schools/accra"
         seeAllLabel="See all Accra areas"
       >
@@ -54,9 +68,9 @@ export default function HomePage() {
 
       {/* Featured */}
       <Section
-        eyebrow="Featured this month"
-        title="Some places worth a closer look"
-        subtitle="Profiles our team highlighted based on completeness and recency."
+        eyebrow="Fresh this month"
+        title="A few places worth a closer look."
+        subtitle="Profiles our team highlighted based on completeness, freshness and useful information for parents."
         seeAllHref="/schools"
         seeAllLabel="Browse all schools"
       >
@@ -67,8 +81,8 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* Parent intent — "I need a place for..." */}
-      <ParentIntent />
+      {/* Why parents choose EarlyDays */}
+      <WhyParentsChooseUs />
 
       {/* How it works */}
       <HowItWorks />
@@ -126,46 +140,87 @@ function Section({
   );
 }
 
-function ParentIntent() {
-  const intents = [
-    { label: "My baby (0–1)", href: "/creches", icon: "👶" },
-    { label: "My toddler (1–3)", href: "/creches", icon: "🧸" },
-    { label: "Preschool (3–5)", href: "/preschools", icon: "🎨" },
-    { label: "KG (5–6)", href: "/kindergartens", icon: "📚" },
-    { label: "Primary (6+)", href: "/primary-schools", icon: "🎒" },
-    { label: "French classes", href: "/french-classes-for-kids", icon: "🇫🇷" },
-    { label: "Coding & STEM", href: "/stem-and-coding", icon: "🤖" },
-    { label: "After school", href: "/learning-centres", icon: "⏰" },
-    { label: "Holiday programmes", href: "/activity-centres", icon: "☀️" },
+function WhyParentsChooseUs() {
+  const reasons = [
+    {
+      color: "#EC1E7A",
+      title: "You come first, not advertisers.",
+      body: "Every screen was designed to help you decide — not to sell you a listing.",
+    },
+    {
+      color: "#1F7AD6",
+      title: "Honest profiles you can trust.",
+      body: "We never invent fees, phone numbers or curriculum. If a school hasn't published something, we say so.",
+    },
+    {
+      color: "#2F7C25",
+      title: "Made for how you actually search.",
+      body: "By area, by age, by programme. Filters that respect a parent's time.",
+    },
+    {
+      color: "#E5A800",
+      title: "Free to browse, save and enquire.",
+      body: "Build a shortlist, compare schools side by side, and reach out — no signup, no paywall.",
+    },
   ];
   return (
     <section className="container-page mt-16 md:mt-24">
       <div className="card overflow-hidden">
-        <div className="grid gap-0 md:grid-cols-[280px_1fr]">
+        <div className="grid gap-0 md:grid-cols-[360px_1fr]">
           <div
-            className="p-6 md:p-8"
-            style={{ background: "linear-gradient(160deg,#FFE1D5 0%,#FFC5B0 100%)" }}
+            className="relative overflow-hidden p-6 md:p-10"
+            style={{
+              background:
+                "linear-gradient(160deg,#FFE4EF 0%,#FFC5DC 55%,#FF9FC0 100%)",
+            }}
           >
-            <span className="chip">Parent shortcut</span>
-            <h2 className="mt-3 font-display text-2xl leading-tight md:text-3xl">
-              I need a place for…
+            <span
+              aria-hidden
+              className="pointer-events-none absolute -right-8 -top-8 h-40 w-40 rounded-full opacity-70"
+              style={{ background: "radial-gradient(circle,#FFC845 0,transparent 60%)" }}
+            />
+            <span className="chip" style={{ background: "rgba(255,255,255,0.7)", borderColor: "transparent" }}>
+              Why parents choose EarlyDays
+            </span>
+            <h2 className="mt-3 font-display text-3xl leading-tight md:text-4xl">
+              <span className="rainbow-word-pink">Made</span>{" "}
+              <span className="rainbow-word-sky">for</span>{" "}
+              <span className="rainbow-word-leaf">you.</span>{" "}
+              <span className="rainbow-word-sun">Not</span>{" "}
+              <span className="rainbow-word-coral">for schools.</span>
             </h2>
-            <p className="mt-2 text-sm text-[color:var(--color-navy-2)]/85">
-              Tell us who you're looking for. We'll jump you to a useful list.
+            <p className="mt-3 max-w-sm text-sm text-[color:var(--color-navy-2)]/90">
+              Every choice on EarlyDays — the search, the profiles, the shortlist —
+              is built for the parent doing the searching. That's the whole point.
             </p>
           </div>
-          <ul className="grid grid-cols-2 gap-1 p-3 sm:grid-cols-3">
-            {intents.map((i) => (
-              <li key={i.label}>
-                <Link
-                  href={i.href}
-                  className="flex h-full items-center gap-3 rounded-2xl px-3 py-3 hover:bg-[color:var(--color-cream-deep)]"
+          <ul className="grid gap-1 p-5 md:p-8">
+            {reasons.map((r) => (
+              <li
+                key={r.title}
+                className="flex items-start gap-3 rounded-2xl p-3 hover:bg-[color:var(--color-cream)]"
+              >
+                <span
+                  aria-hidden
+                  className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full"
+                  style={{ background: `${r.color}1A`, color: r.color }}
                 >
-                  <span aria-hidden className="text-xl">{i.icon}</span>
-                  <span className="text-sm font-semibold text-[color:var(--color-navy)]">
-                    {i.label}
-                  </span>
-                </Link>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="m4 12 5 5L20 6"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+                <div>
+                  <p className="font-display text-lg text-[color:var(--color-navy)]">
+                    {r.title}
+                  </p>
+                  <p className="text-sm text-[color:var(--color-ink-mute)]">{r.body}</p>
+                </div>
               </li>
             ))}
           </ul>
@@ -178,30 +233,31 @@ function ParentIntent() {
 function HowItWorks() {
   const steps = [
     {
-      title: "Search",
-      body: "Filter by programme, area and age. See only what matches.",
+      title: "Search.",
+      body: "Filter by programme, area and age. Only what actually fits your family.",
       accent: "sky",
     },
     {
-      title: "Compare",
-      body: "Side-by-side facts — location, ages, curriculum, services.",
+      title: "Compare.",
+      body: "Line up your favourites — location, ages, curriculum, services — side by side.",
       accent: "leaf",
     },
     {
-      title: "Contact",
-      body: "Request information, call or WhatsApp when it's the right fit.",
+      title: "Reach out.",
+      body: "Message, call or WhatsApp the schools you like. When it's a fit, you'll know.",
       accent: "coral",
     },
   ];
   return (
     <section className="container-page mt-16 md:mt-24">
       <div className="mb-6">
-        <h2 className="font-display text-[28px] tracking-tight md:text-[40px]">
-          How EarlyDays works
+        <span className="chip chip-sky">How it works</span>
+        <h2 className="mt-2 font-display text-[28px] tracking-tight md:text-[40px]">
+          Three steps. Then you visit.
         </h2>
         <p className="mt-2 max-w-2xl text-[color:var(--color-ink-mute)]">
-          A calmer way to find the right early years or primary programme for
-          your child.
+          The best decision still happens in person — but EarlyDays gets you to the
+          right doorstep faster.
         </p>
       </div>
       <ol className="grid gap-3 md:grid-cols-3">
@@ -235,19 +291,19 @@ function GuidesTeaser() {
     {
       slug: "how-to-choose-a-creche-in-accra",
       title: "How to choose a creche in Accra",
-      dek: "The 12 things to check on your first visit.",
+      dek: "The 12 things you should notice on your first visit.",
       tag: "Starting out",
     },
     {
       slug: "montessori-vs-eyfs",
       title: "Montessori vs EYFS — what's the difference?",
-      dek: "Plain-English comparison for parents.",
+      dek: "Plain-English comparison, so you can ask better questions.",
       tag: "Curriculum",
     },
     {
       slug: "questions-to-ask-before-enrolling",
-      title: "Questions to ask before enrolling your child",
-      dek: "A printable checklist for school visits.",
+      title: "Questions to ask before you enrol",
+      dek: "A printable checklist for your school visits.",
       tag: "Visits",
     },
   ];
@@ -255,10 +311,14 @@ function GuidesTeaser() {
     <section className="container-page mt-16 md:mt-24">
       <div className="mb-6 flex items-end justify-between">
         <div>
-          <span className="chip chip-sun">Parent guides</span>
+          <span className="chip chip-sun">Read before you visit</span>
           <h2 className="mt-2 font-display text-[28px] tracking-tight md:text-[40px]">
-            Read before you visit
+            Short guides. Real questions.
           </h2>
+          <p className="mt-2 max-w-xl text-[color:var(--color-ink-mute)]">
+            The ones you'd ask your friend who's been through it — written for
+            Ghanaian parents.
+          </p>
         </div>
         <Link href="/guides" className="btn btn-ghost text-sm">All guides →</Link>
       </div>
@@ -310,14 +370,15 @@ function ForSchoolsCTA() {
             For schools
           </span>
           <h2 className="mt-3 font-display text-3xl leading-tight md:text-4xl">
-            Is your school listed?
+            Run a school? Let parents find you.
           </h2>
           <p className="mt-3 text-white/85">
-            Claim your profile, keep your information up to date, and help
-            parents in Ghana discover you when it matters. Free to claim.
+            Claim your profile in a minute. Keep your ages, programmes and
+            contact details current — and reach the parents who are actively
+            looking for a place like yours.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <Link href="/claim" className="btn btn-sun">
+            <Link href="/claim" className="btn btn-pink">
               Claim your profile
             </Link>
             <Link

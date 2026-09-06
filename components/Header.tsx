@@ -32,7 +32,7 @@ export function Header() {
             </svg>
             Shortlist
           </Link>
-          <Link href="/schools" className="btn btn-primary text-sm">
+          <Link href="/schools" className="btn btn-pink text-sm">
             Find a place
           </Link>
         </div>
