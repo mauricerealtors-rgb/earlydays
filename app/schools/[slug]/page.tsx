@@ -20,6 +20,7 @@ import { ContactActions } from "@/components/ContactActions";
 import { ListingCard } from "@/components/ListingCard";
 import { LocationCard } from "@/components/LocationCard";
 import { PageHeading } from "@/components/PageHeading";
+import { PhotoGallery } from "@/components/PhotoGallery";
 import { JsonLd } from "@/components/JsonLd";
 import { SITE } from "@/lib/site";
 
@@ -390,28 +391,15 @@ function renderListing(listing: ReturnType<typeof findListing> & object) {
             </dl>
           </div>
 
-          {listing.sourceUrls && listing.sourceUrls.length > 0 && (
-            <p className="mt-3 text-xs text-[color:var(--color-ink-mute)]">
-              <strong className="text-[color:var(--color-navy)]">
-                Information sources ({listing.sourceUrls.length}):
-              </strong>{" "}
-              {listing.sourceUrls.map((u, i) => (
-                <span key={u}>
-                  <a
-                    href={u}
-                    target="_blank"
-                    rel="nofollow noopener"
-                    className="underline hover:text-[color:var(--color-navy)]"
-                  >
-                    {new URL(u).host.replace(/^www\./, "")}
-                    {new URL(u).pathname !== "/" ? new URL(u).pathname : ""}
-                  </a>
-                  {i < listing.sourceUrls.length - 1 ? " · " : ""}
-                </span>
-              ))}
-            </p>
-          )}
         </section>
+
+        {listing.images && listing.images.length > 2 && (
+          <PhotoGallery
+            images={listing.images}
+            heroCount={2}
+            schoolName={listing.name}
+          />
+        )}
 
         <section className="mt-10 grid gap-6 lg:grid-cols-[1.4fr_1fr]">
           <div>

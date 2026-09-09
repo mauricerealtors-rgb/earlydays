@@ -197,6 +197,13 @@ export const LISTINGS: Listing[] = [
     lastVerifiedAt: today,
     updatedAt: today,
     imageQuery: "British EYFS preschool Spintex outdoor",
+    images: [
+      { url: "https://stgilespreschool.com/wp-content/uploads/2021/08/DSC_0773.jpg", alt: "St. Giles Preschool outdoor play area", credit: "Photo: St. Giles Preschool (official site)", sourceUrl: "https://stgilespreschool.com/" },
+      { url: "https://stgilespreschool.com/wp-content/uploads/2021/08/DSC_0551-1024x680-1.jpg", alt: "Kindergarten class at St. Giles Preschool", credit: "Photo: St. Giles Preschool (official site)", sourceUrl: "https://stgilespreschool.com/" },
+      { url: "https://stgilespreschool.com/wp-content/uploads/2021/08/DSC_0643.jpg", alt: "Infants programme at St. Giles Preschool", credit: "Photo: St. Giles Preschool (official site)", sourceUrl: "https://stgilespreschool.com/" },
+      { url: "https://stgilespreschool.com/wp-content/uploads/2021/08/sd4-1.jpg", alt: "Toddlers in the crèche programme at St. Giles Preschool", credit: "Photo: St. Giles Preschool (official site)", sourceUrl: "https://stgilespreschool.com/" },
+      { url: "https://stgilespreschool.com/wp-content/uploads/2020/04/9F1DC51E-196E-446A-8F4E-D4CFDF7688C8.jpg", alt: "Nursery learning activities at St. Giles Preschool", credit: "Photo: St. Giles Preschool (official site)", sourceUrl: "https://stgilespreschool.com/" },
+    ],
     featured: true,
   },
 
@@ -281,6 +288,13 @@ export const LISTINGS: Listing[] = [
     lastVerifiedAt: today,
     updatedAt: today,
     imageQuery: "Cambridge primary East Legon Hills",
+    images: [
+      { url: "https://charischool.org/wp-content/uploads/2025/11/IMG-20250512-WA0056-e1774298417997.jpg", alt: "Early Years classroom at Chari International School", credit: "Photo: Chari International School (official site)", sourceUrl: "https://charischool.org/" },
+      { url: "https://charischool.org/wp-content/uploads/2025/11/IMG-20250512-WA0135-e1774298606785.jpg", alt: "Primary students at Chari International School", credit: "Photo: Chari International School (official site)", sourceUrl: "https://charischool.org/" },
+      { url: "https://charischool.org/wp-content/uploads/2025/11/IMG-20250512-WA0131-e1774298804822.jpg", alt: "Junior High classroom activity at Chari International School", credit: "Photo: Chari International School (official site)", sourceUrl: "https://charischool.org/" },
+      { url: "https://charischool.org/wp-content/uploads/2025/11/IMG-20250512-WA0171.jpg", alt: "Science Fair at Chari International School", credit: "Photo: Chari International School (official site)", sourceUrl: "https://charischool.org/" },
+      { url: "https://charischool.org/wp-content/uploads/2025/11/IMG-20250506-WA0127-e1774300619789.jpg", alt: "Chari International School students at inter-school athletics", credit: "Photo: Chari International School (official site)", sourceUrl: "https://charischool.org/" },
+    ],
     featured: true,
   },
 
@@ -327,6 +341,14 @@ export const LISTINGS: Listing[] = [
     lastVerifiedAt: today,
     updatedAt: today,
     imageQuery: "Montessori Accra inclusive learning",
+    images: [
+      { url: "https://greenhavenschool.com/wp-content/uploads/2025/10/Green_Haven_Montessori_Ghana_Children.png", alt: "Children in a GreenHaven Montessori classroom", credit: "Photo: GreenHaven Montessori (official site)", sourceUrl: "https://greenhavenschool.com/" },
+      { url: "https://greenhavenschool.com/wp-content/uploads/2025/10/Green_Haven_Montessori_Pupil_Accra_Campus.png", alt: "Pupil at GreenHaven Montessori Accra campus", credit: "Photo: GreenHaven Montessori (official site)", sourceUrl: "https://greenhavenschool.com/" },
+      { url: "https://greenhavenschool.com/wp-content/uploads/2025/10/Green_haven_Montessori_Teacher.png", alt: "Teacher with students at GreenHaven Montessori", credit: "Photo: GreenHaven Montessori (official site)", sourceUrl: "https://greenhavenschool.com/" },
+      { url: "https://greenhavenschool.com/wp-content/uploads/2025/10/green-haven-montessori-202510221102524BVG.png", alt: "Little Explorers class at GreenHaven Montessori", credit: "Photo: GreenHaven Montessori (official site)", sourceUrl: "https://greenhavenschool.com/" },
+      { url: "https://greenhavenschool.com/wp-content/uploads/2025/10/green-haven-montessori-202510221059484xYf.png", alt: "Tiny Creators class at GreenHaven Montessori", credit: "Photo: GreenHaven Montessori (official site)", sourceUrl: "https://greenhavenschool.com/" },
+      { url: "https://greenhavenschool.com/wp-content/uploads/2025/10/green-haven-montessori-20251022110050ODrb.png", alt: "Bright Minds class activity at GreenHaven Montessori", credit: "Photo: GreenHaven Montessori (official site)", sourceUrl: "https://greenhavenschool.com/" },
+    ],
   },
 
   // ─── 8 ─────────────────────────────────────────────────────────────
@@ -371,6 +393,13 @@ export const LISTINGS: Listing[] = [
     lastVerifiedAt: today,
     updatedAt: today,
     imageQuery: "international school East Legon Boundary Road",
+    images: [
+      { url: "https://galaxy.edu.gh/uploads/frontend/home_page/wellcome1.jpg", alt: "Galaxy International School welcome / campus image", credit: "Photo: Galaxy International School (official site)", sourceUrl: "https://galaxy.edu.gh/" },
+      { url: "https://galaxy.edu.gh/home/news_thumb/card/news_6a8dca66933d2779210287.jpeg", alt: "Galaxy International School — Cambridge IGCSE results celebration", credit: "Photo: Galaxy International School (official site)", sourceUrl: "https://galaxy.edu.gh/" },
+      { url: "https://galaxy.edu.gh/home/news_thumb/card/news_6a8dcf8d386c9180003941.jpeg", alt: "Galaxy International School students at ISCAF Art Exhibition", credit: "Photo: Galaxy International School (official site)", sourceUrl: "https://galaxy.edu.gh/" },
+      { url: "https://galaxy.edu.gh/home/news_thumb/card/news_6a7ada50b9c2c692886305.jpeg", alt: "Galaxy International School — Cambridge Checkpoint results", credit: "Photo: Galaxy International School (official site)", sourceUrl: "https://galaxy.edu.gh/" },
+      { url: "https://galaxy.edu.gh/home/news_thumb/card/news_6a46a85ec0f90703530611.jpeg", alt: "Galaxy International School A-Level student award celebration", credit: "Photo: Galaxy International School (official site)", sourceUrl: "https://galaxy.edu.gh/" },
+    ],
   },
 
   // ─── 9 ─────────────────────────────────────────────────────────────
@@ -442,6 +471,16 @@ export const LISTINGS: Listing[] = [
     lastVerifiedAt: today,
     updatedAt: today,
     imageQuery: "British curriculum Spintex primary secondary",
+    images: [
+      { url: "https://eais-edu.com/wp-content/uploads/2025/11/IMG_9447-scaled-1.jpeg", alt: "East Airport International School campus exterior", credit: "Photo: East Airport International School (official site)", sourceUrl: "https://eais-edu.com/" },
+      { url: "https://eais-edu.com/wp-content/uploads/2025/11/IMG_9495-scaled-1.jpeg", alt: "East Airport International School campus", credit: "Photo: East Airport International School (official site)", sourceUrl: "https://eais-edu.com/" },
+      { url: "https://eais-edu.com/wp-content/uploads/2025/11/O6A0387-min-scaled-1.jpeg", alt: "East Airport International School students on a health walk", credit: "Photo: East Airport International School (official site)", sourceUrl: "https://eais-edu.com/" },
+      { url: "https://eais-edu.com/wp-content/uploads/2025/11/524A5945-scaled-1.jpeg", alt: "UN Day event at East Airport International School", credit: "Photo: East Airport International School (official site)", sourceUrl: "https://eais-edu.com/" },
+      { url: "https://eais-edu.com/wp-content/uploads/2025/11/O6A0027-min-scaled-1.jpeg", alt: "East Airport International School campus and facilities", credit: "Photo: East Airport International School (official site)", sourceUrl: "https://eais-edu.com/" },
+      { url: "https://eais-edu.com/wp-content/uploads/2025/11/O6A0039-min-scaled-1.jpeg", alt: "Student activity at East Airport International School", credit: "Photo: East Airport International School (official site)", sourceUrl: "https://eais-edu.com/" },
+      { url: "https://eais-edu.com/wp-content/uploads/2025/11/524A5310.jpeg", alt: "Student activities at East Airport International School", credit: "Photo: East Airport International School (official site)", sourceUrl: "https://eais-edu.com/" },
+      { url: "https://eais-edu.com/wp-content/uploads/2025/11/524A6081-scaled-1.jpeg", alt: "Student engagement at East Airport International School", credit: "Photo: East Airport International School (official site)", sourceUrl: "https://eais-edu.com/" },
+    ],
   },
 
   // ─── 11 ────────────────────────────────────────────────────────────
@@ -514,6 +553,16 @@ export const LISTINGS: Listing[] = [
     lastVerifiedAt: today,
     updatedAt: today,
     imageQuery: "bilingual Montessori Taifa Atomic",
+    images: [
+      { url: "https://noblesmontessori.com/wp-content/themes/nobles-montessori/assets/NOBLE/NOBLE%20AD_5(1).JPG", alt: "Prepared Montessori classroom environment at Nobles Montessori", credit: "Photo: Nobles Montessori (official site)", sourceUrl: "https://noblesmontessori.com/" },
+      { url: "https://noblesmontessori.com/wp-content/themes/nobles-montessori/assets/NOBLE/NOBLE%20AD_15(1).JPG", alt: "Infant Nido programme at Nobles Montessori", credit: "Photo: Nobles Montessori (official site)", sourceUrl: "https://noblesmontessori.com/" },
+      { url: "https://noblesmontessori.com/wp-content/themes/nobles-montessori/assets/NOBLE/NOBLE%20AD_55(1).JPG", alt: "Toddler programme at Nobles Montessori", credit: "Photo: Nobles Montessori (official site)", sourceUrl: "https://noblesmontessori.com/" },
+      { url: "https://noblesmontessori.com/wp-content/themes/nobles-montessori/assets/NOBLE/NOBLE%20AD_2.JPG", alt: "Child working with cylinder blocks at Nobles Montessori", credit: "Photo: Nobles Montessori (official site)", sourceUrl: "https://noblesmontessori.com/" },
+      { url: "https://noblesmontessori.com/wp-content/themes/nobles-montessori/assets/NOBLE/NOBLE%20AD_20.JPG", alt: "Sensorial learning materials at Nobles Montessori", credit: "Photo: Nobles Montessori (official site)", sourceUrl: "https://noblesmontessori.com/" },
+      { url: "https://noblesmontessori.com/wp-content/themes/nobles-montessori/assets/NOBLE/NOBLE%20AD_67.JPG", alt: "Water activity at Nobles Montessori", credit: "Photo: Nobles Montessori (official site)", sourceUrl: "https://noblesmontessori.com/" },
+      { url: "https://noblesmontessori.com/wp-content/themes/nobles-montessori/assets/NOBLE/NOBLE%20AD_22(1).JPG", alt: "Montessori bead chains material at Nobles Montessori", credit: "Photo: Nobles Montessori (official site)", sourceUrl: "https://noblesmontessori.com/" },
+      { url: "https://noblesmontessori.com/wp-content/themes/nobles-montessori/assets/NOBLE/NOBLE%20AD_13.JPG", alt: "Child practising early writing at Nobles Montessori", credit: "Photo: Nobles Montessori (official site)", sourceUrl: "https://noblesmontessori.com/" },
+    ],
   },
 
   // ─── 13 ────────────────────────────────────────────────────────────
@@ -612,5 +661,10 @@ export const LISTINGS: Listing[] = [
     lastVerifiedAt: today,
     updatedAt: today,
     imageQuery: "French children teens classes Accra",
+    images: [
+      { url: "https://afaccra.com/images/hero/junior.webp", alt: "Alliance Française Accra FLE Junior programme — children in class", credit: "Photo: Alliance Française Accra (official site)", sourceUrl: "https://afaccra.org/courses/junior" },
+      { url: "https://afaccra.com/images/courses/junior/overview.webp", alt: "Junior French class in session at Alliance Française Accra", credit: "Photo: Alliance Française Accra (official site)", sourceUrl: "https://afaccra.org/courses/junior" },
+      { url: "https://afaccra.com/images/hero/summer-camp.webp", alt: "Summer camp activities at Alliance Française Accra", credit: "Photo: Alliance Française Accra (official site)", sourceUrl: "https://afaccra.org/courses/junior" },
+    ],
   },
 ];
