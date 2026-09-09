@@ -156,6 +156,16 @@ export const LISTINGS: Listing[] = [
     lastVerifiedAt: today,
     updatedAt: today,
     imageQuery: "school Adjiringanor East Legon primary",
+    images: [
+      { url: "https://themaverickschool.edu.gh/assets/img/project/pf-1.jpg", alt: "Preschool activity at The Maverick School", credit: "Photo: The Maverick School (official site)", sourceUrl: "https://themaverickschool.edu.gh/gallery.html" },
+      { url: "https://themaverickschool.edu.gh/assets/img/project/f-1.jpg", alt: "School facilities at The Maverick School", credit: "Photo: The Maverick School (official site)", sourceUrl: "https://themaverickschool.edu.gh/gallery.html" },
+      { url: "https://themaverickschool.edu.gh/assets/img/project/pe-1.jpg", alt: "Extracurricular activity at The Maverick School", credit: "Photo: The Maverick School (official site)", sourceUrl: "https://themaverickschool.edu.gh/gallery.html" },
+      { url: "https://themaverickschool.edu.gh/assets/img/project/p-01.jpg", alt: "Christmas party at The Maverick School", credit: "Photo: The Maverick School (official site)", sourceUrl: "https://themaverickschool.edu.gh/gallery.html" },
+      { url: "https://themaverickschool.edu.gh/assets/img/project/f-2.jpg", alt: "Facility space at The Maverick School", credit: "Photo: The Maverick School (official site)", sourceUrl: "https://themaverickschool.edu.gh/gallery.html" },
+      { url: "https://themaverickschool.edu.gh/assets/img/project/pe-2.jpg", alt: "Student engagement at The Maverick School", credit: "Photo: The Maverick School (official site)", sourceUrl: "https://themaverickschool.edu.gh/gallery.html" },
+      { url: "https://themaverickschool.edu.gh/assets/img/project/p-02.jpg", alt: "Celebration event at The Maverick School", credit: "Photo: The Maverick School (official site)", sourceUrl: "https://themaverickschool.edu.gh/gallery.html" },
+      { url: "https://themaverickschool.edu.gh/assets/img/project/pc-27.jpg", alt: "Farmer's Day at The Maverick School", credit: "Photo: The Maverick School (official site)", sourceUrl: "https://themaverickschool.edu.gh/gallery.html" },
+    ],
     featured: true,
   },
 
@@ -436,6 +446,9 @@ export const LISTINGS: Listing[] = [
     lastVerifiedAt: today,
     updatedAt: today,
     imageQuery: "Cambridge primary East Legon Djanie Ashie",
+    images: [
+      { url: "https://static.wixstatic.com/media/a487ec_a0a354915012422cb833579eb7eedc1e~mv2.jpg", alt: "The Eden School campus exterior in East Legon", credit: "Photo: The Eden School (official site)", sourceUrl: "https://www.theedenschool-gh.com/" },
+    ],
   },
 
   // ─── 10 ────────────────────────────────────────────────────────────
@@ -596,6 +609,14 @@ export const LISTINGS: Listing[] = [
     lastVerifiedAt: today,
     updatedAt: today,
     imageQuery: "Montessori Freetown Avenue East Legon",
+    images: [
+      { url: "https://www.merryjourneymontessorischool.com/images/76A2435-scaled.jpg", alt: "Merry Journey Montessori classroom", credit: "Photo: Merry Journey Montessori (official site)", sourceUrl: "https://www.merryjourneymontessorischool.com/" },
+      { url: "https://www.merryjourneymontessorischool.com/images/IMG_0864-min.jpg", alt: "Children learning at Merry Journey Montessori", credit: "Photo: Merry Journey Montessori (official site)", sourceUrl: "https://www.merryjourneymontessorischool.com/" },
+      { url: "https://www.merryjourneymontessorischool.com/images/IMG_0777-min.jpg", alt: "Learning environment at Merry Journey Montessori", credit: "Photo: Merry Journey Montessori (official site)", sourceUrl: "https://www.merryjourneymontessorischool.com/" },
+      { url: "https://www.merryjourneymontessorischool.com/images/DSC_2168-min.jpg", alt: "Montessori activities at Merry Journey", credit: "Photo: Merry Journey Montessori (official site)", sourceUrl: "https://www.merryjourneymontessorischool.com/" },
+      { url: "https://www.merryjourneymontessorischool.com/images/IMG_0662-min.jpg", alt: "Children at play at Merry Journey Montessori", credit: "Photo: Merry Journey Montessori (official site)", sourceUrl: "https://www.merryjourneymontessorischool.com/" },
+      { url: "https://www.merryjourneymontessorischool.com/images/Girl-Web.png", alt: "Child learning at Merry Journey Montessori", credit: "Photo: Merry Journey Montessori (official site)", sourceUrl: "https://www.merryjourneymontessorischool.com/" },
+    ],
   },
 
   // ─── 14 ── Language centre ────────────────────────────────────────
@@ -629,6 +650,10 @@ export const LISTINGS: Listing[] = [
     lastVerifiedAt: today,
     updatedAt: today,
     imageQuery: "children French classes Ghana",
+    images: [
+      { url: "https://kasadelengua.com/wp-content/uploads/2024/11/WhatsApp-Image-2024-11-16-at-05.11.13_89fd7cdf.jpg", alt: "The Kasa De Lengua team at their Accra location", credit: "Photo: Kasa De Lengua (official site)", sourceUrl: "https://kasadelengua.com/" },
+      { url: "https://kasadelengua.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-15-at-4.55.13-PM-2.jpeg", alt: "Kasa De Lengua staff and students", credit: "Photo: Kasa De Lengua (official site)", sourceUrl: "https://kasadelengua.com/" },
+    ],
   },
 
   // ─── 15 ── Language centre ────────────────────────────────────────

@@ -22,6 +22,11 @@ const config: NextConfig = {
       { protocol: "https", hostname: "noblesmontessori.com" },
       { protocol: "https", hostname: "afaccra.com" },
       { protocol: "https", hostname: "afaccra.org" },
+      { protocol: "https", hostname: "themaverickschool.edu.gh" },
+      { protocol: "https", hostname: "www.themaverickschool.edu.gh" },
+      { protocol: "https", hostname: "merryjourneymontessorischool.com" },
+      { protocol: "https", hostname: "www.merryjourneymontessorischool.com" },
+      { protocol: "https", hostname: "kasadelengua.com" },
     ],
   },
 };
