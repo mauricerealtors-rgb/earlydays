@@ -22,6 +22,7 @@ import { LocationCard } from "@/components/LocationCard";
 import { PageHeading } from "@/components/PageHeading";
 import { PhotoGallery } from "@/components/PhotoGallery";
 import { JsonLd } from "@/components/JsonLd";
+import { educationalTypeFor, courseJsonLd } from "@/lib/schema";
 import { SITE } from "@/lib/site";
 
 export const dynamicParams = false;
@@ -173,7 +174,7 @@ function renderListing(listing: ReturnType<typeof findListing> & object) {
       <JsonLd
         data={{
           "@context": "https://schema.org",
-          "@type": "EducationalOrganization",
+          "@type": educationalTypeFor(listing),
           "@id": canonical,
           name: listing.name,
           alternateName: listing.alternateNames,
@@ -190,9 +191,26 @@ function renderListing(listing: ReturnType<typeof findListing> & object) {
             addressRegion: listing.region,
             addressCountry: "GH",
           },
-          areaServed: loc?.name ?? listing.region,
+          areaServed: {
+            "@type": "Place",
+            name: loc?.name ?? listing.region,
+            containedInPlace: {
+              "@type": "AdministrativeArea",
+              name: listing.region,
+              containedInPlace: { "@type": "Country", name: "Ghana" },
+            },
+          },
+          openingHours: listing.hours,
+          knowsLanguage: listing.curriculum.includes("Bilingual (French–English)")
+            ? ["en", "fr"]
+            : "en",
+          curriculum: listing.curriculum.length ? listing.curriculum : undefined,
+          isPartOf: { "@id": `${SITE.url}#website` },
         }}
       />
+      {listing.listingTypes.includes("language-centre") && (
+        <JsonLd data={courseJsonLd(listing)} />
+      )}
       <JsonLd
         data={{
           "@context": "https://schema.org",
