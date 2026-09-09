@@ -59,7 +59,7 @@ export default function HomePage() {
         seeAllHref="/schools/accra"
         seeAllLabel="See all Accra areas"
       >
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 lg:grid-cols-3 xl:grid-cols-4">
           {locations.slice(0, 8).map((l) => (
             <LocationCard key={l.slug} location={l} count={locCounts[l.slug] ?? 0} />
           ))}

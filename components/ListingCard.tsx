@@ -3,7 +3,6 @@ import Link from "next/link";
 import { findLocation } from "@/data/locations";
 import { findCategoryByType } from "@/data/categories";
 import type { Listing } from "@/lib/types";
-import { VerifiedBadge } from "./VerifiedBadge";
 
 const decor: Record<string, string> = {
   creche: "linear-gradient(135deg,#FFE1D5,#FFC5B0)",
@@ -87,10 +86,10 @@ export function ListingCard({ listing, compact = false }: { listing: Listing; co
           </h3>
         </div>
 
-        <p className="mb-3 flex items-center gap-1.5 text-sm text-[color:var(--color-ink-mute)]">
+        <p className="mb-3 flex items-center gap-1.5 text-[13px] font-semibold text-[color:var(--color-pink-hot)]">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
-            <path d="M12 22s7-6 7-12a7 7 0 1 0-14 0c0 6 7 12 7 12Z" stroke="currentColor" strokeWidth="1.6" />
-            <circle cx="12" cy="10" r="2.2" stroke="currentColor" strokeWidth="1.6" />
+            <path d="M12 22s7-6 7-12a7 7 0 1 0-14 0c0 6 7 12 7 12Z" stroke="currentColor" strokeWidth="1.8" />
+            <circle cx="12" cy="10" r="2.2" stroke="currentColor" strokeWidth="1.8" />
           </svg>
           <span>
             {loc?.name ?? listing.neighbourhood}, {listing.region}
@@ -103,38 +102,43 @@ export function ListingCard({ listing, compact = false }: { listing: Listing; co
           </p>
         )}
 
-        <dl className="mb-3 grid grid-cols-2 gap-x-3 gap-y-1 text-xs">
+        <dl className="mb-3 grid grid-cols-2 gap-x-3 gap-y-0.5 text-[11px]">
           <div>
-            <dt className="font-bold uppercase tracking-widest text-[color:var(--color-ink-mute)]">
+            <dt className="text-[9px] font-bold uppercase tracking-widest text-[color:var(--color-ink-mute)]">
               Ages
             </dt>
-            <dd className="font-semibold text-[color:var(--color-navy)]">
+            <dd className="text-[12px] font-semibold text-[color:var(--color-navy)]">
               {listing.ageBlurb}
             </dd>
           </div>
           <div>
-            <dt className="font-bold uppercase tracking-widest text-[color:var(--color-ink-mute)]">
+            <dt className="text-[9px] font-bold uppercase tracking-widest text-[color:var(--color-ink-mute)]">
               Approach
             </dt>
-            <dd className="font-semibold text-[color:var(--color-navy)]">
+            <dd className="text-[12px] font-semibold text-[color:var(--color-navy)]">
               {listing.curriculum.length ? listing.curriculum.slice(0, 2).join(", ") : "Not published"}
             </dd>
           </div>
         </dl>
 
-        <div className="mb-4 flex flex-wrap gap-1.5">
+        <div className="mb-4 flex flex-wrap gap-1">
           {listing.listingTypes.slice(0, 3).map((t) => {
             const c = findCategoryByType(t);
             return (
-              <span key={t} className="chip">
+              <span
+                key={t}
+                className="inline-flex items-center gap-1 rounded-full bg-[color:var(--color-leaf-soft)] px-2 py-0.5 text-[10px] font-semibold text-[#2F7C25]"
+              >
+                <svg width="9" height="9" viewBox="0 0 24 24" fill="none" aria-hidden>
+                  <path d="m4 12 5 5L20 6" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
                 {c?.singular ?? t}
               </span>
             );
           })}
         </div>
 
-        <div className="mt-auto flex items-center justify-between gap-2">
-          <VerifiedBadge status={listing.verification} />
+        <div className="mt-auto flex justify-end">
           <Link
             href={`/schools/${listing.slug}`}
             className="btn btn-ghost text-sm"
