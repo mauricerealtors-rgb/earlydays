@@ -10,6 +10,8 @@ export const CATEGORIES: Category[] = [
     blurb:
       "Creches and daycares in Ghana that care for babies and young toddlers during the working day.",
     accent: "coral",
+    image: "/categories/creches.jpg",
+    imageAlt: "Caregiver playing with smiling toddlers and colourful toys in a bright creche",
   },
   {
     slug: "preschools",
@@ -20,6 +22,8 @@ export const CATEGORIES: Category[] = [
     blurb:
       "Preschools and nurseries preparing young children for the transition into KG and primary school.",
     accent: "sky",
+    image: "/categories/preschools.jpg",
+    imageAlt: "Preschool children painting and doing craft together at a colourful classroom table",
   },
   {
     slug: "kindergartens",
@@ -30,6 +34,8 @@ export const CATEGORIES: Category[] = [
     blurb:
       "Kindergartens in Ghana serving children in the year or two before primary school.",
     accent: "sun",
+    image: "/categories/kindergartens.jpg",
+    imageAlt: "Two young kindergarten children stacking colourful wooden blocks in a bright classroom",
   },
   {
     slug: "primary-schools",
@@ -40,6 +46,8 @@ export const CATEGORIES: Category[] = [
     blurb:
       "Primary schools across Ghana following GES, British, EYFS, Montessori or international pathways.",
     accent: "leaf",
+    image: "/categories/primary-schools.jpg",
+    imageAlt: "Two primary school pupils in uniform smiling as they work on a book at their desk",
   },
   {
     slug: "montessori-schools",
@@ -50,6 +58,8 @@ export const CATEGORIES: Category[] = [
     blurb:
       "Montessori schools and Montessori-influenced programmes that follow child-led, prepared-environment principles.",
     accent: "blossom",
+    image: "/categories/montessori-schools.jpg",
+    imageAlt: "Two children in a Montessori classroom — one spooning beads, another with the pink tower",
   },
   {
     slug: "learning-centres",
@@ -60,6 +70,8 @@ export const CATEGORIES: Category[] = [
     blurb:
       "Children's learning centres offering after-school tutoring, enrichment, and holiday programmes.",
     accent: "sky",
+    image: "/categories/learning-centres.jpg",
+    imageAlt: "Boy at a learning centre working on a robotics kit with books and a tablet on the desk",
   },
   {
     slug: "french-classes-for-kids",
@@ -70,6 +82,8 @@ export const CATEGORIES: Category[] = [
     blurb:
       "Places where children in Ghana can learn French through structured classes and immersion programmes.",
     accent: "coral",
+    image: "/categories/french-classes-for-kids.jpg",
+    imageAlt: "Girl in a French class holding a flashcard reading 'une pomme' with vocabulary cards on the desk",
   },
   {
     slug: "stem-and-coding",
@@ -80,6 +94,8 @@ export const CATEGORIES: Category[] = [
     blurb:
       "STEM, coding, robotics and maths programmes for children — after school, weekends and holidays.",
     accent: "leaf",
+    image: "/categories/stem-and-coding.jpg",
+    imageAlt: "Girl coding on a laptop next to a robotics kit and STEM books in a bright classroom",
   },
   {
     slug: "activity-centres",
