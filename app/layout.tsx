@@ -14,14 +14,23 @@ export const metadata: Metadata = {
   },
   description: SITE.description,
   applicationName: SITE.name,
+  authors: [{ name: SITE.name, url: SITE.url }],
+  creator: SITE.name,
+  publisher: SITE.name,
+  category: "education",
   keywords: [
     "schools in Ghana",
     "preschool Accra",
     "creche Accra",
+    "daycare Accra",
     "kindergarten Ghana",
     "primary schools Ghana",
     "Montessori Accra",
-    "children learning centre Ghana",
+    "Cambridge schools Accra",
+    "British curriculum Ghana",
+    "children's learning centre Ghana",
+    "French classes for kids Accra",
+    "earlydays",
   ],
   openGraph: {
     type: "website",
@@ -30,13 +39,34 @@ export const metadata: Metadata = {
     url: SITE.url,
     title: `${SITE.name} — ${SITE.tagline}`,
     description: SITE.description,
+    // Next.js auto-detects app/opengraph-image.tsx and generates the 1200x630
+    // image for OG + Twitter cards. No manual images needed.
   },
   twitter: {
     card: "summary_large_image",
+    site: SITE.twitter,
+    creator: SITE.twitter,
     title: `${SITE.name} — ${SITE.tagline}`,
     description: SITE.description,
   },
-  alternates: { canonical: SITE.url },
+  alternates: {
+    canonical: SITE.url,
+    languages: {
+      "en-GH": SITE.url,
+      "x-default": SITE.url,
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   manifest: "/manifest.webmanifest",
   formatDetection: { telephone: true, email: true, address: true },
 };
@@ -71,12 +101,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           data={{
             "@context": "https://schema.org",
             "@type": "WebSite",
+            "@id": `${SITE.url}#website`,
             name: SITE.name,
+            alternateName: "EarlyDays Ghana",
             url: SITE.url,
             inLanguage: "en-GH",
+            publisher: { "@id": `${SITE.url}#org` },
             potentialAction: {
               "@type": "SearchAction",
-              target: `${SITE.url}/schools?q={search_term_string}`,
+              target: {
+                "@type": "EntryPoint",
+                urlTemplate: `${SITE.url}/schools?q={search_term_string}`,
+              },
               "query-input": "required name=search_term_string",
             },
           }}
@@ -85,10 +121,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           data={{
             "@context": "https://schema.org",
             "@type": "Organization",
+            "@id": `${SITE.url}#org`,
             name: SITE.name,
+            legalName: "EarlyDays",
             url: SITE.url,
-            areaServed: SITE.region,
+            logo: `${SITE.url}/icon.svg`,
             description: SITE.description,
+            areaServed: {
+              "@type": "Country",
+              name: SITE.region,
+            },
+            knowsAbout: [
+              "Early years education",
+              "Preschool",
+              "Kindergarten",
+              "Primary school",
+              "Montessori",
+              "Ghana education",
+            ],
           }}
         />
         <Header />
