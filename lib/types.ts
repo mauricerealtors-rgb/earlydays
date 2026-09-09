@@ -61,6 +61,8 @@ export interface Category {
   short: string;                 // for cards
   blurb: string;                 // for category pages
   accent: "sky" | "leaf" | "sun" | "coral" | "blossom";
+  image?: string;                // hero background for the card (optional)
+  imageAlt?: string;             // alt text if image present
 }
 
 export interface ListingImage {

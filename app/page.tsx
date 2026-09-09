@@ -40,11 +40,11 @@ export default function HomePage() {
       <Section
         eyebrow="Something specific in mind?"
         title="Explore by programme."
-        subtitle="From Montessori to French classes to weekend coding — we help you find the right kind of place."
+        subtitle="From Montessori to French classes to weekend coding — find the right kind of place."
         seeAllHref="/schools"
         seeAllLabel="See all programmes"
       >
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
           {categories.map((c) => (
             <CategoryCard key={c.slug} category={c} count={catCounts[c.slug]} />
           ))}
@@ -124,7 +124,7 @@ function Section({
             {title}
           </h2>
           {subtitle && (
-            <p className="mt-2 text-[15px] text-[color:var(--color-ink-mute)] md:text-base">
+            <p className="mt-2 text-[13px] leading-snug text-[color:var(--color-ink-mute)] md:text-sm">
               {subtitle}
             </p>
           )}
