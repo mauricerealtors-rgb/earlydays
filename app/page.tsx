@@ -81,9 +81,6 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* Why parents choose EarlyDays */}
-      <WhyParentsChooseUs />
-
       {/* How it works */}
       <HowItWorks />
 
@@ -140,143 +137,102 @@ function Section({
   );
 }
 
-function WhyParentsChooseUs() {
-  const reasons = [
-    {
-      color: "#EC1E7A",
-      title: "You come first, not advertisers.",
-      body: "Every screen was designed to help you decide — not to sell you a listing.",
-    },
-    {
-      color: "#1F7AD6",
-      title: "Honest profiles you can trust.",
-      body: "We never invent fees, phone numbers or curriculum. If a school hasn't published something, we say so.",
-    },
-    {
-      color: "#2F7C25",
-      title: "Made for how you actually search.",
-      body: "By area, by age, by programme. Filters that respect a parent's time.",
-    },
-    {
-      color: "#E5A800",
-      title: "Free to browse, save and enquire.",
-      body: "Build a shortlist, compare schools side by side, and reach out — no signup, no paywall.",
-    },
-  ];
-  return (
-    <section className="container-page mt-16 md:mt-24">
-      <div className="card overflow-hidden">
-        <div className="grid gap-0 md:grid-cols-[360px_1fr]">
-          <div
-            className="relative overflow-hidden p-6 md:p-10"
-            style={{
-              background:
-                "linear-gradient(160deg,#FFE4EF 0%,#FFC5DC 55%,#FF9FC0 100%)",
-            }}
-          >
-            <span
-              aria-hidden
-              className="pointer-events-none absolute -right-8 -top-8 h-40 w-40 rounded-full opacity-70"
-              style={{ background: "radial-gradient(circle,#FFC845 0,transparent 60%)" }}
-            />
-            <span className="chip" style={{ background: "rgba(255,255,255,0.7)", borderColor: "transparent" }}>
-              Why parents choose EarlyDays
-            </span>
-            <h2 className="mt-3 font-display text-3xl leading-tight md:text-4xl">
-              <span className="rainbow-word-pink">Made</span>{" "}
-              <span className="rainbow-word-sky">for</span>{" "}
-              <span className="rainbow-word-leaf">you.</span>{" "}
-              <span className="rainbow-word-sun">Not</span>{" "}
-              <span className="rainbow-word-coral">for schools.</span>
-            </h2>
-            <p className="mt-3 max-w-sm text-sm text-[color:var(--color-navy-2)]/90">
-              Every choice on EarlyDays — the search, the profiles, the shortlist —
-              is built for the parent doing the searching. That's the whole point.
-            </p>
-          </div>
-          <ul className="grid gap-1 p-5 md:p-8">
-            {reasons.map((r) => (
-              <li
-                key={r.title}
-                className="flex items-start gap-3 rounded-2xl p-3 hover:bg-[color:var(--color-cream)]"
-              >
-                <span
-                  aria-hidden
-                  className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full"
-                  style={{ background: `${r.color}1A`, color: r.color }}
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="m4 12 5 5L20 6"
-                      stroke="currentColor"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </span>
-                <div>
-                  <p className="font-display text-lg text-[color:var(--color-navy)]">
-                    {r.title}
-                  </p>
-                  <p className="text-sm text-[color:var(--color-ink-mute)]">{r.body}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function HowItWorks() {
   const steps = [
     {
       title: "Search.",
       body: "Filter by programme, area and age. Only what actually fits your family.",
       accent: "sky",
+      gradient: "linear-gradient(160deg,#E4F1FF 0%,#C7E1FF 100%)",
+      icon: (
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden>
+          <circle cx="11" cy="11" r="6.5" stroke="currentColor" strokeWidth="2.2" />
+          <path d="m20 20-4-4" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+        </svg>
+      ),
     },
     {
       title: "Compare.",
       body: "Line up your favourites — location, ages, curriculum, services — side by side.",
       accent: "leaf",
+      gradient: "linear-gradient(160deg,#EAF6E5 0%,#C9EABD 100%)",
+      icon: (
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden>
+          <rect x="3" y="5" width="7" height="14" rx="2" stroke="currentColor" strokeWidth="2.2" />
+          <rect x="14" y="5" width="7" height="14" rx="2" stroke="currentColor" strokeWidth="2.2" />
+          <path d="M6.5 10h1M6.5 13.5h1M17.5 10h1M17.5 13.5h1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+      ),
     },
     {
       title: "Reach out.",
       body: "Message, call or WhatsApp the schools you like. When it's a fit, you'll know.",
       accent: "coral",
+      gradient: "linear-gradient(160deg,#FFE1D5 0%,#FFC5B0 100%)",
+      icon: (
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden>
+          <path
+            d="M5 5h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-7l-5 4v-4H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"
+            stroke="currentColor"
+            strokeWidth="2.2"
+            strokeLinejoin="round"
+          />
+          <path d="M8 10h8M8 13h5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+      ),
     },
   ];
+  const accentInk: Record<string, string> = {
+    sky: "#1F7AD6",
+    leaf: "#2F7C25",
+    coral: "#B23A1A",
+  };
   return (
     <section className="container-page mt-16 md:mt-24">
-      <div className="mb-6">
+      <div className="mb-8 text-center md:mb-10">
         <span className="chip chip-sky">How it works</span>
-        <h2 className="mt-2 font-display text-[28px] tracking-tight md:text-[40px]">
-          Three steps. Then you visit.
+        <h2 className="mt-3 font-display text-[28px] leading-tight tracking-tight md:text-[44px]">
+          <span className="rainbow-word-sky">Three steps.</span>{" "}
+          <span className="rainbow-word-navy">Then you visit.</span>
         </h2>
-        <p className="mt-2 max-w-2xl text-[color:var(--color-ink-mute)]">
-          The best decision still happens in person — but EarlyDays gets you to the
-          right doorstep faster.
+        <p className="mx-auto mt-3 max-w-2xl text-sm text-[color:var(--color-ink-mute)] md:text-base">
+          The best decision still happens in person — but EarlyDays gets you to
+          the right doorstep faster.
         </p>
       </div>
-      <ol className="grid gap-3 md:grid-cols-3">
+      <ol className="relative grid gap-4 md:grid-cols-3 md:gap-6">
+        <span
+          aria-hidden
+          className="pointer-events-none absolute left-[8%] right-[8%] top-16 hidden h-0.5 rounded-full opacity-70 md:block"
+          style={{
+            background:
+              "linear-gradient(90deg,#66B7FF 0%,#7AC66B 50%,#FF7A59 100%)",
+          }}
+        />
         {steps.map((s, i) => (
           <li
             key={s.title}
-            className="card-soft rounded-2xl p-6"
-            style={{
-              background:
-                s.accent === "sky"
-                  ? "linear-gradient(160deg,#E4F1FF,#ffffff 60%)"
-                  : s.accent === "leaf"
-                    ? "linear-gradient(160deg,#EAF6E5,#ffffff 60%)"
-                    : "linear-gradient(160deg,#FFE1D5,#ffffff 60%)",
-            }}
+            className="how-step group relative flex flex-col items-center rounded-3xl border border-[color:var(--color-line-2)] bg-white p-6 text-center shadow-[0_1px_2px_rgba(15,42,74,0.04),0_8px_24px_rgba(15,42,74,0.06)] transition-transform duration-300 hover:-translate-y-1 md:p-7"
+            style={{ animationDelay: `${i * 140}ms` }}
           >
-            <span className="chip">Step {i + 1}</span>
-            <h3 className="mt-3 font-display text-xl">{s.title}</h3>
-            <p className="mt-1 text-sm text-[color:var(--color-ink-mute)]">
+            <span
+              aria-hidden
+              className="how-step-badge absolute -top-3 right-5 inline-flex h-7 min-w-7 items-center justify-center rounded-full px-2 text-[11px] font-black uppercase tracking-widest text-white shadow-md"
+              style={{ background: accentInk[s.accent] }}
+            >
+              0{i + 1}
+            </span>
+            <span
+              aria-hidden
+              className="how-step-icon relative flex h-16 w-16 items-center justify-center rounded-2xl md:h-20 md:w-20"
+              style={{ background: s.gradient, color: accentInk[s.accent] }}
+            >
+              {s.icon}
+            </span>
+            <h3 className="mt-4 font-display text-[22px] leading-tight md:text-[26px]">
+              {s.title}
+            </h3>
+            <p className="mt-2 max-w-[28ch] text-sm text-[color:var(--color-ink-mute)] md:text-[15px]">
               {s.body}
             </p>
           </li>

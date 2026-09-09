@@ -241,3 +241,36 @@
 .mobile-nav {
   padding-bottom: max(10px, env(safe-area-inset-bottom));
 }
+
+/* How-it-works step animation */
+@keyframes howStepIn {
+  0%   { opacity: 0; transform: translateY(18px) scale(0.98); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes howBadgePop {
+  0%   { transform: scale(0.4); opacity: 0; }
+  60%  { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes howIconFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+.how-step {
+  opacity: 0;
+  animation: howStepIn 620ms cubic-bezier(.22,.9,.28,1.2) forwards;
+}
+.how-step-badge {
+  animation: howBadgePop 520ms ease-out both;
+  animation-delay: inherit;
+}
+.how-step-icon {
+  animation: howIconFloat 4.5s ease-in-out infinite;
+}
+.how-step:nth-child(2) .how-step-icon { animation-delay: 0.6s; }
+.how-step:nth-child(3) .how-step-icon { animation-delay: 1.2s; }
+.how-step:hover .how-step-icon { animation-play-state: paused; transform: scale(1.06); transition: transform 250ms ease; }
+
+@media (prefers-reduced-motion: reduce) {
+  .how-step, .how-step-badge, .how-step-icon { animation: none; opacity: 1; transform: none; }
+}
