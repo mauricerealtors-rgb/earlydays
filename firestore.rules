@@ -1,0 +1,80 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper: is the signed-in user the reviewer role (admin)?
+    // For MVP, hardcode the admin email(s). Rotate via env var later.
+    function isAdmin() {
+      return request.auth != null &&
+             request.auth.token.email in [
+               'support@sellquic.com',
+               'mauricerealtors@gmail.com'
+             ];
+    }
+
+    // Public users doc — schools sign up here. Only the owner or admin can read/write.
+    match /users/{uid} {
+      allow read: if request.auth != null && (request.auth.uid == uid || isAdmin());
+      allow create: if request.auth != null && request.auth.uid == uid;
+      allow update: if request.auth != null && (request.auth.uid == uid || isAdmin());
+      allow delete: if isAdmin();
+    }
+
+    // Claims — anyone signed in can create a claim; only owner/admin can read.
+    // Only admin can update (approve/reject) or delete.
+    match /claims/{claimId} {
+      allow read: if request.auth != null &&
+                    (request.auth.uid == resource.data.uid || isAdmin());
+      allow create: if request.auth != null &&
+                      request.resource.data.uid == request.auth.uid &&
+                      request.resource.data.status == 'pending';
+      allow update: if isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // Listing overrides — school users can only edit listings they've claimed
+    // and been approved for. Approval writes an entry in listingOwners.
+    match /listingOverrides/{slug} {
+      allow read: if true; // public reads for the site merger
+      allow create, update: if request.auth != null &&
+                              exists(/databases/$(database)/documents/listingOwners/$(slug)) &&
+                              get(/databases/$(database)/documents/listingOwners/$(slug)).data.uid == request.auth.uid;
+      allow delete: if isAdmin();
+    }
+
+    // Ownership registry — one owner per slug. Only admin writes.
+    match /listingOwners/{slug} {
+      allow read: if request.auth != null &&
+                    (resource.data.uid == request.auth.uid || isAdmin());
+      allow write: if isAdmin();
+    }
+
+    // Photos subcollection — same ownership rules as overrides.
+    match /listingOverrides/{slug}/photos/{photoId} {
+      allow read: if true;
+      allow create, update, delete: if request.auth != null &&
+                                       exists(/databases/$(database)/documents/listingOwners/$(slug)) &&
+                                       get(/databases/$(database)/documents/listingOwners/$(slug)).data.uid == request.auth.uid;
+    }
+
+    // Subscription state — read-only for the school user; only server can write.
+    // Server writes are via Firebase Admin SDK (server-side) using service account,
+    // which bypasses these rules entirely, so `allow write: if false` is safe.
+    match /subscriptions/{slug} {
+      allow read: if true;
+      allow write: if false; // only Admin SDK from webhook
+    }
+
+    // Enquiries (parent leads) — parent submits without auth; only owner reads.
+    match /enquiries/{enquiryId} {
+      allow create: if request.resource.data.keys().hasOnly(
+        ['slug','parentName','parentEmail','parentPhone','message','createdAt']
+      );
+      allow read, update: if request.auth != null &&
+                            exists(/databases/$(database)/documents/listingOwners/$(resource.data.slug)) &&
+                            get(/databases/$(database)/documents/listingOwners/$(resource.data.slug)).data.uid == request.auth.uid;
+      allow delete: if isAdmin();
+    }
+  }
+}

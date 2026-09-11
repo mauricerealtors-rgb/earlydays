@@ -304,6 +304,20 @@ function renderListing(listing: ReturnType<typeof findListing> & object) {
                 : " · Publicly discovered listing"}
               .
             </p>
+            {!listing.claimed && (
+              <Link
+                href={`/claim/${listing.slug}`}
+                className="mt-4 block rounded-2xl border border-[color:var(--color-line)] bg-[color:var(--color-cream)] p-3 text-[13px] hover:border-[color:var(--color-navy)]/30"
+              >
+                <span className="font-semibold text-[color:var(--color-navy)]">
+                  Do you run this school?
+                </span>{" "}
+                <span className="text-[color:var(--color-ink-mute)]">
+                  Claim your profile — free.
+                </span>{" "}
+                <span aria-hidden className="text-[color:var(--color-coral)]">→</span>
+              </Link>
+            )}
           </aside>
         </header>
 

@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { MobileBottomNav } from "@/components/MobileBottomNav";
 import { JsonLd } from "@/components/JsonLd";
+import { AuthProvider } from "@/components/AuthProvider";
 import { SITE, absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -141,12 +142,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             ],
           }}
         />
-        <Header />
-        <main id="main" className="pb-24 md:pb-0">
-          {children}
-        </main>
-        <Footer />
-        <MobileBottomNav />
+        <AuthProvider>
+          <Header />
+          <main id="main" className="pb-24 md:pb-0">
+            {children}
+          </main>
+          <Footer />
+          <MobileBottomNav />
+        </AuthProvider>
       </body>
     </html>
   );
