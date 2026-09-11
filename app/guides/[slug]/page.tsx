@@ -87,7 +87,7 @@ export default async function GuidePage({
                 )}
                 {section.paragraphs.map((p, j) => (
                   <p key={j} className="text-[17px] leading-relaxed text-[color:var(--color-ink)]">
-                    {p}
+                    {renderInline(p)}
                   </p>
                 ))}
               </section>
@@ -125,4 +125,40 @@ function formatDate(iso: string) {
   } catch {
     return iso;
   }
+}
+
+// Matches [text](/internal/url) or **bold text**. Only internal links (leading /) allowed.
+const inlinePattern = /\[([^\]]+)\]\((\/[^\s)]+)\)|\*\*([^*]+)\*\*/g;
+
+function renderInline(text: string): React.ReactNode[] {
+  const nodes: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  let key = 0;
+  inlinePattern.lastIndex = 0;
+  while ((match = inlinePattern.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      nodes.push(text.slice(lastIndex, match.index));
+    }
+    if (match[2]) {
+      nodes.push(
+        <Link
+          key={`n-${key++}`}
+          href={match[2]}
+          className="font-semibold text-[color:var(--color-navy)] underline decoration-[color:var(--color-coral)] decoration-2 underline-offset-4 hover:decoration-[color:var(--color-pink-hot)]"
+        >
+          {match[1]}
+        </Link>
+      );
+    } else if (match[3]) {
+      nodes.push(
+        <strong key={`n-${key++}`} className="font-bold text-[color:var(--color-navy)]">
+          {match[3]}
+        </strong>
+      );
+    }
+    lastIndex = match.index + match[0].length;
+  }
+  if (lastIndex < text.length) nodes.push(text.slice(lastIndex));
+  return nodes;
 }

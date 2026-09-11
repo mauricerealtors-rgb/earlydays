@@ -10,6 +10,112 @@ export interface Guide {
 
 export const GUIDES: Guide[] = [
   {
+    slug: "how-much-does-preschool-cost-in-accra",
+    title: "How much do preschool fees in Accra cost? A 2026 parent guide",
+    dek: "A practical guide to preschool costs in Accra, including approximate fee ranges, common extras, what to ask, and how to compare schools fairly.",
+    tag: "Cost",
+    updatedAt: "2026-09-11",
+    readingMinutes: 6,
+    body: [
+      {
+        paragraphs: [
+          "How much does preschool cost in Accra? Preschool fees in Accra can vary from roughly GH₵500 to more than GH₵40,000 per term, depending on the type of school, location, curriculum and what is included. These are approximate ranges for comparison, not official fees for any particular school.",
+          "For a parent, the headline term fee is only the starting point. One school may include meals and learning materials while another charges for them separately. Transport, uniforms, activities and registration can also change the final amount.",
+          "Ghana's three-term academic year also matters when planning your budget. Many schools work around January, May and September starts, so it is better to think about the full school year rather than looking at one term in isolation.",
+        ],
+      },
+      {
+        heading: "What does preschool cost in Accra at different price levels?",
+        paragraphs: [
+          "The figures below are approximate planning ranges. They are useful for understanding the market, but they are not fixed categories and individual schools can fall outside them.",
+        ],
+      },
+      {
+        heading: "Community or neighbourhood preschools — roughly GH₵500–GH₵2,500 per term",
+        paragraphs: [
+          "At this level, parents may find smaller neighbourhood preschools and simpler early-years settings. The focus may be on the core school day rather than a large range of additional facilities or services.",
+          "What you get can vary considerably from one school to another. Before choosing on price, ask about class size, staffing, the daily routine, meals, learning materials, outdoor space and how children are supervised. A lower term fee does not tell you enough about the day-to-day experience.",
+        ],
+      },
+      {
+        heading: "Mid-market private preschools — roughly GH₵3,000–GH₵8,000 per term",
+        paragraphs: [
+          "This range covers many established private preschools offering a more structured programme and a broader set of facilities or services. Depending on the school, parents may see more organised extracurricular activities, dedicated learning spaces, school transport options or additional resources.",
+          "Do not assume that schools in the same price range offer the same package. One may include meals and activities while another may list them as separate charges. Compare the complete cost, not just the advertised tuition.",
+        ],
+      },
+      {
+        heading: "International or premium preschools — roughly GH₵10,000–GH₵40,000+ per term",
+        paragraphs: [
+          "At the higher end, parents may be considering premium or international schools with more extensive facilities, specialised programmes, international curriculum approaches or a wider range of activities and services.",
+          "The higher price still needs to be explained. Ask what your child actually receives for the additional cost. Look at the classroom environment, staff-to-child ratio, curriculum, meals, facilities, activities and the practical arrangements around the school day. A premium fee should be assessed on the overall offer rather than the school's reputation or appearance alone.",
+        ],
+      },
+      {
+        heading: "What do preschool fees in Accra usually include?",
+        paragraphs: [
+          "Ask each school to confirm what is included before comparing its fee with another school. A useful checklist:",
+          "**Tuition** — Ask whether the advertised term fee is the complete compulsory tuition amount or whether other mandatory charges sit alongside it.",
+          "**Meals** — Ask whether breakfast, lunch and snacks are included, and whether there is a separate meal charge.",
+          "**Learning materials** — Ask whether books, stationery and classroom materials are supplied or whether parents buy them separately.",
+          "**Activities and trips** — Ask whether clubs, excursions, sports, creative activities and special programmes are included.",
+          "**Transport** — Ask whether school transport is available, which areas are covered and what the termly charge is.",
+          "**Uniforms** — Ask whether uniforms are compulsory and whether they are purchased directly from the school or separately.",
+          "**Registration or admission** — Ask whether there is a one-off joining fee and exactly when it must be paid.",
+          "**Assessments or exams** — Ask whether assessment, examination or related charges are included in tuition.",
+          "**Events** — Ask whether parents contribute separately towards end-of-term events, performances, celebrations or graduation activities.",
+        ],
+      },
+      {
+        heading: "The extra costs that can catch parents out",
+        paragraphs: [
+          "The advertised tuition is not always the amount you will spend. Registration or admission fees are commonly paid as a one-off before a child's first term, so ask about them before accepting a place.",
+          "PTA levies are another charge worth checking. Ask whether the school has a PTA levy, whether it is compulsory and whether it is collected once a year or each term.",
+          "Exam or assessment fees can also appear separately, particularly where a school has additional examinations or formal assessments. Ask when they are paid and whether they are already included in the published tuition.",
+          "End-of-term events can bring smaller but unexpected expenses. Parents may be asked to contribute towards costumes, special activities, celebrations, trips or graduation-related arrangements.",
+          "It is also sensible to ask when the school normally reviews its fees. School fees usually change once a year, so a figure quoted for the current academic year should not automatically be assumed to remain the same the following year.",
+        ],
+      },
+      {
+        heading: "Think about the full three-term cost",
+        paragraphs: [
+          "Ghana's school year is generally organised around three terms, with many schools working around January, May and September starts. That means a useful budget should look beyond the first payment and consider what the family will spend across the academic year.",
+          "For example, add tuition for all three terms, then add compulsory extras such as registration where applicable, meals, transport, uniforms, PTA levies and other recurring charges. Keep optional costs separate so you can see what is genuinely required.",
+          "This is particularly useful when comparing schools with different fee structures. A school with a lower tuition figure may become more expensive once transport, meals and materials are added. Another may have a higher headline fee but fewer compulsory extras.",
+          "If you are searching by area, start with [all preschools in Ghana](/preschools), then narrow the search to [Preschools in East Legon](/preschools/accra/east-legon), [Preschools in Adjiringanor](/preschools/accra/adjiringanor) or [Preschools in Adenta](/preschools/accra/adenta).",
+        ],
+      },
+      {
+        heading: "Do not use price as a shortcut for quality",
+        paragraphs: [
+          "A more expensive preschool is not automatically better, and a lower-cost school is not automatically poor value. The right choice depends on what your child needs and what works for your family.",
+          "Visit the school if you can. Look at the classrooms, ask how the day is structured and observe how staff interact with children. Ask about the staff-to-child ratio, meals, nap arrangements, pick-up procedures and what happens if your child needs additional support.",
+          "Curriculum may also be part of the decision. Early-years settings in Ghana can use approaches including Ghana Education Service frameworks, Cambridge, British or UK National Curriculum, International Baccalaureate, Montessori, EYFS, Reggio Emilia, bilingual French–English and play-based approaches.",
+          "The name of the curriculum should not be the only deciding factor. Ask the school to explain what that approach looks like during a normal week and how it affects your child's learning.",
+        ],
+      },
+      {
+        heading: "Questions to ask before you pay",
+        paragraphs: [
+          "Before paying a deposit or accepting a place, ask the school to give you the complete fee structure. If something is not published, ask directly rather than assuming.",
+          "Ask whether the quoted amount is per term, whether fees are refundable, when payment is due, whether there is a discount for annual payment and what happens if your child starts part-way through a term.",
+          "You can also use our [questions to ask before enrolling](/guides/questions-to-ask-before-enrolling) as a practical checklist when visiting schools. If you are also considering younger-child care, [how to choose a creche in Accra](/guides/how-to-choose-a-creche-in-accra) covers the questions that matter when comparing creche options.",
+        ],
+      },
+      {
+        heading: "On EarlyDays",
+        paragraphs: [
+          "EarlyDays is built to help parents compare options without pretending to know information a school has not published or verified. You can browse [all preschools in Ghana](/preschools), explore [Preschools in East Legon](/preschools/accra/east-legon), [Preschools in Adjiringanor](/preschools/accra/adjiringanor) or [Preschools in Adenta](/preschools/accra/adenta), and use [questions to ask before enrolling](/guides/questions-to-ask-before-enrolling) when you start contacting schools.",
+        ],
+      },
+      {
+        paragraphs: [
+          "There is no single figure for preschool fees in Accra. Use the approximate ranges as a starting point, then compare the complete three-term cost, ask about registration, PTA levies, exam fees and end-of-term extras, and visit the school before you enrol. The most useful comparison is not simply the cheapest school, but the option that fits your child's needs and your family's budget.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "how-to-choose-a-creche-in-accra",
     title: "How to choose a creche in Accra",
     dek: "A calm, practical checklist for parents visiting daycares for the first time.",
