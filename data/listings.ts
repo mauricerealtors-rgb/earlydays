@@ -723,6 +723,11 @@ export const LISTINGS: Listing[] = [
     lastVerifiedAt: today,
     updatedAt: today,
     imageQuery: "international school Airport Residential Accra",
+    images: [
+      { url: "https://safarischool.edu.gh/img/facts/image_10.webp", alt: "Students at Safari International School — Airport Residential campus", credit: "Photo: Safari International School (official site)", sourceUrl: "https://safarischool.edu.gh/" },
+      { url: "https://safarischool.edu.gh/img/facts/image_11.webp", alt: "Classroom activity at Safari International School — Airport Residential", credit: "Photo: Safari International School (official site)", sourceUrl: "https://safarischool.edu.gh/" },
+      { url: "https://safarischool.edu.gh/img/facts/image_12.webp", alt: "Learning session at Safari International School — Airport Residential", credit: "Photo: Safari International School (official site)", sourceUrl: "https://safarischool.edu.gh/" },
+    ],
   },
 
   // ─── 17 ────────────────────────────────────────────────────────────
@@ -755,6 +760,11 @@ export const LISTINGS: Listing[] = [
     lastVerifiedAt: today,
     updatedAt: today,
     imageQuery: "international school Cantonments Accra",
+    images: [
+      { url: "https://safarischool.edu.gh/img/facts/image_14.webp", alt: "Students at Safari International School — Cantonments campus", credit: "Photo: Safari International School (official site)", sourceUrl: "https://safarischool.edu.gh/" },
+      { url: "https://safarischool.edu.gh/img/facts/image_15.webp", alt: "Classroom activity at Safari International School — Cantonments", credit: "Photo: Safari International School (official site)", sourceUrl: "https://safarischool.edu.gh/" },
+      { url: "https://safarischool.edu.gh/img/facts/image16.webp", alt: "Learning session at Safari International School — Cantonments", credit: "Photo: Safari International School (official site)", sourceUrl: "https://safarischool.edu.gh/" },
+    ],
   },
 
   // ─── 18 ────────────────────────────────────────────────────────────
@@ -787,6 +797,11 @@ export const LISTINGS: Listing[] = [
     lastVerifiedAt: today,
     updatedAt: today,
     imageQuery: "international school Tema Community 6",
+    images: [
+      { url: "https://safarischool.edu.gh/img/facts/image17.webp", alt: "Students at Safari International School — Tema campus", credit: "Photo: Safari International School (official site)", sourceUrl: "https://safarischool.edu.gh/" },
+      { url: "https://safarischool.edu.gh/img/facts/image18.webp", alt: "Classroom activity at Safari International School — Tema", credit: "Photo: Safari International School (official site)", sourceUrl: "https://safarischool.edu.gh/" },
+      { url: "https://safarischool.edu.gh/img/facts/image_2.webp", alt: "Learning session at Safari International School — Tema", credit: "Photo: Safari International School (official site)", sourceUrl: "https://safarischool.edu.gh/" },
+    ],
   },
 
   // ─── 19 ────────────────────────────────────────────────────────────
@@ -860,6 +875,9 @@ export const LISTINGS: Listing[] = [
     lastVerifiedAt: today,
     updatedAt: today,
     imageQuery: "preschool Senchi Street Airport Residential",
+    images: [
+      { url: "https://www.littlehandsgh.com/wp-content/uploads/2022/01/Get-In-Touch-scaled.jpg", alt: "Front view of Little Hands International School, Airport Residential", credit: "Photo: Little Hands International School (official site)", sourceUrl: "https://www.littlehandsgh.com/" },
+    ],
   },
 
   // ─── 21 ────────────────────────────────────────────────────────────
@@ -897,6 +915,11 @@ export const LISTINGS: Listing[] = [
     lastVerifiedAt: today,
     updatedAt: today,
     imageQuery: "British preparatory school Roman Ridge Accra",
+    images: [
+      { url: "https://theromanridgeschool.org/therr/wp-content/uploads/2023/11/IMG_0290.jpg", alt: "Students at The Roman Ridge School, Roman Ridge Accra", credit: "Photo: The Roman Ridge School (official site)", sourceUrl: "http://theromanridgeschool.org/therr/" },
+      { url: "https://theromanridgeschool.org/therr/wp-content/uploads/2023/11/IMG_0220.jpg", alt: "Classroom scene at The Roman Ridge School", credit: "Photo: The Roman Ridge School (official site)", sourceUrl: "http://theromanridgeschool.org/therr/" },
+      { url: "https://theromanridgeschool.org/therr/wp-content/uploads/2024/05/IMG_7517-1-700x450.jpg", alt: "School activity at The Roman Ridge School", credit: "Photo: The Roman Ridge School (official site)", sourceUrl: "http://theromanridgeschool.org/therr/" },
+    ],
     featured: true,
   },
 
@@ -937,6 +960,11 @@ export const LISTINGS: Listing[] = [
     lastVerifiedAt: today,
     updatedAt: today,
     imageQuery: "Cantonments international school campus",
+    images: [
+      { url: "https://gis.edu.gh/wp-content/uploads/2024/11/Z62A0448-scaled.jpg", alt: "Students at Ghana International School, Cantonments", credit: "Photo: Ghana International School (official site)", sourceUrl: "https://gis.edu.gh/" },
+      { url: "https://gis.edu.gh/wp-content/uploads/2026/04/1772102298591.jpg", alt: "Ghana International School campus scene", credit: "Photo: Ghana International School (official site)", sourceUrl: "https://gis.edu.gh/" },
+      { url: "https://gis.edu.gh/wp-content/uploads/2026/04/1776259196362.jpg", alt: "School activity at Ghana International School", credit: "Photo: Ghana International School (official site)", sourceUrl: "https://gis.edu.gh/" },
+    ],
     featured: true,
   },
 
@@ -970,6 +998,11 @@ export const LISTINGS: Listing[] = [
     lastVerifiedAt: today,
     updatedAt: today,
     imageQuery: "preschool East Cantonments Accra",
+    images: [
+      { url: "https://lbisonline.com/wp-content/uploads/2024/05/BABYGROUP-PICTURE.jpeg", alt: "Baby group class at Little Blessings International School", credit: "Photo: Little Blessings International School (official site)", sourceUrl: "https://lbisonline.com/" },
+      { url: "https://lbisonline.com/wp-content/uploads/2024/05/REPLACING-THE-PRESCHOOL-PICTURE.jpeg", alt: "Preschool activity at Little Blessings International School", credit: "Photo: Little Blessings International School (official site)", sourceUrl: "https://lbisonline.com/" },
+      { url: "https://lbisonline.com/wp-content/uploads/2024/05/HOME-PAGE-TRANSITION-e1716995052429.jpeg", alt: "Classroom at Little Blessings International School, East Cantonments", credit: "Photo: Little Blessings International School (official site)", sourceUrl: "https://lbisonline.com/" },
+    ],
   },
 
   // ─── 24 ────────────────────────────────────────────────────────────
@@ -1015,6 +1048,11 @@ export const LISTINGS: Listing[] = [
     lastVerifiedAt: today,
     updatedAt: today,
     imageQuery: "Montessori Cambridge East Cantonments Accra",
+    images: [
+      { url: "https://images.squarespace-cdn.com/content/v1/64885a0b702f590b84524d73/326894f2-0459-419e-9264-f80e347bcefb/1.jpg", alt: "Children in a Montessori classroom at Explorers Schools, East Cantonments", credit: "Photo: Explorers Schools (official site)", sourceUrl: "https://explorersschoolsgh.com/" },
+      { url: "https://images.squarespace-cdn.com/content/v1/64885a0b702f590b84524d73/0626d0a8-5fcd-414f-bbd7-8c936ab85ffb/PHOTO-2023-05-20-14-48-51.jpg", alt: "Preschool activity at Explorers Schools", credit: "Photo: Explorers Schools (official site)", sourceUrl: "https://explorersschoolsgh.com/" },
+      { url: "https://images.squarespace-cdn.com/content/v1/64885a0b702f590b84524d73/44a49398-45bc-4215-a8ac-2d833bba3ec7/20221031_093426.jpg", alt: "Children at Explorers Schools, Cantonments", credit: "Photo: Explorers Schools (official site)", sourceUrl: "https://explorersschoolsgh.com/" },
+    ],
   },
 
   // ─── 25 ────────────────────────────────────────────────────────────
@@ -1060,6 +1098,11 @@ export const LISTINGS: Listing[] = [
     lastVerifiedAt: today,
     updatedAt: today,
     imageQuery: "preschool Fourth Circular Cantonments Accra",
+    images: [
+      { url: "https://www.twinkletotsgh.com/img/infants.jpg", alt: "Infants class at Twinkle Tots International Preschool, Cantonments", credit: "Photo: Twinkle Tots International Preschool (official site)", sourceUrl: "https://www.twinkletotsgh.com/" },
+      { url: "https://www.twinkletotsgh.com/img/a1.jpg", alt: "Preschool activity at Twinkle Tots International Preschool", credit: "Photo: Twinkle Tots International Preschool (official site)", sourceUrl: "https://www.twinkletotsgh.com/" },
+      { url: "https://www.twinkletotsgh.com/img/b3.jpg", alt: "Classroom scene at Twinkle Tots International Preschool", credit: "Photo: Twinkle Tots International Preschool (official site)", sourceUrl: "https://www.twinkletotsgh.com/" },
+    ],
   },
 
   // ─── 26 ────────────────────────────────────────────────────────────
@@ -1128,6 +1171,11 @@ export const LISTINGS: Listing[] = [
     lastVerifiedAt: today,
     updatedAt: today,
     imageQuery: "historic Christian school Ridge Accra",
+    images: [
+      { url: "https://rcs.edu.gh/wp-content/uploads/2025/11/RCSH25-186-scaled.jpg", alt: "Students at Ridge Church School, Ridge Accra", credit: "Photo: Ridge Church School (official site)", sourceUrl: "https://rcs.edu.gh/" },
+      { url: "https://rcs.edu.gh/wp-content/uploads/2025/11/RCSH25-378-scaled.jpg", alt: "School activity at Ridge Church School", credit: "Photo: Ridge Church School (official site)", sourceUrl: "https://rcs.edu.gh/" },
+      { url: "https://rcs.edu.gh/wp-content/uploads/2026/03/RCSG-44-scaled.jpg", alt: "Ridge Church School pupils in class", credit: "Photo: Ridge Church School (official site)", sourceUrl: "https://rcs.edu.gh/" },
+    ],
     featured: true,
   },
 
@@ -1168,6 +1216,11 @@ export const LISTINGS: Listing[] = [
     lastVerifiedAt: today,
     updatedAt: today,
     imageQuery: "Christian school Spintex Baatsonaa",
+    images: [
+      { url: "https://hcagh.com/wp-content/uploads/2024/12/DSC_6159.jpg", alt: "Students at Harvest Christian Academy, Spintex", credit: "Photo: Harvest Christian Academy (official site)", sourceUrl: "https://hcagh.com/" },
+      { url: "https://hcagh.com/wp-content/uploads/2024/12/DSC_6259.jpg", alt: "Classroom activity at Harvest Christian Academy", credit: "Photo: Harvest Christian Academy (official site)", sourceUrl: "https://hcagh.com/" },
+      { url: "https://hcagh.com/wp-content/uploads/2024/12/DSC_6328.jpg", alt: "School day at Harvest Christian Academy, Baatsonaa", credit: "Photo: Harvest Christian Academy (official site)", sourceUrl: "https://hcagh.com/" },
+    ],
   },
 
   // ─── 29 ────────────────────────────────────────────────────────────
@@ -1200,6 +1253,10 @@ export const LISTINGS: Listing[] = [
     lastVerifiedAt: today,
     updatedAt: today,
     imageQuery: "Christian academy Spintex Accra campus",
+    images: [
+      { url: "https://static.wixstatic.com/media/0965d1_1912e0f22c6a422cb715d34a36388ef4~mv2.jpg", alt: "Students at Dominion Christian Academy, Spintex", credit: "Photo: Dominion Christian Academy (official site)", sourceUrl: "https://www.dca.edu.gh/" },
+      { url: "https://static.wixstatic.com/media/0965d1_a932b6fd8ec346deaa36690b86eb5cb5~mv2.jpg", alt: "Classroom scene at Dominion Christian Academy", credit: "Photo: Dominion Christian Academy (official site)", sourceUrl: "https://www.dca.edu.gh/" },
+    ],
   },
 
   // ─── 30 ────────────────────────────────────────────────────────────
@@ -1234,6 +1291,11 @@ export const LISTINGS: Listing[] = [
     lastVerifiedAt: today,
     updatedAt: today,
     imageQuery: "IB international school Tema campus",
+    images: [
+      { url: "https://www.tis.edu.gh/wp-content/uploads/2023/06/DSC_4632.jpg", alt: "Students at Tema International School", credit: "Photo: Tema International School (official site)", sourceUrl: "https://www.tis.edu.gh/" },
+      { url: "https://www.tis.edu.gh/wp-content/uploads/2024/05/Academics-1030x644.jpg", alt: "Academics session at Tema International School", credit: "Photo: Tema International School (official site)", sourceUrl: "https://www.tis.edu.gh/" },
+      { url: "https://www.tis.edu.gh/wp-content/uploads/2022/06/photo_2022-06-18_17-59-03.jpg", alt: "Campus scene at Tema International School", credit: "Photo: Tema International School (official site)", sourceUrl: "https://www.tis.edu.gh/" },
+    ],
     featured: true,
   },
 
@@ -1275,6 +1337,11 @@ export const LISTINGS: Listing[] = [
     lastVerifiedAt: today,
     updatedAt: today,
     imageQuery: "Montessori Cambridge school Lashibi Tema",
+    images: [
+      { url: "https://www.gams.edu.gh/wp-content/uploads/2023/09/GAMS_146.jpg", alt: "Students at GAMS International School, Lashibi Tema", credit: "Photo: GAMS International School (official site)", sourceUrl: "https://www.gams.edu.gh/" },
+      { url: "https://www.gams.edu.gh/wp-content/uploads/2023/09/GAMS_149.jpg", alt: "Classroom activity at GAMS International School", credit: "Photo: GAMS International School (official site)", sourceUrl: "https://www.gams.edu.gh/" },
+      { url: "https://www.gams.edu.gh/wp-content/uploads/2023/09/GAMS_164.jpg", alt: "School day at GAMS International School, Tema West", credit: "Photo: GAMS International School (official site)", sourceUrl: "https://www.gams.edu.gh/" },
+    ],
   },
 
   // ─── 32 ────────────────────────────────────────────────────────────
@@ -1317,6 +1384,10 @@ export const LISTINGS: Listing[] = [
     lastVerifiedAt: today,
     updatedAt: today,
     imageQuery: "Montessori Cambridge school Dansoman",
+    images: [
+      { url: "https://alphabeta.edu.gh/wp-content/uploads/2021/09/536A4676.jpg", alt: "Students at Alpha Beta Education Centres, Dansoman", credit: "Photo: Alpha Beta Education Centres (official site)", sourceUrl: "https://alphabeta.edu.gh/" },
+      { url: "https://alphabeta.edu.gh/wp-content/uploads/2021/05/Mask-3@2x.jpeg", alt: "Classroom scene at Alpha Beta Education Centres", credit: "Photo: Alpha Beta Education Centres (official site)", sourceUrl: "https://alphabeta.edu.gh/" },
+    ],
   },
 
   // ─── 33 ────────────────────────────────────────────────────────────
@@ -1351,6 +1422,11 @@ export const LISTINGS: Listing[] = [
     lastVerifiedAt: today,
     updatedAt: today,
     imageQuery: "Cambridge Christian school Weija West Hills",
+    images: [
+      { url: "https://kentinternationaledu.com/wp-content/uploads/2022/07/IMG_1527-1024x683.jpg", alt: "Students at Kent International School, Weija", credit: "Photo: Kent International School (official site)", sourceUrl: "https://kentinternationaledu.com/" },
+      { url: "https://kentinternationaledu.com/wp-content/uploads/2022/07/IMG_1540-1024x683.jpg", alt: "Classroom activity at Kent International School", credit: "Photo: Kent International School (official site)", sourceUrl: "https://kentinternationaledu.com/" },
+      { url: "https://kentinternationaledu.com/wp-content/uploads/2024/03/MG_0337-1024x683.jpg", alt: "School day at Kent International School, Dukonah near Weija", credit: "Photo: Kent International School (official site)", sourceUrl: "https://kentinternationaledu.com/" },
+    ],
   },
 
   // ─── 34 ── STEM / activity ─────────────────────────────────────────
@@ -1388,6 +1464,11 @@ export const LISTINGS: Listing[] = [
     lastVerifiedAt: today,
     updatedAt: today,
     imageQuery: "children robotics coding class Accra",
+    images: [
+      { url: "https://makersplacegh.com/wp-content/uploads/2022/11/IMG_9282-1024x683.jpg", alt: "Children in a robotics class at The MakersPlace, Accra", credit: "Photo: The MakersPlace (official site)", sourceUrl: "https://makersplacegh.com/" },
+      { url: "https://makersplacegh.com/wp-content/uploads/2023/05/IMG_0381-scaled.jpg", alt: "STEM session in progress at The MakersPlace", credit: "Photo: The MakersPlace (official site)", sourceUrl: "https://makersplacegh.com/" },
+      { url: "https://makersplacegh.com/wp-content/uploads/2024/10/FLL-Comptitioin-winners-2.webp", alt: "The MakersPlace team celebrating a FIRST LEGO League competition result", credit: "Photo: The MakersPlace (official site)", sourceUrl: "https://makersplacegh.com/" },
+    ],
   },
 
   // ─── 35 ── Activity centre ─────────────────────────────────────────
