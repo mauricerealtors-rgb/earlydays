@@ -18,6 +18,8 @@ import { EmptyResults } from "@/components/EmptyResults";
 import { JsonLd } from "@/components/JsonLd";
 import { SITE } from "@/lib/site";
 import { itemListJsonLd, faqJsonLd } from "@/lib/schema";
+import { computeAreaStats, formatList, type AreaStats } from "@/lib/insights";
+import type { Listing } from "@/lib/types";
 
 export const dynamicParams = false;
 export const revalidate = 3600;
@@ -83,7 +85,21 @@ export default async function CategoryAreaPage({
     (cc) => listingsByCategoryAndLocation(cc.slug, l.slug).length > 0
   );
 
-  const faq = buildComboFaq(c.plural, c.singular, l.name, r.name, results.length);
+  const stats = computeAreaStats(results);
+  const faq = buildComboFaq({
+    plural: c.plural,
+    singular: c.singular,
+    area: l.name,
+    region: r.name,
+    stats,
+    results,
+    nearby: nearby.slice(0, 3).map((n) => n.name),
+  });
+  const lastUpdated = new Date().toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
 
   return (
     <>
@@ -132,7 +148,7 @@ export default async function CategoryAreaPage({
         />
 
         {/* Answer-first snippet */}
-        <div className="card-soft mb-8 rounded-2xl bg-white p-5 md:p-6">
+        <div className="card-soft mb-6 rounded-2xl bg-white p-5 md:p-6">
           <p className="text-[15px] leading-relaxed text-[color:var(--color-ink)]">
             <strong className="text-[color:var(--color-navy)]">
               {c.plural} in {l.name}:
@@ -145,7 +161,27 @@ export default async function CategoryAreaPage({
             Fees, curriculum and admissions windows are shown only when the
             school has published them.
           </p>
+          <p className="mt-2 text-[12px] text-[color:var(--color-ink-mute)]">
+            Last updated: {lastUpdated}.
+          </p>
         </div>
+
+        {/* At-a-glance data panel — auto-computed from listings */}
+        {results.length > 0 && (
+          <AtAGlance stats={stats} plural={c.plural.toLowerCase()} area={l.name} />
+        )}
+
+        {/* Neighbourhood-specific intro (only if the area has one written) */}
+        {l.intro && (
+          <section className="mb-8" aria-label={`About ${l.name}`}>
+            <h2 className="mb-2 font-display text-xl text-[color:var(--color-navy)]">
+              About {c.plural.toLowerCase()} in {l.name}
+            </h2>
+            <p className="text-[15px] leading-relaxed text-[color:var(--color-ink)]">
+              {l.intro}
+            </p>
+          </section>
+        )}
 
         {results.length === 0 ? (
           <EmptyResults
@@ -231,31 +267,166 @@ export default async function CategoryAreaPage({
   );
 }
 
-function buildComboFaq(
-  plural: string,
-  singular: string,
-  area: string,
-  region: string,
-  count: number
-) {
-  const p = plural.toLowerCase();
-  const s = singular.toLowerCase();
-  return [
+function AtAGlance({
+  stats,
+  plural,
+  area,
+}: {
+  stats: AreaStats;
+  plural: string;
+  area: string;
+}) {
+  const items: { label: string; value: string; accent: string }[] = [
     {
-      q: `How many ${p} are there in ${area}?`,
-      a: `EarlyDays currently lists ${count} ${count === 1 ? s : p} in ${area}, ${region}. We add listings as we can source each school's own information.`,
-    },
-    {
-      q: `What should I look for in a ${s} in ${area}?`,
-      a: `The essentials: age range, curriculum (Montessori, EYFS, Cambridge, GES, British, etc.), staff-to-child ratio, meals, outdoor play and daily hours. Visit in person before deciding.`,
-    },
-    {
-      q: `How much does a ${s} cost in ${area}?`,
-      a: `Fees vary widely by school and are set by each one individually. EarlyDays only displays fees when the school has published them — otherwise, use Request information to ask directly.`,
-    },
-    {
-      q: `Can I visit these ${p} before enrolling?`,
-      a: `Almost all schools welcome parent visits. Use the contact actions on each profile to arrange a tour — good schools respond warmly and promptly, which is itself a useful signal.`,
+      label: `${plural} listed`,
+      value: `${stats.count}`,
+      accent: "sky",
     },
   ];
+  if (stats.ageLabel) {
+    items.push({ label: "Ages covered", value: stats.ageLabel, accent: "leaf" });
+  }
+  if (stats.curricula.length) {
+    items.push({
+      label: "Approaches",
+      value: formatList(stats.curricula, 3),
+      accent: "coral",
+    });
+  }
+  if (stats.services.length) {
+    const priority = ["Full day", "Half day", "Meals", "Transport", "Outdoor play"];
+    const ordered = [
+      ...priority.filter((s) => stats.services.includes(s)),
+      ...stats.services.filter((s) => !priority.includes(s)),
+    ];
+    items.push({
+      label: "Services",
+      value: formatList(ordered, 3),
+      accent: "sun",
+    });
+  }
+  const accentBg: Record<string, string> = {
+    sky: "linear-gradient(160deg,#E4F1FF,#ffffff 65%)",
+    leaf: "linear-gradient(160deg,#EAF6E5,#ffffff 65%)",
+    coral: "linear-gradient(160deg,#FFE1D5,#ffffff 65%)",
+    sun: "linear-gradient(160deg,#FFF3D1,#ffffff 65%)",
+  };
+  return (
+    <section
+      className="mb-8"
+      aria-label={`At a glance: ${plural} in ${area}`}
+    >
+      <div className="grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-3">
+        {items.map((it) => (
+          <div
+            key={it.label}
+            className="rounded-2xl border border-[color:var(--color-line-2)] p-4"
+            style={{ background: accentBg[it.accent] }}
+          >
+            <div className="text-[10px] font-bold uppercase tracking-widest text-[color:var(--color-ink-mute)]">
+              {it.label}
+            </div>
+            <div className="mt-1 font-display text-[18px] leading-tight text-[color:var(--color-navy)]">
+              {it.value}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function buildComboFaq(args: {
+  plural: string;
+  singular: string;
+  area: string;
+  region: string;
+  stats: AreaStats;
+  results: Listing[];
+  nearby: string[];
+}) {
+  const { plural, singular, area, region, stats, results, nearby } = args;
+  const p = plural.toLowerCase();
+  const s = singular.toLowerCase();
+  const qs: { q: string; a: string }[] = [];
+
+  qs.push({
+    q: `How many ${p} are there in ${area}?`,
+    a:
+      results.length === 0
+        ? `EarlyDays currently has no ${p} listed in ${area}, ${region} — we're still adding schools in this catchment.`
+        : `EarlyDays lists ${results.length} ${results.length === 1 ? s : p} in ${area}, ${region}: ${results
+            .slice(0, 6)
+            .map((r) => r.name)
+            .join(", ")}${results.length > 6 ? " and more" : ""}.`,
+  });
+
+  if (stats.ageLabel) {
+    const youngest = stats.youngestListing;
+    qs.push({
+      q: `From what age do ${p} in ${area} accept children?`,
+      a:
+        youngest && typeof stats.ageMinMonths === "number"
+          ? `The youngest starting age we see for ${p} in ${area} is ${
+              stats.ageMinMonths < 12
+                ? `${stats.ageMinMonths} months`
+                : `${Math.floor(stats.ageMinMonths / 12)} years`
+            } at ${youngest.name}. Across all listed ${p} in ${area}, ages served range from ${stats.ageLabel}.`
+          : `Across ${p} listed in ${area}, ages served range from ${stats.ageLabel}.`,
+    });
+  }
+
+  if (stats.curricula.length) {
+    const items = stats.curricula
+      .slice(0, 4)
+      .map((c) => {
+        const names = (stats.namesByCurriculum[c] ?? []).slice(0, 3).join(", ");
+        return names ? `${c} (${names})` : c;
+      })
+      .join("; ");
+    qs.push({
+      q: `What curricula do ${p} in ${area} follow?`,
+      a: `The ${p} we list in ${area} follow a mix of pathways: ${items}. Curriculum matters most from kindergarten upwards — for creches and early nurseries, look at daily rhythm, outdoor time and staff-to-child ratio first.`,
+    });
+  }
+
+  qs.push({
+    q: `How much does a ${s} cost in ${area}?`,
+    a:
+      stats.listingsWithFees.length > 0
+        ? `Fees vary widely. Among ${p} in ${area} that have published a fee guide on EarlyDays: ${stats.listingsWithFees
+            .slice(0, 3)
+            .map((l) => `${l.name} — ${l.feesHint}`)
+            .join("; ")}. Other listed schools have not published fees; use the Request information button on each profile to ask directly.`
+        : `None of the ${p} we currently list in ${area} have published a fee guide on EarlyDays. Fees are set individually per school and change each academic year — use the Request information button on any profile to ask directly. As a general reference, private early years fees in Greater Accra typically span GH₵1,500–GH₵15,000+ per term depending on curriculum and services.`,
+  });
+
+  if (stats.transportListings.length) {
+    qs.push({
+      q: `Do ${p} in ${area} offer school transport?`,
+      a: `Yes — ${stats.transportListings
+        .slice(0, 3)
+        .map((l) => l.name)
+        .join(", ")} ${stats.transportListings.length === 1 ? "lists" : "list"} school transport as a service. Routes and pick-up areas vary; confirm directly with each school.`,
+    });
+  }
+
+  qs.push({
+    q: `When should I start looking for a ${s} place in ${area}?`,
+    a: `Most schools in Greater Accra work on three-term academic years (January, May and September starts). Popular ${p} in and around ${area} — especially those offering EYFS, Montessori or Cambridge — fill up 6–9 months in advance for the September intake. If you're moving into ${area} or expecting a January start, begin visits 3–4 months out.`,
+  });
+
+  qs.push({
+    q: `What should I look for on a school visit in ${area}?`,
+    a: `The essentials to check in person: staff-to-child ratio (especially under-3s), how children are being spoken to when nobody is watching, outdoor and shaded play space, meal setup, toilet and nap facilities, safeguarding at pick-up, and how transparently the school answers about fees and hours. Almost all listed schools welcome visits — how they respond is itself a strong signal.`,
+  });
+
+  if (results.length > 0 && nearby.length > 0) {
+    qs.push({
+      q: `What if I can't find the right ${s} in ${area}?`,
+      a: `The nearest areas with additional ${p} on EarlyDays are ${nearby.join(", ")}. Many families in and around ${area} end up at a school in an adjacent catchment — pick-up distance and traffic on your specific route usually matter more than a strict area boundary.`,
+    });
+  }
+
+  return qs;
 }

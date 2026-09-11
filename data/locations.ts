@@ -9,6 +9,8 @@ export const LOCATIONS: Location[] = [
     regionName: "Greater Accra",
     blurb:
       "A large residential area in the east of Accra with a wide range of early years and primary options.",
+    intro:
+      "East Legon is one of the most established residential areas in Accra for families, and one of the deepest concentrations of early years schools in the country. Options here span from small home-based creches through internationally-accredited primaries following EYFS, Cambridge and IB pathways. Traffic on Boundary Road and Lagos Avenue is the main practical consideration: most parents look for a school within a 10–15 minute pick-up window, which is why we let you filter by inner East Legon vs the Hills and Adjiringanor extensions.",
   },
   {
     slug: "east-legon-hills",
@@ -18,6 +20,8 @@ export const LOCATIONS: Location[] = [
     parent: "east-legon",
     blurb:
       "A newer residential area extending east of East Legon, with a growing base of early years and international schools.",
+    intro:
+      "East Legon Hills has grown quickly from a fringe development into one of Accra's most active new-build residential belts. Most schools here are under ten years old, purpose-built with outdoor play space, and cater to the young professional families moving out from inner Accra. The trade-off is distance: expect a longer commute if you work in Airport City or Ridge. Curriculum is a mix — Montessori and EYFS dominate the early years, with newer primaries adopting Cambridge or the Ghana Education Service syllabus.",
   },
   {
     slug: "adjiringanor",
@@ -27,6 +31,8 @@ export const LOCATIONS: Location[] = [
     parent: "east-legon",
     blurb:
       "A residential neighbourhood adjacent to East Legon, home to a number of newer early years schools.",
+    intro:
+      "Adjiringanor sits directly behind East Legon and has become a quieter alternative for families who want early years schooling without the Boundary Road congestion. Most schools in Adjiringanor are small and family-run — you'll often meet the head at the gate. Age ranges typically start from 3 months at the creche end and continue through nursery and kindergarten, with a smaller number of primaries following EYFS or the UK National Curriculum. If you don't find what you need here, East Legon and East Legon Hills are both within a 10-minute drive.",
   },
   {
     slug: "spintex",
@@ -52,6 +58,8 @@ export const LOCATIONS: Location[] = [
     parent: "airport",
     blurb:
       "Neighbourhood off Spintex Road near the Airport, with a mix of early years and primary schools.",
+    intro:
+      "East Airport is one of the busiest school catchments in Accra — sitting between Airport Residential, Spintex and Cantonments, it's within reach of a large working-parent population. Schools here trend older and more established than the East Legon Hills belt, and admissions windows often close earlier in the year. Expect a broader mix of pathways (Ghana Education Service, Montessori, Cambridge) and a wider fee range than the newer developments. Meals and school transport are more commonly offered here than in outlying areas.",
   },
   {
     slug: "cantonments",
@@ -94,6 +102,8 @@ export const LOCATIONS: Location[] = [
     region: "accra",
     regionName: "Greater Accra",
     blurb: "Fast-growing residential area on the northeast edge of Accra.",
+    intro:
+      "Adenta has grown into one of the fastest-expanding residential belts on the northeast edge of Accra, with a corresponding explosion of new early years schools along the Adenta–Aburi and Ashaley Botwe roads. Fees here are generally lower than in East Legon proper, and most schools cover the full early years band from creche through kindergarten. Because catchment is growing faster than school capacity in some pockets, parents often start looking a full year before they need a place.",
   },
   {
     slug: "teshie",
@@ -101,6 +111,8 @@ export const LOCATIONS: Location[] = [
     region: "accra",
     regionName: "Greater Accra",
     blurb: "Coastal community in eastern Accra with a range of local schools.",
+    intro:
+      "Teshie is one of the older coastal communities in eastern Accra with a long-established network of local and mission-run schools. Fees here tend to be more accessible than in the Airport and East Legon belts, and the Ghana Education Service curriculum dominates. Newer private early years centres have been opening along the Teshie-Nungua Estates road, offering EYFS-style play-based programmes for families who want a shorter commute than Cantonments or Airport Residential.",
   },
   {
     slug: "tema",
@@ -130,6 +142,8 @@ export const LOCATIONS: Location[] = [
     regionName: "Greater Accra",
     blurb:
       "Residential area in the Ga East area of north-west Accra, near Atomic and Dome-Kwabenya.",
+    intro:
+      "Taifa is a large, mixed-income residential area in north-west Accra, close to Atomic Junction and Dome-Kwabenya. Most schools are locally-run and follow the Ghana Education Service syllabus, with fees noticeably lower than in Cantonments or East Legon. Early years provision has grown quickly here in the last decade as young families have priced out of central Accra, and small nursery schools operate on almost every side road off the main Ofankor–Nsawam route.",
   },
   {
     slug: "sakumono",
@@ -139,6 +153,8 @@ export const LOCATIONS: Location[] = [
     parent: "tema",
     blurb:
       "Residential area between Tema and Accra, along the coast.",
+    intro:
+      "Sakumono sits along the coast between Tema and Accra, catering to families working in Tema Port, the Motorway industrial belt, and Airport City. Schools here range from very affordable community-run creches to established international-track primaries. The Sakumono Estates catchment in particular has a good density of purpose-built early years centres and a rising number of Cambridge-track primaries. It's a viable option for families who want space and coast without moving fully into Tema.",
   },
   {
     slug: "accra-central",
@@ -147,6 +163,8 @@ export const LOCATIONS: Location[] = [
     regionName: "Greater Accra",
     blurb:
       "Central Accra — Ridge, Cantonments and the wider inner-city area.",
+    intro:
+      "Central Accra covers Ridge, Cantonments, Osu and the surrounding inner-city grid — historically the deepest catchment for long-established British-track and international schools in Ghana. Fees at the top of this market are the highest in the country, but there are also excellent mid-market Montessori and EYFS options that have been operating for decades. Traffic makes drop-off tight — most parents look for a school within a 15-minute radius of home or work.",
   },
   {
     slug: "kumasi",

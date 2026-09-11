@@ -51,6 +51,8 @@ export interface Location {
   regionName: string;            // "Greater Accra"
   parent?: string;               // optional parent area
   blurb: string;                 // 1-2 sentences of neutral context
+  intro?: string;                // 60–120 word neighbourhood-specific paragraph
+                                 // used on combo pages for content depth
 }
 
 export interface Category {

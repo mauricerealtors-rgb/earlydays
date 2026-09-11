@@ -81,6 +81,9 @@ export default function HomePage() {
         </div>
       </Section>
 
+      {/* Popular searches — direct authority pass to top combo pages */}
+      <PopularSearches />
+
       {/* How it works */}
       <HowItWorks />
 
@@ -133,6 +136,40 @@ function Section({
         )}
       </div>
       {children}
+    </section>
+  );
+}
+
+function PopularSearches() {
+  const links = [
+    { label: "Preschools in Adjiringanor", href: "/preschools/accra/adjiringanor" },
+    { label: "Preschools in East Legon", href: "/preschools/accra/east-legon" },
+    { label: "Creches in East Legon Hills", href: "/creches/accra/east-legon-hills" },
+    { label: "Montessori schools in East Legon", href: "/montessori-schools/accra/east-legon" },
+    { label: "Primary schools in East Airport", href: "/primary-schools/accra/east-airport" },
+    { label: "Montessori schools in Adjiringanor", href: "/montessori-schools/accra/adjiringanor" },
+    { label: "French classes in Central Accra", href: "/french-classes-for-kids/accra/accra-central" },
+    { label: "Preschools in Adenta", href: "/preschools/accra/adenta" },
+  ];
+  return (
+    <section className="container-page mt-16 md:mt-24">
+      <div className="mb-5">
+        <span className="chip chip-coral">Popular searches</span>
+        <h2 className="mt-2 font-display text-[24px] tracking-tight md:text-[32px]">
+          What other parents are searching for
+        </h2>
+      </div>
+      <div className="flex flex-wrap gap-2">
+        {links.map((l) => (
+          <Link
+            key={l.href}
+            href={l.href}
+            className="chip hover:bg-[color:var(--color-sky-soft)] hover:text-[color:var(--color-sky-deep)]"
+          >
+            {l.label} →
+          </Link>
+        ))}
+      </div>
     </section>
   );
 }
