@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import {
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
@@ -11,6 +11,8 @@ import { auth } from "@/lib/firebase";
 
 export function LoginForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const next = searchParams.get("next") ?? "/school";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -23,7 +25,7 @@ export function LoginForm() {
     setSubmitting(true);
     try {
       await signInWithEmailAndPassword(auth(), email, password);
-      router.push("/school");
+      router.push(next);
     } catch (err) {
       const message = err instanceof Error ? err.message : "Sign-in failed.";
       setError(message);

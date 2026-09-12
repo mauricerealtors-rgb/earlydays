@@ -25,10 +25,14 @@ import { JsonLd } from "@/components/JsonLd";
 import { TrackView } from "@/components/TrackView";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import { educationalTypeFor, courseJsonLd } from "@/lib/schema";
+import { fetchListingSideData } from "@/lib/listing-overrides";
+import { mergeListing } from "@/lib/merge-listing";
 import { SITE } from "@/lib/site";
 
 export const dynamicParams = false;
-export const revalidate = 3600;
+// Drop from 1h to 60s so schools' edits appear on the public site
+// within a minute of saving from the dashboard.
+export const revalidate = 60;
 
 export async function generateStaticParams() {
   const listingSlugs = allListings().map((l) => ({ slug: l.slug }));
@@ -78,7 +82,11 @@ export default async function SchoolOrRegionPage({
 }) {
   const { slug } = await params;
   const listing = findListing(slug);
-  if (listing) return renderListing(listing);
+  if (listing) {
+    const side = await fetchListingSideData(slug);
+    const merged = mergeListing(listing, side.override, side.subscription, side.claimed);
+    return renderListing(merged);
+  }
   const region = findRegion(slug);
   if (region) return renderRegion(region);
   notFound();
@@ -137,7 +145,7 @@ function renderRegion(region: { slug: string; name: string }) {
 
 /* ---------------- Listing view ---------------- */
 
-function renderListing(listing: ReturnType<typeof findListing> & object) {
+function renderListing(listing: import("@/lib/types").Listing) {
   const loc = findLocation(listing.neighbourhood);
   const primaryCat = findCategoryByType(listing.listingTypes[0]);
   const related = relatedListings(listing, 3);

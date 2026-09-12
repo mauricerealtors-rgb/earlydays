@@ -19,10 +19,12 @@ import { JsonLd } from "@/components/JsonLd";
 import { SITE } from "@/lib/site";
 import { itemListJsonLd, faqJsonLd } from "@/lib/schema";
 import { computeAreaStats, formatList, type AreaStats } from "@/lib/insights";
+import { fetchListingSideDataMany } from "@/lib/listing-overrides";
+import { mergeListing } from "@/lib/merge-listing";
 import type { Listing } from "@/lib/types";
 
 export const dynamicParams = false;
-export const revalidate = 3600;
+export const revalidate = 60;
 
 /**
  * Programmatic SEO rule (guide §16):
@@ -76,7 +78,19 @@ export default async function CategoryAreaPage({
   const l = findLocation(area);
   if (!c || !r || !l) notFound();
 
-  const results = listingsByCategoryAndLocation(c.slug, l.slug);
+  const rawResults = listingsByCategoryAndLocation(c.slug, l.slug);
+  const sideDataMap = await fetchListingSideDataMany(rawResults.map((x) => x.slug));
+  const merged = rawResults.map((listing) => {
+    const side = sideDataMap.get(listing.slug);
+    return mergeListing(listing, side?.override, side?.subscription, side?.claimed);
+  });
+  // Priority order: Featured > Verified > baseline (stable within tier).
+  const tierRank = (l: Listing) =>
+    l.featured ? 0 : l.verification === "verified" ? 1 : 2;
+  const results = merged
+    .slice()
+    .sort((a, b) => tierRank(a) - tierRank(b));
+
   const canonical = `${SITE.url}/${c.slug}/${r.slug}/${l.slug}`;
   const nearby = LOCATIONS.filter(
     (x) => x.region === r.slug && x.slug !== l.slug
