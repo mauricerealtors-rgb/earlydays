@@ -7,6 +7,8 @@ interface Child {
   notes: string;
 }
 
+type ShortlistSize = "3" | "5" | "7";
+
 interface Answers {
   parentName: string;
   parentEmail: string;
@@ -17,6 +19,7 @@ interface Answers {
   timeframe: string;
   areas: string[];
   priorities: string[];
+  shortlistSize: ShortlistSize;
   budgetBand: string;
   notes: string;
   referral: string;
@@ -32,10 +35,38 @@ const initial: Answers = {
   timeframe: "",
   areas: [],
   priorities: [],
+  shortlistSize: "3",
   budgetBand: "",
   notes: "",
   referral: "",
 };
+
+/**
+ * Pricing model (transparent, shown live from step "children" onwards).
+ *   Base per family, scales with children count:
+ *     1 child  → $200
+ *     2 kids   → $350
+ *     3+ kids  → $500
+ *   Shortlist depth add-on:
+ *     3 schools → included
+ *     5 schools → +$100
+ *     7 schools → +$200
+ */
+function baseFee(childrenCount: number): number {
+  if (childrenCount <= 1) return 200;
+  if (childrenCount === 2) return 350;
+  return 500;
+}
+function shortlistAddon(size: ShortlistSize): number {
+  if (size === "5") return 100;
+  if (size === "7") return 200;
+  return 0;
+}
+function computeFee(answers: Answers): { total: number; base: number; addon: number } {
+  const base = baseFee(answers.children.length);
+  const addon = shortlistAddon(answers.shortlistSize);
+  return { total: base + addon, base, addon };
+}
 
 const TIMEFRAMES = [
   "Detty December this year (visiting soon)",
@@ -93,6 +124,7 @@ const STEPS = [
   "about-you",
   "your-location",
   "your-children",
+  "shortlist-size",
   "timeframe",
   "areas",
   "priorities",
@@ -161,6 +193,7 @@ export function ConciergeApplication() {
       Boolean(answers.parentName.trim() && answers.parentEmail.trim() && answers.parentWhatsapp.trim()),
     "your-location": () => Boolean(answers.country.trim()),
     "your-children": () => answers.children.length > 0 && answers.children.every((c) => c.age.trim()),
+    "shortlist-size": () => Boolean(answers.shortlistSize),
     timeframe: () => Boolean(answers.timeframe),
     areas: () => true,
     priorities: () => true,
@@ -170,6 +203,10 @@ export function ConciergeApplication() {
     done: () => true,
   };
 
+  const fee = computeFee(answers);
+  const showPricePanel =
+    stepIndex >= STEPS.indexOf("shortlist-size") && step !== "done";
+
   async function submit() {
     setSubmitting(true);
     setError(null);
@@ -177,7 +214,7 @@ export function ConciergeApplication() {
       const res = await fetch("/api/concierge", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(answers),
+        body: JSON.stringify({ ...answers, quotedFeeUsd: fee.total }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error ?? "Something went wrong");
@@ -206,6 +243,31 @@ export function ConciergeApplication() {
               />
             );
           })}
+        </div>
+      )}
+
+      {/* Live price panel — sticky visible from shortlist-size onwards */}
+      {showPricePanel && (
+        <div className="mb-6 rounded-2xl border border-[color:var(--color-pink-hot)]/20 bg-gradient-to-br from-[color:var(--color-blossom-soft)] to-white p-4">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-widest text-[color:var(--color-pink-hot-deep)]">
+                Your estimated fee
+              </p>
+              <p className="mt-1 font-display text-[32px] leading-none text-[color:var(--color-navy)]">
+                ${fee.total}
+              </p>
+            </div>
+            <div className="text-right text-[11px] text-[color:var(--color-ink-mute)]">
+              <div>
+                Base ({answers.children.length} child{answers.children.length === 1 ? "" : "ren"}): ${fee.base}
+              </div>
+              <div>Shortlist ({answers.shortlistSize} schools): +${fee.addon}</div>
+            </div>
+          </div>
+          <p className="mt-2 text-[11px] text-[color:var(--color-ink-mute)]">
+            Pay only after we deliver your shortlist. School fees themselves are separate.
+          </p>
         </div>
       )}
 
@@ -354,9 +416,45 @@ export function ConciergeApplication() {
           </StepShell>
         )}
 
-        {step === "timeframe" && (
+        {step === "shortlist-size" && (
           <StepShell
             eyebrow="Step 4"
+            title="How deep a shortlist do you want?"
+            body="More candidates = more visits + more comparison. Most families are happy with three."
+          >
+            <div className="space-y-2">
+              <ShortlistOption
+                value="3"
+                title="3 schools"
+                body="Standard shortlist. Enough to compare without overwhelming you."
+                priceLabel="Included"
+                checked={answers.shortlistSize === "3"}
+                onChange={() => set("shortlistSize", "3")}
+              />
+              <ShortlistOption
+                value="5"
+                title="5 schools"
+                body="Wider net. Good when you're picking between quite different areas or curricula."
+                priceLabel="+$100"
+                checked={answers.shortlistSize === "5"}
+                onChange={() => set("shortlistSize", "5")}
+              />
+              <ShortlistOption
+                value="7"
+                title="7 schools"
+                body="Full exploration. For picky families or complex requirements (e.g. multiple children, special needs)."
+                priceLabel="+$200"
+                checked={answers.shortlistSize === "7"}
+                onChange={() => set("shortlistSize", "7")}
+              />
+            </div>
+            <NavRow onBack={back} onNext={next} nextDisabled={!validators[step]()} />
+          </StepShell>
+        )}
+
+        {step === "timeframe" && (
+          <StepShell
+            eyebrow="Step 5"
             title="When are you looking to start?"
             body="Ghanaian schools work three terms: January, May, and September starts. Tell me what you're planning around."
           >
@@ -376,7 +474,7 @@ export function ConciergeApplication() {
 
         {step === "areas" && (
           <StepShell
-            eyebrow="Step 5"
+            eyebrow="Step 6"
             title="Any preferred Accra areas?"
             body="Pick as many as you like. If you're not sure, tick the last option and we'll suggest based on your budget and priorities."
           >
@@ -396,7 +494,7 @@ export function ConciergeApplication() {
 
         {step === "priorities" && (
           <StepShell
-            eyebrow="Step 6"
+            eyebrow="Step 7"
             title="What matters most?"
             body="Pick everything that's genuinely important — we'll weight the shortlist by these."
           >
@@ -416,7 +514,7 @@ export function ConciergeApplication() {
 
         {step === "budget" && (
           <StepShell
-            eyebrow="Step 7"
+            eyebrow="Step 8"
             title="What's your budget per term?"
             body="Approximate ranges — schools set their own fees and change them yearly. We show USD conversions as a rough guide."
           >
@@ -436,7 +534,7 @@ export function ConciergeApplication() {
 
         {step === "notes" && (
           <StepShell
-            eyebrow="Step 8"
+            eyebrow="Step 9"
             title="Anything else I should know?"
             body="Existing schools you already like or want to avoid, family circumstances, timelines, questions. All optional — write as much or as little as you want."
           >
@@ -466,7 +564,19 @@ export function ConciergeApplication() {
             title="Quick check — does this look right?"
             body="Anything wrong, tap Back. Otherwise send it over and I'll be in touch within one working day."
           >
-            <ReviewList answers={answers} />
+            <div className="mb-4 rounded-2xl border border-[color:var(--color-pink-hot)]/25 bg-[color:var(--color-blossom-soft)] p-4 text-center">
+              <p className="text-[10px] font-bold uppercase tracking-widest text-[color:var(--color-pink-hot-deep)]">
+                Quoted concierge fee
+              </p>
+              <p className="mt-1 font-display text-[36px] leading-none text-[color:var(--color-navy)]">
+                ${fee.total}
+              </p>
+              <p className="mt-1 text-[11px] text-[color:var(--color-ink-mute)]">
+                Base ${fee.base} for {answers.children.length} child{answers.children.length === 1 ? "" : "ren"}
+                {fee.addon > 0 && ` + $${fee.addon} for a ${answers.shortlistSize}-school shortlist`}. Paid after delivery.
+              </p>
+            </div>
+            <ReviewList answers={answers} fee={fee.total} />
             {error && (
               <p className="mt-3 rounded-lg bg-[color:var(--color-coral-soft)] p-3 text-sm text-[color:var(--color-coral)]">
                 {error}
@@ -493,7 +603,8 @@ export function ConciergeApplication() {
             title={<>Thanks, {answers.parentName || "friend"}. Talk soon.</>}
             body={
               <>
-                We've got your details and we'll come back to you on
+                We've got your details and your quoted fee of{" "}
+                <strong>${fee.total}</strong>. We'll come back to you on
                 WhatsApp <strong>{answers.parentWhatsapp}</strong> and email{" "}
                 <strong>{answers.parentEmail}</strong> within one working day.
                 Expect a short intro message first, then a shortlist within
@@ -642,7 +753,7 @@ function NavRow({
   );
 }
 
-function ReviewList({ answers }: { answers: Answers }) {
+function ReviewList({ answers, fee }: { answers: Answers; fee: number }) {
   return (
     <dl className="divide-y divide-[color:var(--color-line-2)] rounded-2xl border border-[color:var(--color-line)] bg-white">
       <Row label="Name" value={answers.parentName} />
@@ -655,13 +766,56 @@ function ReviewList({ answers }: { answers: Answers }) {
           .map((c, i) => `Child ${i + 1}: ${c.age}${c.notes ? ` (${c.notes})` : ""}`)
           .join(" · ")}
       />
+      <Row label="Shortlist size" value={`${answers.shortlistSize} schools`} />
       <Row label="Timeframe" value={answers.timeframe} />
       <Row label="Areas" value={answers.areas.length ? answers.areas.join(", ") : "Open to suggestions"} />
       <Row label="Priorities" value={answers.priorities.length ? answers.priorities.join(", ") : "No specific priorities"} />
       <Row label="Budget" value={BUDGETS.find((b) => b.value === answers.budgetBand)?.label ?? ""} />
       {answers.notes && <Row label="Notes" value={answers.notes} />}
       {answers.referral && <Row label="Heard about us via" value={answers.referral} />}
+      <Row label="Concierge fee" value={`$${fee} USD (paid after delivery)`} />
     </dl>
+  );
+}
+
+function ShortlistOption({
+  value,
+  title,
+  body,
+  priceLabel,
+  checked,
+  onChange,
+}: {
+  value: string;
+  title: string;
+  body: string;
+  priceLabel: string;
+  checked: boolean;
+  onChange: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onChange}
+      className={`flex w-full items-start gap-3 rounded-2xl border p-4 text-left transition ${
+        checked
+          ? "border-[color:var(--color-pink-hot)] bg-[color:var(--color-blossom-soft)]"
+          : "border-[color:var(--color-line)] bg-white hover:border-[color:var(--color-navy)]/30"
+      }`}
+    >
+      <span className="mt-1 inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full border-2">
+        {checked && <span className="h-2 w-2 rounded-full bg-[color:var(--color-pink-hot)]" />}
+      </span>
+      <span className="flex-1">
+        <span className="flex items-baseline justify-between gap-2">
+          <span className="font-display text-lg text-[color:var(--color-navy)]">{title}</span>
+          <span className={`text-xs font-bold uppercase tracking-widest ${checked ? "text-[color:var(--color-pink-hot-deep)]" : "text-[color:var(--color-ink-mute)]"}`}>
+            {priceLabel}
+          </span>
+        </span>
+        <span className="mt-1 block text-[13px] text-[color:var(--color-ink-mute)]">{body}</span>
+      </span>
+    </button>
   );
 }
 

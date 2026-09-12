@@ -6,12 +6,12 @@ import { SITE } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Diaspora concierge — we shortlist your child's Accra school",
   description:
-    "Moving your family to Ghana? Our concierge shortlists 3 Accra schools that actually match your child and arranges the tours. Flat fee $200–500. Fits a Detty December visit.",
+    "Moving your family to Ghana? Our concierge shortlists Accra schools that actually match your child and arranges the tours. Fits a Detty December visit.",
   alternates: { canonical: `${SITE.url}/concierge` },
   openGraph: {
     title: "EarlyDays Diaspora Concierge",
     description:
-      "We shortlist 3 Accra schools that match your child and arrange the tours. Flat fee $200–500.",
+      "We shortlist Accra schools that match your child and arrange the tours.",
     type: "website",
     url: `${SITE.url}/concierge`,
   },
@@ -33,15 +33,15 @@ export default function ConciergePage() {
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-[color:var(--color-ink-mute)] md:text-[17px]">
             Tell us about your child, your budget and when you're coming.
-            Within a few days we come back with three schools that actually
-            fit, and we arrange the tours. One flat fee. No upsells.
+            Within a few days we come back with a shortlist that actually
+            fits, and we arrange the tours. Transparent pricing shown as you go. No hidden fees.
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
             <a href="#apply" className="btn btn-pink text-base">
               Start my shortlist →
             </a>
             <span className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-[color:var(--color-navy)] shadow-sm">
-              $200 – $500 flat fee
+              From $200 · Pay after we deliver
             </span>
           </div>
         </div>
@@ -110,9 +110,20 @@ export default function ConciergePage() {
       </section>
 
       {/* Form */}
-      <section id="apply" className="container-page mt-14 pb-24 md:mt-20">
-        <div className="mx-auto max-w-3xl rounded-3xl bg-white p-6 shadow-[0_10px_40px_rgba(15,42,74,0.08)] md:p-10">
-          <ConciergeApplication />
+      <section id="apply" className="container-page mt-14 pb-24 md:mt-20 scroll-mt-8">
+        <div className="mx-auto max-w-3xl">
+          <div className="mb-4 text-center">
+            <span className="chip chip-blossom">Apply now</span>
+            <h2 className="mt-2 font-display text-[26px] leading-tight md:text-[34px]">
+              Start your shortlist. See your fee instantly.
+            </h2>
+            <p className="mt-2 text-sm text-[color:var(--color-ink-mute)]">
+              Takes about 90 seconds. Price updates as you go.
+            </p>
+          </div>
+          <div className="rounded-3xl bg-white p-6 shadow-[0_10px_40px_rgba(15,42,74,0.08)] md:p-10">
+            <ConciergeApplication />
+          </div>
         </div>
       </section>
 
@@ -121,9 +132,11 @@ export default function ConciergePage() {
         <div className="mx-auto max-w-2xl">
           <h2 className="mb-4 font-display text-2xl">Common questions</h2>
           <Faq q="How much does it cost?">
-            $200 for one child, $350 for two, $500 for three or more. One flat
-            fee. That covers the shortlist, the school outreach, and arranging
-            the tours. School fees themselves are paid directly to the school.
+            The base fee starts at $200 for one child (3-school shortlist) and
+            scales with the number of children plus how deep a shortlist you
+            want (3, 5 or 7 schools). You'll see a live estimate as you fill
+            in the form, and the final quoted price on the confirmation page
+            before we start. School fees themselves are paid directly to the school.
           </Faq>
           <Faq q="How quickly do you respond?">
             We reply within one working day. Full shortlist within 3–5 working

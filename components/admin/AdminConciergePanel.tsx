@@ -23,6 +23,8 @@ interface Row {
   timeframe: string;
   areas: string[];
   priorities: string[];
+  shortlistSize?: string;
+  quotedFeeUsd?: number;
   budgetBand: string;
   children: { age: string; notes: string }[];
   notes?: string;
@@ -99,6 +101,8 @@ export function AdminConciergePanel() {
           timeframe: data.timeframe ?? "",
           areas: Array.isArray(data.areas) ? data.areas : [],
           priorities: Array.isArray(data.priorities) ? data.priorities : [],
+          shortlistSize: data.shortlistSize,
+          quotedFeeUsd: typeof data.quotedFeeUsd === "number" ? data.quotedFeeUsd : undefined,
           budgetBand: data.budgetBand ?? "",
           children: Array.isArray(data.children) ? data.children : [],
           notes: data.notes,
@@ -146,9 +150,14 @@ export function AdminConciergePanel() {
     return c;
   }, [rows]);
 
-  const wonCount = counts["closed-won"];
-  // Rough revenue estimate: $350 average per closed-won
-  const estRevenueUSD = wonCount * 350;
+  // Revenue = sum of quoted fees for won rows (fall back to $350 avg if fee not persisted)
+  const estRevenueUSD = (rows ?? [])
+    .filter((r) => r.status === "closed-won")
+    .reduce((sum, r) => sum + (r.quotedFeeUsd || 350), 0);
+  // Pipeline = sum of quoted fees for all rows that could still close
+  const pipelineUSD = (rows ?? [])
+    .filter((r) => r.status !== "closed-lost")
+    .reduce((sum, r) => sum + (r.quotedFeeUsd || 0), 0);
 
   async function updateStatus(row: Row, status: Status) {
     setBusy(row.id);
@@ -180,8 +189,8 @@ export function AdminConciergePanel() {
             Concierge requests
           </h1>
           <p className="mt-1 text-sm text-white/60">
-            {rows?.length ?? 0} total · {counts.new} new · Est. revenue closed{" "}
-            ${estRevenueUSD.toLocaleString()}
+            {rows?.length ?? 0} total · {counts.new} new · Closed revenue $
+            {estRevenueUSD.toLocaleString()} · Pipeline ${pipelineUSD.toLocaleString()}
           </p>
         </div>
       </header>
@@ -275,7 +284,15 @@ export function AdminConciergePanel() {
                     </p>
                     <p className="mt-0.5 text-xs text-white/50">
                       {r.children.length} child{r.children.length === 1 ? "" : "ren"} ·{" "}
-                      {r.timeframe} · {BUDGET_LABEL[r.budgetBand] ?? r.budgetBand}
+                      {r.shortlistSize ?? "3"}-school shortlist ·{" "}
+                      {r.quotedFeeUsd ? (
+                        <span className="font-semibold text-[color:var(--color-pink-hot)]">
+                          ${r.quotedFeeUsd}
+                        </span>
+                      ) : (
+                        "no fee quoted"
+                      )}{" "}
+                      · {r.timeframe}
                     </p>
                     <p className="text-xs text-white/40">
                       {r.parentEmail} · {r.parentWhatsapp}
@@ -323,7 +340,11 @@ export function AdminConciergePanel() {
                         </ul>
                       </Detail>
                       <Detail label="Timeframe">{r.timeframe}</Detail>
-                      <Detail label="Budget band">{BUDGET_LABEL[r.budgetBand] ?? r.budgetBand}</Detail>
+                      <Detail label="Concierge fee quoted">
+                        {r.quotedFeeUsd ? `$${r.quotedFeeUsd} USD` : "Not captured (legacy request)"}
+                        {r.shortlistSize && ` · ${r.shortlistSize}-school shortlist`}
+                      </Detail>
+                      <Detail label="School budget band">{BUDGET_LABEL[r.budgetBand] ?? r.budgetBand}</Detail>
                       <Detail label="Areas">
                         {r.areas.length ? r.areas.join(", ") : "Open to suggestions"}
                       </Detail>

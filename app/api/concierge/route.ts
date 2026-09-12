@@ -35,6 +35,8 @@ export async function POST(req: Request) {
       : [];
     const notes = clean(body.notes, LIMITS.long);
     const referral = clean(body.referral);
+    const shortlistSize = clean(body.shortlistSize) || "3";
+    const quotedFeeUsd = Number(body.quotedFeeUsd) || 0;
 
     if (!parentName || !parentEmail || !parentWhatsapp || !country || children.length === 0) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
@@ -54,6 +56,8 @@ export async function POST(req: Request) {
       timeframe,
       areas,
       priorities,
+      shortlistSize,
+      quotedFeeUsd,
       budgetBand,
       children,
       notes,
