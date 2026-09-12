@@ -14,11 +14,12 @@ import { ListingCard } from "@/components/ListingCard";
 import { EmptyResults } from "@/components/EmptyResults";
 import { JsonLd } from "@/components/JsonLd";
 import { CATEGORIES } from "@/data/categories";
+import { mergeManyListings } from "@/lib/listing-overrides";
 import { SITE } from "@/lib/site";
 import { itemListJsonLd, faqJsonLd } from "@/lib/schema";
 
 export const dynamicParams = false;
-export const revalidate = 3600;
+export const revalidate = 60;
 
 export async function generateStaticParams() {
   const pairs: { slug: string; area: string }[] = [];
@@ -63,7 +64,7 @@ export default async function AreaPage({
   const l = findLocation(area);
   if (!r || !l || l.region !== r.slug) notFound();
 
-  const results = listingsByLocation(l.slug);
+  const results = await mergeManyListings(listingsByLocation(l.slug));
   const canonical = `${SITE.url}/schools/${r.slug}/${l.slug}`;
   const nearby = LOCATIONS.filter(
     (x) => x.region === r.slug && x.slug !== l.slug

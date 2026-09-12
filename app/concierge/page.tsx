@@ -34,14 +34,14 @@ export default function ConciergePage() {
           <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-[color:var(--color-ink-mute)] md:text-[17px]">
             Tell us about your child, your budget and when you're coming.
             Within a few days we come back with a shortlist that actually
-            fits, and we arrange the tours. Transparent pricing shown as you go. No hidden fees.
+            fits, and we arrange the tours. Transparent fee, shown at the final step. No hidden extras.
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
             <a href="#apply" className="btn btn-pink text-base">
               Start my shortlist →
             </a>
             <span className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-[color:var(--color-navy)] shadow-sm">
-              From $200 · Pay after we deliver
+              Transparent fee · Shown at the last step
             </span>
           </div>
         </div>
@@ -115,10 +115,10 @@ export default function ConciergePage() {
           <div className="mb-4 text-center">
             <span className="chip chip-blossom">Apply now</span>
             <h2 className="mt-2 font-display text-[26px] leading-tight md:text-[34px]">
-              Start your shortlist. See your fee instantly.
+              Start your shortlist.
             </h2>
             <p className="mt-2 text-sm text-[color:var(--color-ink-mute)]">
-              Takes about 90 seconds. Price updates as you go.
+              About 90 seconds. We'll come back to you within one working day.
             </p>
           </div>
           <div className="rounded-3xl bg-white p-6 shadow-[0_10px_40px_rgba(15,42,74,0.08)] md:p-10">
@@ -132,11 +132,11 @@ export default function ConciergePage() {
         <div className="mx-auto max-w-2xl">
           <h2 className="mb-4 font-display text-2xl">Common questions</h2>
           <Faq q="How much does it cost?">
-            The base fee starts at $200 for one child (3-school shortlist) and
-            scales with the number of children plus how deep a shortlist you
-            want (3, 5 or 7 schools). You'll see a live estimate as you fill
-            in the form, and the final quoted price on the confirmation page
-            before we start. School fees themselves are paid directly to the school.
+            The fee depends on how many children you're placing and how deep
+            a shortlist you want (3, 5 or 7 schools). You'll see the exact
+            price on the last step of the form. It's paid upfront so we can
+            start work right away. School fees themselves are paid directly
+            to the school.
           </Faq>
           <Faq q="How quickly do you respond?">
             We reply within one working day. Full shortlist within 3–5 working

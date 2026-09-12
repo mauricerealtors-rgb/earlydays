@@ -1,5 +1,7 @@
 import { adminDb } from "./firebase-admin";
 import type { ListingOverride, Subscription } from "./school-types";
+import { mergeListing } from "./merge-listing";
+import type { Listing } from "./types";
 
 /**
  * Server-side helper that reads Firestore overrides + subscription for a
@@ -74,4 +76,20 @@ export async function fetchListingSideDataMany(
     slugs.forEach((s) => map.set(s, { override: null, subscription: null, claimed: false }));
   }
   return map;
+}
+
+/**
+ * Convenience: batch-fetch side data for a list of baseline listings and
+ * return them fully merged. Use this on every page that renders lists of
+ * ListingCards so schools' edits + uploaded photos appear on the discovery
+ * surfaces (homepage featured, category pages, area lists, etc.), not just
+ * on the individual school profile.
+ */
+export async function mergeManyListings(baseline: Listing[]): Promise<Listing[]> {
+  if (baseline.length === 0) return [];
+  const sideDataMap = await fetchListingSideDataMany(baseline.map((l) => l.slug));
+  return baseline.map((listing) => {
+    const side = sideDataMap.get(listing.slug);
+    return mergeListing(listing, side?.override, side?.subscription, side?.claimed);
+  });
 }

@@ -9,11 +9,12 @@ import { PageHeading } from "@/components/PageHeading";
 import { ListingCard } from "@/components/ListingCard";
 import { EmptyResults } from "@/components/EmptyResults";
 import { JsonLd } from "@/components/JsonLd";
+import { mergeManyListings } from "@/lib/listing-overrides";
 import { SITE } from "@/lib/site";
 import { itemListJsonLd, faqJsonLd } from "@/lib/schema";
 
 export const dynamicParams = false;
-export const revalidate = 3600;
+export const revalidate = 60;
 
 export async function generateStaticParams() {
   return CATEGORIES.map((c) => ({ category: c.slug }));
@@ -50,7 +51,7 @@ export default async function CategoryPage({
   const c = findCategory(category);
   if (!c) notFound();
 
-  const results = listingsByCategory(c.slug);
+  const results = await mergeManyListings(listingsByCategory(c.slug));
   const canonical = `${SITE.url}/${c.slug}`;
 
   const areasWithCounts = LOCATIONS.filter((l) => l.region === "accra")

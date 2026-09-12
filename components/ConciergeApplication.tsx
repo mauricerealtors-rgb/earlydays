@@ -124,12 +124,12 @@ const STEPS = [
   "about-you",
   "your-location",
   "your-children",
-  "shortlist-size",
   "timeframe",
   "areas",
   "priorities",
   "budget",
   "notes",
+  "shortlist-size",
   "review",
   "done",
 ] as const;
@@ -266,7 +266,7 @@ export function ConciergeApplication() {
             </div>
           </div>
           <p className="mt-2 text-[11px] text-[color:var(--color-ink-mute)]">
-            Pay only after we deliver your shortlist. School fees themselves are separate.
+            Paid upfront to begin work. School fees themselves are separate.
           </p>
         </div>
       )}
@@ -280,8 +280,9 @@ export function ConciergeApplication() {
               <>
                 I'm the EarlyDays concierge. In the next 90 seconds I'll ask a
                 few things about your family, and we'll come back to you within
-                one working day with a shortlist of 3 schools that actually fit
-                what you need. Fixed fee: <strong>$200–500 USD</strong>. No upsells.
+                one working day with a shortlist of schools that actually fit
+                what you need. Your fee is shown at the last step, before you commit.
+                Fee is settled upfront so we can start work right away.
               </>
             }
           >
@@ -418,9 +419,9 @@ export function ConciergeApplication() {
 
         {step === "shortlist-size" && (
           <StepShell
-            eyebrow="Step 4"
+            eyebrow="Last step"
             title="How deep a shortlist do you want?"
-            body="More candidates = more visits + more comparison. Most families are happy with three."
+            body="Nearly there. More candidates means more visits and more comparison. Most families are happy with three."
           >
             <div className="space-y-2">
               <ShortlistOption
@@ -454,7 +455,7 @@ export function ConciergeApplication() {
 
         {step === "timeframe" && (
           <StepShell
-            eyebrow="Step 5"
+            eyebrow="Step 4"
             title="When are you looking to start?"
             body="Ghanaian schools work three terms: January, May, and September starts. Tell me what you're planning around."
           >
@@ -474,7 +475,7 @@ export function ConciergeApplication() {
 
         {step === "areas" && (
           <StepShell
-            eyebrow="Step 6"
+            eyebrow="Step 5"
             title="Any preferred Accra areas?"
             body="Pick as many as you like. If you're not sure, tick the last option and we'll suggest based on your budget and priorities."
           >
@@ -494,7 +495,7 @@ export function ConciergeApplication() {
 
         {step === "priorities" && (
           <StepShell
-            eyebrow="Step 7"
+            eyebrow="Step 6"
             title="What matters most?"
             body="Pick everything that's genuinely important — we'll weight the shortlist by these."
           >
@@ -514,7 +515,7 @@ export function ConciergeApplication() {
 
         {step === "budget" && (
           <StepShell
-            eyebrow="Step 8"
+            eyebrow="Step 7"
             title="What's your budget per term?"
             body="Approximate ranges — schools set their own fees and change them yearly. We show USD conversions as a rough guide."
           >
@@ -534,7 +535,7 @@ export function ConciergeApplication() {
 
         {step === "notes" && (
           <StepShell
-            eyebrow="Step 9"
+            eyebrow="Step 8"
             title="Anything else I should know?"
             body="Existing schools you already like or want to avoid, family circumstances, timelines, questions. All optional — write as much or as little as you want."
           >
@@ -562,20 +563,8 @@ export function ConciergeApplication() {
           <StepShell
             eyebrow="Almost done"
             title="Quick check — does this look right?"
-            body="Anything wrong, tap Back. Otherwise send it over and I'll be in touch within one working day."
+            body="Anything wrong, tap Back. Otherwise send it over and I'll be in touch within one working day with payment details, and we start as soon as the fee is settled."
           >
-            <div className="mb-4 rounded-2xl border border-[color:var(--color-pink-hot)]/25 bg-[color:var(--color-blossom-soft)] p-4 text-center">
-              <p className="text-[10px] font-bold uppercase tracking-widest text-[color:var(--color-pink-hot-deep)]">
-                Quoted concierge fee
-              </p>
-              <p className="mt-1 font-display text-[36px] leading-none text-[color:var(--color-navy)]">
-                ${fee.total}
-              </p>
-              <p className="mt-1 text-[11px] text-[color:var(--color-ink-mute)]">
-                Base ${fee.base} for {answers.children.length} child{answers.children.length === 1 ? "" : "ren"}
-                {fee.addon > 0 && ` + $${fee.addon} for a ${answers.shortlistSize}-school shortlist`}. Paid after delivery.
-              </p>
-            </div>
             <ReviewList answers={answers} fee={fee.total} />
             {error && (
               <p className="mt-3 rounded-lg bg-[color:var(--color-coral-soft)] p-3 text-sm text-[color:var(--color-coral)]">
@@ -606,9 +595,10 @@ export function ConciergeApplication() {
                 We've got your details and your quoted fee of{" "}
                 <strong>${fee.total}</strong>. We'll come back to you on
                 WhatsApp <strong>{answers.parentWhatsapp}</strong> and email{" "}
-                <strong>{answers.parentEmail}</strong> within one working day.
-                Expect a short intro message first, then a shortlist within
-                3–5 working days depending on how tight your window is.
+                <strong>{answers.parentEmail}</strong> within one working day
+                with payment details. Once the fee is settled we begin work
+                immediately, with a shortlist typically in your inbox within
+                3–5 working days.
               </>
             }
           >
@@ -773,7 +763,7 @@ function ReviewList({ answers, fee }: { answers: Answers; fee: number }) {
       <Row label="Budget" value={BUDGETS.find((b) => b.value === answers.budgetBand)?.label ?? ""} />
       {answers.notes && <Row label="Notes" value={answers.notes} />}
       {answers.referral && <Row label="Heard about us via" value={answers.referral} />}
-      <Row label="Concierge fee" value={`$${fee} USD (paid after delivery)`} />
+      <Row label="Concierge fee" value={`$${fee} USD (paid upfront to start)`} />
     </dl>
   );
 }

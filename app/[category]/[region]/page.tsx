@@ -13,10 +13,11 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { PageHeading } from "@/components/PageHeading";
 import { ListingCard } from "@/components/ListingCard";
 import { EmptyResults } from "@/components/EmptyResults";
+import { mergeManyListings } from "@/lib/listing-overrides";
 import { SITE } from "@/lib/site";
 
 export const dynamicParams = false;
-export const revalidate = 3600;
+export const revalidate = 60;
 
 export async function generateStaticParams() {
   const out: { category: string; region: string }[] = [];
@@ -56,7 +57,7 @@ export default async function CategoryRegionPage({
   const r = findRegion(region);
   if (!c || !r) notFound();
 
-  const results = listingsByCategoryAndRegion(c.slug, r.slug);
+  const results = await mergeManyListings(listingsByCategoryAndRegion(c.slug, r.slug));
   const areas = LOCATIONS.filter((l) => l.region === r.slug)
     .map((l) => ({
       loc: l,

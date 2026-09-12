@@ -7,6 +7,7 @@ import { ListingCard } from "@/components/ListingCard";
 import { PageHeading } from "@/components/PageHeading";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { EmptyResults } from "@/components/EmptyResults";
+import { mergeManyListings } from "@/lib/listing-overrides";
 import { SITE } from "@/lib/site";
 
 type SP = { category?: string; area?: string; age?: string; q?: string };
@@ -41,7 +42,7 @@ export default async function SchoolsPage({
   const cat = sp.category ? findCategory(sp.category) : undefined;
   const loc = sp.area ? findLocation(sp.area) : undefined;
 
-  const results = allListings().filter((l) => {
+  const baseline = allListings().filter((l) => {
     if (cat && !l.listingTypes.includes(cat.listingType)) return false;
     if (loc && l.neighbourhood !== loc.slug) return false;
     if (sp.q) {
@@ -54,6 +55,7 @@ export default async function SchoolsPage({
     }
     return true;
   });
+  const results = await mergeManyListings(baseline);
 
   return (
     <div className="container-page pt-8 md:pt-12">

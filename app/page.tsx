@@ -11,13 +11,18 @@ import {
   locationCounts,
   locationsWithListings,
 } from "@/lib/query";
+import { mergeManyListings } from "@/lib/listing-overrides";
 
-export default function HomePage() {
+// Revalidate at the same 60s cadence as the merged listing pages so
+// school-uploaded photos + edits show on the homepage cards.
+export const revalidate = 60;
+
+export default async function HomePage() {
   const categories = categoriesWithListings();
   const catCounts = categoryCounts();
   const locations = locationsWithListings().filter((l) => l.region === "accra");
   const locCounts = locationCounts();
-  const featured = featuredListings(6);
+  const featured = await mergeManyListings(featuredListings(6));
 
   return (
     <>

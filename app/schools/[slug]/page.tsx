@@ -25,7 +25,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { TrackView } from "@/components/TrackView";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import { educationalTypeFor, courseJsonLd } from "@/lib/schema";
-import { fetchListingSideData } from "@/lib/listing-overrides";
+import { fetchListingSideData, mergeManyListings } from "@/lib/listing-overrides";
 import { mergeListing } from "@/lib/merge-listing";
 import { SITE } from "@/lib/site";
 
@@ -88,14 +88,14 @@ export default async function SchoolOrRegionPage({
     return renderListing(merged);
   }
   const region = findRegion(slug);
-  if (region) return renderRegion(region);
+  if (region) return await renderRegion(region);
   notFound();
 }
 
 /* ---------------- Region view ---------------- */
 
-function renderRegion(region: { slug: string; name: string }) {
-  const listings = listingsByRegion(region.slug);
+async function renderRegion(region: { slug: string; name: string }) {
+  const listings = await mergeManyListings(listingsByRegion(region.slug));
   const areas = locationsInRegion(region.slug);
   return (
     <div className="container-page pt-8 md:pt-12">
