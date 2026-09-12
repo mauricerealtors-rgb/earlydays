@@ -1,10 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
-import { MobileBottomNav } from "@/components/MobileBottomNav";
 import { JsonLd } from "@/components/JsonLd";
 import { AuthProvider } from "@/components/AuthProvider";
+import { PublicChrome } from "@/components/PublicChrome";
 import { SITE, absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -143,12 +141,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
         <AuthProvider>
-          <Header />
-          <main id="main" className="pb-24 md:pb-0">
-            {children}
-          </main>
-          <Footer />
-          <MobileBottomNav />
+          <PublicChrome>{children}</PublicChrome>
         </AuthProvider>
       </body>
     </html>
