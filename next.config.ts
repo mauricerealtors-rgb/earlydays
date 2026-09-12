@@ -43,6 +43,17 @@ const config: NextConfig = {
       { protocol: "https", hostname: "alphabeta.edu.gh" },
       { protocol: "https", hostname: "kentinternationaledu.com" },
       { protocol: "https", hostname: "makersplacegh.com" },
+      // Third-batch schools (Sep 2026 expansion 2).
+      { protocol: "https", hostname: "www.lincoln.edu.gh" },
+      { protocol: "https", hostname: "lincoln.edu.gh" },
+      { protocol: "https", hostname: "citylightsinternational.edu.gh" },
+      { protocol: "https", hostname: "www.citylightsinternational.edu.gh" },
+      { protocol: "https", hostname: "minimemontessorischool.com" },
+      { protocol: "https", hostname: "www.minimemontessorischool.com" },
+      { protocol: "https", hostname: "healthymindschool.net" },
+      { protocol: "https", hostname: "www.healthymindschool.net" },
+      { protocol: "https", hostname: "wonderworldinternationalschool.com" },
+      { protocol: "https", hostname: "www.wonderworldinternationalschool.com" },
       // Cloudinary — school-uploaded photos from the dashboard.
       { protocol: "https", hostname: "res.cloudinary.com" },
     ],

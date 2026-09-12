@@ -167,6 +167,50 @@ export const LOCATIONS: Location[] = [
       "Central Accra covers Ridge, Cantonments, Osu and the surrounding inner-city grid. historically the deepest catchment for long-established British-track and international schools in Ghana. Fees at the top of this market are the highest in the country, but there are also excellent mid-market Montessori and EYFS options that have been operating for decades. Traffic makes drop-off tight. most parents look for a school within a 15-minute radius of home or work.",
   },
   {
+    slug: "abelemkpe",
+    name: "Abelemkpe",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb:
+      "Quiet residential area west of central Accra, home to Lincoln Community School and other long-established institutions.",
+  },
+  {
+    slug: "matahekó",
+    name: "Matahekó",
+    region: "accra",
+    regionName: "Greater Accra",
+    parent: "dansoman",
+    blurb:
+      "Residential neighbourhood off the Dansoman-Kaneshie road with a mix of preschools and primaries.",
+  },
+  {
+    slug: "east-cantonments",
+    name: "East Cantonments",
+    region: "accra",
+    regionName: "Greater Accra",
+    parent: "cantonments",
+    blurb:
+      "Central Accra residential pocket adjacent to Cantonments and Labone, with a mix of long-standing and newer schools.",
+  },
+  {
+    slug: "westlands",
+    name: "Westlands",
+    region: "accra",
+    regionName: "Greater Accra",
+    parent: "east-legon",
+    blurb:
+      "Newer residential development east of East Legon with early years schools purpose-built for young families.",
+  },
+  {
+    slug: "anaji",
+    name: "Anaji",
+    region: "western",
+    regionName: "Western",
+    parent: "takoradi",
+    blurb:
+      "Residential neighbourhood in Takoradi, Western Region, with a growing base of early years centres.",
+  },
+  {
     slug: "kumasi",
     name: "Kumasi",
     region: "ashanti",
@@ -180,12 +224,23 @@ export const LOCATIONS: Location[] = [
     regionName: "Western",
     blurb: "Coastal city and capital of the Western Region.",
   },
+  {
+    slug: "kasoa",
+    name: "Kasoa",
+    region: "central",
+    regionName: "Central",
+    blurb:
+      "Fast-growing town on the western edge of the Accra–Cape Coast road, straddling the Greater Accra and Central Region border.",
+    intro:
+      "Kasoa has grown rapidly over the last decade from a market town into a large residential belt for families priced out of Weija, Kaneshie and Dansoman. Early years and primary schools have multiplied along the Kingston, Ngleshie and Millennium City stretches. Fees are generally lower than in central Accra, and most schools follow the Ghana Education Service curriculum with a growing Montessori and Christian ethos overlay.",
+  },
 ];
 
 export const REGIONS = [
   { slug: "accra", name: "Greater Accra" },
   { slug: "ashanti", name: "Ashanti" },
   { slug: "western", name: "Western" },
+  { slug: "central", name: "Central" },
 ];
 
 export function findLocation(slug: string) {
