@@ -5,7 +5,7 @@ import { PageHeading } from "@/components/PageHeading";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "For schools — reach parents actively looking",
+  title: "For schools. reach parents actively looking",
   description:
     "Claim your school's profile on EarlyDays, keep information up to date, and reach parents actively searching for a place for their child.",
   alternates: { canonical: `${SITE.url}/for-schools` },
@@ -29,7 +29,7 @@ export default function ForSchools() {
           },
           {
             title: "Qualified parent leads",
-            body: "Parents send you targeted enquiries — with their child's age, preferred start date, and a message.",
+            body: "Parents send you targeted enquiries. with their child's age, preferred start date, and a message.",
           },
           {
             title: "Analytics that matter",

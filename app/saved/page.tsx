@@ -19,7 +19,7 @@ export default function Saved() {
       <PageHeading
         eyebrow="Your shortlist"
         title="Save schools as you browse."
-        subtitle="Tap the save button on any school profile — you don't need an account to build a shortlist."
+        subtitle="Tap the save button on any school profile. you don't need an account to build a shortlist."
       />
       <div className="card-soft rounded-2xl bg-white p-6 text-center md:p-10">
         <p className="text-[color:var(--color-ink-mute)]">

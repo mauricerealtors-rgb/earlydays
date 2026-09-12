@@ -22,14 +22,14 @@ export default function About() {
       <div className="prose-content mx-auto max-w-2xl space-y-4 text-[17px] leading-relaxed text-[color:var(--color-ink)]">
         <p>
           Most existing directories were built for advertisers, not parents.
-          We're building the opposite — a calm, honest place where families
+          We're building the opposite. a calm, honest place where families
           can search by area, age and programme, compare a few real options,
           and contact schools directly.
         </p>
         <p>
           Every profile shows its verification state. We never invent fees,
           curriculum, or contact details. If a school hasn't published
-          something yet, we say so — clearly.
+          something yet, we say so. clearly.
         </p>
         <p>
           EarlyDays is an independent directory. We are not a government

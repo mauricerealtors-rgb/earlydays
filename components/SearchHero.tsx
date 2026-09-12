@@ -35,8 +35,8 @@ export function SearchHero() {
 
           <p className="mt-5 max-w-xl text-lg text-[color:var(--color-ink)]">
             You want a place where your little one feels safe, seen and gently
-            stretched. We help you find it — creche, preschool, KG, primary or
-            after-school — across Ghana.
+            stretched. We help you find it. creche, preschool, KG, primary or
+            after-school. across Ghana.
           </p>
         </div>
 

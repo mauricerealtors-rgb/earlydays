@@ -368,7 +368,7 @@ function buildComboFaq(args: {
     q: `How many ${p} are there in ${area}?`,
     a:
       results.length === 0
-        ? `EarlyDays currently has no ${p} listed in ${area}, ${region} — we're still adding schools in this catchment.`
+        ? `EarlyDays currently has no ${p} listed in ${area}, ${region}. we're still adding schools in this catchment.`
         : `EarlyDays lists ${results.length} ${results.length === 1 ? s : p} in ${area}, ${region}: ${results
             .slice(0, 6)
             .map((r) => r.name)
@@ -400,7 +400,7 @@ function buildComboFaq(args: {
       .join("; ");
     qs.push({
       q: `What curricula do ${p} in ${area} follow?`,
-      a: `The ${p} we list in ${area} follow a mix of pathways: ${items}. Curriculum matters most from kindergarten upwards — for creches and early nurseries, look at daily rhythm, outdoor time and staff-to-child ratio first.`,
+      a: `The ${p} we list in ${area} follow a mix of pathways: ${items}. Curriculum matters most from kindergarten upwards. for creches and early nurseries, look at daily rhythm, outdoor time and staff-to-child ratio first.`,
     });
   }
 
@@ -410,15 +410,15 @@ function buildComboFaq(args: {
       stats.listingsWithFees.length > 0
         ? `Fees vary widely. Among ${p} in ${area} that have published a fee guide on EarlyDays: ${stats.listingsWithFees
             .slice(0, 3)
-            .map((l) => `${l.name} — ${l.feesHint}`)
+            .map((l) => `${l.name}. ${l.feesHint}`)
             .join("; ")}. Other listed schools have not published fees; use the Request information button on each profile to ask directly.`
-        : `None of the ${p} we currently list in ${area} have published a fee guide on EarlyDays. Fees are set individually per school and change each academic year — use the Request information button on any profile to ask directly. As a general reference, private early years fees in Greater Accra typically span GH₵1,500–GH₵15,000+ per term depending on curriculum and services.`,
+        : `None of the ${p} we currently list in ${area} have published a fee guide on EarlyDays. Fees are set individually per school and change each academic year. use the Request information button on any profile to ask directly. As a general reference, private early years fees in Greater Accra typically span GH₵1,500–GH₵15,000+ per term depending on curriculum and services.`,
   });
 
   if (stats.transportListings.length) {
     qs.push({
       q: `Do ${p} in ${area} offer school transport?`,
-      a: `Yes — ${stats.transportListings
+      a: `Yes. ${stats.transportListings
         .slice(0, 3)
         .map((l) => l.name)
         .join(", ")} ${stats.transportListings.length === 1 ? "lists" : "list"} school transport as a service. Routes and pick-up areas vary; confirm directly with each school.`,
@@ -427,18 +427,18 @@ function buildComboFaq(args: {
 
   qs.push({
     q: `When should I start looking for a ${s} place in ${area}?`,
-    a: `Most schools in Greater Accra work on three-term academic years (January, May and September starts). Popular ${p} in and around ${area} — especially those offering EYFS, Montessori or Cambridge — fill up 6–9 months in advance for the September intake. If you're moving into ${area} or expecting a January start, begin visits 3–4 months out.`,
+    a: `Most schools in Greater Accra work on three-term academic years (January, May and September starts). Popular ${p} in and around ${area}. especially those offering EYFS, Montessori or Cambridge. fill up 6–9 months in advance for the September intake. If you're moving into ${area} or expecting a January start, begin visits 3–4 months out.`,
   });
 
   qs.push({
     q: `What should I look for on a school visit in ${area}?`,
-    a: `The essentials to check in person: staff-to-child ratio (especially under-3s), how children are being spoken to when nobody is watching, outdoor and shaded play space, meal setup, toilet and nap facilities, safeguarding at pick-up, and how transparently the school answers about fees and hours. Almost all listed schools welcome visits — how they respond is itself a strong signal.`,
+    a: `The essentials to check in person: staff-to-child ratio (especially under-3s), how children are being spoken to when nobody is watching, outdoor and shaded play space, meal setup, toilet and nap facilities, safeguarding at pick-up, and how transparently the school answers about fees and hours. Almost all listed schools welcome visits. how they respond is itself a strong signal.`,
   });
 
   if (results.length > 0 && nearby.length > 0) {
     qs.push({
       q: `What if I can't find the right ${s} in ${area}?`,
-      a: `The nearest areas with additional ${p} on EarlyDays are ${nearby.join(", ")}. Many families in and around ${area} end up at a school in an adjacent catchment — pick-up distance and traffic on your specific route usually matter more than a strict area boundary.`,
+      a: `The nearest areas with additional ${p} on EarlyDays are ${nearby.join(", ")}. Many families in and around ${area} end up at a school in an adjacent catchment. pick-up distance and traffic on your specific route usually matter more than a strict area boundary.`,
     });
   }
 

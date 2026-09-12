@@ -30,7 +30,7 @@ export async function generateMetadata({
   const count = listingsByCategory(c.slug).length;
   return {
     title: `${c.plural} in Accra & Ghana (${count} verified)`,
-    description: `${c.plural} across Accra and Ghana on EarlyDays. ${c.blurb} Compare programmes, ages, curriculum and location — parent-first, honest profiles.`,
+    description: `${c.plural} across Accra and Ghana on EarlyDays. ${c.blurb} Compare programmes, ages, curriculum and location. parent-first, honest profiles.`,
     alternates: { canonical: `${SITE.url}/${c.slug}` },
     openGraph: {
       title: `${c.plural} in Accra & Ghana`,
@@ -103,7 +103,7 @@ export default async function CategoryPage({
               ? `no ${c.plural.toLowerCase()} are currently listed.`
               : `${results.length} ${results.length === 1 ? c.singular.toLowerCase() : c.plural.toLowerCase()} listed across ${areasWithCounts.length} area${areasWithCounts.length === 1 ? "" : "s"} in Accra`}
             . Every profile is sourced from the school's own website and
-            shows a verification state — fees, curriculum and contact
+            shows a verification state. fees, curriculum and contact
             details appear only when the school itself has published them.
           </p>
         </div>
@@ -137,10 +137,10 @@ export default async function CategoryPage({
           </div>
         )}
 
-        {/* FAQ block — visible + JSON-LD wired above */}
+        {/* FAQ block. visible + JSON-LD wired above */}
         <section className="mt-14" aria-labelledby="faq-heading">
           <h2 id="faq-heading" className="mb-3 font-display text-2xl">
-            {c.plural} — parent questions
+            {c.plural}. parent questions
           </h2>
           <div className="card-soft rounded-2xl bg-white p-2">
             {faq.map((f) => (
@@ -178,11 +178,11 @@ function buildCategoryFaq(
     },
     {
       q: `How do I contact a ${s} listed on EarlyDays?`,
-      a: `Open any profile and use the Request information button, or call / message via the contact details shown. Where a school has not published contact details, we say so — we never invent numbers.`,
+      a: `Open any profile and use the Request information button, or call / message via the contact details shown. Where a school has not published contact details, we say so. we never invent numbers.`,
     },
     {
       q: `Are the ${p} on EarlyDays verified?`,
-      a: `Each listing carries an explicit verification state: unverified, information-confirmed, claimed, or verified. Most current listings are 'information-confirmed' — meaning contact and basic profile were cross-checked from the school's own website. A school representative can claim their profile at any time.`,
+      a: `Each listing carries an explicit verification state: unverified, information-confirmed, claimed, or verified. Most current listings are 'information-confirmed'. meaning contact and basic profile were cross-checked from the school's own website. A school representative can claim their profile at any time.`,
     },
     {
       q: `What does it cost to enrol in a ${s} in Ghana?`,
@@ -194,7 +194,7 @@ function buildCategoryFaq(
     },
     {
       q: `Can my school get listed on EarlyDays?`,
-      a: `Yes — free. Schools can claim an existing profile or submit a new one at /claim. Claimed profiles get an edit dashboard and receive parent enquiries directly.`,
+      a: `Yes. free. Schools can claim an existing profile or submit a new one at /claim. Claimed profiles get an edit dashboard and receive parent enquiries directly.`,
     },
   ];
 }

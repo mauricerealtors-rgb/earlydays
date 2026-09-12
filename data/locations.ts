@@ -21,7 +21,7 @@ export const LOCATIONS: Location[] = [
     blurb:
       "A newer residential area extending east of East Legon, with a growing base of early years and international schools.",
     intro:
-      "East Legon Hills has grown quickly from a fringe development into one of Accra's most active new-build residential belts. Most schools here are under ten years old, purpose-built with outdoor play space, and cater to the young professional families moving out from inner Accra. The trade-off is distance: expect a longer commute if you work in Airport City or Ridge. Curriculum is a mix — Montessori and EYFS dominate the early years, with newer primaries adopting Cambridge or the Ghana Education Service syllabus.",
+      "East Legon Hills has grown quickly from a fringe development into one of Accra's most active new-build residential belts. Most schools here are under ten years old, purpose-built with outdoor play space, and cater to the young professional families moving out from inner Accra. The trade-off is distance: expect a longer commute if you work in Airport City or Ridge. Curriculum is a mix. Montessori and EYFS dominate the early years. Newer primaries lean towards Cambridge or the Ghana Education Service syllabus.",
   },
   {
     slug: "adjiringanor",
@@ -32,7 +32,7 @@ export const LOCATIONS: Location[] = [
     blurb:
       "A residential neighbourhood adjacent to East Legon, home to a number of newer early years schools.",
     intro:
-      "Adjiringanor sits directly behind East Legon and has become a quieter alternative for families who want early years schooling without the Boundary Road congestion. Most schools in Adjiringanor are small and family-run — you'll often meet the head at the gate. Age ranges typically start from 3 months at the creche end and continue through nursery and kindergarten, with a smaller number of primaries following EYFS or the UK National Curriculum. If you don't find what you need here, East Legon and East Legon Hills are both within a 10-minute drive.",
+      "Adjiringanor sits directly behind East Legon and has become a quieter alternative for families who want early years schooling without the Boundary Road congestion. Most schools in Adjiringanor are small and family-run, and you'll often meet the head at the gate. Age ranges typically start from 3 months at the creche end and continue through nursery and kindergarten, with a smaller number of primaries following EYFS or the UK National Curriculum. If you don't find what you need here, East Legon and East Legon Hills are both within a 10-minute drive.",
   },
   {
     slug: "spintex",
@@ -59,7 +59,7 @@ export const LOCATIONS: Location[] = [
     blurb:
       "Neighbourhood off Spintex Road near the Airport, with a mix of early years and primary schools.",
     intro:
-      "East Airport is one of the busiest school catchments in Accra — sitting between Airport Residential, Spintex and Cantonments, it's within reach of a large working-parent population. Schools here trend older and more established than the East Legon Hills belt, and admissions windows often close earlier in the year. Expect a broader mix of pathways (Ghana Education Service, Montessori, Cambridge) and a wider fee range than the newer developments. Meals and school transport are more commonly offered here than in outlying areas.",
+      "East Airport is one of the busiest school catchments in Accra. Sitting between Airport Residential, Spintex and Cantonments, it's within reach of a large working-parent population. Schools here trend older and more established than the East Legon Hills belt, and admissions windows often close earlier in the year. Expect a broader mix of pathways (Ghana Education Service, Montessori, Cambridge) and a wider fee range than the newer developments. Meals and school transport are more commonly offered here than in outlying areas.",
   },
   {
     slug: "cantonments",
@@ -162,9 +162,9 @@ export const LOCATIONS: Location[] = [
     region: "accra",
     regionName: "Greater Accra",
     blurb:
-      "Central Accra — Ridge, Cantonments and the wider inner-city area.",
+      "Central Accra. Ridge, Cantonments and the wider inner-city area.",
     intro:
-      "Central Accra covers Ridge, Cantonments, Osu and the surrounding inner-city grid — historically the deepest catchment for long-established British-track and international schools in Ghana. Fees at the top of this market are the highest in the country, but there are also excellent mid-market Montessori and EYFS options that have been operating for decades. Traffic makes drop-off tight — most parents look for a school within a 15-minute radius of home or work.",
+      "Central Accra covers Ridge, Cantonments, Osu and the surrounding inner-city grid. historically the deepest catchment for long-established British-track and international schools in Ghana. Fees at the top of this market are the highest in the country, but there are also excellent mid-market Montessori and EYFS options that have been operating for decades. Traffic makes drop-off tight. most parents look for a school within a 15-minute radius of home or work.",
   },
   {
     slug: "kumasi",

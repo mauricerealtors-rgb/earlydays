@@ -6,7 +6,7 @@ import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Compare schools",
-  description: "Compare up to 4 schools side by side — location, ages, curriculum, services and contact.",
+  description: "Compare up to 4 schools side by side. location, ages, curriculum, services and contact.",
   alternates: { canonical: `${SITE.url}/compare` },
   robots: { index: false, follow: true },
 };
@@ -18,7 +18,7 @@ export default function Compare() {
       <PageHeading
         eyebrow="Compare"
         title="Compare schools side by side."
-        subtitle="Add up to 4 schools to compare programmes, ages, curriculum, services and contact — all in one view."
+        subtitle="Add up to 4 schools to compare programmes, ages, curriculum, services and contact. all in one view."
       />
       <div className="card-soft rounded-2xl bg-white p-6 md:p-10">
         <p className="text-[color:var(--color-ink-mute)]">

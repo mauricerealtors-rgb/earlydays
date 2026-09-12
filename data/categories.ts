@@ -59,7 +59,7 @@ export const CATEGORIES: Category[] = [
       "Montessori schools and Montessori-influenced programmes that follow child-led, prepared-environment principles.",
     accent: "blossom",
     image: "/categories/montessori-schools.jpg",
-    imageAlt: "Two children in a Montessori classroom — one spooning beads, another with the pink tower",
+    imageAlt: "Two children in a Montessori classroom, one spooning beads, another with the pink tower",
   },
   {
     slug: "learning-centres",
@@ -92,7 +92,7 @@ export const CATEGORIES: Category[] = [
     listingType: "stem",
     short: "Robotics, coding, science and maths clubs.",
     blurb:
-      "STEM, coding, robotics and maths programmes for children — after school, weekends and holidays.",
+      "STEM, coding, robotics and maths programmes for children. After school, weekends and holidays.",
     accent: "leaf",
     image: "/categories/stem-and-coding.jpg",
     imageAlt: "Girl coding on a laptop next to a robotics kit and STEM books in a bright classroom",

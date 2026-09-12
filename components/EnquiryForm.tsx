@@ -51,7 +51,7 @@ export function EnquiryForm({
     return (
       <div id="enquire" className="card-soft rounded-2xl bg-[color:var(--color-leaf-soft)] p-5">
         <p className="font-display text-lg text-[color:var(--color-navy)]">
-          Sent — {schoolName} will be in touch.
+          Sent. {schoolName} will be in touch.
         </p>
         <p className="mt-1 text-sm text-[color:var(--color-ink-mute)]">
           Most schools reply within 1–2 working days. Check your inbox (and spam).

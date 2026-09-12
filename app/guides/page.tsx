@@ -6,7 +6,7 @@ import { PageHeading } from "@/components/PageHeading";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Parent guides — choosing schools in Ghana",
+  title: "Parent guides. choosing schools in Ghana",
   description:
     "Honest, plain-English guides for Ghanaian parents choosing creches, preschools, KG, primary schools and children's learning centres.",
   alternates: { canonical: `${SITE.url}/guides` },

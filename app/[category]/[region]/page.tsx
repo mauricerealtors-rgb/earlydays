@@ -82,7 +82,7 @@ export default async function CategoryRegionPage({
       {areas.length > 0 && (
         <section className="mb-8">
           <h2 className="mb-3 font-display text-xl">
-            {c.plural} in {r.name} — by area
+            {c.plural} in {r.name}. by area
           </h2>
           <div className="flex flex-wrap gap-2">
             {areas.map(({ loc, count }) => (

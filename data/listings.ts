@@ -6,7 +6,7 @@ import type { Listing } from "@/lib/types";
  * Research date: 2026-09-06.
  *
  * Data-honesty rules (guide §8, §36):
- *  - Every listing carries `sourceUrls` — the school's own site / official pages.
+ *  - Every listing carries `sourceUrls`. the school's own site / official pages.
  *  - Verification set to `info-confirmed` because we cross-checked contact,
  *    ages and programmes from the school's own materials. A listing is not
  *    marked `verified` or `claimed` until a school representative confirms
@@ -28,7 +28,7 @@ export const LISTINGS: Listing[] = [
     shortDescription:
       "Montessori-informed early years and daycare centre in East Legon serving 3 months–5 years.",
     description:
-      "Acorn Montessori Day Care is an early years centre on Addis Ababa Street in East Legon. According to the school, it serves children from 3 months to 5 years and combines daycare with a broad enrichment programme — music, foreign languages, swimming, dance, pre-reading, pre-math, art and after-school care. Opening hours are Monday to Friday, 8:00 AM–5:00 PM.",
+      "Acorn Montessori Day Care is an early years centre on Addis Ababa Street in East Legon. According to the school, it serves children from 3 months to 5 years and combines daycare with a broad enrichment programme. music, foreign languages, swimming, dance, pre-reading, pre-math, art and after-school care. Opening hours are Monday to Friday, 8:00 AM–5:00 PM.",
     listingTypes: ["creche", "preschool", "montessori"],
     ageMin: 3,
     ageMax: 60,
@@ -177,7 +177,7 @@ export const LISTINGS: Listing[] = [
     shortDescription:
       "British EYFS preschool off Spintex Road in East Airport, with extended care before and after school.",
     description:
-      "St. Giles Preschool is on Shitor Avenue off Spintex Road, in East Airport. According to the school, it follows British EYFS alongside Ghana Education Service standards and serves children from birth to 5 years — infants, creche, nursery and kindergarten. School-day hours are 8:00 AM–3:00 PM with extended care from 6:00–8:00 AM and 3:00–6:00 PM. The site highlights large outdoor facilities and well-resourced classrooms.",
+      "St. Giles Preschool is on Shitor Avenue off Spintex Road, in East Airport. According to the school, it follows British EYFS alongside Ghana Education Service standards and serves children from birth to 5 years. infants, creche, nursery and kindergarten. School-day hours are 8:00 AM–3:00 PM with extended care from 6:00–8:00 AM and 3:00–6:00 PM. The site highlights large outdoor facilities and well-resourced classrooms.",
     listingTypes: ["creche", "preschool", "kindergarten"],
     ageMin: 0,
     ageMax: 60,
@@ -367,7 +367,7 @@ export const LISTINGS: Listing[] = [
     slug: "galaxy-international-school-east-legon",
     name: "Galaxy International School",
     shortDescription:
-      "International school on Boundary Road, East Legon — International Early Years Curriculum, Cambridge Primary, with A'Levels and boarding.",
+      "International school on Boundary Road, East Legon. International Early Years Curriculum, Cambridge Primary, with A'Levels and boarding.",
     description:
       "Galaxy International School's East Legon campus is on Boundary Road, with a second campus listed at Ashale Botwe Sraha / Adjiringano junction. According to the school, the pre-school follows the International Early Years Curriculum and Jolly Phonics, and primary follows Cambridge Primary. The site describes an ICT lab, a Student Project Hub, a boarding house, online classes, coding and robotics, and French and Turkish language programmes. Galaxy states it was established in 2001.",
     listingTypes: ["preschool", "kindergarten", "primary", "stem"],
@@ -405,9 +405,9 @@ export const LISTINGS: Listing[] = [
     imageQuery: "international school East Legon Boundary Road",
     images: [
       { url: "https://galaxy.edu.gh/uploads/frontend/home_page/wellcome1.jpg", alt: "Galaxy International School welcome / campus image", credit: "Photo: Galaxy International School (official site)", sourceUrl: "https://galaxy.edu.gh/" },
-      { url: "https://galaxy.edu.gh/home/news_thumb/card/news_6a8dca66933d2779210287.jpeg", alt: "Galaxy International School — Cambridge IGCSE results celebration", credit: "Photo: Galaxy International School (official site)", sourceUrl: "https://galaxy.edu.gh/" },
+      { url: "https://galaxy.edu.gh/home/news_thumb/card/news_6a8dca66933d2779210287.jpeg", alt: "Galaxy International School. Cambridge IGCSE results celebration", credit: "Photo: Galaxy International School (official site)", sourceUrl: "https://galaxy.edu.gh/" },
       { url: "https://galaxy.edu.gh/home/news_thumb/card/news_6a8dcf8d386c9180003941.jpeg", alt: "Galaxy International School students at ISCAF Art Exhibition", credit: "Photo: Galaxy International School (official site)", sourceUrl: "https://galaxy.edu.gh/" },
-      { url: "https://galaxy.edu.gh/home/news_thumb/card/news_6a7ada50b9c2c692886305.jpeg", alt: "Galaxy International School — Cambridge Checkpoint results", credit: "Photo: Galaxy International School (official site)", sourceUrl: "https://galaxy.edu.gh/" },
+      { url: "https://galaxy.edu.gh/home/news_thumb/card/news_6a7ada50b9c2c692886305.jpeg", alt: "Galaxy International School. Cambridge Checkpoint results", credit: "Photo: Galaxy International School (official site)", sourceUrl: "https://galaxy.edu.gh/" },
       { url: "https://galaxy.edu.gh/home/news_thumb/card/news_6a46a85ec0f90703530611.jpeg", alt: "Galaxy International School A-Level student award celebration", credit: "Photo: Galaxy International School (official site)", sourceUrl: "https://galaxy.edu.gh/" },
     ],
   },
@@ -418,7 +418,7 @@ export const LISTINGS: Listing[] = [
     slug: "the-eden-school",
     name: "The Eden School",
     shortDescription:
-      "Cambridge Curriculum school on Djanie Ashie Street, East Legon — preschool through upper secondary.",
+      "Cambridge Curriculum school on Djanie Ashie Street, East Legon. preschool through upper secondary.",
     description:
       "The Eden School is on Djanie Ashie Street in East Legon. According to the school, it follows the Cambridge Curriculum from preschool through lower and upper secondary. Subjects listed include English, Mathematics, Science, Global Perspectives, Art & Design, Computing, Digital Literacy, Music, Physical Education, Wellbeing and Humanities.",
     listingTypes: ["preschool", "kindergarten", "primary"],
@@ -457,7 +457,7 @@ export const LISTINGS: Listing[] = [
     slug: "east-airport-international-school",
     name: "East Airport International School",
     shortDescription:
-      "British-curriculum school on Kofi Korley St, East Airport — pre-school through A-Level.",
+      "British-curriculum school on Kofi Korley St, East Airport. pre-school through A-Level.",
     description:
       "East Airport International School is on Kofi Korley Street, off Spintex Road in East Airport. According to the school, it follows the British Curriculum from pre-school through primary, secondary and A-Level. School-reported hours are Monday–Saturday, 8:00 AM–4:30 PM. The school reports having been established in 2002 and serving over 1,000 students; those are school-reported figures.",
     listingTypes: ["preschool", "kindergarten", "primary"],
@@ -535,7 +535,7 @@ export const LISTINGS: Listing[] = [
     slug: "nobles-montessori",
     name: "Nobles Montessori",
     shortDescription:
-      "Authentic Montessori in Taifa (Atomic Down) — bilingual French–English, 3 months to 5 years.",
+      "Authentic Montessori in Taifa (Atomic Down). bilingual French–English, 3 months to 5 years.",
     description:
       "Nobles Montessori is on Royal Avenue off Dome-Kwabenya Road in Taifa (Atomic Down). According to the school, it delivers an authentic Montessori programme with a Christ-centred ethos and a bilingual French–English approach every day. Programmes are structured from Infant/Nido (3–12 months) through The Two's and Children's House (3–5 years). The site describes low child-to-teacher ratios, full-day care, ICT, practical life, sensorial, math, language and cultural studies, on a safe gated compound with controlled entry and pick-up. School-reported hours are 6:30 AM–6:30 PM, Monday–Friday. Nobles states its current open-enrolment focus is 3 months–2 years, with the wider age range served across the school.",
     listingTypes: ["creche", "preschool", "montessori"],
@@ -625,7 +625,7 @@ export const LISTINGS: Listing[] = [
     slug: "kasa-de-lengua",
     name: "Kasa De Lengua",
     shortDescription:
-      "Children's French language classes in Sakumono / Tema — in-person, online and holiday intensives.",
+      "Children's French language classes in Sakumono / Tema. in-person, online and holiday intensives.",
     description:
       "Kasa De Lengua is a children's French language centre serving Sakumono and Tema. According to the school, programmes include in-person and online children's French classes as well as a Holiday Intensive, for ages 5–15. School-reported starting fees are GH₵600 per 8-week term online, and GH₵1,500 per 8-week term in-person; recheck before deciding.",
     listingTypes: ["language-centre"],
@@ -640,7 +640,7 @@ export const LISTINGS: Listing[] = [
     country: "Ghana",
     website: "https://kasadelengua.com/french-language-programs-page/",
     feesHint:
-      "From GH₵600 per 8-week term (online); from GH₵1,500 per 8-week term (in-person) — school-reported",
+      "From GH₵600 per 8-week term (online); from GH₵1,500 per 8-week term (in-person). school-reported",
     admissions: "open",
     verification: "info-confirmed",
     claimed: false,
@@ -660,7 +660,7 @@ export const LISTINGS: Listing[] = [
   {
     id: "alliance-francaise-accra-fle-junior",
     slug: "alliance-francaise-accra-fle-junior",
-    name: "Alliance Française Accra — FLE Junior",
+    name: "Alliance Française Accra. FLE Junior",
     shortDescription:
       "Structured French classes for children and teenagers in Accra, with A1–B2 progression and DELF preparation.",
     description:
@@ -687,7 +687,7 @@ export const LISTINGS: Listing[] = [
     updatedAt: today,
     imageQuery: "French children teens classes Accra",
     images: [
-      { url: "https://afaccra.com/images/hero/junior.webp", alt: "Alliance Française Accra FLE Junior programme — children in class", credit: "Photo: Alliance Française Accra (official site)", sourceUrl: "https://afaccra.org/courses/junior" },
+      { url: "https://afaccra.com/images/hero/junior.webp", alt: "Alliance Française Accra FLE Junior programme. children in class", credit: "Photo: Alliance Française Accra (official site)", sourceUrl: "https://afaccra.org/courses/junior" },
       { url: "https://afaccra.com/images/courses/junior/overview.webp", alt: "Junior French class in session at Alliance Française Accra", credit: "Photo: Alliance Française Accra (official site)", sourceUrl: "https://afaccra.org/courses/junior" },
       { url: "https://afaccra.com/images/hero/summer-camp.webp", alt: "Summer camp activities at Alliance Française Accra", credit: "Photo: Alliance Française Accra (official site)", sourceUrl: "https://afaccra.org/courses/junior" },
     ],
@@ -697,7 +697,7 @@ export const LISTINGS: Listing[] = [
   {
     id: "safari-international-school-airport",
     slug: "safari-international-school-airport",
-    name: "Safari International School — Airport Residential",
+    name: "Safari International School. Airport Residential",
     shortDescription:
       "IB World and Cambridge-certified early years and primary campus on Volta Street, Airport Residential.",
     description:
@@ -724,9 +724,9 @@ export const LISTINGS: Listing[] = [
     updatedAt: today,
     imageQuery: "international school Airport Residential Accra",
     images: [
-      { url: "https://safarischool.edu.gh/img/facts/image_10.webp", alt: "Students at Safari International School — Airport Residential campus", credit: "Photo: Safari International School (official site)", sourceUrl: "https://safarischool.edu.gh/" },
-      { url: "https://safarischool.edu.gh/img/facts/image_11.webp", alt: "Classroom activity at Safari International School — Airport Residential", credit: "Photo: Safari International School (official site)", sourceUrl: "https://safarischool.edu.gh/" },
-      { url: "https://safarischool.edu.gh/img/facts/image_12.webp", alt: "Learning session at Safari International School — Airport Residential", credit: "Photo: Safari International School (official site)", sourceUrl: "https://safarischool.edu.gh/" },
+      { url: "https://safarischool.edu.gh/img/facts/image_10.webp", alt: "Students at Safari International School. Airport Residential campus", credit: "Photo: Safari International School (official site)", sourceUrl: "https://safarischool.edu.gh/" },
+      { url: "https://safarischool.edu.gh/img/facts/image_11.webp", alt: "Classroom activity at Safari International School. Airport Residential", credit: "Photo: Safari International School (official site)", sourceUrl: "https://safarischool.edu.gh/" },
+      { url: "https://safarischool.edu.gh/img/facts/image_12.webp", alt: "Learning session at Safari International School. Airport Residential", credit: "Photo: Safari International School (official site)", sourceUrl: "https://safarischool.edu.gh/" },
     ],
   },
 
@@ -734,9 +734,9 @@ export const LISTINGS: Listing[] = [
   {
     id: "safari-international-school-cantonments",
     slug: "safari-international-school-cantonments",
-    name: "Safari International School — Cantonments",
+    name: "Safari International School. Cantonments",
     shortDescription:
-      "Cantonments campus of Safari — IB World, Cambridge-certified early years and primary on Ndabaningi Sithole Road.",
+      "Cantonments campus of Safari. IB World, Cambridge-certified early years and primary on Ndabaningi Sithole Road.",
     description:
       "Safari International School's Cantonments campus is at F/28, 7 Ndabaningi Sithole Road. According to the school, it follows the British EYFS Framework for early years and Cambridge Primary alongside the IB Primary Years Programme. The wider Safari group states class ratios of 1:3 to 1:8, mandatory French from age 3, and additional Arabic, Russian and Twi. AI, coding and robotics are described as embedded from primary.",
     listingTypes: ["preschool", "kindergarten", "primary", "stem"],
@@ -761,9 +761,9 @@ export const LISTINGS: Listing[] = [
     updatedAt: today,
     imageQuery: "international school Cantonments Accra",
     images: [
-      { url: "https://safarischool.edu.gh/img/facts/image_14.webp", alt: "Students at Safari International School — Cantonments campus", credit: "Photo: Safari International School (official site)", sourceUrl: "https://safarischool.edu.gh/" },
-      { url: "https://safarischool.edu.gh/img/facts/image_15.webp", alt: "Classroom activity at Safari International School — Cantonments", credit: "Photo: Safari International School (official site)", sourceUrl: "https://safarischool.edu.gh/" },
-      { url: "https://safarischool.edu.gh/img/facts/image16.webp", alt: "Learning session at Safari International School — Cantonments", credit: "Photo: Safari International School (official site)", sourceUrl: "https://safarischool.edu.gh/" },
+      { url: "https://safarischool.edu.gh/img/facts/image_14.webp", alt: "Students at Safari International School. Cantonments campus", credit: "Photo: Safari International School (official site)", sourceUrl: "https://safarischool.edu.gh/" },
+      { url: "https://safarischool.edu.gh/img/facts/image_15.webp", alt: "Classroom activity at Safari International School. Cantonments", credit: "Photo: Safari International School (official site)", sourceUrl: "https://safarischool.edu.gh/" },
+      { url: "https://safarischool.edu.gh/img/facts/image16.webp", alt: "Learning session at Safari International School. Cantonments", credit: "Photo: Safari International School (official site)", sourceUrl: "https://safarischool.edu.gh/" },
     ],
   },
 
@@ -771,9 +771,9 @@ export const LISTINGS: Listing[] = [
   {
     id: "safari-international-school-tema",
     slug: "safari-international-school-tema",
-    name: "Safari International School — Tema",
+    name: "Safari International School. Tema",
     shortDescription:
-      "Tema campus of Safari — IB World and Cambridge-certified preschool and primary on Armattoe Street, Community 6.",
+      "Tema campus of Safari. IB World and Cambridge-certified preschool and primary on Armattoe Street, Community 6.",
     description:
       "Safari International School's Tema campus is on Armattoe Street, Community 6. According to the school, it follows the British EYFS Framework in early years, Cambridge Primary and the IB Primary Years Programme. Safari's site describes small-group learning, mandatory French from age 3 and additional Arabic, Russian and Twi options; AI, coding and robotics are described as integrated.",
     listingTypes: ["preschool", "kindergarten", "primary", "stem"],
@@ -798,9 +798,9 @@ export const LISTINGS: Listing[] = [
     updatedAt: today,
     imageQuery: "international school Tema Community 6",
     images: [
-      { url: "https://safarischool.edu.gh/img/facts/image17.webp", alt: "Students at Safari International School — Tema campus", credit: "Photo: Safari International School (official site)", sourceUrl: "https://safarischool.edu.gh/" },
-      { url: "https://safarischool.edu.gh/img/facts/image18.webp", alt: "Classroom activity at Safari International School — Tema", credit: "Photo: Safari International School (official site)", sourceUrl: "https://safarischool.edu.gh/" },
-      { url: "https://safarischool.edu.gh/img/facts/image_2.webp", alt: "Learning session at Safari International School — Tema", credit: "Photo: Safari International School (official site)", sourceUrl: "https://safarischool.edu.gh/" },
+      { url: "https://safarischool.edu.gh/img/facts/image17.webp", alt: "Students at Safari International School. Tema campus", credit: "Photo: Safari International School (official site)", sourceUrl: "https://safarischool.edu.gh/" },
+      { url: "https://safarischool.edu.gh/img/facts/image18.webp", alt: "Classroom activity at Safari International School. Tema", credit: "Photo: Safari International School (official site)", sourceUrl: "https://safarischool.edu.gh/" },
+      { url: "https://safarischool.edu.gh/img/facts/image_2.webp", alt: "Learning session at Safari International School. Tema", credit: "Photo: Safari International School (official site)", sourceUrl: "https://safarischool.edu.gh/" },
     ],
   },
 
@@ -886,9 +886,9 @@ export const LISTINGS: Listing[] = [
     slug: "the-roman-ridge-school",
     name: "The Roman Ridge School",
     shortDescription:
-      "British preparatory and independent school on Onyasia Crescent, Roman Ridge — Reception through A-Level.",
+      "British preparatory and independent school on Onyasia Crescent, Roman Ridge. Reception through A-Level.",
     description:
-      "The Roman Ridge School (TRRS) is at No. 14 Onyasia Crescent, Roman Ridge — the residential area adjoining Airport Residential. According to the school, it follows the English National Curriculum and English Preparatory Schools Curriculum from Reception through Junior and Senior School, with IGCSE, GCE A-Level and AS-Level provided by Cambridge Assessment International Education. The school is endorsed by the Independent Schools Inspectorate (ISI) and states supervision hours from 8:00 AM to 5:00 PM. Extra-curriculars listed include coding and robotics, chess, football, basketball, music, drama, Model UN and debate.",
+      "The Roman Ridge School (TRRS) is at No. 14 Onyasia Crescent, Roman Ridge. the residential area adjoining Airport Residential. According to the school, it follows the English National Curriculum and English Preparatory Schools Curriculum from Reception through Junior and Senior School, with IGCSE, GCE A-Level and AS-Level provided by Cambridge Assessment International Education. The school is endorsed by the Independent Schools Inspectorate (ISI) and states supervision hours from 8:00 AM to 5:00 PM. Extra-curriculars listed include coding and robotics, chess, football, basketball, music, drama, Model UN and debate.",
     listingTypes: ["kindergarten", "primary", "stem"],
     ageMin: 48,
     ageMax: 216,
@@ -1146,7 +1146,7 @@ export const LISTINGS: Listing[] = [
     slug: "ridge-church-school",
     name: "Ridge Church School",
     shortDescription:
-      "Founded 1957 — parochial preparatory day school in Ridge/Osu for ages 3–16, GES and Cambridge Lower Secondary.",
+      "Founded 1957. parochial preparatory day school in Ridge/Osu for ages 3–16, GES and Cambridge Lower Secondary.",
     description:
       "Ridge Church School is at Gamel Abdul Nasser Avenue and Guinea Bissau Road, Ridge (P.O. Box GP 2316, Accra). According to the school, it is an independent, parochial co-educational preparatory day school founded by the Accra Ridge Church in 1957. Programmes listed include Manet Preschool (ages 3–4), Kindergarten, Lower and Upper Primary (ages 5–11), Junior High School (ages 12–15) and Cambridge Lower Secondary (ages 14–16). Primary follows the Ghana Education Service curriculum with Cambridge International at the upper levels.",
     listingTypes: ["preschool", "kindergarten", "primary"],
@@ -1265,7 +1265,7 @@ export const LISTINGS: Listing[] = [
     slug: "tema-international-school",
     name: "Tema International School",
     shortDescription:
-      "IB Continuum school in Tema — Primary Years, Middle Years and Diploma Programme, with boarding at MYP/DP.",
+      "IB Continuum school in Tema. Primary Years, Middle Years and Diploma Programme, with boarding at MYP/DP.",
     description:
       "Tema International School is off the Tema–Akosombo Road (opposite Afariwaa Farms). According to the school, it delivers the IB Primary Years Programme at its Primary School Campus, and the IB Middle Years Programme and IB Diploma Programme at the Main Campus, alongside SAT, ACT and PSAT preparation. The school states it accepts students from age 4 to 18 and offers secondary boarding facilities at MYP and DP.",
     listingTypes: ["primary"],
@@ -1307,7 +1307,7 @@ export const LISTINGS: Listing[] = [
     shortDescription:
       "Montessori preschool with GES–Cambridge blend for Primary and JHS on three campuses in Lashibi, Tema West.",
     description:
-      "GAMS International School operates three campuses in Tema West — Preschool at 12 Coconut Street, Community 20 Lashibi; Primary at 1 Teak Lane, Community 18 Lashibi; and JHS at 1 Sunflower Street, Community 20 Lashibi. According to the school, the preschool (6 months – 5 years) uses the Montessori method, and Primary (6–11) and JHS (12–14) follow a blend of GES and Cambridge curricula.",
+      "GAMS International School operates three campuses in Tema West. Preschool at 12 Coconut Street, Community 20 Lashibi; Primary at 1 Teak Lane, Community 18 Lashibi; and JHS at 1 Sunflower Street, Community 20 Lashibi. According to the school, the preschool (6 months – 5 years) uses the Montessori method, and Primary (6–11) and JHS (12–14) follow a blend of GES and Cambridge curricula.",
     listingTypes: [
       "creche",
       "preschool",
@@ -1398,7 +1398,7 @@ export const LISTINGS: Listing[] = [
     shortDescription:
       "Christian international school off Weija–Kasoa road offering Cambridge and Ghanaian curricula from age 6 months.",
     description:
-      "Kent International School (KENT) is at Dukonah, near Weija — behind West Hills Mall and adjacent to Eden Heights Estate off the Malam–Kasoa highway. According to the school, it delivers the Cambridge and Ghanaian curricula (Cambridge Checkpoint, IGCSE, O/A Level and BECE) from age 6 months across Preschool, Primary, JHS and College. KENT reports it was established on 18 September 2018 and states it operates boarding, feeding and clubs alongside academics.",
+      "Kent International School (KENT) is at Dukonah, near Weija. behind West Hills Mall and adjacent to Eden Heights Estate off the Malam–Kasoa highway. According to the school, it delivers the Cambridge and Ghanaian curricula (Cambridge Checkpoint, IGCSE, O/A Level and BECE) from age 6 months across Preschool, Primary, JHS and College. KENT reports it was established on 18 September 2018 and states it operates boarding, feeding and clubs alongside academics.",
     listingTypes: ["creche", "preschool", "kindergarten", "primary"],
     ageMin: 6,
     ageMax: 216,
@@ -1479,7 +1479,7 @@ export const LISTINGS: Listing[] = [
     shortDescription:
       "Kids' water park and indoor playground in Airport Residential and East Legon, with school excursions and parties.",
     description:
-      "Splash & Play is a family attraction with two Accra sites — Splash Accra at 11 Volta Street, Airport Residential (water park with slides, spray features and a dry playground) and Play Accra at 2 Monrovia Road, East Legon (indoor playground). According to the operator, it hosts birthday parties for ages 1–12 (children under 3 must be supervised in water areas) and offers school excursions. Reported opening times are 1:00 PM–6:00 PM on weekdays and 10:00 AM–6:00 PM on Saturdays, Sundays, public holidays and during school holidays. Splash & Play is operated by Safari International School.",
+      "Splash & Play is a family attraction with two Accra sites. Splash Accra at 11 Volta Street, Airport Residential (water park with slides, spray features and a dry playground) and Play Accra at 2 Monrovia Road, East Legon (indoor playground). According to the operator, it hosts birthday parties for ages 1–12 (children under 3 must be supervised in water areas) and offers school excursions. Reported opening times are 1:00 PM–6:00 PM on weekdays and 10:00 AM–6:00 PM on Saturdays, Sundays, public holidays and during school holidays. Splash & Play is operated by Safari International School.",
     listingTypes: ["activity-centre"],
     ageMin: 12,
     ageMax: 144,
@@ -1498,7 +1498,7 @@ export const LISTINGS: Listing[] = [
     hours:
       "Weekdays 1:00 PM – 6:00 PM · Sat/Sun/Public holidays & school holidays 10:00 AM – 6:00 PM",
     feesHint:
-      "General entry (3 hours): GH₵130 per child + 1 free adult; extra adults GH₵50 — operator-reported",
+      "General entry (3 hours): GH₵130 per child + 1 free adult; extra adults GH₵50. operator-reported",
     admissions: "open",
     verification: "info-confirmed",
     claimed: false,

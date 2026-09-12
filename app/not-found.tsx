@@ -8,7 +8,7 @@ export default function NotFound() {
         We couldn't find that page.
       </h1>
       <p className="mx-auto mt-3 max-w-md text-[color:var(--color-ink-mute)]">
-        The page you were looking for doesn't exist — or a listing may have
+        The page you were looking for doesn't exist. or a listing may have
         moved. Try searching or browse popular starting points.
       </p>
       <div className="mt-6 flex flex-wrap justify-center gap-2">

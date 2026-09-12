@@ -16,7 +16,7 @@ export default function Contact() {
       <PageHeading
         eyebrow="Contact"
         title="Say hello."
-        subtitle="Parents, schools and partners — we'd love to hear from you."
+        subtitle="Parents, schools and partners. we'd love to hear from you."
       />
       <form className="card mx-auto max-w-xl p-6 md:p-8">
         <div className="grid gap-4">

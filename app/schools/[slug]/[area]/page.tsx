@@ -42,7 +42,7 @@ export async function generateMetadata({
   const count = listingsByLocation(l.slug).length;
   return {
     title: `Schools & learning centres in ${l.name}, ${r.name} (${count} listed)`,
-    description: `Discover ${count} schools and children's learning centres in ${l.name}, ${r.name}. Compare programmes, ages, curriculum and location — parent-first, honest profiles from EarlyDays.`,
+    description: `Discover ${count} schools and children's learning centres in ${l.name}, ${r.name}. Compare programmes, ages, curriculum and location. parent-first, honest profiles from EarlyDays.`,
     alternates: { canonical: `${SITE.url}/schools/${r.slug}/${l.slug}` },
     openGraph: {
       title: `Schools in ${l.name}, ${r.name}`,
@@ -69,7 +69,7 @@ export default async function AreaPage({
     (x) => x.region === r.slug && x.slug !== l.slug
   ).slice(0, 6);
 
-  // Programmes that actually have listings in this area — used for JSON-LD
+  // Programmes that actually have listings in this area. used for JSON-LD
   // and the internal-linking chip row (helps AI understand the area's mix).
   const programmesHere = CATEGORIES.filter((c) =>
     results.some((x) => x.listingTypes.includes(c.listingType))
@@ -130,20 +130,20 @@ export default async function AreaPage({
               Schools in {l.name}, {r.name}:
             </strong>{" "}
             {results.length === 0
-              ? `no listings yet — we're adding them as we source each one.`
+              ? `no listings yet. we're adding them as we source each one.`
               : `EarlyDays lists ${results.length} ${results.length === 1 ? "school or learning centre" : "schools and learning centres"} in ${l.name}`}
             {programmesHere.length > 0 &&
               `, spanning ${programmesHere
                 .slice(0, 4)
                 .map((p) => p.plural.toLowerCase())
                 .join(", ")}${programmesHere.length > 4 ? ", and more" : ""}`}
-            . Every profile is sourced from the school's own website —
+            . Every profile is sourced from the school's own website ,
             fees, curriculum and contact details appear only when the school
             has published them.
           </p>
         </div>
 
-        {/* Programme chip row — internal linking */}
+        {/* Programme chip row. internal linking */}
         {programmesHere.length > 0 && (
           <div className="mb-8 flex flex-wrap gap-2">
             {programmesHere.map((c) => (
@@ -275,7 +275,7 @@ function buildAreaFaq(
     },
     {
       q: `How do I contact a school in ${areaName}?`,
-      a: `Open any profile and use Request information, or reach out via the phone, WhatsApp or website links shown. Where a school hasn't published contact details, we say so — we never invent numbers.`,
+      a: `Open any profile and use Request information, or reach out via the phone, WhatsApp or website links shown. Where a school hasn't published contact details, we say so. we never invent numbers.`,
     },
     {
       q: `Do schools in ${areaName} offer daycare?`,
@@ -283,7 +283,7 @@ function buildAreaFaq(
     },
     {
       q: `How can I list my ${areaName} school?`,
-      a: `Free — head to /claim to submit or claim your school's profile. You get a dashboard to edit details and receive parent enquiries.`,
+      a: `Free. head to /claim to submit or claim your school's profile. You get a dashboard to edit details and receive parent enquiries.`,
     },
   ];
 }

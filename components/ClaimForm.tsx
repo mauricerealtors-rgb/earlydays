@@ -85,7 +85,7 @@ export function ClaimForm({
     return (
       <div className="mt-8 rounded-2xl border border-[color:var(--color-line)] bg-[color:var(--color-leaf-soft)] p-6 text-center">
         <p className="font-display text-xl text-[color:var(--color-navy)]">
-          Thanks — your claim for {schoolName} is in.
+          Thanks. Your claim for {schoolName} is in.
         </p>
         <p className="mt-2 text-sm text-[color:var(--color-ink-mute)]">
           Our team usually reviews within one working day. We'll email you when

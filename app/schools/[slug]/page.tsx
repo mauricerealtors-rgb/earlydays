@@ -50,7 +50,7 @@ export async function generateMetadata({
   if (listing) {
     const loc = findLocation(listing.neighbourhood);
     const cat = findCategoryByType(listing.listingTypes[0]);
-    const title = `${listing.name} — ${cat?.singular ?? "School"} in ${loc?.name ?? listing.region}`;
+    const title = `${listing.name} · ${cat?.singular ?? "School"} in ${loc?.name ?? listing.region}`;
     return {
       title,
       description: listing.shortDescription,
@@ -325,7 +325,7 @@ function renderListing(listing: import("@/lib/types").Listing) {
                   Do you run this school?
                 </span>{" "}
                 <span className="text-[color:var(--color-ink-mute)]">
-                  Claim your profile — free.
+                  Claim your profile. free.
                 </span>{" "}
                 <span aria-hidden className="text-[color:var(--color-coral)]">→</span>
               </Link>
@@ -386,7 +386,7 @@ function renderListing(listing: import("@/lib/types").Listing) {
                 label="Fees"
                 value={
                   listing.feesHint ?? (
-                    <NotPublished text="Fees not published — request from the school." />
+                    <NotPublished text="Fees not published. request from the school." />
                   )
                 }
               />

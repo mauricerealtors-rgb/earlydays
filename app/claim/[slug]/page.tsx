@@ -23,7 +23,7 @@ export async function generateMetadata({
   if (!listing) return {};
   return {
     title: `Claim ${listing.name} on EarlyDays`,
-    description: `Verify you run ${listing.name} and take control of your EarlyDays profile — free.`,
+    description: `Verify you run ${listing.name} and take control of your EarlyDays profile. Free to claim.`,
     alternates: { canonical: `${SITE.url}/claim/${listing.slug}` },
     robots: { index: false, follow: false },
   };
@@ -59,7 +59,7 @@ export default async function ClaimPage({
 
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
           <Perk title="Edit your profile" body="Update your description, hours, phone, WhatsApp, admissions status and website." />
-          <Perk title="Upload real photos" body="Show parents your own gallery — building, classrooms, activities." />
+          <Perk title="Upload real photos" body="Show parents your own gallery: building, classrooms, activities." />
           <Perk title="Reach real parents" body="Get enquiries direct from parents searching in your area." />
         </div>
 

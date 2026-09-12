@@ -47,7 +47,7 @@ export function CategoryCard({
       <Link
         href={to}
         className="group relative flex h-full flex-col justify-between overflow-hidden rounded-3xl p-4 min-h-[170px] md:p-5 md:min-h-[200px]"
-        aria-label={`${category.plural} — explore`}
+        aria-label={`${category.plural}. explore`}
       >
         <Image
           src={category.image!}
@@ -57,7 +57,7 @@ export function CategoryCard({
           className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
           unoptimized
         />
-        {/* Dark overlay for legibility — heavier at bottom where text sits */}
+        {/* Dark overlay for legibility. heavier at bottom where text sits */}
         <div
           aria-hidden
           className="absolute inset-0"

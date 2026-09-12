@@ -31,21 +31,21 @@ export const GUIDES: Guide[] = [
         ],
       },
       {
-        heading: "Community or neighbourhood preschools — roughly GH₵500–GH₵2,500 per term",
+        heading: "Community or neighbourhood preschools: roughly GH₵500–GH₵2,500 per term",
         paragraphs: [
           "At this level, parents may find smaller neighbourhood preschools and simpler early-years settings. The focus may be on the core school day rather than a large range of additional facilities or services.",
           "What you get can vary considerably from one school to another. Before choosing on price, ask about class size, staffing, the daily routine, meals, learning materials, outdoor space and how children are supervised. A lower term fee does not tell you enough about the day-to-day experience.",
         ],
       },
       {
-        heading: "Mid-market private preschools — roughly GH₵3,000–GH₵8,000 per term",
+        heading: "Mid-market private preschools: roughly GH₵3,000–GH₵8,000 per term",
         paragraphs: [
           "This range covers many established private preschools offering a more structured programme and a broader set of facilities or services. Depending on the school, parents may see more organised extracurricular activities, dedicated learning spaces, school transport options or additional resources.",
           "Do not assume that schools in the same price range offer the same package. One may include meals and activities while another may list them as separate charges. Compare the complete cost, not just the advertised tuition.",
         ],
       },
       {
-        heading: "International or premium preschools — roughly GH₵10,000–GH₵40,000+ per term",
+        heading: "International or premium preschools: roughly GH₵10,000–GH₵40,000+ per term",
         paragraphs: [
           "At the higher end, parents may be considering premium or international schools with more extensive facilities, specialised programmes, international curriculum approaches or a wider range of activities and services.",
           "The higher price still needs to be explained. Ask what your child actually receives for the additional cost. Look at the classroom environment, staff-to-child ratio, curriculum, meals, facilities, activities and the practical arrangements around the school day. A premium fee should be assessed on the overall offer rather than the school's reputation or appearance alone.",
@@ -55,15 +55,15 @@ export const GUIDES: Guide[] = [
         heading: "What do preschool fees in Accra usually include?",
         paragraphs: [
           "Ask each school to confirm what is included before comparing its fee with another school. A useful checklist:",
-          "**Tuition** — Ask whether the advertised term fee is the complete compulsory tuition amount or whether other mandatory charges sit alongside it.",
-          "**Meals** — Ask whether breakfast, lunch and snacks are included, and whether there is a separate meal charge.",
-          "**Learning materials** — Ask whether books, stationery and classroom materials are supplied or whether parents buy them separately.",
-          "**Activities and trips** — Ask whether clubs, excursions, sports, creative activities and special programmes are included.",
-          "**Transport** — Ask whether school transport is available, which areas are covered and what the termly charge is.",
-          "**Uniforms** — Ask whether uniforms are compulsory and whether they are purchased directly from the school or separately.",
-          "**Registration or admission** — Ask whether there is a one-off joining fee and exactly when it must be paid.",
-          "**Assessments or exams** — Ask whether assessment, examination or related charges are included in tuition.",
-          "**Events** — Ask whether parents contribute separately towards end-of-term events, performances, celebrations or graduation activities.",
+          "**Tuition**: Ask whether the advertised term fee is the complete compulsory tuition amount or whether other mandatory charges sit alongside it.",
+          "**Meals**: Ask whether breakfast, lunch and snacks are included, and whether there is a separate meal charge.",
+          "**Learning materials**: Ask whether books, stationery and classroom materials are supplied or whether parents buy them separately.",
+          "**Activities and trips**: Ask whether clubs, excursions, sports, creative activities and special programmes are included.",
+          "**Transport**: Ask whether school transport is available, which areas are covered and what the termly charge is.",
+          "**Uniforms**: Ask whether uniforms are compulsory and whether they are purchased directly from the school or separately.",
+          "**Registration or admission**: Ask whether there is a one-off joining fee and exactly when it must be paid.",
+          "**Assessments or exams**: Ask whether assessment, examination or related charges are included in tuition.",
+          "**Events**: Ask whether parents contribute separately towards end-of-term events, performances, celebrations or graduation activities.",
         ],
       },
       {
@@ -125,7 +125,7 @@ export const GUIDES: Guide[] = [
     body: [
       {
         paragraphs: [
-          "Choosing a creche in Accra can feel overwhelming. Every parent wants the same thing — a place where their child is safe, cared for, and gently stretched — but the difference between two centres on the same road can be enormous.",
+          "Choosing a creche in Accra can feel overwhelming. Every parent wants the same thing. a place where their child is safe, cared for, and gently stretched. but the difference between two centres on the same road can be enormous.",
           "This guide is a short, calm checklist you can take with you on visits. It won't tell you which creche is best. It will help you notice the things that matter and ask the questions that get straight answers.",
         ],
       },
@@ -136,12 +136,12 @@ export const GUIDES: Guide[] = [
         ],
       },
       {
-        heading: "On the visit — what to look for",
+        heading: "On the visit. what to look for",
         paragraphs: [
           "Watch the caregivers. Are they down at the children's eye level? Are they warm and attentive, or distracted?",
           "Notice the space. Is there room for both quiet play and movement? Are the toys age-appropriate? Is there safe outdoor space?",
           "Check the staff-to-child ratio. Small creches sometimes stretch thin at drop-off and pick-up times.",
-          "Ask about routines — meals, naps, nappy changes, health emergencies — and how they communicate with parents through the day.",
+          "Ask about routines. meals, naps, nappy changes, health emergencies. and how they communicate with parents through the day.",
         ],
       },
       {
@@ -157,14 +157,14 @@ export const GUIDES: Guide[] = [
       {
         heading: "After the visit",
         paragraphs: [
-          "Give yourself 24 hours before deciding. If the school's response to your enquiry was warm, prompt and honest — that's a strong signal in itself.",
+          "Give yourself 24 hours before deciding. If the school's response to your enquiry was warm, prompt and honest. that's a strong signal in itself.",
         ],
       },
     ],
   },
   {
     slug: "montessori-vs-eyfs",
-    title: "Montessori vs EYFS — what's the difference?",
+    title: "Montessori vs EYFS. what's the difference?",
     dek: "A plain-English comparison of two of the most common early years approaches you'll find in Ghana.",
     tag: "Curriculum",
     updatedAt: "2026-08-20",
@@ -185,14 +185,14 @@ export const GUIDES: Guide[] = [
       {
         heading: "EYFS in a nutshell",
         paragraphs: [
-          "EYFS — the Early Years Foundation Stage — is a framework used in the UK for children from birth to five, structured around seven areas of learning. Play is central, but there's more explicit adult-led planning than in Montessori.",
+          "EYFS. the Early Years Foundation Stage. is a framework used in the UK for children from birth to five, structured around seven areas of learning. Play is central, but there's more explicit adult-led planning than in Montessori.",
           "Look for: play-based learning tied to specific outcomes, regular assessment against 'early learning goals', a balance of adult-led and child-led activities.",
         ],
       },
       {
         heading: "Which is 'better'?",
         paragraphs: [
-          "Neither. The right answer is usually about the individual school — the leadership, the teachers, the space, the culture — more than the label. Many Ghanaian schools blend both approaches, so ask what they actually do in a typical week rather than which label they use.",
+          "Neither. The right answer is usually about the individual school. the leadership, the teachers, the space, the culture. more than the label. Many Ghanaian schools blend both approaches, so ask what they actually do in a typical week rather than which label they use.",
         ],
       },
     ],
@@ -200,7 +200,7 @@ export const GUIDES: Guide[] = [
   {
     slug: "questions-to-ask-before-enrolling",
     title: "Questions to ask before enrolling your child",
-    dek: "A pocket checklist for parents visiting schools — creche, preschool, or primary.",
+    dek: "A pocket checklist for parents visiting schools. creche, preschool, or primary.",
     tag: "Visits",
     updatedAt: "2026-08-14",
     readingMinutes: 4,
@@ -231,7 +231,7 @@ export const GUIDES: Guide[] = [
       {
         heading: "About learning",
         paragraphs: [
-          "What approach or curriculum do you follow — and what does that look like in practice?",
+          "What approach or curriculum do you follow. and what does that look like in practice?",
           "How do you know each child is progressing?",
           "How do you communicate with parents?",
         ],
@@ -248,7 +248,7 @@ export const GUIDES: Guide[] = [
   },
   {
     slug: "preschool-vs-kg-when-to-start",
-    title: "Preschool vs KG — when should my child start?",
+    title: "Preschool vs KG. when should my child start?",
     dek: "A short parent guide to the difference between preschool and KG in the Ghanaian context.",
     tag: "Starting out",
     updatedAt: "2026-08-08",
@@ -256,7 +256,7 @@ export const GUIDES: Guide[] = [
     body: [
       {
         paragraphs: [
-          "In Ghana, 'preschool' typically covers the years before KG (kindergarten). It's a broad term — some schools use nursery, some use preschool, some use both. KG usually refers to the year or two immediately before Class 1.",
+          "In Ghana, 'preschool' typically covers the years before KG (kindergarten). It's a broad term. some schools use nursery, some use preschool, some use both. KG usually refers to the year or two immediately before Class 1.",
         ],
       },
       {
@@ -268,7 +268,7 @@ export const GUIDES: Guide[] = [
       {
         heading: "What KG looks like",
         paragraphs: [
-          "KG introduces more structure. Children start to work with letters and numbers, follow a timetable, and prepare for the transition into primary school. It's still play-rich in good settings — but the day looks more like school.",
+          "KG introduces more structure. Children start to work with letters and numbers, follow a timetable, and prepare for the transition into primary school. It's still play-rich in good settings. but the day looks more like school.",
         ],
       },
       {

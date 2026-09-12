@@ -43,7 +43,7 @@ export function AgeBandCard({ band }: { band: AgeBand }) {
       href={band.href}
       className="group relative flex items-center gap-3 overflow-hidden rounded-3xl p-4 pr-3 transition-transform hover:-translate-y-0.5"
       style={{ background: s.bg }}
-      aria-label={`${band.label} — ages ${band.ages}`}
+      aria-label={`${band.label}. ages ${band.ages}`}
     >
       <span
         aria-hidden

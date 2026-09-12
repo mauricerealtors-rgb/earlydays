@@ -23,7 +23,7 @@ export default function HomePage() {
     <>
       <SearchHero />
 
-      {/* Who are you looking for? — age bands, big and bright, first thing */}
+      {/* Who are you looking for — age bands, big and bright, first thing */}
       <Section
         eyebrow="Who are you looking for?"
         title="Tell us about your child."
@@ -40,7 +40,7 @@ export default function HomePage() {
       <Section
         eyebrow="Something specific in mind?"
         title="Explore by programme."
-        subtitle="From Montessori to French classes to weekend coding — find the right kind of place."
+        subtitle="From Montessori to French classes to weekend coding."
         seeAllHref="/schools"
         seeAllLabel="See all programmes"
       >
@@ -55,7 +55,7 @@ export default function HomePage() {
       <Section
         eyebrow="Close to home"
         title="Where do you live in Accra?"
-        subtitle="Start with your neighbourhood — most parents want somewhere they can pick up in ten minutes."
+        subtitle="Most parents want somewhere they can pick up in ten minutes."
         seeAllHref="/schools/accra"
         seeAllLabel="See all Accra areas"
       >
@@ -83,9 +83,6 @@ export default function HomePage() {
 
       {/* Popular searches — direct authority pass to top combo pages */}
       <PopularSearches />
-
-      {/* How it works */}
-      <HowItWorks />
 
       {/* Guides */}
       <GuidesTeaser />
@@ -124,7 +121,7 @@ function Section({
             {title}
           </h2>
           {subtitle && (
-            <p className="mt-2 text-[13px] leading-snug text-[color:var(--color-ink-mute)] md:text-sm">
+            <p className="mt-2 text-[11px] leading-snug text-[color:var(--color-ink-mute)] md:text-[12px]">
               {subtitle}
             </p>
           )}
@@ -174,111 +171,6 @@ function PopularSearches() {
   );
 }
 
-function HowItWorks() {
-  const steps = [
-    {
-      title: "Search.",
-      body: "Filter by programme, area and age. Only what actually fits your family.",
-      accent: "sky",
-      gradient: "linear-gradient(160deg,#E4F1FF 0%,#C7E1FF 100%)",
-      icon: (
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden>
-          <circle cx="11" cy="11" r="6.5" stroke="currentColor" strokeWidth="2.2" />
-          <path d="m20 20-4-4" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
-        </svg>
-      ),
-    },
-    {
-      title: "Compare.",
-      body: "Line up your favourites — location, ages, curriculum, services — side by side.",
-      accent: "leaf",
-      gradient: "linear-gradient(160deg,#EAF6E5 0%,#C9EABD 100%)",
-      icon: (
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden>
-          <rect x="3" y="5" width="7" height="14" rx="2" stroke="currentColor" strokeWidth="2.2" />
-          <rect x="14" y="5" width="7" height="14" rx="2" stroke="currentColor" strokeWidth="2.2" />
-          <path d="M6.5 10h1M6.5 13.5h1M17.5 10h1M17.5 13.5h1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-        </svg>
-      ),
-    },
-    {
-      title: "Reach out.",
-      body: "Message, call or WhatsApp the schools you like. When it's a fit, you'll know.",
-      accent: "coral",
-      gradient: "linear-gradient(160deg,#FFE1D5 0%,#FFC5B0 100%)",
-      icon: (
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden>
-          <path
-            d="M5 5h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-7l-5 4v-4H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"
-            stroke="currentColor"
-            strokeWidth="2.2"
-            strokeLinejoin="round"
-          />
-          <path d="M8 10h8M8 13h5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-        </svg>
-      ),
-    },
-  ];
-  const accentInk: Record<string, string> = {
-    sky: "#1F7AD6",
-    leaf: "#2F7C25",
-    coral: "#B23A1A",
-  };
-  return (
-    <section className="container-page mt-16 md:mt-24">
-      <div className="mb-8 text-center md:mb-10">
-        <span className="chip chip-sky">How it works</span>
-        <h2 className="mt-3 font-display text-[28px] leading-tight tracking-tight md:text-[44px]">
-          <span className="rainbow-word-sky">Three steps.</span>{" "}
-          <span className="rainbow-word-navy">Then you visit.</span>
-        </h2>
-        <p className="mx-auto mt-3 max-w-2xl text-sm text-[color:var(--color-ink-mute)] md:text-base">
-          The best decision still happens in person — but EarlyDays gets you to
-          the right doorstep faster.
-        </p>
-      </div>
-      <ol className="relative grid gap-4 md:grid-cols-3 md:gap-6">
-        <span
-          aria-hidden
-          className="pointer-events-none absolute left-[8%] right-[8%] top-16 hidden h-0.5 rounded-full opacity-70 md:block"
-          style={{
-            background:
-              "linear-gradient(90deg,#66B7FF 0%,#7AC66B 50%,#FF7A59 100%)",
-          }}
-        />
-        {steps.map((s, i) => (
-          <li
-            key={s.title}
-            className="how-step group relative flex flex-col items-center rounded-3xl border border-[color:var(--color-line-2)] bg-white p-6 text-center shadow-[0_1px_2px_rgba(15,42,74,0.04),0_8px_24px_rgba(15,42,74,0.06)] transition-transform duration-300 hover:-translate-y-1 md:p-7"
-            style={{ animationDelay: `${i * 140}ms` }}
-          >
-            <span
-              aria-hidden
-              className="how-step-badge absolute -top-3 right-5 inline-flex h-7 min-w-7 items-center justify-center rounded-full px-2 text-[11px] font-black uppercase tracking-widest text-white shadow-md"
-              style={{ background: accentInk[s.accent] }}
-            >
-              0{i + 1}
-            </span>
-            <span
-              aria-hidden
-              className="how-step-icon relative flex h-16 w-16 items-center justify-center rounded-2xl md:h-20 md:w-20"
-              style={{ background: s.gradient, color: accentInk[s.accent] }}
-            >
-              {s.icon}
-            </span>
-            <h3 className="mt-4 font-display text-[22px] leading-tight md:text-[26px]">
-              {s.title}
-            </h3>
-            <p className="mt-2 max-w-[28ch] text-sm text-[color:var(--color-ink-mute)] md:text-[15px]">
-              {s.body}
-            </p>
-          </li>
-        ))}
-      </ol>
-    </section>
-  );
-}
-
 function GuidesTeaser() {
   const guides = [
     {
@@ -289,7 +181,7 @@ function GuidesTeaser() {
     },
     {
       slug: "montessori-vs-eyfs",
-      title: "Montessori vs EYFS — what's the difference?",
+      title: "Montessori vs EYFS: what's the difference?",
       dek: "Plain-English comparison, so you can ask better questions.",
       tag: "Curriculum",
     },
@@ -309,7 +201,7 @@ function GuidesTeaser() {
             Short guides. Real questions.
           </h2>
           <p className="mt-2 max-w-xl text-[color:var(--color-ink-mute)]">
-            The ones you'd ask your friend who's been through it — written for
+            The ones you'd ask your friend who's been through it. Written for
             Ghanaian parents.
           </p>
         </div>
@@ -343,45 +235,56 @@ function ForSchoolsCTA() {
   return (
     <section className="container-page mt-16 md:mt-24">
       <div
-        className="card relative overflow-hidden p-8 md:p-12"
+        className="card relative overflow-hidden p-8 md:p-14"
         style={{
           background:
-            "linear-gradient(120deg,#0F2A4A 0%,#1F3A5F 55%,#3F5A80 100%)",
+            "linear-gradient(120deg,#081A33 0%,#0F2A4A 40%,#1B355A 100%)",
           color: "white",
         }}
       >
+        {/* Decorative pops. pushed to the edges so they don't sit behind text */}
+        <span
+          aria-hidden
+          className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full opacity-60"
+          style={{ background: "radial-gradient(circle,#FFC845 0%,transparent 65%)" }}
+        />
+        <span
+          aria-hidden
+          className="pointer-events-none absolute -bottom-24 -left-20 h-80 w-80 rounded-full opacity-40"
+          style={{ background: "radial-gradient(circle,#EC1E7A 0%,transparent 65%)" }}
+        />
+        {/* Contrast underlay behind the copy so text stays legible on the bright gradient */}
         <div
           aria-hidden
-          className="pointer-events-none absolute -right-16 -top-16 h-60 w-60 rounded-full opacity-40"
-          style={{ background: "radial-gradient(circle,#FFC845 0,transparent 60%)" }}
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(90deg,rgba(8,26,51,0.75) 0%,rgba(8,26,51,0.55) 55%,rgba(8,26,51,0) 100%)",
+          }}
         />
+
         <div className="relative max-w-2xl">
           <span
-            className="chip"
-            style={{ background: "rgba(255,255,255,0.1)", color: "white", borderColor: "transparent" }}
+            className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-[color:var(--color-navy)]"
           >
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-[color:var(--color-pink-hot)]" />
             For schools
           </span>
-          <h2 className="mt-3 font-display text-3xl leading-tight md:text-4xl">
-            Run a school? Let parents find you.
+          <h2 className="mt-4 font-display text-3xl leading-tight text-white md:text-[44px]">
+            Run a school? <span className="text-[color:var(--color-sun)]">Let parents find you.</span>
           </h2>
-          <p className="mt-3 text-white/85">
+          <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-white md:text-[17px]">
             Claim your profile in a minute. Keep your ages, programmes and
-            contact details current — and reach the parents who are actively
+            contact details current. and reach the parents who are actively
             looking for a place like yours.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <Link href="/claim" className="btn btn-pink">
+            <Link href="/claim" className="btn btn-pink shadow-lg">
               Claim your profile
             </Link>
             <Link
               href="/for-schools"
-              className="btn"
-              style={{
-                background: "rgba(255,255,255,0.08)",
-                color: "white",
-                border: "1px solid rgba(255,255,255,0.15)",
-              }}
+              className="btn bg-white text-[color:var(--color-navy)] hover:bg-white/90"
             >
               Learn more
             </Link>
