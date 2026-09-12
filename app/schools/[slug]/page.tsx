@@ -343,57 +343,37 @@ function renderListing(listing: import("@/lib/types").Listing) {
                   .map((t) => findCategoryByType(t)?.singular ?? t)
                   .join(", ")}
               />
-              <FactRow label="Ages" value={listing.ageBlurb} />
-              <FactRow
-                label="Curriculum"
-                value={
-                  listing.curriculum.length
-                    ? listing.curriculum.join(", ")
-                    : <NotPublished />
-                }
-              />
-              <FactRow
-                label="Services"
-                value={
-                  listing.services.length ? (
+              {listing.ageBlurb && <FactRow label="Ages" value={listing.ageBlurb} />}
+              {listing.curriculum.length > 0 && (
+                <FactRow label="Curriculum" value={listing.curriculum.join(", ")} />
+              )}
+              {listing.services.length > 0 && (
+                <FactRow
+                  label="Services"
+                  value={
                     <div className="flex flex-wrap gap-1.5">
                       {listing.services.map((s) => (
                         <span key={s} className="chip">{s}</span>
                       ))}
                     </div>
-                  ) : (
-                    <NotPublished />
-                  )
-                }
-              />
-              <FactRow
-                label="Hours"
-                value={listing.hours ?? <NotPublished />}
-              />
-              <FactRow
-                label="Admissions"
-                value={
-                  listing.admissions === "open"
-                    ? "Open"
-                    : listing.admissions === "waitlist"
-                      ? "Waitlist"
-                      : listing.admissions === "closed"
-                        ? "Closed"
-                        : "Not published"
-                }
-              />
-              <FactRow
-                label="Fees"
-                value={
-                  listing.feesHint ?? (
-                    <NotPublished text="Fees not published. request from the school." />
-                  )
-                }
-              />
-              <FactRow
-                label="Address"
-                value={listing.address ?? <NotPublished />}
-              />
+                  }
+                />
+              )}
+              {listing.hours && <FactRow label="Hours" value={listing.hours} />}
+              {listing.admissions && listing.admissions !== "unknown" && (
+                <FactRow
+                  label="Admissions"
+                  value={
+                    listing.admissions === "open"
+                      ? "Open"
+                      : listing.admissions === "waitlist"
+                        ? "Waitlist"
+                        : "Closed"
+                  }
+                />
+              )}
+              {listing.feesHint && <FactRow label="Fees" value={listing.feesHint} />}
+              {listing.address && <FactRow label="Address" value={listing.address} />}
               <FactRow
                 label="Location"
                 value={`${loc?.name ?? listing.neighbourhood}, ${listing.region}`}

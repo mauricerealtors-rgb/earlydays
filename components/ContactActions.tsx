@@ -34,7 +34,7 @@ export function ContactActions({ listing }: { listing: Listing }) {
         </svg>
         Save
       </button>
-      {hasPhone ? (
+      {hasPhone && (
         <a
           href={`tel:${listing.phone}`}
           className="btn btn-ghost w-full"
@@ -42,17 +42,8 @@ export function ContactActions({ listing }: { listing: Listing }) {
         >
           Call {listing.phone}
         </a>
-      ) : (
-        <button
-          type="button"
-          disabled
-          className="btn btn-ghost w-full opacity-60"
-          title="This school hasn't published a phone number yet."
-        >
-          Phone not published
-        </button>
       )}
-      {hasWhatsapp ? (
+      {hasWhatsapp && (
         <a
           href={`https://wa.me/${listing.whatsapp?.replace(/[^\d]/g, "")}`}
           className="btn btn-ghost w-full"
@@ -60,7 +51,8 @@ export function ContactActions({ listing }: { listing: Listing }) {
         >
           WhatsApp
         </a>
-      ) : hasWebsite ? (
+      )}
+      {hasWebsite && (
         <a
           href={listing.website}
           rel="nofollow noopener"
@@ -70,15 +62,6 @@ export function ContactActions({ listing }: { listing: Listing }) {
         >
           Visit website
         </a>
-      ) : (
-        <button
-          type="button"
-          disabled
-          className="btn btn-ghost w-full opacity-60"
-          title="No public contact channel available yet."
-        >
-          Contact not published
-        </button>
       )}
     </div>
   );

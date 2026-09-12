@@ -102,24 +102,30 @@ export function ListingCard({ listing, compact = false }: { listing: Listing; co
           </p>
         )}
 
-        <dl className="mb-3 grid grid-cols-2 gap-x-3 gap-y-0.5 text-[11px]">
-          <div>
-            <dt className="text-[9px] font-bold uppercase tracking-widest text-[color:var(--color-ink-mute)]">
-              Ages
-            </dt>
-            <dd className="text-[12px] font-semibold text-[color:var(--color-navy)]">
-              {listing.ageBlurb}
-            </dd>
-          </div>
-          <div>
-            <dt className="text-[9px] font-bold uppercase tracking-widest text-[color:var(--color-ink-mute)]">
-              Approach
-            </dt>
-            <dd className="text-[12px] font-semibold text-[color:var(--color-navy)]">
-              {listing.curriculum.length ? listing.curriculum.slice(0, 2).join(", ") : "Not published"}
-            </dd>
-          </div>
-        </dl>
+        {(listing.ageBlurb || listing.curriculum.length > 0) && (
+          <dl className="mb-3 grid grid-cols-2 gap-x-3 gap-y-0.5 text-[11px]">
+            {listing.ageBlurb && (
+              <div>
+                <dt className="text-[9px] font-bold uppercase tracking-widest text-[color:var(--color-ink-mute)]">
+                  Ages
+                </dt>
+                <dd className="text-[12px] font-semibold text-[color:var(--color-navy)]">
+                  {listing.ageBlurb}
+                </dd>
+              </div>
+            )}
+            {listing.curriculum.length > 0 && (
+              <div>
+                <dt className="text-[9px] font-bold uppercase tracking-widest text-[color:var(--color-ink-mute)]">
+                  Approach
+                </dt>
+                <dd className="text-[12px] font-semibold text-[color:var(--color-navy)]">
+                  {listing.curriculum.slice(0, 2).join(", ")}
+                </dd>
+              </div>
+            )}
+          </dl>
+        )}
 
         <div className="mb-4 flex flex-wrap gap-1">
           {listing.listingTypes.slice(0, 3).map((t) => {
