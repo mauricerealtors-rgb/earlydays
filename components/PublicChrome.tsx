@@ -12,7 +12,9 @@ import { MobileBottomNav } from "./MobileBottomNav";
 export function PublicChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const ownsChrome =
-    pathname?.startsWith("/admin") || pathname?.startsWith("/school");
+    pathname?.startsWith("/admin") ||
+    pathname?.startsWith("/school") ||
+    pathname?.startsWith("/for-schools/preview");
   if (ownsChrome) return <>{children}</>;
   return (
     <>
