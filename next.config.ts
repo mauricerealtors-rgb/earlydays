@@ -43,6 +43,8 @@ const config: NextConfig = {
       { protocol: "https", hostname: "alphabeta.edu.gh" },
       { protocol: "https", hostname: "kentinternationaledu.com" },
       { protocol: "https", hostname: "makersplacegh.com" },
+      // Cloudinary — school-uploaded photos from the dashboard.
+      { protocol: "https", hostname: "res.cloudinary.com" },
     ],
   },
 };

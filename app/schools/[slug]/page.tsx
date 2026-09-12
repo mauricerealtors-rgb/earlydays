@@ -22,6 +22,8 @@ import { LocationCard } from "@/components/LocationCard";
 import { PageHeading } from "@/components/PageHeading";
 import { PhotoGallery } from "@/components/PhotoGallery";
 import { JsonLd } from "@/components/JsonLd";
+import { TrackView } from "@/components/TrackView";
+import { EnquiryForm } from "@/components/EnquiryForm";
 import { educationalTypeFor, courseJsonLd } from "@/lib/schema";
 import { SITE } from "@/lib/site";
 
@@ -222,6 +224,8 @@ function renderListing(listing: ReturnType<typeof findListing> & object) {
           })),
         }}
       />
+
+      <TrackView slug={listing.slug} />
 
       <div className="container-page pt-8 md:pt-12">
         <Breadcrumbs
@@ -487,77 +491,8 @@ function renderListing(listing: ReturnType<typeof findListing> & object) {
           </section>
         </section>
 
-        <section id="enquire" className="mt-14">
-          <div
-            className="card overflow-hidden p-6 md:p-10"
-            style={{
-              background:
-                "linear-gradient(120deg,#FFF3D1 0%,#FFE39B 55%,#FFC845 100%)",
-            }}
-          >
-            <div className="grid gap-6 md:grid-cols-[1fr_1fr]">
-              <div>
-                <span className="chip">Ask the school</span>
-                <h2 className="mt-2 font-display text-2xl md:text-3xl">
-                  Request information from {listing.name}
-                </h2>
-                <p className="mt-2 max-w-md text-sm text-[color:var(--color-navy-2)]/90">
-                  Send a short enquiry. We'll deliver it and — when the school
-                  responds — connect you directly.
-                </p>
-              </div>
-              <form className="grid gap-3">
-                <label className="grid gap-1 text-sm font-semibold">
-                  Your name
-                  <input
-                    name="name"
-                    required
-                    className="rounded-xl border border-[color:var(--color-line)] bg-white/90 px-3 py-2.5 text-sm"
-                  />
-                </label>
-                <div className="grid grid-cols-2 gap-3">
-                  <label className="grid gap-1 text-sm font-semibold">
-                    Child's age
-                    <input
-                      name="childAge"
-                      placeholder="e.g. 3"
-                      className="rounded-xl border border-[color:var(--color-line)] bg-white/90 px-3 py-2.5 text-sm"
-                    />
-                  </label>
-                  <label className="grid gap-1 text-sm font-semibold">
-                    Preferred start
-                    <input
-                      name="start"
-                      placeholder="e.g. Jan 2027"
-                      className="rounded-xl border border-[color:var(--color-line)] bg-white/90 px-3 py-2.5 text-sm"
-                    />
-                  </label>
-                </div>
-                <label className="grid gap-1 text-sm font-semibold">
-                  Phone or WhatsApp
-                  <input
-                    name="phone"
-                    required
-                    className="rounded-xl border border-[color:var(--color-line)] bg-white/90 px-3 py-2.5 text-sm"
-                  />
-                </label>
-                <label className="grid gap-1 text-sm font-semibold">
-                  Message (optional)
-                  <textarea
-                    name="message"
-                    rows={3}
-                    className="rounded-xl border border-[color:var(--color-line)] bg-white/90 px-3 py-2.5 text-sm"
-                    placeholder={`I'm interested in your ${primaryCat?.singular.toLowerCase() ?? "programme"} for my child.`}
-                  />
-                </label>
-                <button className="btn btn-primary">Send enquiry</button>
-                <p className="text-xs text-[color:var(--color-navy-2)]/80">
-                  By sending, you agree to our terms and to be contacted by the
-                  school regarding this enquiry.
-                </p>
-              </form>
-            </div>
-          </div>
+        <section className="mt-14">
+          <EnquiryForm slug={listing.slug} schoolName={listing.name} />
         </section>
 
         {related.length > 0 && (

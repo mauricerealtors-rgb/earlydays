@@ -130,13 +130,10 @@ export function EditListingForm({
 
   return (
     <>
-      <div className="mb-6">
-        <Link href="/school" className="text-sm text-[color:var(--color-ink-mute)] underline">
-          ← Dashboard
-        </Link>
-        <h1 className="mt-2 font-display text-[28px] leading-tight md:text-[36px]">
-          Edit {baseline.name}
-        </h1>
+      <div className="mb-4">
+        <h2 className="font-display text-xl text-[color:var(--color-navy)]">
+          Profile
+        </h2>
         <p className="text-sm text-[color:var(--color-ink-mute)]">
           Changes go live within a minute of saving.
         </p>

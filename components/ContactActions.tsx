@@ -1,4 +1,15 @@
+"use client";
+
 import type { Listing } from "@/lib/types";
+
+function track(slug: string, event: "call" | "whatsapp" | "website" | "email") {
+  fetch("/api/track", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ slug, event }),
+    keepalive: true,
+  }).catch(() => {});
+}
 
 export function ContactActions({ listing }: { listing: Listing }) {
   const hasPhone = Boolean(listing.phone);
@@ -7,10 +18,7 @@ export function ContactActions({ listing }: { listing: Listing }) {
 
   return (
     <div className="grid gap-2 sm:grid-cols-2">
-      <a
-        href="#enquire"
-        className="btn btn-sun w-full"
-      >
+      <a href="#enquire" className="btn btn-sun w-full">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
           <path d="M4 5h16v11H8l-4 4V5Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
         </svg>
@@ -27,7 +35,11 @@ export function ContactActions({ listing }: { listing: Listing }) {
         Save
       </button>
       {hasPhone ? (
-        <a href={`tel:${listing.phone}`} className="btn btn-ghost w-full">
+        <a
+          href={`tel:${listing.phone}`}
+          className="btn btn-ghost w-full"
+          onClick={() => track(listing.slug, "call")}
+        >
           Call {listing.phone}
         </a>
       ) : (
@@ -44,6 +56,7 @@ export function ContactActions({ listing }: { listing: Listing }) {
         <a
           href={`https://wa.me/${listing.whatsapp?.replace(/[^\d]/g, "")}`}
           className="btn btn-ghost w-full"
+          onClick={() => track(listing.slug, "whatsapp")}
         >
           WhatsApp
         </a>
@@ -53,6 +66,7 @@ export function ContactActions({ listing }: { listing: Listing }) {
           rel="nofollow noopener"
           target="_blank"
           className="btn btn-ghost w-full"
+          onClick={() => track(listing.slug, "website")}
         >
           Visit website
         </a>

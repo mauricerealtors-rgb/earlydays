@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { findListing } from "@/lib/query";
+import { DashboardChrome } from "@/components/school/DashboardChrome";
 import { EditListingForm } from "@/components/school/EditListingForm";
 
 export default async function EditListingPage({
@@ -12,7 +13,7 @@ export default async function EditListingPage({
   if (!listing) notFound();
 
   return (
-    <div className="mx-auto max-w-3xl pb-16">
+    <DashboardChrome slug={slug}>
       <EditListingForm
         slug={listing.slug}
         baseline={{
@@ -29,6 +30,6 @@ export default async function EditListingPage({
           admissions: listing.admissions,
         }}
       />
-    </div>
+    </DashboardChrome>
   );
 }
