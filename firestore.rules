@@ -70,7 +70,9 @@ service cloud.firestore {
     // Concierge requests — parent submits from /concierge without auth.
     // Reads restricted to admin (all writes bypass rules via Admin SDK).
     match /conciergeRequests/{requestId} {
-      allow read, update, delete: if isAdmin();
+      allow read: if isAdmin();
+      allow update: if isAdmin(); // status transitions + internal notes
+      allow delete: if isAdmin();
       allow create: if false; // only Admin SDK from /api/concierge
     }
 

@@ -12,6 +12,7 @@ const NAV = [
   { href: "/admin/claims", label: "Claims", icon: ClaimsIcon },
   { href: "/admin/schools", label: "Schools", icon: SchoolsIcon },
   { href: "/admin/enquiries", label: "Enquiries", icon: EnquiriesIcon },
+  { href: "/admin/concierge", label: "Concierge", icon: ConciergeIcon },
   { href: "/admin/analytics", label: "Analytics", icon: AnalyticsIcon },
   { href: "/admin/subscriptions", label: "Subscriptions", icon: BillingIcon },
   { href: "/admin/monetisation", label: "Monetisation", icon: MoneyIcon },
@@ -214,6 +215,14 @@ function BillingIcon({ active }: { active: boolean }) {
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className={active ? "text-black" : "text-white/60 group-hover:text-white"}>
       <rect x="3" y="6" width="18" height="13" rx="2" stroke="currentColor" strokeWidth="1.8" />
       <path d="M3 10h18M7 15h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
+  );
+}
+function ConciergeIcon({ active }: { active: boolean }) {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className={active ? "text-black" : "text-white/60 group-hover:text-white"}>
+      <path d="M4 20c1-4 4-6 8-6s7 2 8 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+      <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="1.8" />
     </svg>
   );
 }
