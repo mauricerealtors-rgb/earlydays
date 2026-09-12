@@ -67,6 +67,18 @@ service cloud.firestore {
       allow write: if false; // only Admin SDK from webhook
     }
 
+    // Concierge requests — parent submits from /concierge without auth.
+    // Reads restricted to admin (all writes bypass rules via Admin SDK).
+    match /conciergeRequests/{requestId} {
+      allow read, update, delete: if isAdmin();
+      allow create: if false; // only Admin SDK from /api/concierge
+    }
+
+    match /stats/concierge {
+      allow read: if isAdmin();
+      allow write: if false;
+    }
+
     // Enquiries (parent leads) — parent submits without auth; only owner reads.
     match /enquiries/{enquiryId} {
       allow create: if request.resource.data.keys().hasOnly(
