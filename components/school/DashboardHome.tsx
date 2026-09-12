@@ -69,10 +69,26 @@ export function DashboardHome() {
             {user.email}
           </p>
         </div>
-        <button onClick={() => signOut().then(() => router.push("/"))} className="btn btn-ghost text-sm">
-          Sign out
-        </button>
+        <div className="flex flex-wrap gap-2">
+          {user.email === "stackflown@gmail.com" && (
+            <Link href="/admin/claims" className="btn btn-pink text-sm">
+              Admin console →
+            </Link>
+          )}
+          <button onClick={() => signOut().then(() => router.push("/"))} className="btn btn-ghost text-sm">
+            Sign out
+          </button>
+        </div>
       </div>
+
+      {user.email === "stackflown@gmail.com" && (
+        <div className="mb-6 rounded-2xl border border-[color:var(--color-line)] bg-[color:var(--color-blossom-soft)] p-4">
+          <p className="text-sm text-[color:var(--color-navy)]">
+            <strong>You're signed in as an admin.</strong>{" "}
+            Go to the <Link href="/admin/claims" className="underline">admin console</Link> to approve pending school claims.
+          </p>
+        </div>
+      )}
 
       <section className="mb-10">
         <h2 className="mb-3 font-display text-xl">Your schools</h2>
