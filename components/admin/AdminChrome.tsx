@@ -14,6 +14,7 @@ const NAV = [
   { href: "/admin/enquiries", label: "Enquiries", icon: EnquiriesIcon },
   { href: "/admin/analytics", label: "Analytics", icon: AnalyticsIcon },
   { href: "/admin/subscriptions", label: "Subscriptions", icon: BillingIcon },
+  { href: "/admin/monetisation", label: "Monetisation", icon: MoneyIcon },
 ];
 
 export function AdminChrome({ children }: { children: ReactNode }) {
@@ -213,6 +214,14 @@ function BillingIcon({ active }: { active: boolean }) {
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className={active ? "text-black" : "text-white/60 group-hover:text-white"}>
       <rect x="3" y="6" width="18" height="13" rx="2" stroke="currentColor" strokeWidth="1.8" />
       <path d="M3 10h18M7 15h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
+  );
+}
+function MoneyIcon({ active }: { active: boolean }) {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className={active ? "text-black" : "text-white/60 group-hover:text-white"}>
+      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8" />
+      <path d="M15 9c-1-1.5-2-2-3-2s-3 1-3 2.5 2 2 3 2 3 .5 3 2S13 16 12 16s-2-.5-3-2M12 6v2M12 16v2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
