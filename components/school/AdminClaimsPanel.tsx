@@ -13,10 +13,7 @@ import { firestore } from "@/lib/firebase";
 import { useAuth } from "@/components/AuthProvider";
 import { findListing } from "@/lib/query";
 
-const ADMIN_EMAILS = new Set([
-  "support@sellquic.com",
-  "mauricerealtors@gmail.com",
-]);
+const ADMIN_EMAILS = new Set(["stackflown@gmail.com"]);
 
 interface Claim {
   id: string;

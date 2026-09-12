@@ -6,7 +6,7 @@ import { getApps } from "firebase-admin/app";
 export const runtime = "nodejs";
 
 const ADMIN_EMAILS = new Set(
-  (process.env.ADMIN_EMAILS ?? "support@sellquic.com,mauricerealtors@gmail.com")
+  (process.env.ADMIN_EMAILS ?? "stackflown@gmail.com")
     .split(",")
     .map((e) => e.trim().toLowerCase())
 );
