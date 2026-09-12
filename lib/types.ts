@@ -108,6 +108,7 @@ export interface Listing {
   lastVerifiedAt?: string;       // ISO date
   updatedAt: string;             // ISO date
   imageQuery?: string;           // seed alt hint (no fake images shipped)
+  logoUrl?: string;              // small square logo (transparent PNG ideal)
   images?: ListingImage[];       // only real, sourced images — never fabricated
   featured?: boolean;
 }

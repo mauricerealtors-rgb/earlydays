@@ -36,9 +36,10 @@ service cloud.firestore {
     // and been approved for. Approval writes an entry in listingOwners.
     match /listingOverrides/{slug} {
       allow read: if true; // public reads for the site merger
-      allow create, update: if request.auth != null &&
-                              exists(/databases/$(database)/documents/listingOwners/$(slug)) &&
-                              get(/databases/$(database)/documents/listingOwners/$(slug)).data.uid == request.auth.uid;
+      allow create, update: if isAdmin() ||
+                              (request.auth != null &&
+                               exists(/databases/$(database)/documents/listingOwners/$(slug)) &&
+                               get(/databases/$(database)/documents/listingOwners/$(slug)).data.uid == request.auth.uid);
       allow delete: if isAdmin();
     }
 
@@ -52,9 +53,10 @@ service cloud.firestore {
     // Photos subcollection — same ownership rules as overrides.
     match /listingOverrides/{slug}/photos/{photoId} {
       allow read: if true;
-      allow create, update, delete: if request.auth != null &&
-                                       exists(/databases/$(database)/documents/listingOwners/$(slug)) &&
-                                       get(/databases/$(database)/documents/listingOwners/$(slug)).data.uid == request.auth.uid;
+      allow create, update, delete: if isAdmin() ||
+                                       (request.auth != null &&
+                                        exists(/databases/$(database)/documents/listingOwners/$(slug)) &&
+                                        get(/databases/$(database)/documents/listingOwners/$(slug)).data.uid == request.auth.uid);
     }
 
     // Subscription state — read-only for the school user; only server can write.

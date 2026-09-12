@@ -34,6 +34,7 @@ export function mergeListing(
     if (override.feesHint) merged.feesHint = override.feesHint;
     if (override.admissions) merged.admissions = override.admissions;
     if (override.address) merged.address = override.address;
+    if (override.logoUrl) merged.logoUrl = override.logoUrl;
 
     if (override.photos && override.photos.length) {
       merged.images = override.photos

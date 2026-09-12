@@ -45,6 +45,7 @@ export interface ListingOverride {
   feesHint?: string;
   admissions?: "open" | "waitlist" | "closed" | "unknown";
   address?: string;
+  logoUrl?: string;                 // small square logo shown alongside the name
   photos?: ListingOverridePhoto[];
   updatedAt: string;
   updatedBy: string;                // uid
