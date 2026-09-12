@@ -3,7 +3,6 @@ import { SearchHero } from "@/components/SearchHero";
 import { CategoryCard } from "@/components/CategoryCard";
 import { LocationCard } from "@/components/LocationCard";
 import { ListingCard } from "@/components/ListingCard";
-import { AgeBandCard, AGE_BANDS } from "@/components/AgeBandCard";
 import {
   categoriesWithListings,
   categoryCounts,
@@ -27,19 +26,6 @@ export default async function HomePage() {
   return (
     <>
       <SearchHero />
-
-      {/* Who are you looking for — age bands, big and bright, first thing */}
-      <Section
-        eyebrow="Who are you looking for?"
-        title="Tell us about your child."
-        subtitle="Every age needs a different kind of place. Pick where your little one is right now."
-      >
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {AGE_BANDS.map((b) => (
-            <AgeBandCard key={b.slug} band={b} />
-          ))}
-        </div>
-      </Section>
 
       {/* Explore by programme */}
       <Section

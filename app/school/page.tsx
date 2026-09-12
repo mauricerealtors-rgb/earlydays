@@ -1,5 +1,10 @@
-import { DashboardHome } from "@/components/school/DashboardHome";
+import { DashboardChrome } from "@/components/school/DashboardChrome";
+import { SchoolLanding } from "@/components/school/SchoolLanding";
 
 export default function SchoolDashboardPage() {
-  return <DashboardHome />;
+  return (
+    <DashboardChrome>
+      <SchoolLanding />
+    </DashboardChrome>
+  );
 }

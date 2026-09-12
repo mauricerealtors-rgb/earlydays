@@ -1,7 +1,4 @@
-import { notFound } from "next/navigation";
-import { findListing } from "@/lib/query";
-import { DashboardChrome } from "@/components/school/DashboardChrome";
-import { PhotoManager } from "@/components/school/PhotoManager";
+import { redirect } from "next/navigation";
 
 export default async function PhotosPage({
   params,
@@ -9,11 +6,6 @@ export default async function PhotosPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const listing = findListing(slug);
-  if (!listing) notFound();
-  return (
-    <DashboardChrome slug={slug}>
-      <PhotoManager slug={slug} listingName={listing.name} />
-    </DashboardChrome>
-  );
+  // Photos are now managed inside the tabbed profile editor.
+  redirect(`/school/${slug}/edit`);
 }

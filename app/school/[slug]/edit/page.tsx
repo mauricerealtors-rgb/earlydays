@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { findListing } from "@/lib/query";
 import { DashboardChrome } from "@/components/school/DashboardChrome";
-import { EditListingForm } from "@/components/school/EditListingForm";
+import { SchoolProfileEditor } from "@/components/school/SchoolProfileEditor";
 
 export default async function EditListingPage({
   params,
@@ -14,7 +14,7 @@ export default async function EditListingPage({
 
   return (
     <DashboardChrome slug={slug}>
-      <EditListingForm
+      <SchoolProfileEditor
         slug={listing.slug}
         baseline={{
           name: listing.name,
@@ -28,6 +28,7 @@ export default async function EditListingPage({
           feesHint: listing.feesHint ?? "",
           address: listing.address ?? "",
           admissions: listing.admissions,
+          logoUrl: listing.logoUrl ?? "",
         }}
       />
     </DashboardChrome>

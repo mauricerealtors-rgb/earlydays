@@ -16,14 +16,9 @@ export function SearchHero() {
       <HeroDecor />
       <div className="container-page relative pt-10 pb-14 md:pt-20 md:pb-20">
         <div className="max-w-3xl">
-          <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--color-line)] bg-white/80 px-3 py-1.5 text-xs font-bold uppercase tracking-widest text-[color:var(--color-navy)]">
-            <span className="h-2 w-2 rounded-full bg-[color:var(--color-pink-hot)]" />
-            The EarlyDays experience
-          </span>
-
           <h1
             id="hero-title"
-            className="mt-5 font-display text-[42px] leading-[1.02] tracking-tight md:text-[68px]"
+            className="font-display text-[42px] leading-[1.02] tracking-tight md:text-[68px]"
           >
             <span className="rainbow-word-sky">Find your child</span>{" "}
             <span className="rainbow-word-coral">a place</span>{" "}

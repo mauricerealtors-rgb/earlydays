@@ -11,8 +11,9 @@ import { MobileBottomNav } from "./MobileBottomNav";
  */
 export function PublicChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const isAdmin = pathname?.startsWith("/admin");
-  if (isAdmin) return <>{children}</>;
+  const ownsChrome =
+    pathname?.startsWith("/admin") || pathname?.startsWith("/school");
+  if (ownsChrome) return <>{children}</>;
   return (
     <>
       <Header />

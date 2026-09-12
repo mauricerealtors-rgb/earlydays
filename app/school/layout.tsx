@@ -7,5 +7,8 @@ export const metadata: Metadata = {
 };
 
 export default function SchoolLayout({ children }: { children: React.ReactNode }) {
-  return <div className="container-page pt-8 md:pt-10">{children}</div>;
+  // Each /school/* page renders its own DashboardChrome (full-screen
+  // layout with sidebar). The parent PublicChrome already hides the
+  // public site's Header/Footer/MobileNav on any /school route.
+  return <>{children}</>;
 }
