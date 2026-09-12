@@ -47,6 +47,17 @@ export function PhotoManager({
   const [scriptReady, setScriptReady] = useState(false);
 
   useEffect(() => {
+    if (scriptReady) return;
+    const t = setInterval(() => {
+      if (typeof window !== "undefined" && window.cloudinary) {
+        setScriptReady(true);
+        clearInterval(t);
+      }
+    }, 200);
+    return () => clearInterval(t);
+  }, [scriptReady]);
+
+  useEffect(() => {
     (async () => {
       const snap = await getDoc(doc(firestore(), "listingOverrides", slug));
       const data = snap.data();
@@ -92,18 +103,19 @@ export function PhotoManager({
       setError("Cloudinary is not configured. Ask an admin.");
       return;
     }
+    const buffered: Photo[] = [];
+    let saveTimer: ReturnType<typeof setTimeout> | null = null;
     const widget = window.cloudinary.createUploadWidget(
       {
         cloudName: CLOUD_NAME,
         uploadPreset: UPLOAD_PRESET,
         folder: `earlydays/schools/${slug}`,
         multiple: true,
-        maxFiles: 8,
+        maxFiles: 8 - photos.length,
         maxFileSize: 5 * 1024 * 1024,
         clientAllowedFormats: ["jpg", "jpeg", "png", "webp"],
-        sources: ["local", "camera", "url"],
-        cropping: true,
-        croppingAspectRatio: 4 / 3,
+        sources: ["local", "camera", "url", "google_drive", "dropbox"],
+        cropping: false,
         showAdvancedOptions: false,
         theme: "minimal",
       },
@@ -113,16 +125,18 @@ export function PhotoManager({
           return;
         }
         if (result?.event === "success") {
-          const next: Photo[] = [
-            ...photos,
-            {
-              url: result.info.secure_url,
-              alt: `${listingName} — ${result.info.original_filename ?? "photo"}`,
-              sortOrder: photos.length,
-              uploadedAt: new Date().toISOString(),
-            },
-          ];
-          await persist(next);
+          buffered.push({
+            url: result.info.secure_url,
+            alt: `${listingName} — ${result.info.original_filename ?? "photo"}`,
+            sortOrder: photos.length + buffered.length,
+            uploadedAt: new Date().toISOString(),
+          });
+          if (saveTimer) clearTimeout(saveTimer);
+          saveTimer = setTimeout(async () => {
+            const next = [...photos, ...buffered].map((p, i) => ({ ...p, sortOrder: i }));
+            await persist(next);
+            buffered.length = 0;
+          }, 500);
         }
       }
     );
@@ -162,8 +176,9 @@ export function PhotoManager({
     <>
       <Script
         src="https://widget.cloudinary.com/v2.0/global/all.js"
-        strategy="lazyOnload"
+        strategy="afterInteractive"
         onLoad={() => setScriptReady(true)}
+        onReady={() => setScriptReady(true)}
       />
 
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
@@ -180,7 +195,11 @@ export function PhotoManager({
           disabled={photos.length >= 8 || !scriptReady}
           className="btn btn-pink text-sm"
         >
-          {scriptReady ? (photos.length >= 8 ? "Max reached" : "Upload photo") : "Loading…"}
+          {photos.length >= 8
+            ? "Max reached"
+            : scriptReady
+              ? "Upload photos (bulk)"
+              : "Preparing uploader…"}
         </button>
       </div>
 

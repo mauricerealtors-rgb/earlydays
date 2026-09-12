@@ -80,6 +80,18 @@ export function AdminSchoolEditor({
   const [error, setError] = useState<string | null>(null);
   const [scriptReady, setScriptReady] = useState(false);
 
+  // Poll fallback in case Script onLoad/onReady doesn't fire (e.g. cache hit).
+  useEffect(() => {
+    if (scriptReady) return;
+    const t = setInterval(() => {
+      if (typeof window !== "undefined" && window.cloudinary) {
+        setScriptReady(true);
+        clearInterval(t);
+      }
+    }, 200);
+    return () => clearInterval(t);
+  }, [scriptReady]);
+
   useEffect(() => {
     (async () => {
       const snap = await getDoc(doc(firestore(), "listingOverrides", slug));
@@ -161,34 +173,46 @@ export function AdminSchoolEditor({
       setError("Cloudinary not configured.");
       return;
     }
+    // Buffer uploads that arrive in one widget session so we don't race
+    // multiple persistPhotos() calls (which would clobber each other).
+    const buffered: Photo[] = [];
+    let saveTimer: ReturnType<typeof setTimeout> | null = null;
     window.cloudinary
       .createUploadWidget(
         {
           cloudName: CLOUD_NAME,
           uploadPreset: UPLOAD_PRESET,
           folder: `earlydays/schools/${slug}`,
-          multiple: true,
-          maxFiles: 10,
+          multiple: true,                 // enable multi-select
+          maxFiles: 10 - photos.length,   // dynamic remaining quota
           maxFileSize: 5 * 1024 * 1024,
           clientAllowedFormats: ["jpg", "jpeg", "png", "webp"],
-          sources: ["local", "url", "camera"],
-          cropping: true,
-          croppingAspectRatio: 4 / 3,
+          sources: ["local", "url", "camera", "google_drive", "dropbox"],
+          cropping: false,                // OFF so bulk selection works
+          showAdvancedOptions: false,
+          showSkipCropButton: false,
           theme: "minimal",
         },
         async (err, result) => {
           if (err) return;
           if (result?.event === "success") {
-            const next: Photo[] = [
-              ...photos,
-              {
-                url: result.info.secure_url,
-                alt: `${baseline.name} — ${result.info.original_filename ?? "photo"}`,
-                sortOrder: photos.length,
-                uploadedAt: new Date().toISOString(),
-              },
-            ];
-            await persistPhotos(next);
+            buffered.push({
+              url: result.info.secure_url,
+              alt: `${baseline.name} — ${result.info.original_filename ?? "photo"}`,
+              sortOrder: photos.length + buffered.length,
+              uploadedAt: new Date().toISOString(),
+            });
+            // Debounce persistence — save 500ms after the last upload
+            // in the batch fires, so all N images land in one write.
+            if (saveTimer) clearTimeout(saveTimer);
+            saveTimer = setTimeout(async () => {
+              const next = [...photos, ...buffered].map((p, i) => ({
+                ...p,
+                sortOrder: i,
+              }));
+              await persistPhotos(next);
+              buffered.length = 0;
+            }, 500);
           }
         }
       )
@@ -247,8 +271,9 @@ export function AdminSchoolEditor({
     <>
       <Script
         src="https://widget.cloudinary.com/v2.0/global/all.js"
-        strategy="lazyOnload"
+        strategy="afterInteractive"
         onLoad={() => setScriptReady(true)}
+        onReady={() => setScriptReady(true)}
       />
 
       {/* Tabs */}
@@ -354,14 +379,19 @@ export function AdminSchoolEditor({
         <>
           <div className="mb-4 flex items-center justify-between">
             <p className="text-sm text-white/60">
-              {photos.length}/10 uploaded · First photo is the profile hero.
+              {photos.length}/10 uploaded · First photo is the profile hero ·{" "}
+              Select multiple files at once
             </p>
             <button
               onClick={openPhotoWidget}
               disabled={!scriptReady || photos.length >= 10}
               className="rounded-lg bg-white px-4 py-2 text-sm font-semibold text-black hover:bg-white/90 disabled:opacity-50"
             >
-              {scriptReady ? (photos.length >= 10 ? "Max reached" : "Upload photo") : "Loading…"}
+              {photos.length >= 10
+                ? "Max reached"
+                : scriptReady
+                  ? "Upload photos (bulk)"
+                  : "Preparing uploader…"}
             </button>
           </div>
           {photos.length === 0 ? (
