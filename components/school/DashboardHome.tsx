@@ -71,7 +71,7 @@ export function DashboardHome() {
         </div>
         <div className="flex flex-wrap gap-2">
           {user.email === "stackflown@gmail.com" && (
-            <Link href="/admin/claims" className="btn btn-pink text-sm">
+            <Link href="/admin" className="btn btn-pink text-sm">
               Admin console →
             </Link>
           )}
@@ -85,7 +85,7 @@ export function DashboardHome() {
         <div className="mb-6 rounded-2xl border border-[color:var(--color-line)] bg-[color:var(--color-blossom-soft)] p-4">
           <p className="text-sm text-[color:var(--color-navy)]">
             <strong>You're signed in as an admin.</strong>{" "}
-            Go to the <Link href="/admin/claims" className="underline">admin console</Link> to approve pending school claims.
+            Go to the <Link href="/admin" className="underline">admin console</Link> to approve pending school claims.
           </p>
         </div>
       )}

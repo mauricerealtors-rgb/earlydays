@@ -40,7 +40,7 @@ export function AdminClaimsPanel() {
   const isAdmin = !!user?.email && ADMIN_EMAILS.has(user.email);
 
   useEffect(() => {
-    if (!loading && !user) router.replace("/school/login?next=/admin/claims");
+    if (!loading && !user) router.replace("/school/login?next=/admin");
   }, [loading, user, router]);
 
   useEffect(() => {
@@ -59,7 +59,7 @@ export function AdminClaimsPanel() {
     setBusy(claim.id);
     setError(null);
     try {
-      const res = await fetch("/api/admin/claims/decision", {
+      const res = await fetch("/api/admin/decision", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
