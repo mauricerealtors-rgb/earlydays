@@ -28,7 +28,8 @@ export function ClaimForm({
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
-  const [proofUrl, setProofUrl] = useState("");
+  const [schoolPhone, setSchoolPhone] = useState("");
+  const [schoolEmail, setSchoolEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [done, setDone] = useState(false);
@@ -65,7 +66,8 @@ export function ClaimForm({
         submittedRole: role,
         submittedEmail: email || user?.email || "",
         submittedPhone: phone || null,
-        proofUrl: proofUrl || null,
+        schoolPhone,
+        schoolEmail,
         status: "pending",
         createdAt: new Date().toISOString(),
       });
@@ -88,8 +90,9 @@ export function ClaimForm({
           Thanks. Your claim for {schoolName} is in.
         </p>
         <p className="mt-2 text-sm text-[color:var(--color-ink-mute)]">
-          Our team usually reviews within one working day. We'll email you when
-          you can start editing.
+          We will call the school on the number you provided within one
+          working day to verify. Once verified, you can start editing your
+          profile.
         </p>
       </div>
     );
@@ -184,15 +187,32 @@ export function ClaimForm({
       )}
 
       <Field
-        label="Link that proves your role (optional)"
-        hint="Your school's staff or contact page, LinkedIn, etc. Helps us verify faster."
+        label={`${schoolName}'s official phone number`}
+        required
+        hint="We will call this number within one working day to verify your claim."
       >
         <input
-          type="url"
-          value={proofUrl}
-          onChange={(e) => setProofUrl(e.target.value)}
+          type="tel"
+          required
+          value={schoolPhone}
+          onChange={(e) => setSchoolPhone(e.target.value)}
           className={inputCls}
-          placeholder="https://…"
+          placeholder="e.g. 0302 000 000"
+        />
+      </Field>
+
+      <Field
+        label={`${schoolName}'s official email address`}
+        required
+        hint="The school's main email, not a personal one. We may email a verification copy here."
+      >
+        <input
+          type="email"
+          required
+          value={schoolEmail}
+          onChange={(e) => setSchoolEmail(e.target.value)}
+          className={inputCls}
+          placeholder="info@yourschool.edu.gh"
         />
       </Field>
 

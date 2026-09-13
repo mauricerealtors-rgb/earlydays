@@ -23,7 +23,8 @@ interface Claim {
   submittedRole?: string;
   submittedEmail?: string;
   submittedPhone?: string;
-  proofUrl?: string;
+  schoolPhone?: string;
+  schoolEmail?: string;
   status: "pending" | "approved" | "rejected";
   createdAt?: string;
   reviewNotes?: string;
@@ -169,18 +170,16 @@ export function AdminClaimsPanel() {
                       {c.createdAt ? new Date(c.createdAt).toLocaleString("en-GB") : ""}
                     </p>
                     <p className="text-xs text-[color:var(--color-ink-mute)]">
-                      {c.submittedEmail}
+                      Personal: {c.submittedEmail}
                       {c.submittedPhone ? ` · ${c.submittedPhone}` : ""}
                     </p>
-                    {c.proofUrl && (
-                      <a
-                        href={c.proofUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs text-[color:var(--color-navy)] underline"
-                      >
-                        Proof link →
-                      </a>
+                    {(c.schoolPhone || c.schoolEmail) && (
+                      <p className="text-xs font-semibold text-[#2F7C25]">
+                        Call to verify:
+                        {c.schoolPhone ? ` ${c.schoolPhone}` : ""}
+                        {c.schoolPhone && c.schoolEmail ? " · " : ""}
+                        {c.schoolEmail ?? ""}
+                      </p>
                     )}
                     {c.reviewNotes && (
                       <p className="mt-1 text-xs text-[color:var(--color-coral)]">

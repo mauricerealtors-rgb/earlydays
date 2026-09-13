@@ -20,7 +20,8 @@ interface Claim {
   submittedRole?: string;
   submittedEmail?: string;
   submittedPhone?: string;
-  proofUrl?: string;
+  schoolPhone?: string;
+  schoolEmail?: string;
   status: "pending" | "approved" | "rejected";
   createdAt?: string;
   reviewNotes?: string;
@@ -181,18 +182,16 @@ export function AdminClaimsDark() {
                       {c.createdAt && ` · ${new Date(c.createdAt).toLocaleString("en-GB")}`}
                     </p>
                     <p className="text-xs text-white/50">
-                      {c.submittedEmail}
+                      Personal: {c.submittedEmail}
                       {c.submittedPhone ? ` · ${c.submittedPhone}` : ""}
                     </p>
-                    {c.proofUrl && (
-                      <a
-                        href={c.proofUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs text-sky-400 hover:underline"
-                      >
-                        Proof link →
-                      </a>
+                    {(c.schoolPhone || c.schoolEmail) && (
+                      <p className="text-xs text-emerald-400">
+                        School verify:
+                        {c.schoolPhone ? ` ${c.schoolPhone}` : ""}
+                        {c.schoolPhone && c.schoolEmail ? " · " : ""}
+                        {c.schoolEmail ?? ""}
+                      </p>
                     )}
                     {c.reviewNotes && (
                       <p className="mt-1 text-xs text-red-300">Notes: {c.reviewNotes}</p>
