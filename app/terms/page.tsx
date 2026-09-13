@@ -28,14 +28,7 @@ export default function Terms() {
             EarlyDays is an independent parent-facing directory of creches,
             preschools, kindergartens, primary schools and children's learning
             centres in Ghana. It is operated by the EarlyDays team and reached
-            at{" "}
-            <a
-              href={`mailto:${SITE.email}`}
-              className="text-[color:var(--color-sky-deep)] hover:underline"
-            >
-              {SITE.email}
-            </a>{" "}
-            or on Instagram{" "}
+            on Instagram{" "}
             <a
               href={SITE.instagramUrl}
               target="_blank"
@@ -133,12 +126,14 @@ export default function Terms() {
           </p>
           <p>
             If you are the owner of any content that appears on EarlyDays and
-            would like it removed or corrected, contact us at{" "}
+            would like it removed or corrected, DM us on Instagram{" "}
             <a
-              href={`mailto:${SITE.email}`}
+              href={SITE.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-[color:var(--color-sky-deep)] hover:underline"
             >
-              {SITE.email}
+              @{SITE.instagram}
             </a>{" "}
             and we will respond within one working day.
           </p>

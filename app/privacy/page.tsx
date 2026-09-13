@@ -101,12 +101,15 @@ export default function Privacy() {
             for 26 months.
           </p>
           <p>
-            You can ask us to delete your data at any time by emailing{" "}
+            You can ask us to delete your data at any time by DMing us on
+            Instagram{" "}
             <a
-              href={`mailto:${SITE.email}`}
+              href={SITE.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-[color:var(--color-sky-deep)] hover:underline"
             >
-              {SITE.email}
+              @{SITE.instagram}
             </a>
             . We will action the request within 30 days.
           </p>
@@ -131,12 +134,14 @@ export default function Privacy() {
           </p>
           <p>
             No online service is completely secure. If you notice something
-            that could be a security issue, contact{" "}
+            that could be a security issue, DM us on Instagram{" "}
             <a
-              href={`mailto:${SITE.email}`}
+              href={SITE.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-[color:var(--color-sky-deep)] hover:underline"
             >
-              {SITE.email}
+              @{SITE.instagram}
             </a>{" "}
             immediately.
           </p>
@@ -159,14 +164,7 @@ export default function Privacy() {
 
         <Section title="Contact">
           <p>
-            Questions about this policy?{" "}
-            <a
-              href={`mailto:${SITE.email}`}
-              className="text-[color:var(--color-sky-deep)] hover:underline"
-            >
-              {SITE.email}
-            </a>{" "}
-            or DM{" "}
+            Questions about this policy? DM us on Instagram{" "}
             <a
               href={SITE.instagramUrl}
               target="_blank"

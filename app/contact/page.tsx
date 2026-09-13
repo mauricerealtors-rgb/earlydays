@@ -22,23 +22,8 @@ export default function Contact() {
         subtitle="Parents, schools and partners. We would love to hear from you."
       />
 
-      <div className="mx-auto grid max-w-3xl gap-4 md:grid-cols-2">
-        <div className="card p-6">
-          <p className="text-[10px] font-bold uppercase tracking-widest text-[color:var(--color-ink-mute)]">
-            Email
-          </p>
-          <a
-            href={`mailto:${SITE.email}`}
-            className="mt-1 block font-display text-[20px] leading-tight text-[color:var(--color-navy)] hover:underline"
-          >
-            {SITE.email}
-          </a>
-          <p className="mt-2 text-[13px] text-[color:var(--color-ink-mute)]">
-            Best for schools, partners and press. Reply within one working day.
-          </p>
-        </div>
-
-        <div className="card p-6">
+      <div className="mx-auto max-w-md">
+        <div className="card p-6 text-center">
           <p className="text-[10px] font-bold uppercase tracking-widest text-[color:var(--color-ink-mute)]">
             Instagram
           </p>
@@ -46,13 +31,22 @@ export default function Contact() {
             href={SITE.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-1 block font-display text-[20px] leading-tight text-[color:var(--color-navy)] hover:underline"
+            className="mt-1 block font-display text-[22px] leading-tight text-[color:var(--color-navy)] hover:underline"
           >
             @{SITE.instagram}
           </a>
           <p className="mt-2 text-[13px] text-[color:var(--color-ink-mute)]">
-            Best for parents, quick questions and school tips. DM us anytime.
+            The fastest way to reach us. Parents, schools, partners and press.
+            DM us anytime and we reply within one working day.
           </p>
+          <a
+            href={SITE.instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-primary mt-4 text-sm"
+          >
+            Open Instagram
+          </a>
         </div>
       </div>
 
