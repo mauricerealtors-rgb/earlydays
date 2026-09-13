@@ -41,9 +41,15 @@ export async function generateMetadata({
   const r = findRegion(region);
   if (!c || !r) return {};
   return {
-    title: `${c.plural} in ${r.name}`,
-    description: `Discover ${c.plural.toLowerCase()} in ${r.name}, Ghana. ${c.blurb}`,
+    title: `${c.plural} in ${r.name} near you`,
+    description: `Find ${c.plural.toLowerCase()} near you in ${r.name}, Ghana. Browse verified schools by area, age group and programme. ${c.blurb}`,
     alternates: { canonical: `${SITE.url}/${c.slug}/${r.slug}` },
+    openGraph: {
+      title: `${c.plural} in ${r.name}`,
+      description: `${c.plural} near you in ${r.name}, Ghana. ${c.blurb}`,
+      url: `${SITE.url}/${c.slug}/${r.slug}`,
+      type: "website",
+    },
   };
 }
 

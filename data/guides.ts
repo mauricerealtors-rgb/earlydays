@@ -1378,6 +1378,76 @@ export const GUIDES: Guide[] = [
  },
  ],
  },
+ {
+ slug: "good-schools-near-me-accra",
+ title: "How to find a good school near you in Accra",
+ dek: "\"Good schools near me\" is one of the searches parents in Accra do most. Here's an honest checklist for judging a school on more than reputation.",
+ tag: "Starting out",
+ updatedAt: "2026-09-13",
+ readingMinutes: 5,
+ body: [
+ {
+ paragraphs: [
+ "\"Good schools near me\" is one of the most searched school phrases by parents in Accra. It sounds simple. It isn't.",
+ "\"Good\" is not a fixed thing. A school that is right for one child in East Legon Hills might be the wrong choice for a similar child two roads over. This guide is about how to judge a school on more than name, price or the photos on their Instagram.",
+ ],
+ },
+ {
+ heading: "Start with distance, honestly",
+ paragraphs: [
+ "The single biggest predictor of whether a school will work for your family is how easy the school run is on a normal weekday morning. Not the drive on a Saturday afternoon. The drive in Monday morning traffic.",
+ "Before you shortlist, decide the maximum realistic distance from home or work. For most families in Accra, 30 minutes each way is the point where school runs start eating into family life.",
+ "You can filter the [Accra school directory](/schools/accra) by area to keep your shortlist within a sensible commute. Pages like [preschools in East Legon](/preschools/accra/east-legon), [preschools in Airport Residential](/preschools/accra/airport) and [primary schools in Accra](/primary-schools/accra) are a better starting point than a generic search.",
+ ],
+ },
+ {
+ heading: "What actually makes a school \"good\"",
+ paragraphs: [
+ "Here is the honest short list. Not marketing claims. Not a rankings table. Just what most experienced Accra parents end up looking at once the initial excitement of a school tour wears off:",
+ "**Class size.** Ask the specific number in your child's age group, not the school-wide average. A school with a 15-child KG1 is a different experience from one with 32.",
+ "**Teacher stability.** How long have teachers in your child's likely class been at the school? High turnover is a signal, even in a school with lovely facilities.",
+ "**How the school handles a normal Monday morning.** Ask to visit at 8am, not 11am when everything is calm. A school that only invites you at set times is a school that's managing what you see.",
+ "**How they handle a child who is struggling.** \"What do you do when a child falls behind?\" A good school has a specific answer. A weak school has a general one.",
+ "**How they communicate with parents.** Weekly newsletter? WhatsApp group? Termly report? Nothing? This shapes your daily experience as a parent more than the curriculum.",
+ ],
+ },
+ {
+ heading: "Signals that a school is worth a closer look",
+ paragraphs: [
+ "**They will let you tour without a script.** You get to see real classrooms in progress, not just a walk-through of empty rooms after school.",
+ "**The head or a senior person meets you.** Not just an admissions officer running a sales pitch.",
+ "**They ask about your child.** A good school wants to know if your child is a fit, not just close the enrolment.",
+ "**Parents recommend them for the right reasons.** \"My daughter's teacher noticed she was quiet and reached out\" is stronger than \"they have a nice swimming pool.\"",
+ ],
+ },
+ {
+ heading: "Signals to be cautious about",
+ paragraphs: [
+ "**Only sees you by appointment on specific days.** Sometimes practical. Sometimes managed.",
+ "**Won't share fees until you visit.** In Accra this is common, but it also filters out families early. Insist on at least a range.",
+ "**Everything is \"the best\".** Best curriculum, best teachers, best facilities. A school with real self-awareness knows what it's strong at and what it's still improving.",
+ "**High teacher turnover.** Ask directly. It's the single biggest quiet indicator of trouble that most parents don't ask about.",
+ ],
+ },
+ {
+ heading: "One question that saves months",
+ paragraphs: [
+ "Before you commit to any school, ask the head or admissions lead:",
+ "\"If my child joined this school and it wasn't a fit six months in, how would you and I know, and what would we do about it?\"",
+ "You are looking for a specific, humble, adult answer. A good school will describe how they'd notice, how they'd talk to you, and what the options would be. A weak school will say \"we don't have that problem here\" or dodge.",
+ "It's a small question. It tells you an enormous amount.",
+ ],
+ },
+ {
+ heading: "Where to look next",
+ paragraphs: [
+ "For a shortlist based on your area and your child's age, start with the [Accra school directory](/schools/accra). Every listing on EarlyDays is a real school, contact details cross-checked from the school's own sources.",
+ "If you are moving back to Ghana from abroad, [EarlyDays Concierge](/concierge) can shortlist three schools around your child's age, area and budget, and arrange the visits for a single Accra trip.",
+ "A \"good school near you\" is usually not the school with the loudest marketing. It's the one that a year from now, still feels like a good fit for your child, your budget and your daily life.",
+ ],
+ },
+ ],
+ },
 ];
 
 export function findGuide(slug: string) {
