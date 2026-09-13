@@ -6,87 +6,94 @@ type Plan = "starter" | "professional" | "complete";
 
 const PLANS: Array<{
   key: Plan;
+  tier: string;
   name: string;
-  tag: string;
+  summary: string;
   price: string;
   priceNote: string;
   recurring: string;
-  summary: string;
   features: string[];
-  limits?: string[];
+  bestFor: string;
   highlighted?: boolean;
+  badge?: string;
 }> = [
   {
     key: "starter",
-    name: "Starter",
-    tag: "Informational",
+    tier: "Starter",
+    name: "Be Found",
+    summary: "A simple, professional online home for your school.",
     price: "GH₵3,500",
     priceNote: "one-time",
     recurring: "Domain and hosting included for 12 months",
-    summary:
-      "A clean, mobile-friendly home for schools that just need to look good online.",
     features: [
-      "Up to 5 pages",
-      "Works well on phone, tablet and laptop",
-      "WhatsApp button for parents",
-      "Google Maps location",
-      "Photo gallery (up to 10 photos)",
-      "Your own domain plus hosting for 12 months",
-      "Secure padlock in the browser",
-      "Listed on Google search",
-      "Linked EarlyDays profile",
+      "A clean website that makes a good first impression",
+      "Your school, classes and contact details in one place",
+      "Parents can find you on Google",
+      "One tap to contact you on WhatsApp",
+      "Your location clearly shown on Google Maps",
+      "Your best school photos displayed properly",
+      "Your own domain name",
+      "Works beautifully on phones",
+      "Linked to your EarlyDays profile",
+      "We handle the technical setup for you",
     ],
-    limits: [
-      "No online admission form",
-      "No programme detail pages",
-      "You cannot edit the pages yourself",
-    ],
+    bestFor:
+      "Best for schools that mainly need a professional online presence.",
   },
   {
     key: "professional",
-    name: "Professional",
-    tag: "Most popular",
+    tier: "Professional",
+    name: "Get Enquiries",
+    summary:
+      "A complete school website that helps parents understand your school and take the next step.",
     price: "GH₵8,500",
     priceNote: "setup",
     recurring: "Plus GH₵500 a month for hosting and support",
-    summary:
-      "A proper school website with an online admission form, programme pages and a photo gallery.",
     features: [
-      "Everything in Starter, plus:",
-      "As many pages as you need",
-      "Online admission form for parents",
-      "A page for each programme or class",
-      "Photo and video gallery",
-      "News and events page",
-      "Google Analytics to see visitors",
-      "Set up so parents find you on Google",
-      "Edit the pages yourself, no coding needed",
-      "Featured spot on EarlyDays",
-      "Fast email support",
+      "Everything in Be Found, plus:",
+      "A page for every programme or class",
+      "Clear admissions information",
+      "Parents can send an admission enquiry online",
+      "Proper photo and video galleries",
+      "Tell parents what makes your school different",
+      "News, events and school updates",
+      "Help parents find you on Google",
+      "See how many people visit your website",
+      "Update your content without calling a developer",
+      "Featured school profile on EarlyDays",
+      "Fast support when you need us",
     ],
+    bestFor:
+      "Best for schools that want their website to help bring in enquiries, not just display information.",
     highlighted: true,
+    badge: "Most popular",
   },
   {
     key: "complete",
-    name: "Complete",
-    tag: "Website plus Management",
+    tier: "Complete",
+    name: "Run Your School",
+    summary:
+      "Your website plus the tools your team needs to manage the school.",
     price: "From GH₵15,000",
     priceNote: "custom",
-    recurring: "Monthly fee agreed with your school. Book a call.",
-    summary:
-      "Everything in Professional, plus a system to run children, admissions, attendance, fees and parent messages.",
+    recurring: "Management system priced according to your school's needs",
     features: [
-      "Everything in Professional, plus:",
-      "Records for every child and parent",
-      "Admission from first enquiry to first day of school",
-      "Daily attendance (morning drop-off and pickup)",
-      "Fees and invoices (MoMo, card, bank, cash)",
-      "Automatic receipts sent to parents",
-      "Staff accounts with roles and permissions",
-      "Parent portal for fees, updates and receipts",
-      "SMS and WhatsApp messages to parents",
-      "Dashboard and simple reports for the head",
+      "Everything in Get Enquiries, plus:",
+      "Keep every child's information in one place",
+      "Track a child from first enquiry to enrolment",
+      "Know who is in school each day",
+      "Keep parent and guardian information organised",
+      "Create fees and invoices",
+      "Record payments and send receipts",
+      "See what has been paid and what is still outstanding",
+      "Give staff access based on their role",
+      "Give parents their own place to see fees, updates and receipts",
+      "Send important messages to parents",
+      "See what is happening across the school from one dashboard",
+      "Simple reports for the school owner or head",
     ],
+    bestFor:
+      "Best for schools ready to replace scattered paperwork, spreadsheets and WhatsApp with one system.",
   },
 ];
 
@@ -128,19 +135,18 @@ function PlanCard({
           : "border-[color:var(--color-line)] bg-white"
       }`}
     >
-      {highlighted ? (
+      {highlighted && plan.badge && (
         <span className="absolute -top-3 left-6 rounded-full bg-[color:var(--color-pink-hot)] px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
-          {plan.tag}
-        </span>
-      ) : (
-        <span className="mb-3 inline-flex w-fit items-center rounded-full bg-[color:var(--color-cream-deep)] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-[color:var(--color-navy)]">
-          {plan.tag}
+          {plan.badge}
         </span>
       )}
-      <h3 className="font-display text-[22px] leading-tight md:text-[26px]">
+      <span className="text-[10px] font-bold uppercase tracking-widest text-[color:var(--color-ink-mute)]">
+        {plan.tier}
+      </span>
+      <h3 className="mt-1 font-display text-[26px] leading-tight text-[color:var(--color-navy)] md:text-[30px]">
         {plan.name}
       </h3>
-      <p className="mt-2 text-[13px] leading-relaxed text-[color:var(--color-ink-mute)]">
+      <p className="mt-2 text-[14px] leading-relaxed text-[color:var(--color-navy-2)] md:text-[15px]">
         {plan.summary}
       </p>
       <div className="mt-5">
@@ -164,18 +170,9 @@ function PlanCard({
           </li>
         ))}
       </ul>
-      {plan.limits && plan.limits.length > 0 && (
-        <ul className="mt-4 space-y-1.5 border-t border-dashed border-[color:var(--color-line)] pt-4 text-[12px] text-[color:var(--color-ink-mute)]">
-          {plan.limits.map((l) => (
-            <li key={l} className="flex items-start gap-2">
-              <span aria-hidden className="mt-0.5">
-                ·
-              </span>
-              <span>{l}</span>
-            </li>
-          ))}
-        </ul>
-      )}
+      <p className="mt-5 border-t border-dashed border-[color:var(--color-line)] pt-4 text-[12px] italic text-[color:var(--color-ink-mute)]">
+        {plan.bestFor}
+      </p>
       <div className="mt-6 flex-1" />
       <button
         type="button"
@@ -258,7 +255,7 @@ function EnquireModal({
         <div className="flex items-center justify-between border-b border-[color:var(--color-line)] px-5 py-4">
           <div>
             <p className="text-[10px] font-bold uppercase tracking-widest text-[color:var(--color-ink-mute)]">
-              {planMeta.name} plan
+              {planMeta.tier} · {planMeta.name}
             </p>
             <p className="font-display text-[18px] leading-tight text-[color:var(--color-navy)]">
               Book a call

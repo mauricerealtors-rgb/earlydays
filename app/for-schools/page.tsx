@@ -102,13 +102,13 @@ export default function ForSchools() {
         className="container-page mt-14 scroll-mt-20 md:mt-20"
       >
         <div className="mx-auto max-w-3xl text-center">
-          <span className="chip chip-sun">Websites and management</span>
+          <span className="chip chip-sun">Three steps for schools</span>
           <h2 className="mt-3 font-display text-[26px] leading-tight md:text-[38px]">
-            Three plans. Pick where you are today.
+            Be found. Get enquiries. Run your school.
           </h2>
           <p className="mt-3 text-[14px] leading-relaxed text-[color:var(--color-ink-mute)] md:text-[15px]">
-            All plans include your EarlyDays profile, your own domain, hosting
-            and the secure padlock.
+            Three plans that grow with you. Pick where you are today. All
+            plans include your EarlyDays profile, your own domain and hosting.
           </p>
         </div>
         <ForSchoolsPricing />
