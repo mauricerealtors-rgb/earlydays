@@ -21,11 +21,16 @@ const items: { href: string; label: string; icon: React.ReactNode }[] = [
     ),
   },
   {
-    href: "/saved",
-    label: "Saved",
+    href: "/compare",
+    label: "Compare",
     icon: (
       <svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden>
-        <path d="M6 3h12v18l-6-4-6 4V3Z" stroke="currentColor" strokeWidth="1.6" />
+        <path
+          d="M4 6h7M4 12h7M4 18h7M13 6h7M13 12h7M13 18h7"
+          stroke="currentColor"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+        />
       </svg>
     ),
   },

@@ -10,6 +10,9 @@ export const SITE = {
   domain: "earlydays.cc",
   locale: "en_GH",
   region: "Ghana",
+  email: "mauricerealtors@gmail.com",
+  instagram: "earlydaysgh",
+  instagramUrl: "https://instagram.com/earlydaysgh",
   twitter: "@earlydays",
 };
 

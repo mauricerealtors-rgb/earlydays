@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CATEGORIES } from "@/data/categories";
 import { LOCATIONS } from "@/data/locations";
+import { SITE } from "@/lib/site";
 import { Logo } from "./Logo";
 
 export function Footer() {
@@ -26,6 +27,23 @@ export function Footer() {
               contact details are shown only when we can source them from the
               school itself.
             </p>
+            <div className="mt-5 flex items-center gap-3">
+              <a
+                href={SITE.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="EarlyDays on Instagram"
+                className="inline-flex items-center gap-2 rounded-full border border-[color:var(--color-line)] bg-white px-3 py-1.5 text-xs font-semibold text-[color:var(--color-navy)] hover:bg-[color:var(--color-cream-deep)]"
+              >
+                <InstagramGlyph />@{SITE.instagram}
+              </a>
+              <a
+                href={`mailto:${SITE.email}`}
+                className="text-xs font-semibold text-[color:var(--color-navy)] hover:underline"
+              >
+                {SITE.email}
+              </a>
+            </div>
           </div>
           <FooterCol title="Programmes">
             {CATEGORIES.slice(0, 6).map((c) => (
@@ -79,5 +97,24 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
         {children}
       </Link>
     </li>
+  );
+}
+
+function InstagramGlyph() {
+  return (
+    <svg
+      aria-hidden
+      viewBox="0 0 24 24"
+      className="h-4 w-4"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
+    </svg>
   );
 }

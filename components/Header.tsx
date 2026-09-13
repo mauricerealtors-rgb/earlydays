@@ -19,6 +19,7 @@ export function Header() {
           <NavLink href="/schools">Explore</NavLink>
           <NavLink href="/schools/accra">Areas</NavLink>
           <NavLink href="/preschools">Programmes</NavLink>
+          <NavLink href="/compare">Compare</NavLink>
           <NavLink href="/guides">Guides</NavLink>
           <NavLink href="/for-schools">For schools</NavLink>
         </nav>
