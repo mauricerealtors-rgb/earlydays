@@ -1,10 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Link from "next/link";
 
 type Plan = "starter" | "professional" | "complete";
-type Mode = "book" | "message";
 
 const PLANS: Array<{
   key: Plan;
@@ -17,7 +15,6 @@ const PLANS: Array<{
   features: string[];
   limits?: string[];
   highlighted?: boolean;
-  preview?: { label: string; href: string };
 }> = [
   {
     key: "starter",
@@ -68,10 +65,6 @@ const PLANS: Array<{
       "Fast email support",
     ],
     highlighted: true,
-    preview: {
-      label: "See a live preview →",
-      href: "/for-schools/preview/minime-montessori-school",
-    },
   },
   {
     key: "complete",
@@ -99,7 +92,6 @@ const PLANS: Array<{
 
 export function ForSchoolsPricing() {
   const [openPlan, setOpenPlan] = useState<Plan | null>(null);
-  const [mode, setMode] = useState<Mode>("book");
 
   return (
     <>
@@ -108,28 +100,13 @@ export function ForSchoolsPricing() {
           <PlanCard
             key={p.key}
             plan={p}
-            onBook={() => {
-              setOpenPlan(p.key);
-              setMode("book");
-            }}
-            onMessage={() => {
-              setOpenPlan(p.key);
-              setMode("message");
-            }}
+            onBook={() => setOpenPlan(p.key)}
           />
         ))}
       </div>
-      <p className="mx-auto mt-8 max-w-3xl text-center text-[12px] text-[color:var(--color-ink-mute)] md:text-[13px]">
-        Not sure which plan fits? Start with your free EarlyDays profile. We
-        can help you upgrade only when the time is right.
-      </p>
 
       {openPlan && (
-        <EnquireModal
-          plan={openPlan}
-          initialMode={mode}
-          onClose={() => setOpenPlan(null)}
-        />
+        <EnquireModal plan={openPlan} onClose={() => setOpenPlan(null)} />
       )}
     </>
   );
@@ -138,11 +115,9 @@ export function ForSchoolsPricing() {
 function PlanCard({
   plan,
   onBook,
-  onMessage,
 }: {
   plan: (typeof PLANS)[number];
   onBook: () => void;
-  onMessage: () => void;
 }) {
   const highlighted = plan.highlighted;
   return (
@@ -202,50 +177,28 @@ function PlanCard({
         </ul>
       )}
       <div className="mt-6 flex-1" />
-      <div className="flex flex-col gap-2">
-        <button
-          type="button"
-          onClick={onBook}
-          className={`btn text-sm ${highlighted ? "btn-pink" : "btn-primary"}`}
-        >
-          Book a call
-        </button>
-        <button
-          type="button"
-          onClick={onMessage}
-          className="btn btn-ghost text-sm"
-        >
-          Send a message
-        </button>
-      </div>
-      {plan.preview && (
-        <Link
-          href={plan.preview.href}
-          className="mt-3 text-center text-[12px] font-semibold text-[color:var(--color-sky-deep)] hover:underline"
-        >
-          {plan.preview.label}
-        </Link>
-      )}
+      <button
+        type="button"
+        onClick={onBook}
+        className={`btn text-sm ${highlighted ? "btn-pink" : "btn-primary"}`}
+      >
+        Book a call
+      </button>
     </div>
   );
 }
 
 function EnquireModal({
   plan,
-  initialMode,
   onClose,
 }: {
   plan: Plan;
-  initialMode: Mode;
   onClose: () => void;
 }) {
-  const [mode, setMode] = useState<Mode>(initialMode);
   const planMeta = PLANS.find((p) => p.key === plan)!;
   const [schoolName, setSchoolName] = useState("");
   const [contactName, setContactName] = useState("");
   const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
   const [date, setDate] = useState<string>("");
   const [time, setTime] = useState<string>("");
   const [submitting, setSubmitting] = useState(false);
@@ -262,12 +215,8 @@ function EnquireModal({
       setError("Please fill school name, your name and phone.");
       return;
     }
-    if (mode === "book" && (!date || !time)) {
-      setError("Please pick a date and a time for the call.");
-      return;
-    }
-    if (mode === "message" && !message.trim()) {
-      setError("Please add a short message.");
+    if (!date || !time) {
+      setError("Please pick a day and a time for the call.");
       return;
     }
     setSubmitting(true);
@@ -276,15 +225,13 @@ function EnquireModal({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          mode,
+          mode: "book",
           plan,
           schoolName,
           contactName,
           phone,
-          email: mode === "message" ? email : "",
-          message: mode === "message" ? message : "",
-          date: mode === "book" ? date : "",
-          time: mode === "book" ? time : "",
+          date,
+          time,
         }),
       });
       if (!res.ok) {
@@ -314,7 +261,7 @@ function EnquireModal({
               {planMeta.name} plan
             </p>
             <p className="font-display text-[18px] leading-tight text-[color:var(--color-navy)]">
-              {mode === "book" ? "Book a call" : "Send a message"}
+              Book a call
             </p>
           </div>
           <button
@@ -338,23 +285,6 @@ function EnquireModal({
 
         {!success ? (
           <div className="p-5">
-            <div className="mb-4 inline-flex rounded-full border border-[color:var(--color-line)] bg-[color:var(--color-cream)] p-1 text-[12px] font-semibold">
-              <button
-                type="button"
-                onClick={() => setMode("book")}
-                className={`rounded-full px-3 py-1 ${mode === "book" ? "bg-[color:var(--color-navy)] text-white" : "text-[color:var(--color-navy)]"}`}
-              >
-                Book a call
-              </button>
-              <button
-                type="button"
-                onClick={() => setMode("message")}
-                className={`rounded-full px-3 py-1 ${mode === "message" ? "bg-[color:var(--color-navy)] text-white" : "text-[color:var(--color-navy)]"}`}
-              >
-                Send a message
-              </button>
-            </div>
-
             <form onSubmit={submit} className="space-y-3">
               <Field
                 label="School name"
@@ -376,79 +306,53 @@ function EnquireModal({
                 placeholder="0244 000 000"
               />
 
-              {mode === "book" ? (
-                <>
-                  <div>
-                    <label className="block text-[11px] font-bold uppercase tracking-widest text-[color:var(--color-ink-mute)]">
-                      Pick a day
-                    </label>
-                    <div className="mt-2 grid grid-cols-2 gap-2">
-                      {dateOptions.map((opt) => (
-                        <button
-                          type="button"
-                          key={opt.value}
-                          onClick={() => setDate(opt.value)}
-                          className={`rounded-xl border px-3 py-2 text-left text-[13px] transition ${
-                            date === opt.value
-                              ? "border-[color:var(--color-navy)] bg-[color:var(--color-navy)] text-white"
-                              : "border-[color:var(--color-line)] bg-white text-[color:var(--color-navy)] hover:bg-[color:var(--color-cream-deep)]"
-                          }`}
-                        >
-                          <div className="font-semibold">{opt.weekday}</div>
-                          <div
-                            className={`text-[11px] ${date === opt.value ? "text-white/80" : "text-[color:var(--color-ink-mute)]"}`}
-                          >
-                            {opt.pretty}
-                          </div>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-[11px] font-bold uppercase tracking-widest text-[color:var(--color-ink-mute)]">
-                      Pick a time
-                    </label>
-                    <div className="mt-2 grid grid-cols-4 gap-2">
-                      {timeOptions.map((t) => (
-                        <button
-                          type="button"
-                          key={t.value}
-                          onClick={() => setTime(t.value)}
-                          className={`rounded-xl border px-2 py-2 text-[12px] transition ${
-                            time === t.value
-                              ? "border-[color:var(--color-navy)] bg-[color:var(--color-navy)] text-white"
-                              : "border-[color:var(--color-line)] bg-white text-[color:var(--color-navy)] hover:bg-[color:var(--color-cream-deep)]"
-                          }`}
-                        >
-                          {t.label}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <Field
-                    label="Email (optional)"
-                    value={email}
-                    onChange={setEmail}
-                    type="email"
-                    placeholder="you@school.edu.gh"
-                  />
-                  <div>
-                    <label className="block text-[11px] font-bold uppercase tracking-widest text-[color:var(--color-ink-mute)]">
-                      Your message
-                    </label>
-                    <textarea
-                      value={message}
-                      onChange={(e) => setMessage(e.target.value)}
-                      rows={4}
-                      className="mt-1 w-full rounded-xl border border-[color:var(--color-line)] bg-white px-3 py-2 text-[14px] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-sky-deep)]"
-                      placeholder="Tell us about your school and what you need."
-                    />
-                  </div>
-                </>
-              )}
+              <div>
+                <label className="block text-[11px] font-bold uppercase tracking-widest text-[color:var(--color-ink-mute)]">
+                  Pick a day
+                </label>
+                <div className="mt-2 grid grid-cols-2 gap-2">
+                  {dateOptions.map((opt) => (
+                    <button
+                      type="button"
+                      key={opt.value}
+                      onClick={() => setDate(opt.value)}
+                      className={`rounded-xl border px-3 py-2 text-left text-[13px] transition ${
+                        date === opt.value
+                          ? "border-[color:var(--color-navy)] bg-[color:var(--color-navy)] text-white"
+                          : "border-[color:var(--color-line)] bg-white text-[color:var(--color-navy)] hover:bg-[color:var(--color-cream-deep)]"
+                      }`}
+                    >
+                      <div className="font-semibold">{opt.weekday}</div>
+                      <div
+                        className={`text-[11px] ${date === opt.value ? "text-white/80" : "text-[color:var(--color-ink-mute)]"}`}
+                      >
+                        {opt.pretty}
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <label className="block text-[11px] font-bold uppercase tracking-widest text-[color:var(--color-ink-mute)]">
+                  Pick a time
+                </label>
+                <div className="mt-2 grid grid-cols-4 gap-2">
+                  {timeOptions.map((t) => (
+                    <button
+                      type="button"
+                      key={t.value}
+                      onClick={() => setTime(t.value)}
+                      className={`rounded-xl border px-2 py-2 text-[12px] transition ${
+                        time === t.value
+                          ? "border-[color:var(--color-navy)] bg-[color:var(--color-navy)] text-white"
+                          : "border-[color:var(--color-line)] bg-white text-[color:var(--color-navy)] hover:bg-[color:var(--color-cream-deep)]"
+                      }`}
+                    >
+                      {t.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
 
               {error && (
                 <p className="rounded-lg bg-[color:var(--color-coral-soft)] px-3 py-2 text-[12px] text-[color:var(--color-coral)]">
@@ -461,11 +365,7 @@ function EnquireModal({
                 disabled={submitting}
                 className="btn btn-primary w-full text-sm disabled:opacity-60"
               >
-                {submitting
-                  ? "Sending..."
-                  : mode === "book"
-                    ? "Confirm the call"
-                    : "Send message"}
+                {submitting ? "Sending..." : "Confirm the call"}
               </button>
             </form>
           </div>
@@ -485,12 +385,11 @@ function EnquireModal({
               </svg>
             </div>
             <h3 className="mt-3 font-display text-[20px] leading-tight">
-              {mode === "book" ? "Call confirmed" : "Message received"}
+              Call confirmed
             </h3>
             <p className="mt-2 text-[13px] text-[color:var(--color-ink-mute)]">
-              {mode === "book"
-                ? "We will call you at the time you picked. Save the number that reaches out."
-                : "We will get back on WhatsApp or email within one working day."}
+              We will call you at the time you picked. Save the number that
+              reaches out.
             </p>
             <button
               type="button"

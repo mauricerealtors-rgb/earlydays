@@ -108,7 +108,7 @@ export default function ForSchools() {
           </h2>
           <p className="mt-3 text-[14px] leading-relaxed text-[color:var(--color-ink-mute)] md:text-[15px]">
             All plans include your EarlyDays profile, your own domain, hosting
-            and the secure padlock. Prices in Ghana cedis, before VAT.
+            and the secure padlock.
           </p>
         </div>
         <ForSchoolsPricing />
