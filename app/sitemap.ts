@@ -15,5 +15,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE.url}/sitemaps/areas.xml`, lastModified: now },
     { url: `${SITE.url}/sitemaps/programme-areas.xml`, lastModified: now },
     { url: `${SITE.url}/sitemaps/guides.xml`, lastModified: now },
+    { url: `${SITE.url}/sitemaps/comparisons.xml`, lastModified: now },
   ];
 }
