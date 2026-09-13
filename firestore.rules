@@ -81,6 +81,19 @@ service cloud.firestore {
       allow write: if false;
     }
 
+    // Schools who enquired about our website / management plans on /for-schools.
+    match /schoolServiceEnquiries/{enquiryId} {
+      allow read: if isAdmin();
+      allow update: if isAdmin();
+      allow delete: if isAdmin();
+      allow create: if false; // only Admin SDK from /api/for-schools/enquire
+    }
+
+    match /stats/schoolServiceEnquiries {
+      allow read: if isAdmin();
+      allow write: if false;
+    }
+
     // Enquiries (parent leads) — parent submits without auth; only owner reads.
     match /enquiries/{enquiryId} {
       allow create: if request.resource.data.keys().hasOnly(

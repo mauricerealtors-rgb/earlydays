@@ -23,7 +23,7 @@ export async function generateMetadata({
   const listing = findListing(slug);
   if (!listing) return {};
   return {
-    title: `${listing.name} — website preview by EarlyDays`,
+    title: `${listing.name} website preview by EarlyDays`,
     description: `A Professional-tier website preview for ${listing.name}. This is what parents see when they land on your school's site.`,
     alternates: { canonical: `${SITE.url}/for-schools/preview/${listing.slug}` },
     robots: { index: false, follow: true },
@@ -61,7 +61,7 @@ export default async function PreviewPage({
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-[color:var(--color-sun)]" />
             <strong className="font-semibold">Website preview</strong>
             <span className="hidden opacity-70 md:inline">
-              — this is what a Professional plan would look like for{" "}
+              this is what a Professional plan would look like for{" "}
               {listing.name}.
             </span>
           </span>
