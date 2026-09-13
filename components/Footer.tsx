@@ -37,12 +37,6 @@ export function Footer() {
               >
                 <InstagramGlyph />@{SITE.instagram}
               </a>
-              <a
-                href={`mailto:${SITE.email}`}
-                className="text-xs font-semibold text-[color:var(--color-navy)] hover:underline"
-              >
-                {SITE.email}
-              </a>
             </div>
           </div>
           <FooterCol title="Programmes">

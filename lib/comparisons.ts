@@ -97,6 +97,67 @@ export function findPair(slug: string): ComparisonPair | undefined {
   return curatedPairs().find((p) => p.slug === slug);
 }
 
+/**
+ * Pick a verdict block that reflects the actual contrast axis
+ * between two schools, so the closing line doesn't read like the
+ * same paragraph on every page.
+ */
+export function verdictFor(a: Listing, b: Listing): {
+  headline: string;
+  body: string;
+} {
+  const sameArea = a.neighbourhood === b.neighbourhood;
+  const curriculumA = a.curriculum.join(", ") || "no set method";
+  const curriculumB = b.curriculum.join(", ") || "no set method";
+  const differentCurriculum =
+    a.curriculum.join(",") !== b.curriculum.join(",");
+  const differentAgeSpan =
+    (a.ageMin ?? 0) !== (b.ageMin ?? 0) ||
+    (a.ageMax ?? 0) !== (b.ageMax ?? 0);
+  const bothPublishFees = Boolean(a.feesHint && b.feesHint);
+  const onePublishesFees = Boolean(a.feesHint) !== Boolean(b.feesHint);
+
+  if (sameArea && differentCurriculum) {
+    return {
+      headline: "Same street, different approach.",
+      body: `Both are in the same catchment. ${a.name} follows ${curriculumA}. ${b.name} follows ${curriculumB}. The right one depends on how you want your child's day to look, not which name sounds better.`,
+    };
+  }
+
+  if (!sameArea && !differentCurriculum) {
+    return {
+      headline: "Same programme, different daily reality.",
+      body: `Curriculum is similar. Location is not. ${a.name} sits in ${prettyPlace(a.neighbourhood)}, ${b.name} in ${prettyPlace(b.neighbourhood)}. Traffic, drop-off routine and your daily commute usually decide this one more than the brochure does.`,
+    };
+  }
+
+  if (differentAgeSpan) {
+    return {
+      headline: "Different age spans. Different next step.",
+      body: `${a.name} covers ${a.ageBlurb}. ${b.name} covers ${b.ageBlurb}. Pick based on where your child is right now, and how far ahead the school takes you before the next transition.`,
+    };
+  }
+
+  if (onePublishesFees) {
+    return {
+      headline: "One school publishes fees. One does not.",
+      body: `${a.feesHint ? a.name : b.name} shares a fees hint publicly. The other does not. That is often the honest first signal of how easy the school is to work with as a parent.`,
+    };
+  }
+
+  if (bothPublishFees) {
+    return {
+      headline: "Two published prices. Two different offers.",
+      body: `Both are transparent about fees. What you actually get for the money is the harder question. Use the services table and a school visit to decide which is worth it for your family.`,
+    };
+  }
+
+  return {
+    headline: "Two solid options. Different chemistry.",
+    body: `The fact table can only take you so far. The rest is chemistry, how your child feels at the gate on morning 1. Visit both. You will know within 15 minutes which one your child settles into.`,
+  };
+}
+
 function tierRank(l: Listing): number {
   if (l.featured) return 3;
   if (l.verification === "verified") return 2;

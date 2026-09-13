@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CompareTable } from "@/components/CompareTable";
 import { ShareRow } from "@/components/ShareRow";
-import { curatedPairs, findPair } from "@/lib/comparisons";
+import { curatedPairs, findPair, verdictFor } from "@/lib/comparisons";
 import { findLocation } from "@/data/locations";
 import { SITE } from "@/lib/site";
 
@@ -108,12 +108,10 @@ export default async function ComparePage({
       {/* Verdict block */}
       <div className="mx-auto mt-10 max-w-2xl rounded-3xl border border-[color:var(--color-line)] bg-white p-6 text-center md:p-10">
         <h2 className="font-display text-[24px] leading-tight md:text-[32px]">
-          Neither is &ldquo;better&rdquo;. They&rsquo;re different.
+          {verdictFor(a, b).headline}
         </h2>
         <p className="mt-3 text-[14px] leading-relaxed text-[color:var(--color-ink-mute)] md:text-[15px]">
-          The right school depends on your child&rsquo;s age, your area, your
-          budget and how you want your family&rsquo;s week to run. Use the
-          facts above, not marketing claims, to decide which fits.
+          {verdictFor(a, b).body}
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-3">
           <Link
@@ -178,9 +176,7 @@ function PhotoTile({
             className="object-cover transition group-hover:scale-105"
           />
         ) : (
-          <div className="grid h-full place-items-center text-[color:var(--color-ink-mute)]">
-            <span className="text-sm">No photo yet</span>
-          </div>
+          <InitialTile name={name} accent={accent} />
         )}
       </div>
       <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent p-4 text-white">
@@ -194,6 +190,43 @@ function PhotoTile({
         </p>
       </div>
     </Link>
+  );
+}
+
+function InitialTile({
+  name,
+  accent,
+}: {
+  name: string;
+  accent: "sky" | "coral";
+}) {
+  const initials = name
+    .split(/\s+/)
+    .filter((w) => /^[A-Za-z]/.test(w))
+    .slice(0, 2)
+    .map((w) => w[0]!.toUpperCase())
+    .join("");
+  const bg =
+    accent === "sky"
+      ? "linear-gradient(135deg, #DDEEFF 0%, #66B7FF 70%, #1F7AD6 100%)"
+      : "linear-gradient(135deg, #FFDED2 0%, #FF9FC0 60%, #FF7A59 100%)";
+  return (
+    <div
+      className="grid h-full place-items-center"
+      style={{ background: bg }}
+    >
+      <span
+        className="font-display text-white/95"
+        style={{
+          fontSize: "5rem",
+          fontWeight: 700,
+          letterSpacing: "-2px",
+          textShadow: "0 4px 20px rgba(15,42,74,0.25)",
+        }}
+      >
+        {initials || "•"}
+      </span>
+    </div>
   );
 }
 
