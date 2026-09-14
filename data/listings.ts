@@ -19,6 +19,7 @@ import type { Listing } from "@/lib/types";
 
 const today = "2026-09-06";
 const today3 = "2026-09-12";
+const today4 = "2026-09-14";
 
 export const LISTINGS: Listing[] = [
   // ─── 1 ─────────────────────────────────────────────────────────────
@@ -2024,5 +2025,191 @@ export const LISTINGS: Listing[] = [
     lastVerifiedAt: today3,
     updatedAt: today3,
     imageQuery: "Montessori school Kasoa children",
+  },
+
+  // ─── 46 ── Lotus International School ──────────────────────────────
+  {
+    id: "lotus-international-school",
+    slug: "lotus-international-school",
+    name: "Lotus International School",
+    alternateNames: ["Lotus"],
+    shortDescription:
+      "Cambridge-track school in American House, East Legon covering creche through A-Level with a 6:1 ratio.",
+    description:
+      "Lotus International School sits on Nii Afutu Tsuru Street off Boundary Road in American House, East Legon. According to the school, it delivers a Cambridge-based programme from preschool through A-Level, covering Key Stage 1 and 2, Primary Checkpoint, IGCSE and A-Level. Reported class size is six students per teacher. Extras listed include an after-school programme (open to non-Lotus pupils), Saturday classes, a Superbrains summer camp in July and August, a Christmas Jamboree and an Easter revision programme. The school's motto is \"Building a Firm Foundation for the Future\".",
+    listingTypes: ["preschool", "kindergarten", "primary"],
+    ageMin: 12,
+    ageMax: 216,
+    ageBlurb: "1 – 18 years (Creche – A-Level)",
+    curriculum: ["Cambridge"],
+    services: [
+      "Full day",
+      "After school",
+      "Extracurriculars",
+      "Weekend programmes",
+      "Holiday programmes",
+    ],
+    address:
+      "Nii Afutu Tsuru Street, Off Boundary Road, American House, East Legon, Accra, Ghana",
+    neighbourhood: "east-legon",
+    city: "accra",
+    region: "Greater Accra",
+    country: "Ghana",
+    phone: "+233 244 283 687",
+    whatsapp: "+233 244 283 687",
+    email: "info@lotus.edu.gh",
+    website: "https://lotus.edu.gh/",
+    hours:
+      "Monday – Friday 7:00 AM – 5:00 PM · After-school 3:00 – 5:00 PM · Saturday 9:00 AM – 12:00 PM",
+    admissions: "open",
+    verification: "info-confirmed",
+    claimed: false,
+    sourceUrls: [
+      "https://lotus.edu.gh/",
+      "https://lotus.edu.gh/about/",
+      "https://lotus.edu.gh/contact/",
+      "https://www.instagram.com/lotusintlschool/",
+    ],
+    lastVerifiedAt: today4,
+    updatedAt: today4,
+    imageQuery: "Cambridge school pupils East Legon Accra",
+    images: [
+      {
+        url: "https://lotus.edu.gh/wp-content/uploads/2021/06/ed-slide-1-bg.jpg",
+        alt: "Lotus International School classroom",
+        credit: "Photo: Lotus International School (official site)",
+        sourceUrl: "https://lotus.edu.gh/",
+      },
+      {
+        url: "https://lotus.edu.gh/wp-content/uploads/2021/06/ed-slide-2-bg.jpg",
+        alt: "Lotus International School pupils",
+        credit: "Photo: Lotus International School (official site)",
+        sourceUrl: "https://lotus.edu.gh/",
+      },
+      {
+        url: "https://lotus.edu.gh/wp-content/uploads/2024/05/about_01.jpg",
+        alt: "Lotus International School campus",
+        credit: "Photo: Lotus International School (official site)",
+        sourceUrl: "https://lotus.edu.gh/",
+      },
+    ],
+    featured: true,
+  },
+
+  // ─── 47 ── Little Legends School ───────────────────────────────────
+  {
+    id: "little-legends-school",
+    slug: "little-legends-school",
+    name: "Little Legends School",
+    alternateNames: ["Little Legends"],
+    shortDescription:
+      "Creche through Pearson Edexcel secondary in East Legon Hills, with a 6am–6pm full-day option.",
+    description:
+      "Little Legends School is on Audu Street in East Legon Hills, Accra. According to the school, it serves children from 1 year through primary and continues into a Pearson Edexcel-aligned secondary programme, alongside monthly character-value instruction. Two attendance patterns are published: a full-day option running 6:00 AM to 6:00 PM and a half-day option running 7:30 AM to 3:30 PM, Monday to Friday. Admissions are described as competitive and follow a multi-step process (enquiry, interview, application).",
+    listingTypes: ["creche", "preschool", "kindergarten", "primary"],
+    ageMin: 12,
+    ageMax: 144,
+    ageBlurb: "1 – 12 years (creche – primary; secondary Pearson Edexcel)",
+    curriculum: ["British"],
+    services: [
+      "Daycare",
+      "Full day",
+      "Half day",
+      "After school",
+      "Extracurriculars",
+    ],
+    address: "Audu Street, East Legon Hills, Accra, Ghana",
+    neighbourhood: "east-legon-hills",
+    city: "accra",
+    region: "Greater Accra",
+    country: "Ghana",
+    phone: "+233 544 100 020",
+    whatsapp: "+233 544 100 020",
+    email: "info@littlelegends.edu.gh",
+    website: "https://littlelegends.edu.gh/",
+    hours:
+      "Full day Mon – Fri 6:00 AM – 6:00 PM · Half day Mon – Fri 7:30 AM – 3:30 PM",
+    admissions: "open",
+    verification: "info-confirmed",
+    claimed: false,
+    sourceUrls: [
+      "https://littlelegends.edu.gh/",
+      "https://littlelegends.edu.gh/about/",
+      "https://littlelegends.edu.gh/admissions/",
+      "https://littlelegends.edu.gh/contact/",
+    ],
+    lastVerifiedAt: today4,
+    updatedAt: today4,
+    imageQuery: "primary pupils Pearson Edexcel East Legon Hills",
+    images: [
+      {
+        url: "https://littlelegends.edu.gh/wp-content/uploads/2025/06/LHI-IMG-88-1024x732.jpg",
+        alt: "Little Legends School campus",
+        credit: "Photo: Little Legends School (official site)",
+        sourceUrl: "https://littlelegends.edu.gh/",
+      },
+    ],
+    featured: true,
+  },
+
+  // ─── 48 ── One Heart Africa Academy ────────────────────────────────
+  {
+    id: "one-heart-africa-academy",
+    slug: "one-heart-africa-academy",
+    name: "One Heart Africa Academy",
+    alternateNames: ["OHAA", "One Heart Academy"],
+    shortDescription:
+      "Co-ed Christian school on Suya Street, East Legon, delivering the Abeka curriculum from preschool through Grade 6.",
+    description:
+      "One Heart Africa Academy (OHAA) is on Suya Street, East Legon, GhanaPost GA-374-9381. According to the school, it is a co-educational Christian school founded by Mr. and Mrs. Choi (missionaries from the Presbyterian Church of South Korea) and delivers the American Abeka curriculum from preschool through Grade 6, with a Montessori approach in the preschool and kindergarten years. Facilities cited include an in-house hot kitchen (Continental, Ghanaian and Oriental menus) and an Elite Sports Program covering swimming and gymnastics. After-school clubs include piano, violin, taekwondo, robotics and golf. Fees are billed termly, in Ghana cedi or US dollar, by bank transfer, card or Mobile Money.",
+    listingTypes: ["preschool", "kindergarten", "primary", "montessori"],
+    ageMin: 24,
+    ageMax: 144,
+    ageBlurb: "2 – 12 years (preschool – Grade 6)",
+    curriculum: ["Montessori"],
+    services: ["Full day", "Meals", "After school", "Extracurriculars"],
+    address: "Suya Street, East Legon, Accra, Ghana (GA-374-9381)",
+    neighbourhood: "east-legon",
+    city: "accra",
+    region: "Greater Accra",
+    country: "Ghana",
+    phone: "+233 545 508 835",
+    phones: ["+233 545 508 835", "+233 20 284 0218"],
+    email: "admissions@oneheart.academy",
+    website: "https://oneheart.academy/",
+    admissions: "open",
+    verification: "info-confirmed",
+    claimed: false,
+    sourceUrls: [
+      "https://oneheart.academy/",
+      "https://oneheart.academy/about/",
+      "https://oneheart.academy/contact/",
+      "https://oneheart.academy/tuition-fees/",
+      "https://www.facebook.com/oneheartghana",
+    ],
+    lastVerifiedAt: today4,
+    updatedAt: today4,
+    imageQuery: "Christian school pupils East Legon Accra",
+    images: [
+      {
+        url: "https://oneheart.academy/wp-content/uploads/2022/04/middle-scroll-images-01-768x1024.jpg",
+        alt: "One Heart Academy pupils",
+        credit: "Photo: One Heart Africa Academy (official site)",
+        sourceUrl: "https://oneheart.academy/",
+      },
+      {
+        url: "https://oneheart.academy/wp-content/uploads/2022/05/home-page-background-scroll-08-1-scaled.jpg",
+        alt: "One Heart Academy campus",
+        credit: "Photo: One Heart Africa Academy (official site)",
+        sourceUrl: "https://oneheart.academy/",
+      },
+      {
+        url: "https://oneheart.academy/wp-content/uploads/2022/04/academics-page-05-768x576.jpg",
+        alt: "One Heart Academy academics",
+        credit: "Photo: One Heart Africa Academy (official site)",
+        sourceUrl: "https://oneheart.academy/",
+      },
+    ],
+    featured: true,
   },
 ];

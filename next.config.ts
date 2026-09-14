@@ -54,6 +54,13 @@ const config: NextConfig = {
       { protocol: "https", hostname: "www.healthymindschool.net" },
       { protocol: "https", hostname: "wonderworldinternationalschool.com" },
       { protocol: "https", hostname: "www.wonderworldinternationalschool.com" },
+      // East Legon rank-boost batch.
+      { protocol: "https", hostname: "lotus.edu.gh" },
+      { protocol: "https", hostname: "www.lotus.edu.gh" },
+      { protocol: "https", hostname: "littlelegends.edu.gh" },
+      { protocol: "https", hostname: "www.littlelegends.edu.gh" },
+      { protocol: "https", hostname: "oneheart.academy" },
+      { protocol: "https", hostname: "www.oneheart.academy" },
       // Cloudinary — school-uploaded photos from the dashboard.
       { protocol: "https", hostname: "res.cloudinary.com" },
     ],

@@ -21,6 +21,7 @@ import { itemListJsonLd, faqJsonLd } from "@/lib/schema";
 import { computeAreaStats, formatList, type AreaStats } from "@/lib/insights";
 import { fetchListingSideDataMany } from "@/lib/listing-overrides";
 import { mergeListing } from "@/lib/merge-listing";
+import { curatedPairs } from "@/lib/comparisons";
 import type { Listing } from "@/lib/types";
 
 export const dynamicParams = false;
@@ -213,6 +214,11 @@ export default async function CategoryAreaPage({
           </div>
         )}
 
+        {/* Compare shortcuts. deep-link into the /compare feature */}
+        {results.length > 1 && (
+          <AreaCompareShortcuts area={l.name} listings={results} />
+        )}
+
         {/* Cross-linking to other programmes in the same area */}
         {otherCatsHere.length > 0 && (
           <section className="mt-12">
@@ -344,6 +350,51 @@ function AtAGlance({
               {it.value}
             </div>
           </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function AreaCompareShortcuts({
+  area,
+  listings,
+}: {
+  area: string;
+  listings: Listing[];
+}) {
+  const slugs = new Set(listings.map((l) => l.slug));
+  const pairs = curatedPairs()
+    .filter((p) => slugs.has(p.a.slug) && slugs.has(p.b.slug))
+    .slice(0, 6);
+  if (pairs.length === 0) return null;
+  return (
+    <section className="mt-12">
+      <h2 className="mb-3 font-display text-xl">
+        Compare {area} schools side by side
+      </h2>
+      <p className="mb-4 text-[14px] text-[color:var(--color-ink-mute)]">
+        Head-to-head fact tables. Same information, no marketing spin.
+      </p>
+      <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+        {pairs.map((p) => (
+          <Link
+            key={p.slug}
+            href={`/compare/${p.slug}`}
+            className="rounded-2xl border border-[color:var(--color-line)] bg-white p-4 transition hover:shadow-lg"
+          >
+            <p className="text-[10px] font-bold uppercase tracking-widest text-[color:var(--color-ink-mute)]">
+              vs
+            </p>
+            <p className="mt-1 font-display text-[15px] leading-tight text-[color:var(--color-navy)]">
+              {p.a.name}{" "}
+              <span className="text-[color:var(--color-ink-mute)]">vs</span>{" "}
+              {p.b.name}
+            </p>
+            <p className="mt-2 text-[12px] text-[color:var(--color-ink-mute)]">
+              {p.reason}
+            </p>
+          </Link>
         ))}
       </div>
     </section>
