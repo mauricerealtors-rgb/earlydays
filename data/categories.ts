@@ -106,6 +106,8 @@ export const CATEGORIES: Category[] = [
     blurb:
       "Children's activity centres for music, art, dance and sport across Ghana.",
     accent: "sun",
+    image: "/categories/activity-centres.jpg",
+    imageAlt: "Girl playing a djembe drum at an activity centre while other children paint and dance",
   },
 ];
 
