@@ -155,18 +155,14 @@ export function AdminChrome({ children }: { children: ReactNode }) {
 
 function BrandDot() {
   return (
-    <span
+    <img
+      src="/brand/mark.png"
+      alt=""
       aria-hidden
-      className="inline-flex h-7 w-7 items-center justify-center rounded-lg"
-      style={{ background: "linear-gradient(135deg, #FFC845 0%, #FF7A59 55%, #FF9FC0 100%)" }}
-    >
-      <svg viewBox="0 0 24 24" width="16" height="16" fill="none">
-        <path
-          d="M4 12c2 0 3-1.6 3-3.5S6 5 4 5v7Zm16 0c-2 0-3-1.6-3-3.5S18 5 20 5v7ZM6 15c0 2.8 2.7 5 6 5s6-2.2 6-5H6Z"
-          fill="#0F2A4A"
-        />
-      </svg>
-    </span>
+      width={28}
+      height={28}
+      className="inline-block h-7 w-7 shrink-0 object-contain"
+    />
   );
 }
 

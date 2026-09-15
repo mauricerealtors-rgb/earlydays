@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { SITE } from "@/lib/site";
+import { MARK_DATA_URI } from "@/lib/brand";
 
 export const alt = `${SITE.name} — ${SITE.tagline}`;
 export const size = { width: 1200, height: 630 };
@@ -23,25 +24,13 @@ export default function OpenGraphImage() {
       >
         {/* Top row: logo mark */}
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          <div
-            style={{
-              width: 64,
-              height: 64,
-              borderRadius: 20,
-              background:
-                "linear-gradient(135deg, #FFC845 0%, #FF7A59 55%, #FF9FC0 100%)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <svg width="34" height="34" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M4 12c2 0 3-1.6 3-3.5S6 5 4 5v7Zm16 0c-2 0-3-1.6-3-3.5S18 5 20 5v7ZM6 15c0 2.8 2.7 5 6 5s6-2.2 6-5H6Z"
-                fill="#0F2A4A"
-              />
-            </svg>
-          </div>
+          <img
+            src={MARK_DATA_URI}
+            alt=""
+            width={64}
+            height={64}
+            style={{ width: 64, height: 64 }}
+          />
           <div style={{ display: "flex", fontSize: 32, fontWeight: 800, color: "#0F2A4A" }}>
             Early<span style={{ color: "#FF7A59" }}>Days</span>
           </div>

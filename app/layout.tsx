@@ -124,7 +124,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             name: SITE.name,
             legalName: "EarlyDays",
             url: SITE.url,
-            logo: `${SITE.url}/icon.svg`,
+            logo: `${SITE.url}/brand/logo.png`,
             description: SITE.description,
             areaServed: {
               "@type": "Country",
