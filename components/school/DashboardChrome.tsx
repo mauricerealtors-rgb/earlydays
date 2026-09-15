@@ -169,8 +169,9 @@ export function DashboardChrome({
               </ul>
             ) : (
               <div className="mt-2 rounded-xl border border-dashed border-[color:var(--color-line)] p-4 text-xs text-[color:var(--color-ink-mute)]">
-                You don't have any approved schools yet. When your claim is
-                approved you'll see edit tools here.
+                You don&apos;t have any schools yet. Once we&apos;ve called your
+                school to verify your claim, we attach it to this account and
+                the edit tools appear here.
               </div>
             )}
 

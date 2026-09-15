@@ -12,25 +12,37 @@ import { firestore } from "@/lib/firebase";
 import { useAuth } from "@/components/AuthProvider";
 import { findListing } from "@/lib/query";
 
+type Status = "pending" | "verified" | "approved" | "rejected";
+type Action = "verify" | "approve" | "reject";
+
 interface Claim {
   id: string;
   slug: string;
-  uid: string;
+  uid?: string | null;
   submittedName?: string;
   submittedRole?: string;
   submittedEmail?: string;
   submittedPhone?: string;
   schoolPhone?: string;
   schoolEmail?: string;
-  status: "pending" | "approved" | "rejected";
+  assignedEmail?: string;
+  status: Status;
   createdAt?: string;
+  verifiedAt?: string;
   reviewNotes?: string;
 }
+
+const STATUS_CLASS: Record<Status, string> = {
+  pending: "bg-amber-500/15 text-amber-400",
+  verified: "bg-sky-500/15 text-sky-400",
+  approved: "bg-emerald-500/15 text-emerald-400",
+  rejected: "bg-red-500/15 text-red-400",
+};
 
 export function AdminClaimsDark() {
   const { user } = useAuth();
   const [claims, setClaims] = useState<Claim[] | null>(null);
-  const [filter, setFilter] = useState<"pending" | "approved" | "rejected" | "all">("pending");
+  const [filter, setFilter] = useState<Status | "all">("pending");
   const [q, setQ] = useState("");
   const [busy, setBusy] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -64,14 +76,24 @@ export function AdminClaimsDark() {
   }, [claims, filter, q]);
 
   const counts = useMemo(() => {
-    const c = { pending: 0, approved: 0, rejected: 0, all: claims?.length ?? 0 };
+    const c: Record<string, number> = {
+      pending: 0,
+      verified: 0,
+      approved: 0,
+      rejected: 0,
+      all: claims?.length ?? 0,
+    };
     (claims ?? []).forEach((cl) => {
       c[cl.status] = (c[cl.status] ?? 0) + 1;
     });
     return c;
   }, [claims]);
 
-  async function act(claim: Claim, action: "approve" | "reject", notes?: string) {
+  async function act(
+    claim: Claim,
+    action: Action,
+    extra?: { notes?: string; assignEmail?: string }
+  ) {
     if (!user) return;
     setBusy(claim.id);
     setError(null);
@@ -84,14 +106,27 @@ export function AdminClaimsDark() {
         },
         body: JSON.stringify({
           claimId: claim.id,
-          slug: claim.slug,
-          uid: claim.uid,
           action,
-          notes: notes ?? "",
+          notes: extra?.notes ?? "",
+          assignEmail: extra?.assignEmail,
         }),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error ?? "Action failed");
+      if (!res.ok) {
+        // They have been verified but haven't signed up yet — offer to point
+        // the assignment at whatever address they actually registered with.
+        if (data.code === "NO_ACCOUNT") {
+          const retry = window.prompt(
+            `${data.error}\n\nIf they signed up with a different email, enter it here to assign anyway:`,
+            claim.submittedEmail ?? ""
+          );
+          if (retry && retry.trim()) {
+            await act(claim, "approve", { assignEmail: retry.trim() });
+            return;
+          }
+        }
+        throw new Error(data.error ?? "Action failed");
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Action failed");
     } finally {
@@ -108,7 +143,8 @@ export function AdminClaimsDark() {
           </p>
           <h1 className="mt-1 font-display text-3xl md:text-4xl">Claims</h1>
           <p className="mt-1 text-sm text-white/60">
-            Approve or reject school claim requests.
+            Call the school to verify, then assign the listing to the
+            claimant&apos;s account once they have signed up.
           </p>
         </div>
       </header>
@@ -121,8 +157,8 @@ export function AdminClaimsDark() {
           placeholder="Search school, name, email…"
           className="flex-1 min-w-[220px] rounded-lg border border-white/10 bg-transparent px-3 py-2 text-sm text-white placeholder:text-white/30 outline-none focus:border-white/30"
         />
-        <div className="flex gap-1 text-xs">
-          {(["pending", "approved", "rejected", "all"] as const).map((f) => (
+        <div className="flex flex-wrap gap-1 text-xs">
+          {(["pending", "verified", "approved", "rejected", "all"] as const).map((f) => (
             <button
               key={f}
               onClick={() => setFilter(f)}
@@ -154,13 +190,6 @@ export function AdminClaimsDark() {
         <ul className="space-y-2">
           {filtered.map((c) => {
             const listing = findListing(c.slug);
-            const isPending = c.status === "pending";
-            const statusClass =
-              c.status === "approved"
-                ? "bg-emerald-500/15 text-emerald-400"
-                : c.status === "rejected"
-                  ? "bg-red-500/15 text-red-400"
-                  : "bg-amber-500/15 text-amber-400";
             return (
               <li
                 key={c.id}
@@ -172,7 +201,7 @@ export function AdminClaimsDark() {
                     <p className="font-medium">
                       {listing?.name ?? c.slug}
                       <span
-                        className={`ml-2 inline-flex rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-widest ${statusClass}`}
+                        className={`ml-2 inline-flex rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-widest ${STATUS_CLASS[c.status]}`}
                       >
                         {c.status}
                       </span>
@@ -182,15 +211,26 @@ export function AdminClaimsDark() {
                       {c.createdAt && ` · ${new Date(c.createdAt).toLocaleString("en-GB")}`}
                     </p>
                     <p className="text-xs text-white/50">
-                      Personal: {c.submittedEmail}
+                      Contact: {c.submittedEmail}
                       {c.submittedPhone ? ` · ${c.submittedPhone}` : ""}
                     </p>
                     {(c.schoolPhone || c.schoolEmail) && (
                       <p className="text-xs text-emerald-400">
-                        School verify:
+                        Call to verify:
                         {c.schoolPhone ? ` ${c.schoolPhone}` : ""}
                         {c.schoolPhone && c.schoolEmail ? " · " : ""}
                         {c.schoolEmail ?? ""}
+                      </p>
+                    )}
+                    {c.status === "verified" && (
+                      <p className="mt-1 text-xs text-sky-300">
+                        Phone check done. Assign once they have signed up at
+                        /school/login.
+                      </p>
+                    )}
+                    {c.status === "approved" && (
+                      <p className="mt-1 text-xs text-emerald-300">
+                        Assigned to {c.assignedEmail ?? c.submittedEmail}
                       </p>
                     )}
                     {c.reviewNotes && (
@@ -198,19 +238,30 @@ export function AdminClaimsDark() {
                     )}
                   </div>
                   <div className="flex flex-wrap gap-2 text-xs">
-                    {isPending && (
+                    {c.status === "pending" && (
+                      <button
+                        onClick={() => act(c, "verify")}
+                        disabled={busy === c.id}
+                        className="rounded-lg bg-sky-500 px-3 py-1.5 font-semibold text-black hover:bg-sky-400 disabled:opacity-50"
+                      >
+                        {busy === c.id ? "…" : "Mark verified"}
+                      </button>
+                    )}
+                    {(c.status === "pending" || c.status === "verified") && (
                       <>
                         <button
                           onClick={() => act(c, "approve")}
                           disabled={busy === c.id}
                           className="rounded-lg bg-emerald-500 px-3 py-1.5 font-semibold text-black hover:bg-emerald-400 disabled:opacity-50"
                         >
-                          {busy === c.id ? "…" : "Approve"}
+                          {busy === c.id ? "…" : "Assign school"}
                         </button>
                         <button
                           onClick={() => {
-                            const notes = window.prompt("Reason for rejection (shown to claimant)");
-                            if (notes) act(c, "reject", notes);
+                            const notes = window.prompt(
+                              "Reason for rejection (shown to claimant)"
+                            );
+                            if (notes) act(c, "reject", { notes });
                           }}
                           disabled={busy === c.id}
                           className="rounded-lg border border-white/15 px-3 py-1.5 hover:bg-white/5"

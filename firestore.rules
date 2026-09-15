@@ -20,14 +20,17 @@ service cloud.firestore {
       allow delete: if isAdmin();
     }
 
-    // Claims — anyone signed in can create a claim; only owner/admin can read.
-    // Only admin can update (approve/reject) or delete.
+    // Claims — submitted from /claim/<slug> with no account, so creation goes
+    // through /api/claim on the Admin SDK (which bypasses these rules) rather
+    // than from the client. Claimants can follow their own claim once they
+    // have signed up, matched on the email they claimed with or on the uid we
+    // attach at approval. Only admin can review or delete.
     match /claims/{claimId} {
       allow read: if request.auth != null &&
-                    (request.auth.uid == resource.data.uid || isAdmin());
-      allow create: if request.auth != null &&
-                      request.resource.data.uid == request.auth.uid &&
-                      request.resource.data.status == 'pending';
+                    (isAdmin() ||
+                     request.auth.uid == resource.data.uid ||
+                     request.auth.token.email == resource.data.submittedEmail);
+      allow create: if false; // only Admin SDK from /api/claim
       allow update: if isAdmin();
       allow delete: if isAdmin();
     }

@@ -34,7 +34,14 @@ export function DashboardHome() {
 
   useEffect(() => {
     if (!user) return;
-    const q = query(collection(firestore(), "claims"), where("uid", "==", user.uid));
+    // Claims are submitted before the account exists, so they carry no uid
+    // until an admin assigns the school. Match on the email they claimed with
+    // — that is the link between the claim and the account they made after our
+    // verification call.
+    const q = query(
+      collection(firestore(), "claims"),
+      where("submittedEmail", "==", (user.email ?? "").toLowerCase())
+    );
     const unsub = onSnapshot(q, (snap: QuerySnapshot<DocumentData>) => {
       const rows: Row[] = [];
       snap.forEach((d) => {

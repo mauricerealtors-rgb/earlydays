@@ -11,6 +11,18 @@ const ADMIN_EMAILS = new Set(
     .map((e) => e.trim().toLowerCase())
 );
 
+type Action = "verify" | "approve" | "reject";
+
+/**
+ * Claim review.
+ *
+ * Claims arrive with no account attached (see /api/claim), so the lifecycle is
+ *   pending  -> verify  -> verified   (we rang the school, the person checks out)
+ *   verified -> approve -> approved   (their account now owns the listing)
+ * Approving resolves an email to a Firebase Auth user, so it only succeeds once
+ * the claimant has actually signed up. `assignEmail` lets the admin point at a
+ * different address when someone registers with one we weren't expecting.
+ */
 export async function POST(req: Request) {
   try {
     // Verify caller is an authenticated admin.
@@ -20,67 +32,131 @@ export async function POST(req: Request) {
 
     // adminDb() initialises the Admin app; getAuth uses the same app.
     adminDb();
-    const decoded = await getAuth(getApps()[0]).verifyIdToken(token);
+    const adminAuth = getAuth(getApps()[0]);
+    const decoded = await adminAuth.verifyIdToken(token);
     const email = (decoded.email ?? "").toLowerCase();
     if (!ADMIN_EMAILS.has(email)) {
       return NextResponse.json({ error: "Not an admin" }, { status: 403 });
     }
 
     const body = await req.json();
-    const { claimId, slug, uid, action, notes } = body as {
+    const { claimId, action, notes, assignEmail } = body as {
       claimId?: string;
-      slug?: string;
-      uid?: string;
-      action?: "approve" | "reject";
+      action?: Action;
       notes?: string;
+      assignEmail?: string;
     };
-    if (!claimId || !slug || !uid || !action) {
+    if (!claimId || !action) {
       return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
-    if (action !== "approve" && action !== "reject") {
+    if (!["verify", "approve", "reject"].includes(action)) {
       return NextResponse.json({ error: "Bad action" }, { status: 400 });
     }
 
     const db = adminDb();
     const now = new Date().toISOString();
 
-    if (action === "approve") {
-      // Check for existing owner — one school = one owner.
-      const existingOwner = await db.doc(`listingOwners/${slug}`).get();
-      if (existingOwner.exists && existingOwner.data()?.uid !== uid) {
-        return NextResponse.json(
-          { error: "This listing is already owned by another user." },
-          { status: 409 }
-        );
-      }
-      await db.doc(`listingOwners/${slug}`).set({
-        slug,
-        uid,
-        approvedAt: now,
-        approvedBy: email,
-      });
-      await db.doc(`claims/${claimId}`).update({
-        status: "approved",
-        reviewedAt: now,
-        reviewedBy: email,
+    const claimRef = db.doc(`claims/${claimId}`);
+    const claimSnap = await claimRef.get();
+    if (!claimSnap.exists) {
+      return NextResponse.json({ error: "Claim not found" }, { status: 404 });
+    }
+    const claim = claimSnap.data() as {
+      slug?: string;
+      submittedEmail?: string;
+      submittedName?: string;
+      submittedPhone?: string;
+    };
+    const slug = claim.slug;
+    if (!slug) {
+      return NextResponse.json({ error: "Claim has no school" }, { status: 400 });
+    }
+
+    if (action === "verify") {
+      await claimRef.update({
+        status: "verified",
+        verifiedAt: now,
+        verifiedBy: email,
         reviewNotes: notes ?? "",
       });
-      // Seed an empty override doc so the school user can write to it.
-      // (Rules check that listingOwners exists, so this is safe.)
-      await db.doc(`listingOverrides/${slug}`).set(
-        { updatedAt: now, updatedBy: uid },
-        { merge: true }
-      );
-    } else {
-      await db.doc(`claims/${claimId}`).update({
+      return NextResponse.json({ ok: true, status: "verified" });
+    }
+
+    if (action === "reject") {
+      await claimRef.update({
         status: "rejected",
         reviewedAt: now,
         reviewedBy: email,
         reviewNotes: notes ?? "",
       });
+      return NextResponse.json({ ok: true, status: "rejected" });
     }
 
-    return NextResponse.json({ ok: true });
+    // approve — attach the listing to the claimant's account.
+    const target = (assignEmail || claim.submittedEmail || "").trim().toLowerCase();
+    if (!target) {
+      return NextResponse.json({ error: "Claim has no email to assign to" }, { status: 400 });
+    }
+
+    let uid: string;
+    try {
+      uid = (await adminAuth.getUserByEmail(target)).uid;
+    } catch {
+      return NextResponse.json(
+        {
+          error: `No EarlyDays account exists for ${target} yet. Ask them to sign up at /school/login, then approve again.`,
+          code: "NO_ACCOUNT",
+        },
+        { status: 409 }
+      );
+    }
+
+    // One school = one owner.
+    const existingOwner = await db.doc(`listingOwners/${slug}`).get();
+    if (existingOwner.exists && existingOwner.data()?.uid !== uid) {
+      return NextResponse.json(
+        { error: "This listing is already owned by another account." },
+        { status: 409 }
+      );
+    }
+
+    await db.doc(`listingOwners/${slug}`).set({
+      slug,
+      uid,
+      ownerEmail: target,
+      approvedAt: now,
+      approvedBy: email,
+    });
+
+    // The account was created after the claim, so it has no profile doc of its
+    // own yet — backfill what the claim told us so admin/schools screens match.
+    await db.doc(`users/${uid}`).set(
+      {
+        email: target,
+        displayName: claim.submittedName ?? "",
+        phone: claim.submittedPhone ?? null,
+        updatedAt: now,
+      },
+      { merge: true }
+    );
+
+    await claimRef.update({
+      status: "approved",
+      uid,
+      assignedEmail: target,
+      reviewedAt: now,
+      reviewedBy: email,
+      reviewNotes: notes ?? "",
+    });
+
+    // Seed an empty override doc so the school user can write to it.
+    // (Rules check that listingOwners exists, so this is safe.)
+    await db.doc(`listingOverrides/${slug}`).set(
+      { updatedAt: now, updatedBy: uid },
+      { merge: true }
+    );
+
+    return NextResponse.json({ ok: true, status: "approved", uid });
   } catch (err) {
     return NextResponse.json(
       { error: err instanceof Error ? err.message : "Decision failed" },

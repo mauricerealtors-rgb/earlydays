@@ -1,17 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  updateProfile,
-} from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
-import { auth, firestore } from "@/lib/firebase";
-import { useAuth } from "./AuthProvider";
-
-type Mode = "new" | "existing";
 
 export function ClaimForm({
   slug,
@@ -20,14 +9,10 @@ export function ClaimForm({
   slug: string;
   schoolName: string;
 }) {
-  const router = useRouter();
-  const { user, loading: authLoading } = useAuth();
-  const [mode, setMode] = useState<Mode>("new");
-  const [name, setName] = useState("");
-  const [role, setRole] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [password, setPassword] = useState("");
+  const [submittedName, setSubmittedName] = useState("");
+  const [submittedRole, setSubmittedRole] = useState("");
+  const [submittedEmail, setSubmittedEmail] = useState("");
+  const [submittedPhone, setSubmittedPhone] = useState("");
   const [schoolPhone, setSchoolPhone] = useState("");
   const [schoolEmail, setSchoolEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -39,45 +24,24 @@ export function ClaimForm({
     setError(null);
     setSubmitting(true);
     try {
-      let uid = user?.uid;
-
-      if (!uid) {
-        if (mode === "new") {
-          const cred = await createUserWithEmailAndPassword(auth(), email, password);
-          if (name) await updateProfile(cred.user, { displayName: name });
-          uid = cred.user.uid;
-          await setDoc(doc(firestore(), "users", uid), {
-            email,
-            displayName: name,
-            phone: phone || null,
-            createdAt: new Date().toISOString(),
-          });
-        } else {
-          const cred = await signInWithEmailAndPassword(auth(), email, password);
-          uid = cred.user.uid;
-        }
-      }
-
-      const claimId = `${slug}_${uid}`;
-      await setDoc(doc(firestore(), "claims", claimId), {
-        slug,
-        uid,
-        submittedName: name || user?.displayName || "",
-        submittedRole: role,
-        submittedEmail: email || user?.email || "",
-        submittedPhone: phone || null,
-        schoolPhone,
-        schoolEmail,
-        status: "pending",
-        createdAt: new Date().toISOString(),
+      const res = await fetch("/api/claim", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          slug,
+          submittedName,
+          submittedRole,
+          submittedEmail,
+          submittedPhone,
+          schoolPhone,
+          schoolEmail,
+        }),
       });
-
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error ?? "Something went wrong. Try again.");
       setDone(true);
-      setTimeout(() => router.push("/school"), 1400);
     } catch (err) {
-      const message =
-        err instanceof Error ? err.message : "Something went wrong. Try again.";
-      setError(message);
+      setError(err instanceof Error ? err.message : "Something went wrong. Try again.");
     } finally {
       setSubmitting(false);
     }
@@ -85,111 +49,96 @@ export function ClaimForm({
 
   if (done) {
     return (
-      <div className="mt-8 rounded-2xl border border-[color:var(--color-line)] bg-[color:var(--color-leaf-soft)] p-6 text-center">
+      <div className="mt-8 rounded-2xl border border-[color:var(--color-line)] bg-[color:var(--color-leaf-soft)] p-6">
         <p className="font-display text-xl text-[color:var(--color-navy)]">
           Thanks. Your claim for {schoolName} is in.
         </p>
-        <p className="mt-2 text-sm text-[color:var(--color-ink-mute)]">
-          We will call the school on the number you provided within one
-          working day to verify. Once verified, you can start editing your
-          profile.
+        <ol className="mt-4 space-y-3 text-sm text-[color:var(--color-ink-mute)]">
+          <Step n={1}>
+            We call {schoolPhone || "the school number you gave us"} within one
+            working day to check you work at {schoolName}.
+          </Step>
+          <Step n={2}>
+            Once that call goes through, we email you at{" "}
+            <span className="font-semibold text-[color:var(--color-navy)]">
+              {submittedEmail}
+            </span>{" "}
+            with a link to set up your login.
+          </Step>
+          <Step n={3}>
+            We attach {schoolName} to that account, and you can edit your
+            profile straight away.
+          </Step>
+        </ol>
+        <p className="mt-4 text-xs text-[color:var(--color-ink-mute)]">
+          Nothing to do until you hear from us. There is no password to
+          remember yet.
         </p>
       </div>
     );
   }
 
-  if (authLoading) {
-    return <div className="mt-8 text-center text-sm text-[color:var(--color-ink-mute)]">Loading…</div>;
-  }
-
   return (
     <form onSubmit={handleSubmit} className="mt-8 space-y-4">
-      {!user && (
-        <div className="mb-2 flex gap-2 text-sm">
-          <button
-            type="button"
-            onClick={() => setMode("new")}
-            className={`rounded-full px-3 py-1 ${mode === "new" ? "bg-[color:var(--color-navy)] text-white" : "border border-[color:var(--color-line)]"}`}
-          >
-            New school
-          </button>
-          <button
-            type="button"
-            onClick={() => setMode("existing")}
-            className={`rounded-full px-3 py-1 ${mode === "existing" ? "bg-[color:var(--color-navy)] text-white" : "border border-[color:var(--color-line)]"}`}
-          >
-            Existing account
-          </button>
-        </div>
-      )}
+      <div className="rounded-2xl border border-[color:var(--color-line)] bg-[color:var(--color-cream)] p-4">
+        <p className="text-sm text-[color:var(--color-ink-mute)]">
+          No account needed yet. Tell us how to reach you and how to reach{" "}
+          {schoolName}. We verify by phone first, then help you set up a login.
+        </p>
+      </div>
 
-      {!user && mode === "new" && (
-        <Field label="Your full name" required>
-          <input
-            type="text"
-            required
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className={inputCls}
-            placeholder="e.g. Ama Boateng"
-          />
-        </Field>
-      )}
+      <Field label="Your full name" required>
+        <input
+          type="text"
+          required
+          value={submittedName}
+          onChange={(e) => setSubmittedName(e.target.value)}
+          className={inputCls}
+          placeholder="e.g. Ama Boateng"
+        />
+      </Field>
 
       <Field label={`Your role at ${schoolName}`} required>
         <input
           type="text"
           required
-          value={role}
-          onChange={(e) => setRole(e.target.value)}
+          value={submittedRole}
+          onChange={(e) => setSubmittedRole(e.target.value)}
           className={inputCls}
           placeholder="e.g. Head of School, Admissions Officer, Owner"
         />
       </Field>
 
-      {!user && (
-        <Field label="Work email" required>
-          <input
-            type="email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className={inputCls}
-            placeholder="you@yourschool.edu.gh"
-          />
-        </Field>
-      )}
+      <Field
+        label="Your email"
+        required
+        hint="Where we send your login link once the school confirms you."
+      >
+        <input
+          type="email"
+          required
+          value={submittedEmail}
+          onChange={(e) => setSubmittedEmail(e.target.value)}
+          className={inputCls}
+          placeholder="you@yourschool.edu.gh"
+        />
+      </Field>
 
-      {!user && mode === "new" && (
-        <Field label="Phone number">
-          <input
-            type="tel"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            className={inputCls}
-            placeholder="+233 …"
-          />
-        </Field>
-      )}
-
-      {!user && (
-        <Field label={mode === "new" ? "Create a password" : "Password"} required>
-          <input
-            type="password"
-            required
-            minLength={8}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className={inputCls}
-            placeholder="At least 8 characters"
-          />
-        </Field>
-      )}
+      <Field label="Your phone number" required>
+        <input
+          type="tel"
+          required
+          value={submittedPhone}
+          onChange={(e) => setSubmittedPhone(e.target.value)}
+          className={inputCls}
+          placeholder="+233 …"
+        />
+      </Field>
 
       <Field
         label={`${schoolName}'s official phone number`}
         required
-        hint="We will call this number within one working day to verify your claim."
+        hint="We call this number within one working day to verify your claim. It should be the school's own line, not your mobile."
       >
         <input
           type="tel"
@@ -203,12 +152,10 @@ export function ClaimForm({
 
       <Field
         label={`${schoolName}'s official email address`}
-        required
-        hint="The school's main email, not a personal one. We may email a verification copy here."
+        hint="Optional. The school's main email, not a personal one."
       >
         <input
           type="email"
-          required
           value={schoolEmail}
           onChange={(e) => setSchoolEmail(e.target.value)}
           className={inputCls}
@@ -222,11 +169,7 @@ export function ClaimForm({
         </p>
       )}
 
-      <button
-        type="submit"
-        disabled={submitting}
-        className="btn btn-pink w-full"
-      >
+      <button type="submit" disabled={submitting} className="btn btn-pink w-full">
         {submitting ? "Submitting…" : `Submit claim for ${schoolName}`}
       </button>
 
@@ -241,6 +184,17 @@ export function ClaimForm({
 
 const inputCls =
   "w-full rounded-xl border border-[color:var(--color-line)] bg-white px-4 py-3 text-[15px] outline-none focus:border-[color:var(--color-navy)]";
+
+function Step({ n, children }: { n: number; children: React.ReactNode }) {
+  return (
+    <li className="flex gap-3">
+      <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[color:var(--color-navy)] text-[11px] font-bold text-white">
+        {n}
+      </span>
+      <span>{children}</span>
+    </li>
+  );
+}
 
 function Field({
   label,
