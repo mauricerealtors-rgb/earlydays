@@ -10,6 +10,7 @@ const ADMIN_EMAIL = "stackflown@gmail.com";
 const NAV = [
   { href: "/admin", label: "Overview", icon: OverviewIcon },
   { href: "/admin/claims", label: "Claims", icon: ClaimsIcon },
+  { href: "/admin/outreach", label: "Outreach", icon: OutreachIcon },
   { href: "/admin/schools", label: "Schools", icon: SchoolsIcon },
   { href: "/admin/enquiries", label: "Enquiries", icon: EnquiriesIcon },
   { href: "/admin/concierge", label: "Concierge", icon: ConciergeIcon },
@@ -181,6 +182,14 @@ function ClaimsIcon({ active }: { active: boolean }) {
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className={active ? "text-black" : "text-white/60 group-hover:text-white"}>
       <path d="m9 12 2 2 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
       <path d="M12 3 4 6v6c0 5 4 9 8 9s8-4 8-9V6l-8-3Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+    </svg>
+  );
+}
+function OutreachIcon({ active }: { active: boolean }) {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className={active ? "text-black" : "text-white/60 group-hover:text-white"}>
+      <path d="M3 7h18v12H3z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+      <path d="m3 8 9 6 9-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }

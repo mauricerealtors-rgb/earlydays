@@ -35,6 +35,14 @@ service cloud.firestore {
       allow delete: if isAdmin();
     }
 
+    // Outreach tracker — which unclaimed schools we've emailed, and the address
+    // used. Admin-only, and written exclusively by /api/admin/outreach on the
+    // Admin SDK so a sent/failed status can never be forged from a browser.
+    match /outreach/{slug} {
+      allow read: if isAdmin();
+      allow write: if false; // only Admin SDK from /api/admin/outreach
+    }
+
     // Listing overrides — school users can only edit listings they've claimed
     // and been approved for. Approval writes an entry in listingOwners.
     match /listingOverrides/{slug} {
