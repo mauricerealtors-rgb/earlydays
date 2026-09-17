@@ -12,9 +12,26 @@ import { SITE } from "@/lib/site";
  */
 export default function robots(): MetadataRoute.Robots {
   const disallow = ["/api/", "/admin/", "/*?*"];
+
+  // Next.js serves generated assets with a cache-busting query string
+  // (/icon.png?477019…, /opengraph-image?fcdb…, /_next/image?url=…), which
+  // "/*?*" above would otherwise block. Google requires the favicon to be
+  // crawlable or it shows a blank globe in results, and Twitterbot honours
+  // robots.txt for card images. Google picks the longest matching rule, so each
+  // of these outranks the 4-character "/*?*"; they are listed before the
+  // disallows for crawlers that take the first match instead.
+  const assets = [
+    "/favicon.ico",
+    "/icon.png",
+    "/apple-icon.png",
+    "/opengraph-image",
+    "/*/opengraph-image",
+    "/_next/image",
+  ];
+
   return {
     rules: [
-      { userAgent: "*", allow: ["/"], disallow },
+      { userAgent: "*", allow: [...assets, "/"], disallow },
 
       // Explicit allowlist for major AI crawlers. Redundant with "*: allow /",
       // but stating the intent explicitly protects us if we ever tighten
