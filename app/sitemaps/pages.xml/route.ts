@@ -8,7 +8,6 @@ export function GET() {
   const urls = [
     { loc: `${BASE}/`, lastmod: now, changefreq: "daily" as const, priority: 1.0 },
     { loc: `${BASE}/schools`, lastmod: now, changefreq: "daily" as const, priority: 0.9 },
-    { loc: `${BASE}/guides`, lastmod: now, changefreq: "weekly" as const, priority: 0.8 },
     { loc: `${BASE}/for-schools`, lastmod: now, changefreq: "monthly" as const, priority: 0.6 },
     { loc: `${BASE}/claim`, lastmod: now, changefreq: "monthly" as const, priority: 0.5 },
     { loc: `${BASE}/about`, lastmod: now, changefreq: "monthly" as const, priority: 0.5 },

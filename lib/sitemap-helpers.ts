@@ -14,6 +14,10 @@ export interface SitemapUrl {
   priority?: number;
 }
 
+// Note the slash: "sitemap/0.9". Google rejects a sitemap whose namespace is
+// wrong, so a typo here silently invalidates every sitemap on the site.
+const SITEMAP_NS = "http://www.sitemaps.org/schemas/sitemap/0.9";
+
 export function xmlUrlset(urls: SitemapUrl[]): string {
   const now = new Date().toISOString();
   const items = urls
@@ -26,7 +30,18 @@ export function xmlUrlset(urls: SitemapUrl[]): string {
         `</url>`
     )
     .join("\n");
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap-0.9">\n${items}\n</urlset>\n`;
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="${SITEMAP_NS}">\n${items}\n</urlset>\n`;
+}
+
+// A sitemap index lists other sitemaps. It is a different document from a
+// urlset — <sitemapindex>/<sitemap> rather than <urlset>/<url> — and Google only
+// opens the children when it receives the former.
+export function xmlSitemapIndex(locs: string[], lastmod?: string): string {
+  const stamp = lastmod ?? new Date().toISOString();
+  const items = locs
+    .map((loc) => `  <sitemap><loc>${escapeXml(loc)}</loc><lastmod>${stamp}</lastmod></sitemap>`)
+    .join("\n");
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="${SITEMAP_NS}">\n${items}\n</sitemapindex>\n`;
 }
 
 export function xmlResponse(body: string): Response {
