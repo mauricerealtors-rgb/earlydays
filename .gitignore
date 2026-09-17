@@ -14,3 +14,8 @@ yarn-error.log*
 next-env.d.ts.bak
 AGENTS.md
 CLAUDE.md
+
+# Firebase CLI
+firebase-debug.log
+firebase-debug.*.log
+.firebase/
