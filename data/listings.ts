@@ -970,43 +970,6 @@ export const LISTINGS: Listing[] = [
     featured: true,
   },
 
-  // ─── 23 ────────────────────────────────────────────────────────────
-  {
-    id: "little-blessings-international-school",
-    slug: "little-blessings-international-school",
-    name: "Little Blessings International School",
-    shortDescription:
-      "Infant, preschool and primary school in East Cantonments serving 3 months – 11 years.",
-    description:
-      "Little Blessings International School is at 17 La Tebu Crescent, East Cantonments (GL-055-1282). According to the school, it follows an international curriculum across an Infant / Baby Group (3 months – 1 year), Preschool (1 – 5 years) including Toddler, Preschool and Kindergarten levels, and Primary School (5 – 11 years). Admissions are described as in progress.",
-    listingTypes: ["creche", "preschool", "kindergarten", "primary"],
-    ageMin: 3,
-    ageMax: 132,
-    ageBlurb: "3 months – 11 years",
-    curriculum: ["International"],
-    services: ["Daycare", "Full day"],
-    address: "17 La Tebu Crescent, East Cantonments, Accra, Ghana",
-    neighbourhood: "cantonments",
-    city: "accra",
-    region: "Greater Accra",
-    country: "Ghana",
-    phone: "+233 55 019 7443",
-    email: "info@lbisonline.com",
-    website: "https://lbisonline.com/",
-    admissions: "open",
-    verification: "info-confirmed",
-    claimed: false,
-    sourceUrls: ["https://lbisonline.com/"],
-    lastVerifiedAt: today,
-    updatedAt: today,
-    imageQuery: "preschool East Cantonments Accra",
-    images: [
-      { url: "https://lbisonline.com/wp-content/uploads/2024/05/BABYGROUP-PICTURE.jpeg", alt: "Baby group class at Little Blessings International School", credit: "Photo: Little Blessings International School (official site)", sourceUrl: "https://lbisonline.com/" },
-      { url: "https://lbisonline.com/wp-content/uploads/2024/05/REPLACING-THE-PRESCHOOL-PICTURE.jpeg", alt: "Preschool activity at Little Blessings International School", credit: "Photo: Little Blessings International School (official site)", sourceUrl: "https://lbisonline.com/" },
-      { url: "https://lbisonline.com/wp-content/uploads/2024/05/HOME-PAGE-TRANSITION-e1716995052429.jpeg", alt: "Classroom at Little Blessings International School, East Cantonments", credit: "Photo: Little Blessings International School (official site)", sourceUrl: "https://lbisonline.com/" },
-    ],
-  },
-
   // ─── 24 ────────────────────────────────────────────────────────────
   {
     id: "explorers-schools",
@@ -1788,7 +1751,7 @@ export const LISTINGS: Listing[] = [
     shortDescription:
       "Baby Group through Year 6 in East Cantonments, delivering Cambridge Primary and IPC.",
     description:
-      "Little Blessings International School has been operating in East Cantonments since 2018. According to the school, it serves children from 3 months through Year 6 (age 11) across Baby Group, Infant, Toddler, Nursery, Preschool, Reception and Primary. The primary programme blends the Cambridge Primary Curriculum with the International Primary Curriculum (IPC). School runs Monday to Friday, 7:30 AM to 3:30 PM, with extended day until 5:00 PM. Extracurriculars listed include piano, ballet, swimming, Afro/contemporary dance, Little Chefs, beading, soccer and academic enrichment. Facilities include a STEAM room, pretend-play area and an in-house registered nurse in the infant room. Little Blessings is registered with Cambridge International Education (GH062, July 2024).",
+      "Little Blessings International School, at 17 La Tebu Crescent, East Cantonments (GL-055-1282), has been operating since 2018. According to the school, it serves children from 3 months through Year 6 (age 11) across Baby Group, Infant, Toddler, Nursery, Preschool, Reception and Primary. The primary programme blends the Cambridge Primary Curriculum with the International Primary Curriculum (IPC). School runs Monday to Friday, 7:30 AM to 3:30 PM, with extended day until 5:00 PM. Extracurriculars listed include piano, ballet, swimming, Afro/contemporary dance, Little Chefs, beading, soccer and academic enrichment. Facilities include a STEAM room, pretend-play area and an in-house registered nurse in the infant room. Little Blessings is registered with Cambridge International Education (GH062, July 2024).",
     listingTypes: ["creche", "preschool", "kindergarten", "primary"],
     ageMin: 3,
     ageMax: 132,
