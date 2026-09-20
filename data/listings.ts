@@ -1585,7 +1585,7 @@ export const LISTINGS: Listing[] = [
     curriculum: ["Montessori", "Cambridge"],
     services: ["Full day", "Meals", "Extracurriculars"],
     address: "12 Afadjato Street, Matahekó, Accra, Ghana",
-    neighbourhood: "matahekó",
+    neighbourhood: "mataheko",
     city: "accra",
     region: "Greater Accra",
     country: "Ghana",

@@ -175,7 +175,7 @@ export const LOCATIONS: Location[] = [
       "Quiet residential area west of central Accra, home to Lincoln Community School and other long-established institutions.",
   },
   {
-    slug: "matahekó",
+    slug: "mataheko",
     name: "Matahekó",
     region: "accra",
     regionName: "Greater Accra",
