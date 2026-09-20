@@ -6,8 +6,14 @@ import { findLocation } from "@/data/locations";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ClaimForm } from "@/components/ClaimForm";
 import { SITE } from "@/lib/site";
+import { fetchListingSideData } from "@/lib/listing-overrides";
 
 export const dynamicParams = false;
+// listing.claimed in the static data is always false — real ownership lives in
+// listingOwners. Revalidate so a school that has just been handed over stops
+// showing a claim form. /api/claim refuses a claimed slug regardless, so this
+// is about not offering the form, not about enforcement.
+export const revalidate = 300;
 
 export async function generateStaticParams() {
   return allListings().map((l) => ({ slug: l.slug }));
@@ -38,6 +44,8 @@ export default async function ClaimPage({
   const listing = findListing(slug);
   if (!listing) notFound();
   const loc = findLocation(listing.neighbourhood);
+  const { claimed } = await fetchListingSideData(slug);
+  const alreadyClaimed = listing.claimed || claimed;
 
   return (
     <div className="container-page pt-8 md:pt-12">
@@ -63,13 +71,18 @@ export default async function ClaimPage({
           <Perk title="Reach real parents" body="Get enquiries direct from parents searching in your area." />
         </div>
 
-        {listing.claimed ? (
-          <div className="mt-8 rounded-2xl border border-[color:var(--color-line)] bg-[color:var(--color-cream)] p-5">
-            <p className="font-semibold text-[color:var(--color-navy)]">
-              This profile has already been claimed.
+        {alreadyClaimed ? (
+          <div className="mt-8 rounded-2xl border border-[color:var(--color-line)] bg-[color:var(--color-leaf-soft)] p-5">
+            <p className="font-semibold text-[#2F7C25]">
+              Managed by the school.
             </p>
             <p className="mt-1 text-sm text-[color:var(--color-ink-mute)]">
-              If you believe this is your school and you should have access,{" "}
+              {listing.name} has already claimed this profile and keeps it up to
+              date, so there is nothing to claim here.{" "}
+              <Link href={`/schools/${listing.slug}`} className="underline">
+                View the profile
+              </Link>
+              . If you run the school and believe this is wrong,{" "}
               <Link href="/contact" className="underline">
                 get in touch
               </Link>

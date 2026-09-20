@@ -316,7 +316,26 @@ function renderListing(listing: import("@/lib/types").Listing) {
                 : " · Publicly discovered listing"}
               .
             </p>
-            {!listing.claimed && (
+            {listing.claimed ? (
+              // Claimed profiles are managed by the school itself. Saying so
+              // is worth more to a parent than a claim prompt, and it stops a
+              // second person starting a claim on a school already handed over.
+              <p className="mt-4 flex items-center gap-2 rounded-2xl border border-[color:var(--color-line)] bg-[color:var(--color-leaf-soft)] p-3 text-[13px] text-[#2F7C25]">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
+                  <path
+                    d="m4 12 5 5L20 6"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <span>
+                  <span className="font-semibold">Managed by the school.</span>{" "}
+                  Kept up to date by {listing.name}.
+                </span>
+              </p>
+            ) : (
               <Link
                 href={`/claim/${listing.slug}`}
                 className="mt-4 block rounded-2xl border border-[color:var(--color-line)] bg-[color:var(--color-cream)] p-3 text-[13px] hover:border-[color:var(--color-navy)]/30"

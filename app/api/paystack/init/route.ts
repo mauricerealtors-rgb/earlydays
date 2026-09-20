@@ -1,10 +1,6 @@
 import { NextResponse } from "next/server";
 import { SITE } from "@/lib/site";
-
-const PLAN_AMOUNTS: Record<string, number> = {
-  verified: 20000, // GH₵200.00 in pesewas
-  featured: 50000, // GH₵500.00 in pesewas
-};
+import { BILLING_MONTHS, findPlan, yearlyAmountPesewas, type Tier } from "@/lib/plans";
 
 export async function POST(req: Request) {
   try {
@@ -13,7 +9,11 @@ export async function POST(req: Request) {
     if (!slug || !tier || !email || !uid) {
       return NextResponse.json({ error: "Missing fields." }, { status: 400 });
     }
-    if (!(tier in PLAN_AMOUNTS)) {
+    // Prices are quoted per month but taken a year at a time, so the amount
+    // here is twelve months — never the headline figure on the card.
+    const amount = yearlyAmountPesewas(tier as Tier);
+    const plan = findPlan(tier as Tier);
+    if (!amount || !plan) {
       return NextResponse.json({ error: "Unknown tier." }, { status: 400 });
     }
 
@@ -25,7 +25,6 @@ export async function POST(req: Request) {
       );
     }
 
-    const amount = PLAN_AMOUNTS[tier];
     const callbackUrl = `${SITE.url}/school/${slug}/billing?checkout=return`;
 
     const res = await fetch("https://api.paystack.co/transaction/initialize", {
@@ -43,10 +42,12 @@ export async function POST(req: Request) {
           slug,
           tier,
           uid,
+          billingMonths: BILLING_MONTHS,
+          monthlyPrice: plan.monthly,
           product: "earlydays_school_subscription",
         },
         // Setting label for the customer-facing receipt.
-        label: `EarlyDays ${tier} — ${slug}`,
+        label: `EarlyDays ${plan.name} — ${slug} (12 months)`,
       }),
     });
 

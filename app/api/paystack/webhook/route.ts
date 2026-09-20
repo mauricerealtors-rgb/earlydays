@@ -58,8 +58,12 @@ export async function POST(req: Request) {
       const tier = (meta.tier === "featured" ? "featured" : "verified") as
         | "verified"
         | "featured";
-      // Extend by 30 days on each successful charge.
-      const expiresAt = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString();
+      // A charge buys twelve months, not thirty days — the price is quoted per
+      // month but taken a year at a time (see lib/plans). Set on a real date so
+      // it lands on the same day next year rather than drifting.
+      const expires = new Date();
+      expires.setFullYear(expires.getFullYear() + 1);
+      const expiresAt = expires.toISOString();
       await db.doc(`subscriptions/${slug}`).set(
         {
           slug,

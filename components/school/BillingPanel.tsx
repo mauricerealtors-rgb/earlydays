@@ -4,8 +4,7 @@ import { useEffect, useState } from "react";
 import { doc, onSnapshot } from "firebase/firestore";
 import { firestore } from "@/lib/firebase";
 import { useAuth } from "@/components/AuthProvider";
-
-type Tier = "free" | "verified" | "featured";
+import { BILLING_MONTHS, PLANS, money, yearlyTotal, type Tier } from "@/lib/plans";
 
 interface Subscription {
   tier: Tier;
@@ -14,43 +13,7 @@ interface Subscription {
   paystackReference?: string;
 }
 
-const PLANS = [
-  {
-    tier: "free" as const,
-    name: "Free",
-    price: 0,
-    features: [
-      "Editable profile (description, hours, contact)",
-      "Up to 8 real photos",
-      "Enquiries inbox",
-      "Basic analytics",
-    ],
-  },
-  {
-    tier: "verified" as const,
-    name: "Verified",
-    price: 200,
-    features: [
-      "Everything in Free",
-      "Verified badge on your profile",
-      "Priority in area & category ordering",
-      "Full 14-day analytics",
-      "WhatsApp button unlocked",
-    ],
-    highlight: true,
-  },
-  {
-    tier: "featured" as const,
-    name: "Featured",
-    price: 500,
-    features: [
-      "Everything in Verified",
-      "Featured slot on the EarlyDays homepage",
-      "Priority response to new parent enquiries",
-      "Sponsored placement in category pages (transparent)",
-    ],
-  },
-];
+
 
 export function BillingPanel({ slug }: { slug: string }) {
   const { user } = useAuth();
@@ -111,7 +74,7 @@ export function BillingPanel({ slug }: { slug: string }) {
           Billing
         </h2>
         <p className="text-sm text-[color:var(--color-ink-mute)]">
-          Powered by Paystack. Pay by MoMo, card or bank transfer in GH₵.
+          Powered by Paystack. Pay by MoMo, card or bank transfer in GH₵. Plans are priced per month and billed twelve months at a time.
         </p>
       </div>
 
@@ -163,8 +126,22 @@ export function BillingPanel({ slug }: { slug: string }) {
                 {p.highlight && <span className="chip chip-blossom text-[10px]">Recommended</span>}
               </div>
               <p className="mt-2 font-display text-[28px] text-[color:var(--color-navy)]">
-                {p.price === 0 ? "Free" : <>GH₵{p.price}<span className="text-sm text-[color:var(--color-ink-mute)]">/mo</span></>}
+                {p.monthly === 0 ? (
+                  "Free"
+                ) : (
+                  <>
+                    {money(p.monthly)}
+                    <span className="text-sm text-[color:var(--color-ink-mute)]">/mo</span>
+                  </>
+                )}
               </p>
+              {p.monthly > 0 && (
+                // Said plainly on the card, not buried in the small print —
+                // nobody should reach Paystack and be surprised by the total.
+                <p className="text-xs font-semibold text-[color:var(--color-ink-mute)]">
+                  {money(yearlyTotal(p.monthly))} billed yearly
+                </p>
+              )}
               <ul className="mt-3 space-y-1.5 text-sm">
                 {p.features.map((f) => (
                   <li key={f} className="flex items-start gap-2">
@@ -186,7 +163,9 @@ export function BillingPanel({ slug }: { slug: string }) {
                     disabled={starting !== null}
                     className={`w-full text-sm ${p.highlight ? "btn btn-pink" : "btn btn-ghost"}`}
                   >
-                    {starting === p.tier ? "Redirecting…" : `Upgrade to ${p.name}`}
+                    {starting === p.tier
+                      ? "Redirecting…"
+                      : `Upgrade — ${money(yearlyTotal(p.monthly))}/year`}
                   </button>
                 )}
               </div>
@@ -196,9 +175,10 @@ export function BillingPanel({ slug }: { slug: string }) {
       </div>
 
       <p className="text-xs text-[color:var(--color-ink-mute)]">
-        Prices are shown in Ghana Cedis. VAT included where applicable. Cancel
-        any time — your Verified/Featured status will end at the end of the
-        current billing period.
+        Prices are shown in Ghana Cedis per month and charged as one payment
+        covering {BILLING_MONTHS} months. VAT included where applicable. Cancel
+        any time — your Verified/Featured status runs to the end of the period
+        you have already paid for.
       </p>
     </div>
   );

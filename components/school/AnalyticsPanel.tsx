@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { doc, onSnapshot } from "firebase/firestore";
 import { firestore } from "@/lib/firebase";
+import { hasFullAnalytics, money, yearlyTotal, findPlan, type Tier } from "@/lib/plans";
 
 interface Stats {
   views: number;
@@ -26,6 +28,14 @@ const empty: Stats = {
 
 export function AnalyticsPanel({ slug }: { slug: string }) {
   const [stats, setStats] = useState<Stats>(empty);
+  const [tier, setTier] = useState<Tier>("free");
+
+  useEffect(() => {
+    const unsub = onSnapshot(doc(firestore(), "subscriptions", slug), (snap) => {
+      setTier((snap.data()?.tier as Tier) ?? "free");
+    });
+    return () => unsub();
+  }, [slug]);
 
   useEffect(() => {
     const unsub = onSnapshot(doc(firestore(), "stats", slug), (snap) => {
@@ -63,6 +73,7 @@ export function AnalyticsPanel({ slug }: { slug: string }) {
     });
   }
   const maxDaily = Math.max(1, ...days.map((d) => Math.max(d.views, d.contacts)));
+  const full = hasFullAnalytics(tier);
 
   return (
     <div className="space-y-6">
@@ -75,30 +86,38 @@ export function AnalyticsPanel({ slug }: { slug: string }) {
         </p>
       </div>
 
-      {/* KPI grid */}
+      {/* KPI grid — views and enquiries are free; the rest is a paid feature. */}
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
         <KPI label="Profile views" value={stats.views} accent="sky" />
-        <KPI label="Contact clicks" value={totalContacts} accent="leaf" />
         <KPI label="Enquiries" value={stats.enquiries} accent="coral" />
-        <KPI
-          label="Conversion"
-          value={`${conversion.toFixed(1)}%`}
-          accent="sun"
-          hint="Contacts ÷ views"
-        />
+        <Locked locked={!full} slug={slug} inline>
+          <KPI label="Contact clicks" value={totalContacts} accent="leaf" />
+        </Locked>
+        <Locked locked={!full} slug={slug} inline>
+          <KPI
+            label="Conversion"
+            value={`${conversion.toFixed(1)}%`}
+            accent="sun"
+            hint="Contacts ÷ views"
+          />
+        </Locked>
       </div>
+
+      {!full && <UpgradeCallout slug={slug} />}
 
       {/* Contact breakdown */}
       <section>
         <h3 className="mb-2 font-display text-base text-[color:var(--color-navy)]">
           Contact channel breakdown
         </h3>
-        <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
-          <MiniStat label="Calls" value={stats.calls} />
-          <MiniStat label="WhatsApp" value={stats.whatsapps} />
-          <MiniStat label="Website" value={stats.websiteClicks} />
-          <MiniStat label="Email" value={stats.emails} />
-        </div>
+        <Locked locked={!full} slug={slug}>
+          <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
+            <MiniStat label="Calls" value={stats.calls} />
+            <MiniStat label="WhatsApp" value={stats.whatsapps} />
+            <MiniStat label="Website" value={stats.websiteClicks} />
+            <MiniStat label="Email" value={stats.emails} />
+          </div>
+        </Locked>
       </section>
 
       {/* 14-day chart */}
@@ -106,6 +125,7 @@ export function AnalyticsPanel({ slug }: { slug: string }) {
         <h3 className="mb-2 font-display text-base text-[color:var(--color-navy)]">
           Last 14 days
         </h3>
+        <Locked locked={!full} slug={slug}>
         <div className="card-soft overflow-x-auto rounded-2xl p-4">
           <div className="flex items-end gap-2" style={{ height: 160 }}>
             {days.map((d, i) => (
@@ -139,6 +159,7 @@ export function AnalyticsPanel({ slug }: { slug: string }) {
             </span>
           </div>
         </div>
+        </Locked>
       </section>
 
       {stats.updatedAt && (
@@ -146,6 +167,66 @@ export function AnalyticsPanel({ slug }: { slug: string }) {
           Last event tracked: {new Date(stats.updatedAt).toLocaleString("en-GB")}
         </p>
       )}
+    </div>
+  );
+}
+
+/**
+ * Blur a paid panel rather than hide it: a school can see the shape of what it
+ * is missing, but the numbers are not readable. aria-hidden and inert keep the
+ * obscured figures out of the accessibility tree and off the tab order, so a
+ * screen reader is not read a wall of numbers the page is pretending to hide.
+ */
+function Locked({
+  locked,
+  slug,
+  inline = false,
+  children,
+}: {
+  locked: boolean;
+  slug: string;
+  inline?: boolean;
+  children: React.ReactNode;
+}) {
+  if (!locked) return <>{children}</>;
+  return (
+    <div className="relative overflow-hidden rounded-2xl">
+      <div className="pointer-events-none select-none blur-[6px]" aria-hidden inert>
+        {children}
+      </div>
+      <div className="absolute inset-0 flex items-center justify-center bg-white/45 p-2 text-center">
+        <Link
+          href={`/school/${slug}/billing`}
+          className="inline-flex items-center gap-1.5 rounded-full bg-[color:var(--color-navy)] px-3 py-1.5 text-[11px] font-bold uppercase tracking-wide text-white"
+        >
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden>
+            <rect x="4" y="10" width="16" height="10" rx="2" stroke="currentColor" strokeWidth="2.2" />
+            <path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+          </svg>
+          {inline ? "Upgrade" : "Upgrade to unlock"}
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+function UpgradeCallout({ slug }: { slug: string }) {
+  const verified = findPlan("verified");
+  return (
+    <div className="card-soft rounded-2xl p-5">
+      <p className="font-display text-base text-[color:var(--color-navy)]">
+        See what parents do next.
+      </p>
+      <p className="mt-1 text-sm text-[color:var(--color-ink-mute)]">
+        Your free listing shows profile views and enquiries. Verified adds
+        contact clicks, which channel parents use, your conversion rate and the
+        14-day trend — so you can tell a quiet week from a broken phone number.
+      </p>
+      <Link href={`/school/${slug}/billing`} className="btn btn-pink mt-3 text-sm">
+        {verified
+          ? `Upgrade — ${money(yearlyTotal(verified.monthly))}/year`
+          : "See plans"}
+      </Link>
     </div>
   );
 }
