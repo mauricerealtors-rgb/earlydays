@@ -6,6 +6,14 @@ export interface ComparisonPair {
   a: Listing;
   b: Listing;
   reason: string; // short editorial hook, e.g. "Two Montessori options in East Legon"
+  /**
+   * Both schools are in the same neighbourhood, so this is a choice a parent
+   * actually faces. Cross-area pairs stay on the site for anyone who lands on
+   * one, but they are noindex and kept out of the sitemap: Google crawled them
+   * and declined to index, and at 90% of our URLs that verdict was being read
+   * as a judgement on the whole site.
+   */
+  sameArea: boolean;
 }
 
 const RICH_ENOUGH = (l: Listing): boolean =>
@@ -53,6 +61,7 @@ export function curatedPairs(): ComparisonPair[] {
         a: x,
         b: y,
         reason: `Two options in ${prettyPlace(x.neighbourhood)} with different curriculum`,
+        sameArea: true,
       });
     }
   }
@@ -84,6 +93,7 @@ export function curatedPairs(): ComparisonPair[] {
         a: x,
         b: y,
         reason: `${categoryLabel(typeA)} in ${prettyPlace(x.neighbourhood)} versus ${prettyPlace(y.neighbourhood)}`,
+        sameArea: false,
       });
     }
   }
@@ -95,6 +105,15 @@ export function curatedPairs(): ComparisonPair[] {
 
 export function findPair(slug: string): ComparisonPair | undefined {
   return curatedPairs().find((p) => p.slug === slug);
+}
+
+/**
+ * The pairs worth putting in front of Google: same-neighbourhood choices a
+ * parent is really weighing up. Sitemaps and IndexNow submit these only; the
+ * cross-area pairs still render and still work, they are just noindex.
+ */
+export function indexablePairs(): ComparisonPair[] {
+  return curatedPairs().filter((p) => p.sameArea);
 }
 
 /**

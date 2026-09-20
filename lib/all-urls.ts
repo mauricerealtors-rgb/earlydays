@@ -4,7 +4,7 @@ import { CATEGORIES } from "@/data/categories";
 import { LOCATIONS, REGIONS } from "@/data/locations";
 import { GUIDES } from "@/data/guides";
 import { listingsByCategoryAndLocation } from "./query";
-import { curatedPairs } from "./comparisons";
+import { indexablePairs } from "./comparisons";
 
 /**
  * Every canonical, indexable URL on the public site. Used by the
@@ -65,7 +65,7 @@ export function allSiteUrls(): string[] {
   for (const g of GUIDES) urls.add(`${b}/guides/${g.slug}`);
 
   // School-vs-school comparisons
-  for (const p of curatedPairs()) urls.add(`${b}/compare/${p.slug}`);
+  for (const p of indexablePairs()) urls.add(`${b}/compare/${p.slug}`);
 
   return Array.from(urls);
 }

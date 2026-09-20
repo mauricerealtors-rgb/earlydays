@@ -30,6 +30,10 @@ export async function generateMetadata({
     title,
     description,
     alternates: { canonical: `${SITE.url}/compare/${p.slug}` },
+    // Cross-neighbourhood pairs are a real page for anyone who lands on one,
+    // but not a search result: parents choose between schools they can
+    // actually reach. follow keeps the links out to both school profiles live.
+    robots: p.sameArea ? undefined : { index: false, follow: true },
     openGraph: {
       title,
       description,
