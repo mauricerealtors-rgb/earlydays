@@ -59,14 +59,15 @@ export function ClaimForm({
             working day to check you work at {schoolName}.
           </Step>
           <Step n={2}>
-            Once that call goes through, we email you at{" "}
+            Once that call goes through, we set up your account and email your
+            login to{" "}
             <span className="font-semibold text-[color:var(--color-navy)]">
               {submittedEmail}
-            </span>{" "}
-            with a link to set up your login.
+            </span>
+            . You can change the password once you are in.
           </Step>
           <Step n={3}>
-            We attach {schoolName} to that account, and you can edit your
+            {schoolName} is attached to that account, so you can edit your
             profile straight away.
           </Step>
         </ol>

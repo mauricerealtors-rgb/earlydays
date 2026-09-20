@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
+import { Resend } from "resend";
 import { adminDb } from "@/lib/firebase-admin";
 import { verifyIdToken } from "@/lib/verify-id-token";
+import { createAccount, temporaryPassword } from "@/lib/firebase-rest-auth";
+import { findListing } from "@/lib/query";
+import { welcomeHtml, welcomeSubject, welcomeText } from "@/lib/welcome-email";
 
 export const runtime = "nodejs";
 
@@ -9,6 +13,10 @@ const ADMIN_EMAILS = new Set(
     .split(",")
     .map((e) => e.trim().toLowerCase())
 );
+
+const FROM = process.env.OUTREACH_FROM ?? process.env.INBOUND_FORWARD_FROM ?? "";
+const SENDER_NAME = process.env.OUTREACH_SENDER_NAME ?? "Maurice Nyamah";
+const REPLY_TO = process.env.OUTREACH_REPLY_TO ?? FROM;
 
 type Action = "verify" | "approve" | "reject";
 
@@ -103,16 +111,37 @@ export async function POST(req: Request) {
       .where("email", "==", target)
       .limit(1)
       .get();
-    if (userSnap.empty) {
-      return NextResponse.json(
-        {
-          error: `No EarlyDays account exists for ${target} yet. Ask them to sign up at /school/login, then assign again.`,
-          code: "NO_ACCOUNT",
-        },
-        { status: 409 }
-      );
+
+    let uid: string;
+    let tempPassword: string | undefined;
+
+    if (!userSnap.empty) {
+      uid = userSnap.docs[0].id;
+    } else {
+      // Nobody should have to go and register before they can be handed the
+      // profile they already rang us about. Make the account for them and mail
+      // the password; they change it from the sign-in page whenever they like.
+      const created = await createAccount(target, temporaryPassword());
+      if (!created.ok) {
+        if (created.reason === "EMAIL_EXISTS") {
+          // Registered with Firebase but no users doc — nothing here can map
+          // the address to a uid, so it needs doing by hand.
+          return NextResponse.json(
+            {
+              error: `${target} already has a sign-in but no profile record, so it cannot be matched automatically. Ask them to sign in once at /school/login, then assign again.`,
+              code: "ORPHAN_ACCOUNT",
+            },
+            { status: 409 }
+          );
+        }
+        return NextResponse.json(
+          { error: `Could not create an account for ${target}: ${created.message}` },
+          { status: 500 }
+        );
+      }
+      uid = created.account.uid;
+      tempPassword = created.account.password;
     }
-    const uid = userSnap.docs[0].id;
 
     // One school = one owner.
     const existingOwner = await db.doc(`listingOwners/${slug}`).get();
@@ -159,7 +188,51 @@ export async function POST(req: Request) {
       { merge: true }
     );
 
-    return NextResponse.json({ ok: true, status: "approved", uid });
+    // Hand-over email. The assignment above is already committed, so a mail
+    // failure is reported rather than thrown — re-sending is a button, redoing
+    // the assignment is not.
+    let emailed = false;
+    let emailError: string | null = null;
+    const listing = findListing(slug);
+    if (!process.env.RESEND_API_KEY || !FROM) {
+      emailError = "Sending is not configured (RESEND_API_KEY / OUTREACH_FROM).";
+    } else if (!listing) {
+      emailError = "No listing found for this slug.";
+    } else {
+      const opts = {
+        schoolName: listing.name,
+        slug,
+        email: target,
+        tempPassword,
+        senderName: SENDER_NAME,
+      };
+      const resend = new Resend(process.env.RESEND_API_KEY);
+      const { error: sendError } = await resend.emails.send({
+        from: `${SENDER_NAME} <${FROM}>`,
+        to: target,
+        replyTo: REPLY_TO,
+        subject: welcomeSubject(listing.name),
+        html: welcomeHtml(opts),
+        text: welcomeText(opts),
+      });
+      if (sendError) emailError = sendError.message;
+      else emailed = true;
+    }
+
+    await claimRef.update({
+      welcomeEmailedAt: emailed ? now : null,
+      welcomeEmailError: emailError,
+      accountCreated: Boolean(tempPassword),
+    });
+
+    return NextResponse.json({
+      ok: true,
+      status: "approved",
+      uid,
+      accountCreated: Boolean(tempPassword),
+      emailed,
+      emailError,
+    });
   } catch (err) {
     return NextResponse.json(
       { error: err instanceof Error ? err.message : "Decision failed" },

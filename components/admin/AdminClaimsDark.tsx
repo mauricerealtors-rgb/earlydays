@@ -46,6 +46,7 @@ export function AdminClaimsDark() {
   const [q, setQ] = useState("");
   const [busy, setBusy] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [note, setNote] = useState<string | null>(null);
 
   useEffect(() => {
     if (!user) return;
@@ -97,6 +98,7 @@ export function AdminClaimsDark() {
     if (!user) return;
     setBusy(claim.id);
     setError(null);
+    setNote(null);
     try {
       const res = await fetch("/api/admin/claims/decision", {
         method: "POST",
@@ -127,11 +129,11 @@ export function AdminClaimsDark() {
         );
       }
       if (!res.ok) {
-        // They have been verified but haven't signed up yet — offer to point
-        // the assignment at whatever address they actually registered with.
-        if (data.code === "NO_ACCOUNT") {
+        // Registered with Firebase but with no profile record, so the address
+        // cannot be matched — offer to assign to a different one instead.
+        if (data.code === "ORPHAN_ACCOUNT" || data.code === "NO_ACCOUNT") {
           const retry = window.prompt(
-            `${data.error}\n\nIf they signed up with a different email, enter it here to assign anyway:`,
+            `${data.error}\n\nOr enter a different email to assign to:`,
             claim.submittedEmail ?? ""
           );
           if (retry && retry.trim()) {
@@ -140,6 +142,20 @@ export function AdminClaimsDark() {
           }
         }
         throw new Error(data.error ?? "Action failed");
+      }
+      if (action === "approve") {
+        const r = data as {
+          accountCreated?: boolean;
+          emailed?: boolean;
+          emailError?: string | null;
+        };
+        setNote(
+          r.emailed
+            ? r.accountCreated
+              ? "Assigned. Account created and login details emailed."
+              : "Assigned. Sign-in details emailed to their existing account."
+            : `Assigned${r.accountCreated ? " and account created" : ""}, but the email failed: ${r.emailError ?? "unknown error"}`
+        );
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Action failed");
@@ -157,8 +173,8 @@ export function AdminClaimsDark() {
           </p>
           <h1 className="mt-1 font-display text-3xl md:text-4xl">Claims</h1>
           <p className="mt-1 text-sm text-white/60">
-            Call the school to verify, then assign the listing to the
-            claimant&apos;s account once they have signed up.
+            Call the school to verify, then assign. Assigning creates their
+            account if they don&apos;t have one and emails them the login.
           </p>
         </div>
       </header>
@@ -191,6 +207,11 @@ export function AdminClaimsDark() {
       {error && (
         <p className="mb-3 rounded-lg border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-300">
           {error}
+        </p>
+      )}
+      {note && (
+        <p className="mb-3 rounded-lg border border-emerald-500/30 bg-emerald-500/10 p-3 text-sm text-emerald-300">
+          {note}
         </p>
       )}
 
@@ -238,8 +259,8 @@ export function AdminClaimsDark() {
                     )}
                     {c.status === "verified" && (
                       <p className="mt-1 text-xs text-sky-300">
-                        Phone check done. Assign once they have signed up at
-                        /school/login.
+                        Phone check done. Assign to hand over the profile and
+                        email them their login.
                       </p>
                     )}
                     {c.status === "approved" && (
