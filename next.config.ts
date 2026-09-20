@@ -65,6 +65,20 @@ const config: NextConfig = {
       { protocol: "https", hostname: "res.cloudinary.com" },
     ],
   },
+  // www served the entire site on a 200 alongside the apex, so every page
+  // existed at two hosts. Canonical tags pointed at the apex, which is a hint
+  // rather than a rule, and Search Console treats a sitemap on a different host
+  // from the property as cross-host and refuses to read it.
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.earlydays.cc" }],
+        destination: "https://earlydays.cc/:path*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default config;
