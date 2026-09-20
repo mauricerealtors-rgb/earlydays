@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { Locked } from "./Locked";
+import { hasFullAnalytics } from "@/lib/plans";
 import { useEffect, useState } from "react";
 import {
   collection,
@@ -99,6 +101,7 @@ export function OverviewPanel({
   const totalContacts =
     stats.calls + stats.whatsapps + stats.websiteClicks + stats.emails;
   const conversion = stats.views ? (totalContacts / stats.views) * 100 : 0;
+  const fullAnalytics = hasFullAnalytics(tier);
 
   // 14-day chart
   const days: { label: string; views: number; contacts: number }[] = [];
@@ -129,10 +132,11 @@ export function OverviewPanel({
         </p>
       </header>
 
-      {/* KPI strip */}
+      {/* KPI strip — views, enquiries and unread are free. Anything about what
+          parents did next is the paid tier, gated the same way as /analytics;
+          gating only that page left the numbers on show here. */}
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
         <Kpi label="Profile views" value={stats.views} tint="sky" />
-        <Kpi label="Contact clicks" value={totalContacts} tint="leaf" />
         <Kpi label="Enquiries" value={stats.enquiries} tint="coral" />
         <Kpi
           label="Unread"
@@ -141,14 +145,19 @@ export function OverviewPanel({
           delta={unread > 0 ? "Needs reply" : "All clear"}
           deltaMood={unread > 0 ? "warn" : "good"}
         />
+        <Locked locked={!fullAnalytics} slug={slug} inline>
+          <Kpi label="Contact clicks" value={totalContacts} tint="leaf" />
+        </Locked>
       </div>
 
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-        <MiniKpi label="Calls" value={stats.calls} />
-        <MiniKpi label="WhatsApp" value={stats.whatsapps} />
-        <MiniKpi label="Website" value={stats.websiteClicks} />
-        <MiniKpi label="Conversion" value={`${conversion.toFixed(1)}%`} />
-      </div>
+      <Locked locked={!fullAnalytics} slug={slug}>
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+          <MiniKpi label="Calls" value={stats.calls} />
+          <MiniKpi label="WhatsApp" value={stats.whatsapps} />
+          <MiniKpi label="Website" value={stats.websiteClicks} />
+          <MiniKpi label="Conversion" value={`${conversion.toFixed(1)}%`} />
+        </div>
+      </Locked>
 
       {/* Plan callout */}
       <section className="admin-card rounded-2xl border border-[color:var(--color-line)] bg-white p-5">
@@ -194,6 +203,7 @@ export function OverviewPanel({
             </span>
           </div>
         </div>
+        <Locked locked={!fullAnalytics} slug={slug}>
         <div className="flex items-end gap-2 overflow-x-auto" style={{ height: 160 }}>
           {days.map((d, i) => (
             <div key={i} className="flex flex-1 min-w-[24px] flex-col items-center gap-1">
@@ -215,6 +225,7 @@ export function OverviewPanel({
             </div>
           ))}
         </div>
+        </Locked>
       </section>
 
       {/* Activity + quick actions */}
