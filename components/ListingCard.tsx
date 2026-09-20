@@ -84,6 +84,27 @@ export function ListingCard({ listing, compact = false }: { listing: Listing; co
               {listing.name}
             </Link>
           </h3>
+          {(listing.claimed || listing.verification === "verified") && (
+            // A claimed school has answered the phone to us, so it earns a mark
+            // in the results themselves, not just on its own profile. The green
+            // is hard-coded because --color-leaf is a pale fill that fails
+            // contrast on leaf-soft — the same reason .chip-leaf overrides it.
+            <span
+              className="mt-0.5 inline-flex shrink-0 items-center gap-1 rounded-full bg-[color:var(--color-leaf-soft)] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#2F7C25]"
+              title="This school has claimed and verified its profile with EarlyDays."
+            >
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <path
+                  d="m4 12 5 5L20 6"
+                  stroke="currentColor"
+                  strokeWidth="3.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              Verified
+            </span>
+          )}
         </div>
 
         <p className="mb-3 flex items-center gap-1.5 text-[13px] font-semibold text-[color:var(--color-pink-hot)]">

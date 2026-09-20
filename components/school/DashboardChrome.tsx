@@ -75,6 +75,7 @@ export function DashboardChrome({
         { href: `/school/${currentSlug}/edit`, label: "Profile", icon: ProfileIcon },
         { href: `/school/${currentSlug}/enquiries`, label: "Enquiries", icon: MessagesIcon },
         { href: `/school/${currentSlug}/analytics`, label: "Analytics", icon: ChartIcon },
+        { href: `/school/${currentSlug}/badge`, label: "Badge", icon: BadgeIcon },
         { href: `/school/${currentSlug}/billing`, label: "Billing", icon: BillingIcon },
       ]
     : [];
@@ -213,6 +214,15 @@ export function DashboardChrome({
   );
 }
 
+function BadgeIcon({ active }: { active: boolean }) {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className={active ? "text-black" : "text-white/60 group-hover:text-white"}>
+      <circle cx="12" cy="9" r="6" stroke="currentColor" strokeWidth="1.8" />
+      <path d="m9 9 2 2 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="m8.5 14.5-1 7 4.5-2.5 4.5 2.5-1-7" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+    </svg>
+  );
+}
 function BrandDot() {
   return (
     <img
