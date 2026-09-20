@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { adminDb } from "@/lib/firebase-admin";
-import { getAuth } from "firebase-admin/auth";
-import { getApps } from "firebase-admin/app";
+import { verifyIdToken } from "@/lib/verify-id-token";
 
 export const runtime = "nodejs";
 
@@ -30,11 +29,9 @@ export async function POST(req: Request) {
     const token = authHeader.startsWith("Bearer ") ? authHeader.slice(7) : "";
     if (!token) return NextResponse.json({ error: "Missing token" }, { status: 401 });
 
-    // adminDb() initialises the Admin app; getAuth uses the same app.
-    adminDb();
-    const adminAuth = getAuth(getApps()[0]);
-    const decoded = await adminAuth.verifyIdToken(token);
-    const email = (decoded.email ?? "").toLowerCase();
+    const decoded = await verifyIdToken(token);
+    if (!decoded) return NextResponse.json({ error: "Invalid token" }, { status: 401 });
+    const email = decoded.email;
     if (!ADMIN_EMAILS.has(email)) {
       return NextResponse.json({ error: "Not an admin" }, { status: 403 });
     }
@@ -98,18 +95,24 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Claim has no email to assign to" }, { status: 400 });
     }
 
-    let uid: string;
-    try {
-      uid = (await adminAuth.getUserByEmail(target)).uid;
-    } catch {
+    // Resolved through the users collection rather than firebase-admin/auth,
+    // which cannot be imported here (see lib/verify-id-token). Signing up
+    // writes users/{uid} with the address, so this is the same lookup.
+    const userSnap = await db
+      .collection("users")
+      .where("email", "==", target)
+      .limit(1)
+      .get();
+    if (userSnap.empty) {
       return NextResponse.json(
         {
-          error: `No EarlyDays account exists for ${target} yet. Ask them to sign up at /school/login, then approve again.`,
+          error: `No EarlyDays account exists for ${target} yet. Ask them to sign up at /school/login, then assign again.`,
           code: "NO_ACCOUNT",
         },
         { status: 409 }
       );
     }
+    const uid = userSnap.docs[0].id;
 
     // One school = one owner.
     const existingOwner = await db.doc(`listingOwners/${slug}`).get();

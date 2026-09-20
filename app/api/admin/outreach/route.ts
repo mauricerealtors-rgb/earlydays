@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import { getAuth } from "firebase-admin/auth";
-import { getApps } from "firebase-admin/app";
 import { adminDb } from "@/lib/firebase-admin";
+import { verifyIdToken } from "@/lib/verify-id-token";
 import { findListing } from "@/lib/query";
 import { outreachHtml, outreachSubject, outreachText } from "@/lib/outreach";
 
@@ -34,9 +33,9 @@ export async function POST(req: Request) {
     const token = authHeader.startsWith("Bearer ") ? authHeader.slice(7) : "";
     if (!token) return NextResponse.json({ error: "Missing token" }, { status: 401 });
 
-    adminDb();
-    const decoded = await getAuth(getApps()[0]).verifyIdToken(token);
-    const adminEmail = (decoded.email ?? "").toLowerCase();
+    const decoded = await verifyIdToken(token);
+    if (!decoded) return NextResponse.json({ error: "Invalid token" }, { status: 401 });
+    const adminEmail = decoded.email;
     if (!ADMIN_EMAILS.has(adminEmail)) {
       return NextResponse.json({ error: "Not an admin" }, { status: 403 });
     }
