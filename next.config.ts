@@ -4,6 +4,12 @@ const config: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   agentRules: false,
+  // firebase-admin resolves its sub-packages through lazy internal requires.
+  // Bundled, firebase-admin/auth fails to initialise and the function dies
+  // before the handler runs — an empty 500 with no body, which is why
+  // /api/admin/* returned "Unexpected end of JSON input" on the client while
+  // routes touching only firestore were fine. Loaded natively it works.
+  serverExternalPackages: ["firebase-admin"],
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [

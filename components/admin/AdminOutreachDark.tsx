@@ -102,8 +102,24 @@ export function AdminOutreachDark() {
         },
         body: JSON.stringify({ slug, action, ...extra }),
       });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error ?? "Failed");
+      // A route that dies during startup returns an empty body, and res.json()
+      // then throws "Unexpected end of JSON input" — hiding the status that
+      // would have explained it. Read the text and report what actually came
+      // back.
+      const raw = await res.text();
+      let data: { error?: string; code?: string } = {};
+      if (raw) {
+        try {
+          data = JSON.parse(raw);
+        } catch {
+          throw new Error(`HTTP ${res.status}: ${raw.slice(0, 200)}`);
+        }
+      } else if (!res.ok) {
+        throw new Error(
+          `HTTP ${res.status} with an empty response — the server route failed to start. Check the Vercel function logs.`
+        );
+      }
+      if (!res.ok) throw new Error(data.error ?? `HTTP ${res.status}`);
       return data;
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed");

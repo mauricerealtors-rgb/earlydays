@@ -111,7 +111,21 @@ export function AdminClaimsDark() {
           assignEmail: extra?.assignEmail,
         }),
       });
-      const data = await res.json();
+      // An empty body means the route failed to start; res.json() would throw
+      // "Unexpected end of JSON input" and bury the status.
+      const raw = await res.text();
+      let data: { error?: string; code?: string } = {};
+      if (raw) {
+        try {
+          data = JSON.parse(raw);
+        } catch {
+          throw new Error(`HTTP ${res.status}: ${raw.slice(0, 200)}`);
+        }
+      } else if (!res.ok) {
+        throw new Error(
+          `HTTP ${res.status} with an empty response — the server route failed to start. Check the Vercel function logs.`
+        );
+      }
       if (!res.ok) {
         // They have been verified but haven't signed up yet — offer to point
         // the assignment at whatever address they actually registered with.
