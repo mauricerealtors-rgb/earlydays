@@ -7,6 +7,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ClaimForm } from "@/components/ClaimForm";
 import { SITE } from "@/lib/site";
 import { fetchListingSideData } from "@/lib/listing-overrides";
+import { VerifiedCheck } from "@/components/VerifiedCheck";
 
 export const dynamicParams = false;
 // listing.claimed in the static data is always false — real ownership lives in
@@ -72,13 +73,14 @@ export default async function ClaimPage({
         </div>
 
         {alreadyClaimed ? (
-          <div className="mt-8 rounded-2xl border border-[color:var(--color-line)] bg-[color:var(--color-leaf-soft)] p-5">
-            <p className="font-semibold text-[#2F7C25]">
-              Managed by the school.
+          <div className="mt-8 rounded-2xl border border-[color:var(--color-sky-soft)] bg-[color:var(--color-sky-soft)] p-5">
+            <p className="flex items-center gap-2 font-semibold text-[#1F7AD6]">
+              <VerifiedCheck size={18} />
+              Managed by {listing.name}
             </p>
             <p className="mt-1 text-sm text-[color:var(--color-ink-mute)]">
-              {listing.name} has already claimed this profile and keeps it up to
-              date, so there is nothing to claim here.{" "}
+              This profile has already been claimed and is kept up to date by
+              the school, so there is nothing to claim here.{" "}
               <Link href={`/schools/${listing.slug}`} className="underline">
                 View the profile
               </Link>

@@ -1,4 +1,9 @@
 import { MARK_DATA_URI } from "./brand";
+import {
+  VERIFIED_BLUE,
+  VERIFIED_SEAL_PATH,
+  VERIFIED_TICK_PATH,
+} from "./verified-seal";
 
 /**
  * Embeddable "Verified on EarlyDays" badge.
@@ -56,8 +61,8 @@ export function badgeSvg(opts: {
     ${
       opts.claimed
         ? `<g transform="translate(222 22)">
-             <circle cx="12" cy="12" r="12" fill="#2F7C25"/>
-             <path d="m6 12 4 4 8-8" stroke="#fff" stroke-width="2.6"
+             <path d="${VERIFIED_SEAL_PATH}" fill="${VERIFIED_BLUE}"/>
+             <path d="${VERIFIED_TICK_PATH}" stroke="#fff" stroke-width="2.7"
                    stroke-linecap="round" stroke-linejoin="round" fill="none"/>
            </g>`
         : ""

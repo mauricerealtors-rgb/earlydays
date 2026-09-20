@@ -1,4 +1,5 @@
 import type { VerificationStatus } from "@/lib/types";
+import { VerifiedCheck } from "./VerifiedCheck";
 
 const map: Record<
   VerificationStatus,
@@ -28,6 +29,21 @@ const map: Record<
 
 export function VerifiedBadge({ status }: { status: VerificationStatus }) {
   const m = map[status];
+
+  // The seal is the paid mark, so it only shows once a school is actually
+  // verified or has claimed its profile; the lesser states keep the plain chip.
+  if (status === "verified" || status === "claimed") {
+    return (
+      <span
+        className="inline-flex items-center gap-1.5 text-[13px] font-bold text-[#1F7AD6]"
+        title={m.hint}
+      >
+        <VerifiedCheck size={18} />
+        {m.label}
+      </span>
+    );
+  }
+
   return (
     <span className={m.className} title={m.hint} aria-label={`Verification: ${m.hint}`}>
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden>

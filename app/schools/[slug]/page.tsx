@@ -15,6 +15,7 @@ import { findCategoryByType } from "@/data/categories";
 import { findLocation } from "@/data/locations";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { VerifiedBadge } from "@/components/VerifiedBadge";
+import { VerifiedCheck } from "@/components/VerifiedCheck";
 import { FactRow } from "@/components/FactRow";
 import { ContactActions } from "@/components/ContactActions";
 import { ListingCard } from "@/components/ListingCard";
@@ -309,31 +310,13 @@ function renderListing(listing: import("@/lib/types").Listing) {
               Contact this school
             </h2>
             <ContactActions listing={listing} />
-            <p className="mt-3 text-xs text-[color:var(--color-ink-mute)]">
-              Last updated {formatDate(listing.updatedAt)}
-              {listing.sourceUrls && listing.sourceUrls.length > 0
-                ? ` · Sourced from the school's own website${listing.sourceUrls.length > 1 ? "s" : ""}`
-                : " · Publicly discovered listing"}
-              .
-            </p>
             {listing.claimed ? (
               // Claimed profiles are managed by the school itself. Saying so
               // is worth more to a parent than a claim prompt, and it stops a
               // second person starting a claim on a school already handed over.
-              <p className="mt-4 flex items-center gap-2 rounded-2xl border border-[color:var(--color-line)] bg-[color:var(--color-leaf-soft)] p-3 text-[13px] text-[#2F7C25]">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
-                  <path
-                    d="m4 12 5 5L20 6"
-                    stroke="currentColor"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                <span>
-                  <span className="font-semibold">Managed by the school.</span>{" "}
-                  Kept up to date by {listing.name}.
-                </span>
+              <p className="mt-4 flex items-center gap-2 rounded-2xl border border-[color:var(--color-sky-soft)] bg-[color:var(--color-sky-soft)] p-3 text-[13px] font-semibold text-[#1F7AD6]">
+                <VerifiedCheck size={16} />
+                Managed by {listing.name}
               </p>
             ) : (
               <Link
