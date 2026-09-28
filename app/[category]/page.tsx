@@ -29,9 +29,23 @@ export async function generateMetadata({
   const c = findCategory(category);
   if (!c) return {};
   const count = listingsByCategory(c.slug).length;
+  // Almost every impression this page gets is a "near me" search, so the
+  // snippet is written for that: the count first, because a number in the
+  // title is the cheapest thing that lifts CTR, then the places a parent is
+  // actually searching from. The description stays inside the ~160 characters
+  // Google will render — the old one ran to 226 and was cut mid-sentence.
+  // " | EarlyDays" is appended by the root template, and Google renders about
+  // 60 characters, so the longer category names drop "& Ghana" rather than
+  // being cut mid-word. Category names keep their own casing — lowercasing
+  // turned "STEM & Coding" into "stem & coding".
+  const full = `${count} ${c.plural} near you in Accra & Ghana`;
+  const title = full.length + " | EarlyDays".length > 60
+    ? `${count} ${c.plural} near you in Accra`
+    : full;
+
   return {
-    title: `${c.plural} in Accra & Ghana (${count} verified)`,
-    description: `${c.plural} across Accra and Ghana on EarlyDays. ${c.blurb} Compare programmes, ages, curriculum and location. parent-first, honest profiles.`,
+    title,
+    description: `Compare ${count} ${c.plural} near you across Accra and Ghana. Ages, curriculum, fees guidance and location — free, parent-first profiles.`,
     alternates: { canonical: `${SITE.url}/${c.slug}` },
     openGraph: {
       title: `${c.plural} in Accra & Ghana`,
