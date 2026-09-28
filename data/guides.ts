@@ -120,44 +120,85 @@ export const GUIDES: Guide[] = [
  title: "How to choose a creche in Accra",
  dek: "A calm, practical checklist for parents visiting daycares for the first time.",
  tag: "Starting out",
- updatedAt: "2026-09-01",
- readingMinutes: 6,
+ updatedAt: "2026-09-28",
+ readingMinutes: 8,
  body: [
  {
  paragraphs: [
- "Choosing a creche in Accra can feel overwhelming. Every parent wants the same thing. a place where their child is safe, cared for, and gently stretched. but the difference between two centres on the same road can be enormous.",
- "This guide is a short, calm checklist you can take with you on visits. It won't tell you which creche is best. It will help you notice the things that matter and ask the questions that get straight answers.",
+ "Choosing a creche is different from choosing a school. Your child cannot tell you how the day went, so almost everything rests on how much you trust the adults in the room and how the place runs when nobody is visiting.",
+ "This is what matters most with under-threes in Accra, roughly in the order it matters.",
  ],
  },
  {
- heading: "Before you visit",
+ heading: "1. Ratios and who is actually in the room",
  paragraphs: [
- "Make a shortlist of two or three places. Look at the location, the age range they serve, and the hours they offer. If the school hasn't published fees, plan to ask on the visit rather than guessing from another school's rates.",
+ "Ask how many children and how many adults, for the specific room your child would be in, at the specific time of day you would use it. Averages hide a lot: a setting can be well staffed at ten in the morning and thin at four in the afternoon.",
+ "For babies under a year you want very close supervision, and the number of adults matters more than anything else on this page. For toddlers, much beyond one adult to six children means a lot of waiting, and waiting is where small children become unhappy.",
+ "Then ask who covers when someone is absent, and whether that person already knows the children. A cover arrangement that brings in an unfamiliar adult for a baby room is worth knowing about in advance.",
  ],
  },
  {
- heading: "On the visit. what to look for",
+ heading: "2. Whether staff stay",
  paragraphs: [
- "Watch the caregivers. Are they down at the children's eye level? Are they warm and attentive, or distracted?",
- "Notice the space. Is there room for both quiet play and movement? Are the toys age-appropriate? Is there safe outdoor space?",
- "Check the staff-to-child ratio. Small creches sometimes stretch thin at drop-off and pick-up times.",
- "Ask about routines. meals, naps, nappy changes, health emergencies. and how they communicate with parents through the day.",
+ "Ask how many of the people working in that room were there a year ago. With under-threes, attachment to a familiar adult is not a nice extra — it is most of what makes a day go well.",
+ "Ask too whether your child will have a key person, someone specifically responsible for them, and who that would be. Settings that can name the person straight away have usually thought about it properly.",
  ],
  },
  {
- heading: "Questions to ask",
+ heading: "3. Safety, health and what happens when something goes wrong",
  paragraphs: [
- "What is the daily rhythm for a child my age?",
- "How do you settle a new child into the group?",
- "What happens if my child is unwell?",
- "How do you handle food, allergies and rest?",
- "Can I speak to a current parent?",
+ "Who is first-aid trained, and is someone with that training always on site? Where is the nearest hospital, and what is the procedure if a child needs to go?",
+ "Ask to see the incident log. Every setting with small children has incidents; a log with nothing in it means they are not being written down, which is worse than a log with entries.",
+ "Look at the practical things while you are there: how the gate and sign-out work, who is allowed to collect a child and how that is checked, where nappies are changed and how that area is cleaned, and where food is prepared. Ask about the water supply and what happens on days when it is off.",
+ "Ask what the policy is on a child who arrives unwell, and on a child who becomes unwell during the day. Settings that are vague about this tend to be vague because they let it slide.",
  ],
  },
  {
- heading: "After the visit",
+ heading: "4. The day itself",
  paragraphs: [
- "Give yourself 24 hours before deciding. If the school's response to your enquiry was warm, prompt and honest. that's a strong signal in itself.",
+ "Ask to visit mid-morning while the room is running, not during nap time when everything looks calm. Watch for whether adults talk to babies as they handle them, whether children who are upset are picked up, and whether the room is loud in a busy way or a distressed way.",
+ "Ask where and how children sleep, how often nappies are changed, and how you will be told what your child ate and did. Many Accra creches send a daily note or WhatsApp message; what matters is that it is specific rather than the same line every day.",
+ "Ask how much time children spend outside, and where. Then go and look at the outdoor space, including the shade.",
+ ],
+ },
+ {
+ heading: "5. Location, traffic and your actual week",
+ paragraphs: [
+ "In Accra this is a bigger factor than parents expect. A creche twenty minutes away at nine in the morning can be an hour away at five in the afternoon, and you will do that trip twice a day, every day, for years.",
+ "Work out the journey at the times you would really be travelling, not at the weekend. Consider whether it is better placed near home or near work — near work means your child is with you in traffic; near home means they are not, but you are further away if they need you.",
+ "Check the real opening and closing times, what happens if you are late, and whether there is a late fee. Ask what they do during school holidays and over Christmas, because creche and school calendars do not always match.",
+ ],
+ },
+ {
+ heading: "6. Cost, and what is not in the headline number",
+ paragraphs: [
+ "Ask for the fee per term and then ask what else parents paid last year. Registration, caution fees, nappies, wipes, meals, transport and end-of-term events are commonly extra.",
+ "Ask how far in advance fees are payable, whether you pay for days your child is ill or away, and what notice you have to give to leave. Our guide to [preschool costs in Accra](/guides/how-much-does-preschool-cost-in-accra) gives a sense of typical ranges.",
+ ],
+ },
+ {
+ heading: "7. Settling in",
+ paragraphs: [
+ "Good creches expect settling to take days, not hours, and will describe the process without being asked. A phased start — a short visit with you, then a short stay without you, building up — is the sign of a setting that understands small children.",
+ "Ask what they do if a child does not settle after a few weeks, and whether they have ever advised a family to wait. An honest answer to that question is a good sign.",
+ ],
+ },
+ {
+ heading: "Warning signs",
+ paragraphs: [
+ "You are not allowed to see the room in use, or the visit is confined to reception and the playground.",
+ "You cannot be given the names of other parents to speak to.",
+ "Staff cannot tell you the ratio without going to ask.",
+ "The incident log does not exist, or cannot be shown.",
+ "Babies are in cots or seats for much of the visit rather than being held and moved about.",
+ "None of these are automatically disqualifying on their own. Two or three together usually are.",
+ ],
+ },
+ {
+ heading: "When you are ready to compare",
+ paragraphs: [
+ "Browse [creches and daycares by area](/creches) on EarlyDays and shortlist two or three within a realistic commute, then take [the visit checklist](/guides/questions-to-ask-before-enrolling) with you.",
+ "If your child is approaching three, [preschool versus KG](/guides/preschool-vs-kg-when-to-start) explains what comes next and when to move.",
  ],
  },
  ],
@@ -167,32 +208,64 @@ export const GUIDES: Guide[] = [
  title: "Montessori vs EYFS. what's the difference?",
  dek: "A plain-English comparison of two of the most common early years approaches you'll find in Ghana.",
  tag: "Curriculum",
- updatedAt: "2026-08-20",
- readingMinutes: 5,
+ updatedAt: "2026-09-28",
+ readingMinutes: 7,
  body: [
  {
  paragraphs: [
- "Two of the most common early years approaches you'll see on Ghanaian school profiles are Montessori and EYFS. Both are respected. They just come from different traditions and value different things.",
+ "Both names appear on school gates all over Accra, often on the same one. They are not competing philosophies so much as two different things: Montessori is a method with a specific set of materials and training, EYFS is a curriculum framework with defined outcomes. A school can genuinely run both. A school can also claim both and run neither.",
+ "This is what each actually means in a classroom, and how to tell which one you are looking at.",
  ],
  },
  {
- heading: "Montessori in a nutshell",
+ heading: "What Montessori is",
  paragraphs: [
- "Montessori is a child-led approach developed by Maria Montessori. Classrooms are 'prepared environments' with specific hands-on materials. Children choose their own work from what's on offer, and teachers observe and guide rather than instruct from the front.",
- "Look for: mixed-age groups, wooden materials, long uninterrupted work periods, emphasis on independence.",
+ "Montessori is a method developed by Maria Montessori in the early 1900s, built on the idea that children learn best by choosing their own work from a carefully prepared set of materials.",
+ "In a real Montessori room you should see: a long uninterrupted work period, usually two to three hours, rather than short timetabled lessons; specific wooden materials that are self-correcting, so a child can see their own mistake without a teacher pointing it out; mixed ages in one room, typically three to six together; and a teacher who spends much of the time observing and giving short individual lessons rather than addressing the whole class.",
+ "The word is not trademarked anywhere, Ghana included. Any school may describe itself as Montessori. That is not necessarily dishonest — plenty of schools use Montessori materials thoughtfully without full fidelity — but it does mean the label alone tells you very little.",
  ],
  },
  {
- heading: "EYFS in a nutshell",
+ heading: "What EYFS is",
  paragraphs: [
- "EYFS. the Early Years Foundation Stage. is a framework used in the UK for children from birth to five, structured around seven areas of learning. Play is central, but there's more explicit adult-led planning than in Montessori.",
- "Look for: play-based learning tied to specific outcomes, regular assessment against 'early learning goals', a balance of adult-led and child-led activities.",
+ "The Early Years Foundation Stage is the English statutory framework for children from birth to five. It is a curriculum and assessment structure rather than a teaching method: it sets out areas of learning and what children are expected to reach by the end of Reception, and leaves schools considerable freedom in how they get there.",
+ "In an EYFS room you should see: learning through play as the stated approach; adults moving between child-led activity and short adult-led sessions; continuous provision, meaning areas such as sand, water, construction and role-play always available; and observation-based record keeping, often photographs and notes building a picture of each child over time.",
+ "EYFS matters practically if you may move to a British-curriculum school later, in Ghana or abroad, because the stages line up. Our guide on [the Ghanaian curriculum versus the British one](/guides/ghanaian-curriculum-vs-british-curriculum) covers what happens after this stage.",
  ],
  },
  {
- heading: "Which is 'better'?",
+ heading: "The real differences, in practice",
  paragraphs: [
- "Neither. The right answer is usually about the individual school. the leadership, the teachers, the space, the culture. more than the label. Many Ghanaian schools blend both approaches, so ask what they actually do in a typical week rather than which label they use.",
+ "Choice: Montessori children largely choose their own work within prepared limits. EYFS balances child-initiated play with adult-led activity, so there is usually more whole-group time.",
+ "Materials: Montessori uses a defined sequence of specific equipment. EYFS uses whatever supports the areas of learning, so rooms vary far more between schools.",
+ "Interruption: a Montessori classroom protects long work periods and tries not to break a child's concentration. An EYFS day is more commonly divided into shorter blocks.",
+ "Assessment: Montessori tends towards observation with little formal recording for parents. EYFS builds an explicit record against defined outcomes, which is generally more visible to you.",
+ "Age grouping: Montessori mixes ages deliberately, so younger children learn from older ones. EYFS settings usually group by year.",
+ ],
+ },
+ {
+ heading: "Which suits which child",
+ paragraphs: [
+ "This is where honest advice runs out, because it depends on the child more than the method, and both approaches produce confident, well-prepared children.",
+ "Montessori often suits a child who concentrates deeply, likes finishing things, and is frustrated by being moved on. Some children find the freedom of choice difficult, and drift — a good Montessori teacher notices and steps in, which is exactly what you are paying for.",
+ "EYFS often suits a child who thrives on variety, social play and the rhythm of a day with clear shifts. Children who need long stretches to get properly absorbed can find it choppy.",
+ "Neither is more academic. The idea that Montessori is gentler and EYFS more rigorous, or the reverse, does not survive contact with actual classrooms.",
+ ],
+ },
+ {
+ heading: "How to tell what a school is really doing",
+ paragraphs: [
+ "Ask to watch a class for ten minutes rather than asking about the philosophy. The room answers the question faster than the prospectus.",
+ "For a Montessori claim, ask: how long is the uninterrupted work period, is any staff member Montessori-trained and by which organisation, and are ages mixed. Then look for the materials themselves — they are distinctive, and a school that has two shelves of them is using Montessori as decoration.",
+ "For an EYFS claim, ask: which areas of provision are permanently set up, how observations are recorded, and whether you will see them. Ask for an example of a recent observation with the name removed.",
+ "If a school says it does both, ask how the week is split. There is a workable answer to that question. A school that has not thought about it will struggle to give one.",
+ ],
+ },
+ {
+ heading: "Next steps",
+ paragraphs: [
+ "You can browse [Montessori schools](/montessori-schools) and [preschools](/preschools) by area on EarlyDays, and each profile lists the curriculum the school itself reports.",
+ "Take [the visit checklist](/guides/questions-to-ask-before-enrolling) with you — the questions about what a Tuesday actually looks like will tell you more than the label on the gate.",
  ],
  },
  ],
@@ -202,46 +275,66 @@ export const GUIDES: Guide[] = [
  title: "Questions to ask before enrolling your child",
  dek: "A pocket checklist for parents visiting schools. creche, preschool, or primary.",
  tag: "Visits",
- updatedAt: "2026-08-14",
- readingMinutes: 4,
+ updatedAt: "2026-09-28",
+ readingMinutes: 7,
  body: [
  {
  paragraphs: [
- "Print or screenshot this list before your next school visit. The best schools will welcome every one of these questions.",
+ "Most school visits in Accra last about twenty minutes and are run by whoever happens to be free at reception. You are shown the newest classroom, the playground, and the certificates on the wall. None of that tells you what your child's Tuesday will actually feel like.",
+ "The questions below are the ones that do. Print or screenshot them before your next visit. A good school will answer every one without flinching, and how they answer usually matters more than what they say.",
  ],
  },
  {
  heading: "About the school",
  paragraphs: [
- "How long has the school been operating?",
- "How many children are in each class or group?",
- "What is your staff turnover like?",
- "Are you registered with the Ghana Education Service or another authority?",
+ "How long has the school been operating, and who owns it? Plenty of good schools in Accra are young, so a recent start is not a problem in itself. What you are listening for is whether the person in front of you knows the answer or has to go and find someone.",
+ "How many children are in each class, and how many adults? Ask for the ratio in the age group you are actually enrolling, not the school average. For under-threes, much above one adult to six children means your child spends a good part of the day waiting. Then ask what happens when a staff member is off sick.",
+ "How many of the staff who taught this class last year are still here? A more useful question than asking about turnover in the abstract. In early years the relationship is the education, and a setting that has replaced most of its team in a year has a management problem whatever the classrooms look like.",
+ "Are you registered with the Ghana Education Service? Ask to see the certificate rather than taking the yes. Registration is not a quality guarantee, but an unregistered school has no external body to answer to if something goes wrong.",
+ "Can I speak to two parents who already have children here? The answer to this single question tells you more than the rest put together. Confident schools hand over numbers. Hesitation is itself the finding.",
  ],
  },
  {
  heading: "About the day",
  paragraphs: [
- "Can you walk me through a typical day?",
- "How do you handle mealtimes and rest?",
- "How much outdoor time do children get?",
- "What does 'settling in' look like for a new child?",
+ "Walk me through a typical Tuesday, hour by hour. Not the prospectus version. You are listening for how much of the day is spent sitting still. For a three-year-old, long stretches at a desk are a warning sign rather than a sign of seriousness.",
+ "How much time do children spend outside, and what happens when it rains? Ghana's rainy season is long enough that \"they go out every day\" needs a follow-up. Ask what the wet-weather plan is, then go and look at the shaded area yourself.",
+ "Who prepares the food, and where? Ask whether you can see the kitchen, how allergies are recorded and who is responsible for checking them. Ask to see where the children nap, not a photograph of it.",
+ "What does settling in look like for a new child? Good early-years settings expect a phased start across several days and will tell you so without being asked. A school that says your child can start full days straight away is describing its own convenience, not your child's needs.",
+ "What happens when a child is hurt or unwell? Who is first-aid trained, how quickly are you called, which hospital do they use, and is there a written incident log you are allowed to see?",
  ],
  },
  {
  heading: "About learning",
  paragraphs: [
- "What approach or curriculum do you follow. and what does that look like in practice?",
- "How do you know each child is progressing?",
- "How do you communicate with parents?",
+ "What curriculum do you follow, and what does it look like in practice? Montessori, EYFS, Cambridge and the Ghanaian curriculum each mean something specific — our guides on [Montessori vs EYFS](/guides/montessori-vs-eyfs) and [the Ghanaian curriculum versus the British one](/guides/ghanaian-curriculum-vs-british-curriculum) explain the differences. Ask for one concrete example from last week. A school that cannot produce one is naming a curriculum rather than running it.",
+ "How will I know whether my child is making progress? Ask what you will actually receive and how often. \"We will let you know if there is a problem\" is not a reporting system.",
+ "How do you communicate with parents day to day? A WhatsApp group, an app or a note in the bag all work. What you want to know is whether you only hear from the school when something has gone wrong.",
+ "What do you do with a child who is struggling, or one who is well ahead? Listen for whether they are describing something they have actually done, or a policy they have never had to use.",
  ],
  },
  {
- heading: "About the practicalities",
+ heading: "About money",
  paragraphs: [
- "What are the fees, and what do they include?",
- "What is the admissions process and timeline?",
- "Is there transport? Meals? After-care?",
+ "What are the fees per term, and what is not included? This is where Accra schools differ most. Advertised tuition often leaves out registration, books, uniform, transport, lunch, exam fees and end-of-term activities. Ask for a written breakdown of everything a parent in that class paid last year.",
+ "How much have fees risen in each of the past three years? A school that has raised fees sharply every year is a different financial commitment from the number on the brochure. Past increases are the only honest guide to future ones.",
+ "What happens to fees already paid if we leave mid-term or relocate? Worth asking even if you cannot imagine leaving, because the answer shows how the school treats families who are no longer customers.",
+ "Our guide to [what preschool actually costs in Accra](/guides/how-much-does-preschool-cost-in-accra) sets out typical ranges, so you can tell whether a quote is normal for the area or not.",
+ ],
+ },
+ {
+ heading: "What to notice when nobody is talking",
+ paragraphs: [
+ "Ask to see a classroom while it is in use rather than empty. Then stop asking questions for two minutes and just watch.",
+ "Are children talking to the adults, or only being talked at? Does a member of staff get down to a child's eye level? Is the work on the wall obviously made by children, or finished by a teacher? Do staff greet each other? When a child falls over, do they go to an adult, or stay where they are?",
+ "Then ask to use the toilets the children use. It is the least glamorous question on this list and reliably the most revealing.",
+ ],
+ },
+ {
+ heading: "Before you decide",
+ paragraphs: [
+ "Visit at least two schools before you commit, and try to go at drop-off or pick-up rather than during the mid-morning quiet. Write down how each visit felt within five minutes of leaving, because by the third school they blur together.",
+ "Then compare what you saw against what the school publishes. You can [browse schools by area](/schools) on EarlyDays to line up two or three within a realistic commute before booking any visits at all.",
  ],
  },
  ],
@@ -251,30 +344,56 @@ export const GUIDES: Guide[] = [
  title: "Preschool vs KG. when should my child start?",
  dek: "A short parent guide to the difference between preschool and KG in the Ghanaian context.",
  tag: "Starting out",
- updatedAt: "2026-08-08",
- readingMinutes: 4,
+ updatedAt: "2026-09-28",
+ readingMinutes: 6,
  body: [
  {
  paragraphs: [
- "In Ghana, 'preschool' typically covers the years before KG (kindergarten). It's a broad term. some schools use nursery, some use preschool, some use both. KG usually refers to the year or two immediately before Class 1.",
+ "The names are the confusing part. Two schools half a mile apart in Accra will use \"nursery\", \"preschool\" and \"KG\" to mean different things, and neither is wrong — the labels are not standardised. What matters is your child's age and what the day actually involves.",
+ "Here is how the years usually line up in Ghana, and how to judge when your child is ready.",
  ],
  },
  {
- heading: "What preschool looks like",
+ heading: "How the early years fit together in Ghana",
  paragraphs: [
- "Preschool is play-based. The focus is on social skills, language, motor development, and getting used to being in a group. Structured 'lessons' are usually short and hands-on.",
+ "Creche or daycare takes babies and toddlers, roughly three months to two years. The purpose is care: feeding, sleeping, safe play, and staff who know your child well.",
+ "Nursery or playgroup usually covers about two to three years. More structure than a creche, still mostly play, often the first time a child is in a group of the same age.",
+ "Preschool generally means three to five, sometimes called Pre-K or Reception depending on the curriculum the school follows. Children start working in groups, following routines, and meeting letters and numbers through activity rather than worksheets.",
+ "KG1 and KG2 are the two years immediately before Class 1, normally ages four to six. This is the part that is standardised: KG is formally part of basic education in Ghana, and most schools expect a child to enter Class 1 at around six.",
+ "So \"preschool or KG?\" is rarely a real choice. For most children they are consecutive stages, not alternatives. The genuine decision is when to start each one — and whether a particular school's version of it suits your child.",
  ],
  },
  {
- heading: "What KG looks like",
+ heading: "When to start: what actually matters",
  paragraphs: [
- "KG introduces more structure. Children start to work with letters and numbers, follow a timetable, and prepare for the transition into primary school. It's still play-rich in good settings. but the day looks more like school.",
+ "Age is the starting point, not the decider. Two children born the same month can be a year apart in readiness, and Ghanaian schools vary in how strictly they hold to cut-offs.",
+ "Signs a child is ready for preschool: they can be apart from you for a couple of hours without distress, they show interest in other children rather than only playing alongside them, they can follow a simple two-step instruction, and they can manage some of the toilet routine or are close to it.",
+ "Signs it may be worth waiting a term: frequent illness, a recent upheaval at home such as a move or a new baby, or real distress at separation that is not settling. None of these are permanent, and a term is a long time at this age.",
+ "Being the youngest in the year is the thing most parents underestimate. A child born in August entering a class of children born the previous September is nearly a year behind the oldest in that room — not in ability, in time lived. That gap is invisible by Class 4 and very visible at four.",
  ],
  },
  {
- heading: "When to start",
+ heading: "Questions worth asking about KG specifically",
  paragraphs: [
- "There's no single right age. Readiness is a mix of your child's personality, your family's routine, and the setting on offer. If a school pressures you to enrol before you're ready, that's worth noticing.",
+ "KG is where schools in Accra diverge most, because it is where pressure towards Class 1 starts. Ask what a KG1 morning actually looks like.",
+ "If the answer is largely sitting and writing, ask how long children are expected to stay at a desk in one stretch. Early formal writing is common here and popular with parents, but it is not the only way to arrive at Class 1 ready, and it suits some children badly.",
+ "Ask how the school decides a child is ready for Class 1, and what happens if they are not. A school with an honest answer about holding a child back — and a track record of discussing it early with parents — is usually telling you something good about how it works.",
+ "Our guide on [play-based versus academic early learning](/guides/play-based-vs-academic-preschool-learning-ghana) goes into the trade-off in more detail.",
+ ],
+ },
+ {
+ heading: "Practical points parents raise",
+ paragraphs: [
+ "Starting mid-year is normal. Most Accra schools admit across the year where they have space, and for preschool there is little lost by joining in the second term. For KG2 it is worth asking how much of the year's work a child would be joining part-way through.",
+ "Moving school between preschool and KG is also common, often because families want a school that runs all the way to primary. If that is your plan, visit the primary section too — it is what you are really choosing.",
+ "Half-day and full-day both exist at preschool age. Full days suit working parents and are widely available; what varies is whether the afternoon is genuine provision or supervised waiting. Ask what happens after lunch.",
+ ],
+ },
+ {
+ heading: "Where to look next",
+ paragraphs: [
+ "If you are weighing up the stage before this one, [how to choose a creche in Accra](/guides/how-to-choose-a-creche-in-accra) covers what to look for with under-threes. For costs, see [what preschool actually costs in Accra](/guides/how-much-does-preschool-cost-in-accra).",
+ "When you are ready to compare real options, browse [preschools](/preschools) or [kindergartens](/kindergartens) by area, and take [the visit checklist](/guides/questions-to-ask-before-enrolling) with you.",
  ],
  },
  ],
