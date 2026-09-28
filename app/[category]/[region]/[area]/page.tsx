@@ -55,9 +55,20 @@ export async function generateMetadata({
   const l = findLocation(area);
   if (!c || !r || !l) return {};
   const count = listingsByCategoryAndLocation(c.slug, l.slug).length;
+  // These are the pages that should answer "<category> near me" for a parent
+  // in this area, so the count leads and the area name comes before the region.
+  // " | EarlyDays" is appended by the root template and Google renders about 60
+  // characters, so a long area name drops the region rather than being cut.
+  const noun = count === 1 ? c.singular : c.plural;
+  const full = `${count} ${noun} in ${l.name}, ${r.name}`;
+  const title =
+    full.length + " | EarlyDays".length > 60
+      ? `${count} ${noun} in ${l.name}`
+      : full;
+
   return {
-    title: `${c.plural} in ${l.name}, ${r.name} (${count} listed)`,
-    description: `${count} ${count === 1 ? c.singular.toLowerCase() : c.plural.toLowerCase()} in ${l.name}, ${r.name} on EarlyDays. ${c.blurb}`,
+    title,
+    description: `Compare ${count} ${noun} in ${l.name}, ${r.name}. Ages, curriculum, fees guidance and contact details — free, parent-first profiles.`,
     alternates: { canonical: `${SITE.url}/${c.slug}/${r.slug}/${l.slug}` },
     openGraph: {
       title: `${c.plural} in ${l.name}, ${r.name}`,
