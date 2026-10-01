@@ -342,6 +342,339 @@ export const LOCATIONS: Location[] = [
     intro:
       "Tantra Hills is a hillside residential development in Ga West, north of Achimota and reached through Taifa or Achimota Mile 7. It is newer than the surrounding areas and school provision has grown alongside the estates. Families here often consider Achimota and Taifa as well, so it is worth comparing across all three before deciding.",
   },
+  {
+    slug: "kwabenya",
+    name: "Kwabenya",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "Residential suburb in Ga East, north of Achimota towards Atomic.",
+    intro:
+      "Kwabenya has expanded quickly along the Dome–Kwabenya road and the estates around it, and school provision has followed. It is one of the few areas in north Accra where a school publishes its fees openly. Families here often weigh Kwabenya against Dome, Taifa and Haatso, which are all within a short run outside peak hours.",
+  },
+  {
+    slug: "ashongman",
+    name: "Ashongman",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "Hillside residential area in Ga East, above Dome and Taifa.",
+    intro:
+      "Ashongman and Ashongman Estate sit above Dome on the northern edge of Accra, and the estate in particular has a cluster of Montessori settings serving the families who have moved there. Provision runs from creche through junior high. The climb up from the Dome road is the practical consideration — check the journey at school-run times rather than at the weekend.",
+  },
+  {
+    slug: "haatso",
+    name: "Haatso",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "Residential suburb between Legon and Atomic Junction in north Accra.",
+    intro:
+      "Haatso sits between Legon and Atomic Junction and serves a mix of university families and private-sector households. Provision is mostly small neighbourhood creches and preparatory schools rather than large campuses, several of them long established. The Haatso–Atomic road is the spine of the area, so where a school sits relative to it matters more than raw distance.",
+  },
+  {
+    slug: "legon",
+    name: "Legon",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "University district in north-east Accra, around the University of Ghana campus.",
+    intro:
+      "Legon is built around the University of Ghana, and its schools reflect that — including the university's own basic school, which has served staff families for decades. The area draws from East Legon, Haatso and Madina as well. Traffic around the campus gates at opening and closing time is the main thing to test before committing.",
+  },
+  {
+    slug: "west-legon",
+    name: "West Legon",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "Residential area west of the University of Ghana, towards Westlands.",
+    intro:
+      "West Legon sits between the university and the Westlands area, and is largely residential with a handful of well-established private schools. Provision here tends toward the international end, with Cambridge programmes represented. Families typically also look at Legon, Haatso and East Legon, all within a few minutes outside peak hours.",
+  },
+  {
+    slug: "agbogba",
+    name: "Agbogba",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "Residential neighbourhood in Ga East, between Ashongman and North Legon.",
+    intro:
+      "Agbogba lies between Ashongman and North Legon along the Agbogba–Ashongman road, and has grown with the estates around it. School provision is modest but includes settings running from creche through primary. Because Agbogba, Old Ashongman and North Legon adjoin and their names are used loosely, it is worth confirming exactly where a school sits before setting out.",
+  },
+  {
+    slug: "oyarifa",
+    name: "Oyarifa",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "Town on the Adenta–Aburi road at the northern edge of Greater Accra.",
+    intro:
+      "Oyarifa sits where Accra gives way to the Aburi hills, and has grown steadily as families have moved out along the Adenta–Aburi road. It has fewer schools than the suburbs closer in, but includes one of the few in Greater Accra that publishes a full fee schedule. Most families here are choosing between Oyarifa and Adenta, so the run down the Aburi road is worth timing.",
+  },
+  {
+    slug: "dome",
+    name: "Dome",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "Busy residential and market area in Ga East, on the Dome–Kwabenya road.",
+    intro:
+      "Dome is one of the denser parts of north Accra, built around its market and the Dome–Kwabenya road. Provision is mostly neighbourhood basic schools serving families within walking or short trotro distance. Dome, Taifa and Kwabenya run into each other here, so a school described as being in one is often on the boundary of another.",
+  },
+  {
+    slug: "nhyiaeso",
+    name: "Nhyiaeso",
+    region: "ashanti",
+    regionName: "Ashanti",
+    blurb: "Affluent residential district south-west of Kumasi city centre.",
+    intro:
+      "Nhyiaeso is one of Kumasi's established residential districts, running along the Victoria Opoku-Ware Road strip towards Danyame and Ridge. It has fewer schools than the denser suburbs but a markedly stronger showing of international and Cambridge provision, and the schools here tend to publish more about themselves than elsewhere in the city. Most families choosing here are also looking at Danyame and Ridge, which adjoin.",
+  },
+  {
+    slug: "danyame",
+    name: "Danyame",
+    region: "ashanti",
+    regionName: "Ashanti",
+    blurb: "Residential area adjoining Nhyiaeso and Ridge in south Kumasi.",
+    intro:
+      "Danyame sits between Nhyiaeso and Ridge in the older, leafier part of Kumasi. Provision here is limited in number but long established, including schools that have been running since the 1960s. Because Danyame, Ridge and Nhyiaeso run together and directories file schools under all three, it is worth checking the street rather than the suburb when planning a visit.",
+  },
+  {
+    slug: "kwadaso",
+    name: "Kwadaso",
+    region: "ashanti",
+    regionName: "Ashanti",
+    blurb: "Large residential district west of Kumasi centre, towards Sofoline.",
+    intro:
+      "Kwadaso and the Kwadaso Estate area form one of Kumasi's denser pockets of private schooling, including several that have been operating since the 1970s and 80s. The Sofoline–Patase road is the spine, and Kwadaso runs into Patasi, so schools often give an address that spans both. Montessori and Ghana Education Service provision are both well represented.",
+  },
+  {
+    slug: "patasi",
+    name: "Patasi",
+    region: "ashanti",
+    regionName: "Ashanti",
+    blurb: "Residential suburb west of Kumasi, adjoining Kwadaso.",
+    intro:
+      "Patasi adjoins Kwadaso on the western side of Kumasi and shares much of the same catchment. Provision runs from creche through junior high, with schools here more often following the Ghanaian curriculum than an international one. South Patasi and Patasi proper are used loosely in addresses, so confirm the landmark before travelling.",
+  },
+  {
+    slug: "santasi",
+    name: "Santasi",
+    region: "ashanti",
+    regionName: "Ashanti",
+    blurb: "Busy residential and junction area in south-west Kumasi.",
+    intro:
+      "Santasi is the densest cluster of private early-years provision found anywhere in Kumasi, spread along the Santasi roundabout and the Santasi–Kotwi and Bekwai road corridors. Schools here range from long-established complexes with over a thousand pupils to small Montessori settings. The spread means you can realistically shortlist several within a short drive of each other.",
+  },
+  {
+    slug: "asokwa",
+    name: "Asokwa",
+    region: "ashanti",
+    regionName: "Ashanti",
+    blurb: "Commercial and residential district south-east of Kumasi centre.",
+    intro:
+      "Asokwa sits between Kumasi centre and the Lake Road, taking in the residential area around Kumasi Mall and the Baba Yara stadium. It has real depth of provision, including schools founded in the 1930s and 60s, though few of them maintain a website. Asokwa runs into Ahinsan and Atonsu, so addresses often reference neighbouring areas.",
+  },
+  {
+    slug: "atonsu",
+    name: "Atonsu",
+    region: "ashanti",
+    regionName: "Ashanti",
+    blurb: "Residential area south of Kumasi, adjoining Ahinsan.",
+    intro:
+      "Atonsu and neighbouring Ahinsan form a large residential catchment south of Kumasi centre. Provision includes some of the biggest private school groups in the city by enrolment, alongside long-standing mission schools. Most schools here draw from Atonsu, Ahinsan and Chirapatre rather than across the city.",
+  },
+  {
+    slug: "daban",
+    name: "Daban",
+    region: "ashanti",
+    regionName: "Ashanti",
+    blurb: "Residential area south-west of Kumasi, on the Lake Road side.",
+    intro:
+      "Daban has grown quickly on the south-western side of Kumasi and punches above its size for schools, including one of the few in the city publishing a clear fees policy. Provision spans the Ghanaian curriculum and British pathways. Daban runs towards Ahodwo and the Lake Road, so journeys are usually judged against that corridor.",
+  },
+  {
+    slug: "kronum",
+    name: "Kronum",
+    region: "ashanti",
+    regionName: "Ashanti",
+    blurb: "Residential town on the northern edge of Kumasi, near Suame.",
+    intro:
+      "Kronum sits on the northern edge of Kumasi beyond Suame, and has grown with the estates around it. Provision is modest in number but includes settings taking children from a few months old. Families here often also look towards Suame and Bantama, which are closer to the city centre.",
+  },
+  {
+    slug: "abuakwa",
+    name: "Abuakwa",
+    region: "ashanti",
+    regionName: "Ashanti",
+    blurb: "Town on the Sunyani road, north-west of Kumasi.",
+    intro:
+      "Abuakwa lies on the Sunyani road about fifteen kilometres from the centre of Kumasi, and functions as its own town rather than a city suburb. Online provision is thin, but it includes one of the better-documented schools on this side of the city. Families here are generally choosing locally rather than commuting into Kumasi.",
+  },
+  {
+    slug: "lashibi",
+    name: "Lashibi",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "Residential area between Tema and Sakumono, around the Regimanuel estates.",
+    intro:
+      "Lashibi sits between Tema and Sakumono and is dominated by the Regimanuel Gray and Emefs estates, which is where most of its schools are. Provision leans international, with British and Cambridge programmes well represented. The Lashibi–Community 18 road is the main artery, so position relative to it is the practical question.",
+  },
+  {
+    slug: "baatsona",
+    name: "Baatsona",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "Residential area on the Spintex road corridor, east of Accra.",
+    intro:
+      "Baatsona sits on the Spintex corridor between Accra and Tema, and shares a catchment with Spintex itself. Schools here serve families across the estates on both sides of the Spintex road. Traffic along that road at school-run times is the single biggest practical factor, so test the journey before committing.",
+  },
+  {
+    slug: "nungua",
+    name: "Nungua",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "Coastal town east of Accra, running into Teshie and the Nungua estates.",
+    intro:
+      "Nungua and the Teshie-Nungua Estates form a long-established residential belt along the coast road east of Accra. Provision includes Montessori settings that have been running since the 1990s and early 2000s, several taking children from under two. Schools here draw from Teshie, Nungua and Sakumono, all within a short run outside peak hours.",
+  },
+  {
+    slug: "ashaiman",
+    name: "Ashaiman",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "Dense township north of Tema.",
+    intro:
+      "Ashaiman is a large, densely populated township just north of Tema with a young population and a correspondingly high number of private basic schools. Provision is mostly neighbourhood nursery and primary schools serving families within walking distance. Online presence is thin here relative to the number of schools actually operating, so a phone call is usually the quickest way to check details.",
+  },
+  {
+    slug: "kpone",
+    name: "Kpone",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "Town east of Tema, in the Kpone-Katamanso municipality.",
+    intro:
+      "Kpone sits east of Tema along the Akosombo road and has grown with the estates and industry around it. Provision is limited in number but includes schools running the full span from preschool to junior high. Most families here are choosing between Kpone and Tema's eastern communities.",
+  },
+  {
+    slug: "michel-camp",
+    name: "Michel Camp",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "Military and residential area between Tema and Prampram.",
+    intro:
+      "Michel Camp sits east of Tema towards Prampram and takes in both the military establishment and the Gbetsile residential area that has grown beside it. School provision is modest and relatively new. Families here often look towards Tema and Kpone as well.",
+  },
+  {
+    slug: "ridge",
+    name: "Ridge",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "Administrative and diplomatic district in central Accra.",
+    intro:
+      "Ridge is one of central Accra's oldest planned districts, home to embassies, hospitals and some of the city's longest-established schools. Provision here is limited in number but strong in reputation, including one of the very few Accra schools that publishes its fees openly. Most families choosing Ridge are also considering Cantonments, Labone and Airport Residential.",
+  },
+  {
+    slug: "asylum-down",
+    name: "Asylum Down",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "Central Accra neighbourhood between Adabraka and Kokomlemle.",
+    intro:
+      "Asylum Down is a central Accra neighbourhood close to Adabraka and Kokomlemle, mixing residential streets with offices and guesthouses. School provision is limited but includes settings taking children from a few months old. Its central position means families often weigh it against Adabraka, Ridge and Kaneshie.",
+  },
+  {
+    slug: "adabraka",
+    name: "Adabraka",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "Older central Accra neighbourhood north of the business district.",
+    intro:
+      "Adabraka is one of Accra's older central neighbourhoods and its schools reflect that, including institutions whose history reaches back to the mid-twentieth century. Provision is mostly Ghanaian-curriculum basic schools serving families living centrally. Being central, journeys are short but parking and through-traffic are the practical constraints.",
+  },
+  {
+    slug: "kaneshie",
+    name: "Kaneshie",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "Busy market and residential district in west-central Accra.",
+    intro:
+      "Kaneshie is built around its market and the Winneba road, and is one of the denser parts of west-central Accra. Provision is mostly neighbourhood creches and basic schools, including Catholic mission schools that have served the area for decades. Kaneshie runs into Awudome, Abossey Okai and Dansoman, so addresses often reference neighbouring areas.",
+  },
+  {
+    slug: "mamprobi",
+    name: "Mamprobi",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "Established residential district in south-west Accra.",
+    intro:
+      "Mamprobi is a long-established residential district in south-west Accra, close to Korle Bu and Dansoman. Provision is dominated by mission and public basic schools rather than private international ones, several with long histories in the area. Online presence is thin, so phone contact is usually the fastest route.",
+  },
+  {
+    slug: "korle-bu",
+    name: "Korle Bu",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "District around the Korle Bu Teaching Hospital in south-west Accra.",
+    intro:
+      "Korle Bu is best known for its teaching hospital, and the residential area around it houses many hospital and university families. School provision is modest and leans towards mission schools. Korle Bu runs into Mamprobi and Lartebiokorshie, and some schools span more than one of them.",
+  },
+  {
+    slug: "abossey-okai",
+    name: "Abossey Okai",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "Commercial and residential district in central-west Accra.",
+    intro:
+      "Abossey Okai is best known for its spare-parts trade, and is densely residential behind the main commercial strips. Provision is mostly public and mission basic schools with little web presence, so the schools listed here are fewer than those actually operating. Families often also look at Kaneshie and Mamprobi.",
+  },
+  {
+    slug: "nima",
+    name: "Nima",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "Dense inner-city neighbourhood in north-central Accra.",
+    intro:
+      "Nima is one of Accra's most densely populated inner-city neighbourhoods, with a young population and heavy demand for basic schooling. Provision is predominantly public and mission schools, which rarely publish contact details online. The schools listed here are a fraction of those operating locally.",
+  },
+  {
+    slug: "kotobabi",
+    name: "Kotobabi",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "Residential neighbourhood in north-central Accra, near Nima and Alajo.",
+    intro:
+      "Kotobabi sits between Nima, Alajo and Accra New Town in north-central Accra. Like its neighbours, provision is mostly public and mission basic schools serving families within walking distance. Web presence is minimal, so expect to phone rather than browse.",
+  },
+  {
+    slug: "cape-coast",
+    name: "Cape Coast",
+    region: "central",
+    regionName: "Central",
+    blurb: "Historic coastal city and regional capital of the Central Region.",
+    intro:
+      "Cape Coast is the Central Region's capital and one of Ghana's oldest education centres, with a metropolitan register listing close to two hundred basic schools. Private provision is spread across Pedu, Abura, Akotokyir, Adisadel and the UCC campus area. Relatively few schools maintain websites, so phone contact is usually the quickest route to admissions.",
+  },
+  {
+    slug: "elmina",
+    name: "Elmina",
+    region: "central",
+    regionName: "Central",
+    blurb: "Historic fishing town west of Cape Coast in the KEEA municipality.",
+    intro:
+      "Elmina is a historic fishing town west of Cape Coast, and the municipality around it runs a large number of kindergartens and primaries relative to its size. Private provision with an online presence is thin, though several schools are long established, including Catholic schools dating to the nineteenth century. Families often also look towards Cape Coast, which is a short drive east.",
+  },
+  {
+    slug: "winneba",
+    name: "Winneba",
+    region: "central",
+    regionName: "Central",
+    blurb: "Coastal town in the Central Region, home to the University of Education.",
+    intro:
+      "Winneba is built around the University of Education, and its best-documented school provision belongs to the university itself. Beyond that, most basic schools in the town have little or no web presence, so the listings here represent a fraction of what operates locally. Families here are generally choosing within Winneba rather than commuting.",
+  },
+  {
+    slug: "airport-ridge",
+    name: "Airport Ridge",
+    region: "western",
+    regionName: "Western",
+    blurb: "Residential area near Takoradi airport in the Western Region.",
+    intro:
+      "Airport Ridge is one of Takoradi's established residential areas, and has a small cluster of preparatory and preschool provision. It sits close to Anaji and the town centre, so families here typically consider all three. Provision is modest in number but the area is a recognised, searchable Takoradi address.",
+  },
 ];
 
 export const REGIONS = [
