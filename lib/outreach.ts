@@ -1,5 +1,6 @@
 import { SITE } from "@/lib/site";
 import { findLocation } from "@/data/locations";
+import { auditPresence } from "@/lib/presence";
 import type { Listing } from "@/lib/types";
 
 /**
@@ -27,6 +28,44 @@ function area(listing: Listing): string {
   return findLocation(listing.neighbourhood)?.name ?? listing.neighbourhood;
 }
 
+/**
+ * The part of the email that is actually about their school.
+ *
+ * Only the three strongest gaps, phrased as what we could not find rather than
+ * what they do not have — the school may well have a Facebook page we never
+ * reached, and a cold email that tells a head teacher something untrue about
+ * their own school is worse than no email. Schools with little missing get no
+ * findings block at all rather than a stretched one.
+ */
+function topFindings(listing: Listing): string[] {
+  return auditPresence(listing).missing.slice(0, 3).map((m) => m.finding);
+}
+
+function auditParagraphText(listing: Listing): string {
+  const found = topFindings(listing);
+  if (found.length < 2) return "";
+  return `
+While we were putting your profile together, a few things we could not find:
+
+${found.map((f) => `- ${f}`).join("\n")}
+
+None of that means the school is hard to find in person — only that a parent
+searching online may not see it. You can fix all of it on your profile for free.
+`;
+}
+
+function auditParagraphHtml(listing: Listing): string {
+  const found = topFindings(listing);
+  if (found.length < 2) return "";
+  return `<p>While we were putting your profile together, a few things we could not find:</p>
+  <ul style="padding-left:20px;margin:0 0 16px;">
+    ${found.map((f) => `<li>${esc(f)}</li>`).join("\n    ")}
+  </ul>
+  <p style="color:#6b7a8c;font-size:14px;">None of that means the school is hard to find in
+  person &mdash; only that a parent searching online may not see it. You can fix all of it
+  on your profile for free.</p>`;
+}
+
 export function outreachText(listing: Listing, senderName: string): string {
   const profile = `${SITE.url}/schools/${listing.slug}`;
   const claim = `${SITE.url}/claim/${listing.slug}`;
@@ -37,7 +76,7 @@ We've built a profile for ${listing.name} on EarlyDays, a directory helping Ghan
 ${profile}
 
 We compiled it from publicly available information, so some details may be out of date. We'd rather you correct it than leave parents reading something wrong.
-
+${auditParagraphText(listing)}
 Claiming the profile is free and lets you:
 
 - Correct your description, fees guidance, and contact details
@@ -83,6 +122,8 @@ export function outreachHtml(listing: Listing, senderName: string): string {
   <p>We compiled it from publicly available information, so some details may be
   out of date. We&rsquo;d rather you correct it than leave parents reading
   something wrong.</p>
+
+  ${auditParagraphHtml(listing)}
 
   <p>Claiming the profile is free and lets you:</p>
 

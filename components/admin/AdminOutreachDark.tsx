@@ -6,6 +6,7 @@ import { collection, onSnapshot } from "firebase/firestore";
 import { firestore } from "@/lib/firebase";
 import { useAuth } from "@/components/AuthProvider";
 import { allListings } from "@/lib/query";
+import { auditPresence, presenceBand } from "@/lib/presence";
 
 type Status = "pending" | "sent" | "skipped" | "failed";
 
@@ -16,7 +17,13 @@ interface OutreachDoc {
   error?: string;
 }
 
-type Filter = "todo" | "no-email" | "sent" | "failed" | "all";
+type Filter = "todo" | "weak" | "no-email" | "sent" | "failed" | "all";
+
+const BAND_CLASS: Record<string, string> = {
+  weak: "bg-red-500/15 text-red-300",
+  partial: "bg-amber-500/15 text-amber-300",
+  good: "bg-emerald-500/15 text-emerald-300",
+};
 
 const STATUS_CLASS: Record<Status, string> = {
   pending: "bg-white/10 text-white/60",
@@ -61,12 +68,17 @@ export function AdminOutreachDark() {
         const d = docs[l.slug] ?? {};
         const email = d.email ?? l.email ?? "";
         const status: Status = d.status ?? "pending";
-        return { listing: l, email, status, sentAt: d.sentAt, error: d.error };
+        // The audit is the pitch: a school missing a website and photos has a
+        // far stronger reason to care than one already online.
+        const audit = auditPresence(l);
+        return { listing: l, email, status, sentAt: d.sentAt, error: d.error, audit };
       })
       .filter((r) => {
         if (term && !r.listing.name.toLowerCase().includes(term) && !r.email.toLowerCase().includes(term))
           return false;
         if (filter === "todo") return r.status === "pending" && Boolean(r.email);
+        if (filter === "weak")
+          return r.status === "pending" && Boolean(r.email) && presenceBand(r.audit.percent) === "weak";
         if (filter === "no-email") return !r.email;
         if (filter === "sent") return r.status === "sent";
         if (filter === "failed") return r.status === "failed";
@@ -75,7 +87,7 @@ export function AdminOutreachDark() {
   }, [listings, docs, filter, q]);
 
   const counts = useMemo(() => {
-    let todo = 0, noEmail = 0, sent = 0, failed = 0;
+    let todo = 0, noEmail = 0, sent = 0, failed = 0, weak = 0;
     listings.forEach((l) => {
       const d = docs[l.slug] ?? {};
       const email = d.email ?? l.email ?? "";
@@ -83,9 +95,9 @@ export function AdminOutreachDark() {
       if (!email) noEmail++;
       if (status === "sent") sent++;
       else if (status === "failed") failed++;
-      else if (status === "pending" && email) todo++;
+      else if (status === "pending" && email) { todo++; if (presenceBand(auditPresence(l).percent) === "weak") weak++; }
     });
-    return { todo, "no-email": noEmail, sent, failed, all: listings.length };
+    return { todo, weak, "no-email": noEmail, sent, failed, all: listings.length };
   }, [listings, docs]);
 
   async function call(slug: string, action: string, extra: Record<string, unknown> = {}) {
@@ -177,7 +189,7 @@ export function AdminOutreachDark() {
           className="flex-1 min-w-[200px] rounded-lg border border-white/10 bg-transparent px-3 py-2 text-sm text-white placeholder:text-white/30 outline-none focus:border-white/30"
         />
         <div className="flex flex-wrap gap-1 text-xs">
-          {(["todo", "no-email", "sent", "failed", "all"] as const).map((f) => (
+          {(["todo", "weak", "no-email", "sent", "failed", "all"] as const).map((f) => (
             <button
               key={f}
               onClick={() => setFilter(f)}
@@ -208,7 +220,7 @@ export function AdminOutreachDark() {
         </div>
       ) : (
         <ul className="space-y-2">
-          {rows.map(({ listing, email, status, sentAt, error: rowError }) => {
+          {rows.map(({ listing, email, status, sentAt, error: rowError, audit }) => {
             const draft = drafts[listing.slug];
             const current = draft ?? email;
             const isBusy = busy === listing.slug;
@@ -230,6 +242,25 @@ export function AdminOutreachDark() {
                     <p className="text-xs text-white/50">
                       {listing.neighbourhood} · {listing.region}
                       {sentAt && ` · sent ${new Date(sentAt).toLocaleDateString("en-GB")}`}
+                    </p>
+                    {/* The audit is what the email will actually say to them. */}
+                    <p className="mt-1 flex flex-wrap items-center gap-1.5 text-[11px]">
+                      <span
+                        className={`rounded px-1.5 py-0.5 font-bold uppercase tracking-wide ${BAND_CLASS[presenceBand(audit.percent)]}`}
+                        title="How much of this school a parent can find online, from what we could source"
+                      >
+                        {audit.percent}% online
+                      </span>
+                      {audit.phoneOnly && (
+                        <span className="rounded bg-red-500/15 px-1.5 py-0.5 font-bold uppercase tracking-wide text-red-300">
+                          phone only
+                        </span>
+                      )}
+                      {audit.missing.slice(0, 4).map((m) => (
+                        <span key={m.key} className="rounded bg-white/5 px-1.5 py-0.5 text-white/45">
+                          no {m.label.toLowerCase()}
+                        </span>
+                      ))}
                     </p>
                     {rowError && <p className="mt-1 text-xs text-red-300">{rowError}</p>}
 
