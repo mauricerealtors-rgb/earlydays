@@ -2205,6 +2205,10 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://wfieldschool.com/home/wp-content/uploads/2021/01/F.D-115-1024x670.jpg", alt: "Pupil writing at a desk in a classroom at Westfield Montessori School", credit: "Photo: Westfield Montessori School (official site)", sourceUrl: "https://wfieldschool.com/" },
+      { url: "https://wfieldschool.com/home/wp-content/uploads/2021/03/F.D-124-1024x670.jpg", alt: "Two pupils reading together outdoors at Westfield Montessori School", credit: "Photo: Westfield Montessori School (official site)", sourceUrl: "https://wfieldschool.com/" },
+    ],
     imageQuery: "Montessori preschool classroom McCarthy Hill Accra",
   },
   {
@@ -2236,6 +2240,9 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://faithms.edu.gh/wp-content/uploads/2026/07/class-of-2026-2.jpg", alt: "Graduating pupils in gowns at Faith Montessori School, Gbawe", credit: "Photo: Faith Montessori School (official site)", sourceUrl: "https://faithms.edu.gh/" },
+    ],
     imageQuery: "Montessori classroom Gbawe Accra",
   },
   {
@@ -2301,6 +2308,9 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://www.startrite.edu.gh/images/slider-6.jpg", alt: "Children in kente at a cultural event at Startrite Montessori School", credit: "Photo: Startrite Montessori School (official site)", sourceUrl: "https://www.startrite.edu.gh/" },
+    ],
     imageQuery: "Montessori nursery Mallam Accra",
   },
   {
@@ -2364,6 +2374,9 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://prospectintschool.com/template/img/pis/home_slide_1.jpg", alt: "School building and playground at Prospect International School, New Gbawe", credit: "Photo: Prospect International School (official site)", sourceUrl: "https://prospectintschool.com/" },
+    ],
     imageQuery: "primary school classroom New Gbawe Accra",
   },
   {
@@ -2428,6 +2441,9 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://dreamersacademycenter.com/assets/images/adb9eef2d47bbeb2689618cd0099269b.jpg", alt: "Pupils in uniform at Dreamers Academy, Gbawe", credit: "Photo: Dreamers Academy (official site)", sourceUrl: "https://dreamersacademycenter.com/" },
+    ],
     imageQuery: "STEAM classroom Gbawe Accra",
   },
   {
@@ -2462,6 +2478,10 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://brainhill.edu.gh/wp-content/uploads/2025/09/2025-08-19-3-08-53-019-PM-1024x576.png", alt: "Aerial view of the Brain Hill International School campus at Gbawe", credit: "Photo: Brain Hill International School, Gbawe (official site)", sourceUrl: "https://brainhill.edu.gh/" },
+      { url: "https://brainhill.edu.gh/wp-content/uploads/2025/09/2025-08-19-2-59-50-878-PM-1024x576.png", alt: "Covered sports court at Brain Hill International School, Gbawe", credit: "Photo: Brain Hill International School, Gbawe (official site)", sourceUrl: "https://brainhill.edu.gh/" },
+    ],
     imageQuery: "creche Gbawe Accra",
   },
   {
@@ -2494,6 +2514,9 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://www.talentedroyals.com/images/bg/bg3.jpg", alt: "Children in traditional dress with drums at Talented Royals International School, Weija", credit: "Photo: Talented Royals International School (official site)", sourceUrl: "https://www.talentedroyals.com/" },
+    ],
     imageQuery: "school children Weija Accra",
   },
   {
@@ -2621,6 +2644,9 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://gcsl.edu.gh/wp-content/themes/gcsl-theme/assets/images/apply-now-hero.jpg", alt: "Pupils in school uniform at Glorious Child School, Pokuase", credit: "Photo: Glorious Child School (official site)", sourceUrl: "https://gcsl.edu.gh/" },
+    ],
     imageQuery: "school science lab Pokuase Accra",
   },
   {
@@ -2652,6 +2678,10 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://www.crownprinceacademy.edu.gh/wp-content/uploads/2026/09/1-scaled.jpg", alt: "Speech day at Crown Prince Academy, Kwashieman", credit: "Photo: Crown Prince Academy (official site)", sourceUrl: "https://www.crownprinceacademy.edu.gh/" },
+      { url: "https://www.crownprinceacademy.edu.gh/wp-content/uploads/2026/09/Kwame-Nkrumah-faces-1024x576-1.jpg", alt: "School building at Crown Prince Academy, Kwashieman", credit: "Photo: Crown Prince Academy (official site)", sourceUrl: "https://www.crownprinceacademy.edu.gh/" },
+    ],
     imageQuery: "basic school classroom Kwashieman Accra",
   },
   {
@@ -2684,6 +2714,10 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://happykidschool.org/wp-content/uploads/2023/05/1.webp", alt: "Child playing in the ball pit at Happy Kids School", credit: "Photo: Happy Kids School (official site)", sourceUrl: "https://happykidschool.org/" },
+      { url: "https://happykidschool.org/wp-content/uploads/2024/08/Website-banner-2.webp", alt: "Graduating pupils at Happy Kids School, Kwashieman", credit: "Photo: Happy Kids School (official site)", sourceUrl: "https://happykidschool.org/" },
+    ],
     imageQuery: "primary school classroom Kwashieman Accra",
   },
   {
@@ -2716,6 +2750,9 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://platinummontessori.com/assets/images/school-about.jpg", alt: "School building at Platinum Montessori Schools, Ablekuma Anyaa", credit: "Photo: Platinum Montessori Schools (official site)", sourceUrl: "https://platinummontessori.com/" },
+    ],
     imageQuery: "Montessori classroom Ablekuma Accra",
   },
   {
@@ -2747,6 +2784,9 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://www.myredeemerschool.com/admin/uploads/upl_17430_KTP_2071.jpg", alt: "Entrance gate at My Redeemer School, Sowutuom", credit: "Photo: My Redeemer School (official site)", sourceUrl: "https://www.myredeemerschool.com/" },
+    ],
     imageQuery: "Montessori preschool Sowutuom Accra",
   },
   {
@@ -2876,6 +2916,9 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://familylife.edu.gh/wp-content/uploads/2022/07/3.jpg", alt: "Graduating pupils at Family Life International School, New Achimota", credit: "Photo: Family Life International School (official site)", sourceUrl: "https://familylife.edu.gh/" },
+    ],
     imageQuery: "creche New Achimota Accra",
   },
   {
@@ -2940,6 +2983,10 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://littlelearnersgh.com/revolution/assets/slider-01/02.jpg", alt: "Children in kente at Little Learners Nursery and Preschool, New Achimota", credit: "Photo: Little Learners Nursery and Preschool (official site)", sourceUrl: "https://littlelearnersgh.com/" },
+      { url: "https://littlelearnersgh.com/revolution/assets/slider-01/03.jpg", alt: "Preschool graduation at Little Learners Nursery and Preschool", credit: "Photo: Little Learners Nursery and Preschool (official site)", sourceUrl: "https://littlelearnersgh.com/" },
+    ],
     imageQuery: "EYFS nursery New Achimota Accra",
   },
   {
@@ -3005,6 +3052,9 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://iqracentregh.com/wp-content/uploads/2018/12/20180915_142936.jpg", alt: "Toddlers on playground equipment at Iqra Educational Centre, Abeka", credit: "Photo: Iqra Educational Centre (official site)", sourceUrl: "https://iqracentregh.com/" },
+    ],
     imageQuery: "classroom Abeka Accra",
   },
   {
@@ -3035,6 +3085,9 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://www.godsgraceschool.com/images/hm-img-1.jpg", alt: "Teacher working with pupils at God's Grace International School, Abeka", credit: "Photo: God's Grace International School (official site)", sourceUrl: "https://www.godsgraceschool.com/" },
+    ],
     imageQuery: "Montessori school Abeka Accra",
   },
 ];
