@@ -234,6 +234,114 @@ export const LOCATIONS: Location[] = [
     intro:
       "Kasoa has grown rapidly over the last decade from a market town into a large residential belt for families priced out of Weija, Kaneshie and Dansoman. Early years and primary schools have multiplied along the Kingston, Ngleshie and Millennium City stretches. Fees are generally lower than in central Accra, and most schools follow the Ghana Education Service curriculum with a growing Montessori and Christian ethos overlay.",
   },
+  {
+    slug: "gbawe",
+    name: "Gbawe",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "Residential district in Ga South, west of Accra, between McCarthy Hill and Weija.",
+    intro:
+      "Gbawe sits in Ga South between McCarthy Hill and Weija, and has grown quickly as families have moved west along the Mallam–Kasoa road. It is one of the denser clusters of private early-years provision on this side of Accra, with a strong showing of Montessori settings alongside schools running Cambridge and Ghanaian programmes. Most schools here draw from Gbawe itself, New Gbawe and the surrounding estates, so the commute is usually short — worth checking against the Mallam junction traffic at your own travelling times.",
+  },
+  {
+    slug: "mccarthy-hill",
+    name: "McCarthy Hill",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "Hillside residential area off the Mallam–Kasoa road in Ga South.",
+    intro:
+      "McCarthy Hill is a hillside residential area off the Mallam–Kasoa road, close enough to Weija and Gbawe that families often look across all three. Schools here range from long-established basic schools to Montessori settings, and several draw pupils from Tetegu and Mallam as well. The area sits just south of Awoshie, so it is worth being precise about which side of the hill a school is on when you plan the journey.",
+  },
+  {
+    slug: "mallam",
+    name: "Mallam",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "Junction town on the Accra–Kasoa road, at the western edge of the city.",
+    intro:
+      "Mallam is the junction town where the Accra–Kasoa road meets the western edge of the city, and it functions as the gateway to Weija, Gbawe and Bortianor. Schools in and around the junction tend to serve families spread along that corridor rather than one neighbourhood. Traffic through Mallam is the single biggest practical factor for parents here, so test the run at your real drop-off and pick-up times before committing.",
+  },
+  {
+    slug: "kokrobite",
+    name: "Kokrobite",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "Coastal community west of Accra, past Bortianor on the Ga South shoreline.",
+    intro:
+      "Kokrobite is a coastal community west of Accra, past Bortianor along the Ga South shoreline. Provision here is thin compared with the city, and the schools that do operate often serve the surrounding villages as much as Kokrobite itself. Families in the area sometimes look inland towards Weija and Gbawe for a wider choice, so it is worth weighing the journey against what is available locally.",
+  },
+  {
+    slug: "pokuase",
+    name: "Pokuase",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "Fast-growing town on the Accra–Nsawam road in Ga North, near the ACP interchange.",
+    intro:
+      "Pokuase has grown rapidly since the ACP interchange opened, and school provision has followed the new estates along the Accra–Nsawam road. It is one of the few areas on this side of Accra where you will find a school publishing its fees openly. Families here are often weighing Pokuase against Ofankor and Amasaman, so check which campus a school means when a name appears in more than one place.",
+  },
+  {
+    slug: "kwashieman",
+    name: "Kwashieman",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "Dense residential suburb on the Lapaz–Odorkor stretch of north-west Accra.",
+    intro:
+      "Kwashieman sits on the busy stretch between Lapaz and Odorkor in north-west Accra, and is densely residential. Schools here are typically long-established basic schools serving families within walking or short trotro distance, and several have been operating for thirty years or more. The Lapaz–Kwashieman motorway is the main artery, so position relative to it matters more than raw distance.",
+  },
+  {
+    slug: "ablekuma",
+    name: "Ablekuma",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "Large residential area in Ga Central, west of Lapaz.",
+    intro:
+      "Ablekuma is a large residential area in Ga Central, west of Lapaz, taking in Anyaa, Nsunfa and Official Town. Provision ranges from small neighbourhood basic schools to Montessori settings running from creche through junior high. Because the area is broad and the sub-names overlap, it is worth confirming the exact landmark a school gives before setting out to visit.",
+  },
+  {
+    slug: "sowutuom",
+    name: "Sowutuom",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "Residential suburb in Ga Central, north-west of Accra near Ofankor.",
+    intro:
+      "Sowutuom is a residential suburb in Ga Central, north-west of Accra towards Ofankor. Schools here serve families across Sowutuom, Tabora and the surrounding neighbourhoods, with a mix of Montessori and Ghanaian-curriculum provision. The area is well connected to the Lapaz and Achimota corridors, which widens the realistic choice if you are willing to travel.",
+  },
+  {
+    slug: "santa-maria",
+    name: "Santa Maria",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "Residential neighbourhood on the Odorkor–Kwashiebu stretch of west Accra.",
+    intro:
+      "Santa Maria is a residential neighbourhood on the Odorkor–Kwashiebu stretch of west Accra. Schools here tend to be long-standing basic schools drawing from Santa Maria, Kwashiebu and Odorkor, several with strong local reputations built over decades. It is a compact area, so most families are choosing between options within a few minutes of each other.",
+  },
+  {
+    slug: "achimota",
+    name: "Achimota",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "Established residential and school district in north-west Accra, around Achimota Forest and the Mile 7 corridor.",
+    intro:
+      "Achimota is one of the most established school districts in Accra, and New Achimota in particular has an unusually dense cluster of private early-years settings — several on the same few streets around Kingsby Roundabout and 16th Street. Montessori is strongly represented here, alongside EYFS, Cambridge and bilingual French–English provision. The concentration means you can realistically visit three or four schools in a morning, which is rare elsewhere in the city.",
+  },
+  {
+    slug: "abeka",
+    name: "Abeka",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "Busy residential suburb north-west of central Accra, bordering Lapaz and Tesano.",
+    intro:
+      "Abeka is a busy residential suburb north-west of central Accra, bordering Lapaz and Tesano. Schools here serve a wide catchment along the George Bush Highway and the Abeka–Lapaz stretch, with provision spanning Montessori, British and Islamic education. Note that \"Abeka\" also appears in the name of an American homeschool curriculum, so a school described as using \"Abeka\" is not necessarily located here.",
+  },
+  {
+    slug: "tantra-hills",
+    name: "Tantra Hills",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "Hillside residential development in Ga West, north of Achimota.",
+    intro:
+      "Tantra Hills is a hillside residential development in Ga West, north of Achimota and reached through Taifa or Achimota Mile 7. It is newer than the surrounding areas and school provision has grown alongside the estates. Families here often consider Achimota and Taifa as well, so it is worth comparing across all three before deciding.",
+  },
 ];
 
 export const REGIONS = [
