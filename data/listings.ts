@@ -3411,6 +3411,9 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://www.brainybairn.edu.gh/assets/images/all/BKBJ6242-min.webp", alt: "Pupils in uniform at Brainy Bairn School, West Legon", credit: "Photo: Brainy Bairn School (official site)", sourceUrl: "https://www.brainybairn.edu.gh/" },
+    ],
     imageQuery: "Cambridge school West Legon Accra",
   },
   {
@@ -3950,6 +3953,10 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://www.mmskumasi.com/img/jhs1.jpg", alt: "Pupils at Maria Montessori School, Odeneho Kwadaso, Kumasi", credit: "Photo: Maria Montessori School, Kumasi (official site)", sourceUrl: "https://www.mmskumasi.com/" },
+      { url: "https://www.mmskumasi.com/img/primary-kids-2.jpg", alt: "Pupil in uniform at Maria Montessori School, Kumasi", credit: "Photo: Maria Montessori School, Kumasi (official site)", sourceUrl: "https://www.mmskumasi.com/" },
+    ],
     imageQuery: "Montessori classroom Kwadaso Kumasi",
   },
   {
@@ -3982,6 +3989,9 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://www.hilltop.edu.gh/images/hilltop_slide0.jpeg", alt: "Classroom work at Hilltop School, Daban, Kumasi", credit: "Photo: Hilltop School (official site)", sourceUrl: "https://www.hilltop.edu.gh/" },
+    ],
     imageQuery: "school Daban Kumasi",
   },
   {
@@ -4016,6 +4026,9 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://toaseaps.lovable.app/assets/students-boys-CEdv3bDo.jpg", alt: "Pupils at Adventist Preparatory School, Toase", credit: "Photo: Adventist Preparatory School, Toase (official site)", sourceUrl: "https://toaseaps.lovable.app/" },
+    ],
     imageQuery: "creche Toase Kumasi",
   },
   {
@@ -4151,6 +4164,9 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://littleangelsacademyschool.com/public/features/f5d22e2b93e0ef4dfb6fc1fbd3d5807718e8de430c47e374e38b3659f2c3a1d11%20(1).jpg", alt: "Pupils writing in class at Little Angels Academy, Patasi", credit: "Photo: Little Angels Academy (official site)", sourceUrl: "https://littleangelsacademyschool.com/" },
+    ],
     imageQuery: "primary school Patasi Kumasi",
   },
   {
@@ -4248,6 +4264,10 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "http://www.royalscholarsgh.org/img/slider/main.png", alt: "Children playing at Royal Scholars Montessori School, Kronum", credit: "Photo: Royal Scholars Montessori School (official site)", sourceUrl: "http://www.royalscholarsgh.org/" },
+      { url: "http://www.royalscholarsgh.org/img/bg/sr-img01.png", alt: "Teacher with a child at Royal Scholars Montessori School, Kumasi", credit: "Photo: Royal Scholars Montessori School (official site)", sourceUrl: "http://www.royalscholarsgh.org/" },
+    ],
     imageQuery: "Montessori creche Kronum Kumasi",
   },
   {
@@ -4313,6 +4333,9 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://icsghana.org/wp-content/uploads/2018/07/2ics_ksi_25.jpg", alt: "Library session at International Community School, Pakyi", credit: "Photo: International Community School, Pakyi (official site)", sourceUrl: "https://icsghana.org/" },
+    ],
     imageQuery: "international school Pakyi Kumasi",
   },
   {
@@ -4737,6 +4760,10 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://www.edemscourtintschool.edu.gh/IMG_0891.jpg", alt: "Pupils at an event at Edems Court International School, Gbetsile", credit: "Photo: Edems Court International School (official site)", sourceUrl: "https://www.edemscourtintschool.edu.gh/" },
+      { url: "https://www.edemscourtintschool.edu.gh/sch%20(1).jpeg", alt: "School building at Edems Court International School, Tema", credit: "Photo: Edems Court International School (official site)", sourceUrl: "https://www.edemscourtintschool.edu.gh/" },
+    ],
     imageQuery: "classroom Gbetsile Tema",
   },
   {
@@ -5058,6 +5085,10 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://bloomfieldsschools.org/wp-content/uploads/slider/cache/d7f7b5afd194025dbaed81e392484908/2021-11-28-1-1-e1711321976312.jpg", alt: "School building at Bloomfields Schools, Spintex", credit: "Photo: Bloomfields Schools, Spintex (official site)", sourceUrl: "https://bloomfieldsschools.org/" },
+      { url: "https://bloomfieldsschools.org/wp-content/uploads/slider/cache/2a8108d8fb93125373f74a08458e7031/stem.jpg", alt: "Pupils working in class at Bloomfields Schools, Spintex", credit: "Photo: Bloomfields Schools, Spintex (official site)", sourceUrl: "https://bloomfieldsschools.org/" },
+    ],
     imageQuery: "school Spintex Accra",
   },
   {
@@ -5159,6 +5190,9 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://www.daysia-edu.com/assets/images/banner-main2.jpg", alt: "Cultural day at Dayspring International Academy, Adjiringanor", credit: "Photo: Dayspring International Academy (official site)", sourceUrl: "https://www.daysia-edu.com/" },
+    ],
     imageQuery: "school Adjiringanor Accra",
   },
   {
@@ -5756,6 +5790,10 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://www.additromschool.com/images/demo/featured-slide/add1.jpg", alt: "Graduation at Additrom School, Adabraka", credit: "Photo: Additrom School (official site)", sourceUrl: "https://www.additromschool.com/" },
+      { url: "https://www.additromschool.com/images/demo/featured-slide/add2.jpg", alt: "School event at Additrom School, Adabraka", credit: "Photo: Additrom School (official site)", sourceUrl: "https://www.additromschool.com/" },
+    ],
     imageQuery: "basic school Adabraka Accra",
   },
   {
@@ -5822,6 +5860,10 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://kiddygrammont.com/images/slides/slide05.jpg", alt: "Teacher working with a child at Kiddygram Montessori School, Osu", credit: "Photo: Kiddygram Montessori Nursery & Kindergarten School (official site)", sourceUrl: "https://kiddygrammont.com/" },
+      { url: "https://kiddygrammont.com/images/slides/slide06.jpg", alt: "Children at play at Kiddygram Montessori School, Osu", credit: "Photo: Kiddygram Montessori Nursery & Kindergarten School (official site)", sourceUrl: "https://kiddygrammont.com/" },
+    ],
     imageQuery: "Montessori nursery Osu Accra",
   },
   {
@@ -6411,6 +6453,10 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://ahenemba.com/files/Mantrac-Ghana-commissions-artificial-pitch-in-Takoradi-Ghana-Latest-1-1-2.jpeg", alt: "Campus at Ahenemba International School, Takoradi", credit: "Photo: Ahenemba International School (official site)", sourceUrl: "https://ahenemba.com/" },
+      { url: "https://ahenemba.com/files/Junior-high-2.jpg", alt: "Practical work at Ahenemba International School, Takoradi", credit: "Photo: Ahenemba International School (official site)", sourceUrl: "https://ahenemba.com/" },
+    ],
     imageQuery: "school Takoradi",
   },
   {
@@ -6916,6 +6962,9 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://www.detlofpreparatoryschool.org/Cultural%20troupe%201.JPG", alt: "Drumming at Detlof Preparatory School, Elmina", credit: "Photo: Detlof Preparatory School (official site)", sourceUrl: "https://www.detlofpreparatoryschool.org/" },
+    ],
     imageQuery: "school Elmina",
   },
   {
@@ -7047,6 +7096,9 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://daystarmontessori.edu.gh/wp-content/uploads/2023/11/1700644212752-e1786566645300.jpg", alt: "Pupil writing at Daystar Montessori and Froebel School, Kasoa", credit: "Photo: Daystar Montessori and Froebel School (official site)", sourceUrl: "https://daystarmontessori.edu.gh/" },
+    ],
     imageQuery: "Montessori school Kasoa",
   },
   {
