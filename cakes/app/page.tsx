@@ -1,12 +1,21 @@
 import Link from "next/link";
 import { SITE } from "@/lib/site";
 import { OCCASIONS, KINDS } from "@/data/categories";
-import { AREAS, REGIONS, areasInRegion } from "@/data/areas";
-import { VENDORS } from "@/data/vendors";
+import { AREAS, REGIONS, areasInRegion, findArea } from "@/data/areas";
+import { VENDORS, areasWithVendors } from "@/data/vendors";
 
 export default function HomePage() {
   const count = VENDORS.length;
-  const accraAreas = areasInRegion("accra");
+  const priced = VENDORS.filter((v) => v.priceList?.length).length;
+  const live = areasWithVendors(AREAS.map((a) => a.slug));
+  const accraAreas = areasWithVendors(
+    areasInRegion("accra").map((a) => a.slug),
+  );
+  const liveRegions = REGIONS.filter(
+    (r) =>
+      r.slug !== "accra" &&
+      live.some((slug) => findArea(slug)?.region === r.slug),
+  );
 
   return (
     <main>
@@ -31,28 +40,26 @@ export default function HomePage() {
           you deal with the baker directly.
         </p>
 
-        {count === 0 ? (
-          <div className="card mt-8 max-w-2xl p-6">
-            <p className="font-bold text-cocoa">We are still verifying bakers.</p>
-            <p className="mt-2 text-ink-mute">
-              Every baker on {SITE.name} is checked against their own website or
-              account before they appear, and their portfolio photos are traced
-              to their own work. That takes longer than scraping a list, which
-              is the point. The first bakers go live shortly.
-            </p>
-            <p className="mt-4 text-ink-mute">
-              If you make cakes and want to be included,{" "}
-              <Link href="/for-bakers" className="font-bold text-rose-deep underline">
-                add your business
-              </Link>
-              . It is free.
-            </p>
-          </div>
-        ) : (
-          <p className="mt-6 font-bold text-cocoa">
-            {count} bakers listed across {AREAS.length} areas.
+        <div className="card mt-8 max-w-2xl p-6">
+          <p className="font-bold text-cocoa">
+            {count} bakers across {live.length} areas, {priced} with published
+            prices.
           </p>
-        )}
+          <p className="mt-2 text-ink-mute">
+            Every baker here was checked against their own website or account
+            before being listed, and every portfolio photo marked as their own
+            work was traced back to them. Where a baker publishes prices, we
+            show the figures and the date we read them, rather than making you
+            ask. Where they do not, we say so.
+          </p>
+          <p className="mt-4 text-ink-mute">
+            If you make cakes and want to be listed,{" "}
+            <Link href="/for-bakers" className="font-bold text-rose-deep underline">
+              add your business
+            </Link>
+            . It is free.
+          </p>
+        </div>
       </section>
 
       <section className="container-page pb-16">
@@ -89,14 +96,14 @@ export default function HomePage() {
           because what matters is whether the cake can reach you.
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
-          {accraAreas.map((a) => (
-            <Link key={a.slug} href={`/cakes-in/${a.slug}`} className="chip">
-              {a.name}
+          {accraAreas.map((slug) => (
+            <Link key={slug} href={`/cakes-in/${slug}`} className="chip">
+              {findArea(slug)?.name ?? slug}
             </Link>
           ))}
         </div>
         <div className="mt-6 flex flex-wrap gap-3">
-          {REGIONS.filter((r) => r.slug !== "accra").map((r) => (
+          {liveRegions.map((r) => (
             <Link key={r.slug} href={`/region/${r.slug}`} className="chip">
               {r.name}
             </Link>
