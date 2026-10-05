@@ -3,6 +3,7 @@ import Link from "next/link";
 import { findLocation } from "@/data/locations";
 import { findCategoryByType } from "@/data/categories";
 import { VerifiedCheck } from "./VerifiedCheck";
+import { schoolInitials } from "@/lib/initials";
 import type { Listing } from "@/lib/types";
 
 const decor: Record<string, string> = {
@@ -53,17 +54,17 @@ export function ListingCard({ listing, compact = false }: { listing: Listing; co
                   "radial-gradient(circle at 20% 30%, rgba(255,255,255,0.6), transparent 45%), radial-gradient(circle at 80% 70%, rgba(255,255,255,0.4), transparent 45%)",
               }}
             />
+            {/* Initials rather than a stock photo. We have no picture of this
+                school we can stand behind, and saying so plainly beats
+                borrowing someone else's classroom. */}
             <span
               aria-hidden
-              className="absolute -right-6 -bottom-6 flex h-24 w-24 items-center justify-center rounded-full bg-white/60"
+              className="absolute inset-0 flex items-center justify-center font-display text-5xl font-bold tracking-tight text-[color:var(--color-navy)] opacity-30"
             >
-              <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M12 3 3 8l9 5 9-5-9-5Zm0 8-9-5v5l9 5 9-5V6l-9 5Z"
-                  fill="#0F2A4A"
-                  opacity=".35"
-                />
-              </svg>
+              {schoolInitials(listing.name)}
+            </span>
+            <span className="absolute bottom-2 right-3 text-[10px] font-semibold text-[color:var(--color-navy)] opacity-45">
+              No photo yet
             </span>
           </>
         )}
