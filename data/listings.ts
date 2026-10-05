@@ -5232,6 +5232,9 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://www.graphic.com.gh/images/2022/nov/03/44.jpg", alt: "Pupils of Tema Parents' Association School with their NCCE competition trophy", credit: "Photo: Graphic Online", sourceUrl: "https://www.graphic.com.gh/junior-graphic/junior-news/news-tema-parents-association-school-wins-ncce-competition.html" },
+    ],
     imageQuery: "school Community 2 and Community 6",
   },
   {
@@ -5260,6 +5263,11 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://static.wixstatic.com/media/43d6dc_c0a529182acf4a8bb1ecd4a3bcf5a34e~mv2.jpg", alt: "The entrance and classroom block at Tema Ridge School", credit: "Photo: Tema Ridge School (official site)", sourceUrl: "https://www.temaridge.com" },
+      { url: "https://static.wixstatic.com/media/43d6dc_25497c80d8d94f08b85c83727faf0417~mv2.jpg", alt: "Pupils at the swimming pool at Tema Ridge School, Tema", credit: "Photo: Tema Ridge School (official site)", sourceUrl: "https://www.temaridge.com" },
+      { url: "https://static.wixstatic.com/media/43d6dc_5e7ee691534d40978792336cfedcf7fd~mv2.jpg", alt: "Pupils playing instruments at Tema Ridge School, Tema", credit: "Photo: Tema Ridge School (official site)", sourceUrl: "https://www.temaridge.com" },
+    ],
     imageQuery: "school Near Afariwa Farms",
   },
   {
@@ -5288,6 +5296,10 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://rosharonmontessori.edu.gh/wp-content/uploads/2021/03/IMG_0758-scaled.jpg", alt: "Pupils in front of the classroom block and field at Rosharon Montessori School, Tema", credit: "Photo: Rosharon Montessori School (official site)", sourceUrl: "https://rosharonmontessori.edu.gh" },
+      { url: "https://rosharonmontessori.edu.gh/wp-content/uploads/2021/03/DSC02943-scaled.jpg", alt: "Nursery children at a water and colour activity at Rosharon Montessori School, Tema", credit: "Photo: Rosharon Montessori School (official site)", sourceUrl: "https://rosharonmontessori.edu.gh" },
+    ],
     imageQuery: "school Behind State Fishing Flats",
   },
   {
@@ -5344,6 +5356,10 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://www.ghanayello.com/img/gh/z/1540925770-34-go-green-community-school.jpg", alt: "The school minibus at Go Green Community School, Tema, liveried with the school name", credit: "Photo: via GhanaYello", sourceUrl: "https://www.ghanayello.com/company/11208/Go_Green_Community_School" },
+      { url: "https://www.ghanayello.com/img/gh/k/1540925748-32-go-green-community-school.jpg", alt: "The playground at Go Green Community School, Tema", credit: "Photo: via GhanaYello", sourceUrl: "https://www.ghanayello.com/company/11208/Go_Green_Community_School" },
+    ],
     imageQuery: "school 17 Hornby Odoi Street",
   },
   {
@@ -5428,6 +5444,10 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://icc.edu.gh/wp-content/uploads/2025/06/493A7280.jpg", alt: "Pupils in cultural dress at a school event at International Community College, Baatsona", credit: "Photo: International Community College (official site)", sourceUrl: "https://icc.edu.gh/gallery/" },
+      { url: "https://icc.edu.gh/wp-content/uploads/2025/06/493A7265.jpg", alt: "Pupils and staff at International Community College, Baatsona", credit: "Photo: International Community College (official site)", sourceUrl: "https://icc.edu.gh/gallery/" },
+    ],
     imageQuery: "school BAE 29",
   },
   {
@@ -5484,6 +5504,9 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://i.ytimg.com/vi/5PuBqccNt64/maxresdefault.jpg", alt: "Pupils of Teshie Estate Preparatory School in the school compound", credit: "Photo: from the school's National Anthem Challenge entry", sourceUrl: "https://www.youtube.com/watch?v=5PuBqccNt64" },
+    ],
     imageQuery: "school Teshie-Nungua Estate",
   },
   {
@@ -5512,6 +5535,9 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://cdn.modernghana.com/content/600/360/a17hy43xwr_a117.jpg", alt: "Children performing at the Kingscourt International School pre-school graduation", credit: "Photo: Modern Ghana", sourceUrl: "https://www.modernghana.com/news/336140/kingscourt-holds-pre-school-graduation.html" },
+    ],
     imageQuery: "school Ashaiman Official Town",
   },
   {
@@ -5596,6 +5622,10 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://pub-5bcc3edf34304d04b59dc91e1ad9d2fd.r2.dev/schoolfinder.tortoisepath.com/uploads/2024/07/13064756/Solidarity-International-School-Tema-Ghana-SchoolFinder-TortoisePathcom-2.jpeg", alt: "The school bus at Solidarity International School, Ashaiman, liveried with the school name and location", credit: "Photo: via SchoolFinder", sourceUrl: "https://schoolfinder.tortoisepath.com/school/solidarity-international-school/" },
+      { url: "https://pub-5bcc3edf34304d04b59dc91e1ad9d2fd.r2.dev/schoolfinder.tortoisepath.com/uploads/2024/07/13064752/Solidarity-International-School-Tema-Ghana-SchoolFinder-TortoisePathcom.jpeg", alt: "The walled compound and gate at Solidarity International School, Ashaiman", credit: "Photo: via SchoolFinder", sourceUrl: "https://schoolfinder.tortoisepath.com/school/solidarity-international-school/" },
+    ],
     imageQuery: "school Roman Down",
   },
   {
@@ -5905,6 +5935,9 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://www.ghanayello.com/img/gh/g/1414432074_59460.jpg", alt: "Pupils in the compound at Scholars International School, Asylum Down", credit: "Photo: via GhanaYello", sourceUrl: "https://www.ghanayello.com/company/11329/Scholars_International_School" },
+    ],
     imageQuery: "creche Asylum Down Accra",
   },
   {
@@ -5935,6 +5968,11 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://gh7373.com/wp-content/uploads/2022/12/precious-one-montessori-preschool-primary-accra-ghana-84.jpg", alt: "Children at Precious One Montessori School, Dzorwulu, wearing shirts printed with the school name", credit: "Photo: via gh7373.com", sourceUrl: "https://gh7373.com/edu/preciousone/" },
+      { url: "https://gh7373.com/wp-content/uploads/2022/12/precious-one-montessori-school-classroom-accra-best-ghana-490.jpg", alt: "A classroom at Precious One Montessori School, Dzorwulu", credit: "Photo: via gh7373.com", sourceUrl: "https://gh7373.com/edu/preciousone/" },
+      { url: "https://gh7373.com/wp-content/uploads/2025/01/precious-one-montessori-preschool-dzorwulu-accra-0197b.jpg", alt: "Children performing a dance at Precious One Montessori School, Dzorwulu", credit: "Photo: via gh7373.com", sourceUrl: "https://gh7373.com/edu/preciousone/" },
+    ],
     imageQuery: "Montessori creche Dzorwulu Accra",
   },
   {
@@ -6219,6 +6257,9 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://www.ghanayello.com/img/gh/a/1577933492-97-jajoda-cradle-care.jpg", alt: "The play yard at Jajoda Cradle Care, Kaneshie", credit: "Photo: via GhanaYello", sourceUrl: "https://www.ghanayello.com/company/58945/Jajoda_Cradle_Care" },
+    ],
     imageQuery: "school Kaneshie Awudome Estates",
   },
   {
@@ -6247,6 +6288,11 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://dmis.edu.gh/wp-content/uploads/2025/09/DJI_20250722090901_0009_D_webp.webp", alt: "The school building at Dayspring Montessori International School, Dansoman, with the school name on the wall", credit: "Photo: Dayspring Montessori International School (official site)", sourceUrl: "https://dmis.edu.gh/" },
+      { url: "https://dmis.edu.gh/wp-content/uploads/2025/09/JHS.jpg", alt: "A junior high pupil building a model at Dayspring Montessori International School, Dansoman", credit: "Photo: Dayspring Montessori International School (official site)", sourceUrl: "https://dmis.edu.gh/" },
+      { url: "https://dmis.edu.gh/wp-content/uploads/2025/09/IMG_0016_webp-scaled.webp", alt: "Pupils in 30th anniversary shirts being interviewed at Dayspring Montessori International School", credit: "Photo: Dayspring Montessori International School (official site)", sourceUrl: "https://dmis.edu.gh/" },
+    ],
     imageQuery: "school No. 5",
   },
   {
