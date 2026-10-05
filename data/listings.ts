@@ -5014,6 +5014,11 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://www.angelsschool.com/images/gallery/pyjamas/cover-img.jpg", alt: "An outdoor school event at Angels Specialist School International", credit: "Photo: Angels Specialist School International (official site)", sourceUrl: "https://www.angelsschool.com" },
+      { url: "https://www.angelsschool.com/images/inner-sect-bg.jpg", alt: "Graduation at Angels Specialist School International", credit: "Photo: Angels Specialist School International (official site)", sourceUrl: "https://www.angelsschool.com" },
+      { url: "https://www.angelsschool.com/images/enrol.JPG", alt: "A pupil with her painting at Angels Specialist School International", credit: "Photo: Angels Specialist School International (official site)", sourceUrl: "https://www.angelsschool.com" },
+    ],
     imageQuery: "school Tema Community 12",
   },
   {
@@ -5082,6 +5087,11 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://fcs.edu.gh/img/sportsactivities_banner.jpg", alt: "The school basketball team at Fountainhead Christian School", credit: "Photo: Fountainhead Christian School (official site)", sourceUrl: "https://fcs.edu.gh" },
+      { url: "https://fcs.edu.gh/img/uniforms_back.jpg", alt: "Pupils in costume at a Fountainhead Christian School performance", credit: "Photo: Fountainhead Christian School (official site)", sourceUrl: "https://fcs.edu.gh" },
+      { url: "https://fcs.edu.gh/img/activities_banner.jpg", alt: "A school performance at Fountainhead Christian School", credit: "Photo: Fountainhead Christian School (official site)", sourceUrl: "https://fcs.edu.gh" },
+    ],
     imageQuery: "school Sakumono",
   },
   {
@@ -5143,6 +5153,11 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://www.morningglorymcdc.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fabout-photo.07k4a0ity-~.w.jpg&w=1920&q=75", alt: "Pupils reading in the library at Morning Glory Montessori Child Development Centre", credit: "Photo: Morning Glory Montessori Child Development Centre (official site)", sourceUrl: "https://www.morningglorymcdc.com" },
+      { url: "https://www.morningglorymcdc.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fmpa7n9el%2Fproduction%2Fa6f288c9995dc70800438c832f822fde2c3e3c04-1600x1067.jpg&w=1920&q=75", alt: "A school event at Morning Glory Montessori Child Development Centre", credit: "Photo: Morning Glory Montessori Child Development Centre (official site)", sourceUrl: "https://www.morningglorymcdc.com" },
+      { url: "https://www.morningglorymcdc.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fpractical-life.0-j3x4line_cm.jpg&w=640&q=75", alt: "A Montessori activity at Morning Glory Montessori Child Development Centre", credit: "Photo: Morning Glory Montessori Child Development Centre (official site)", sourceUrl: "https://www.morningglorymcdc.com" },
+    ],
     imageQuery: "Montessori classroom Nungua Accra",
   },
   {
@@ -5173,6 +5188,11 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://www.sapsschool.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2F_MG_8847.5caeff21.jpg&w=1920&q=50", alt: "Pupils of SAP's School, Teshie, at a school gathering", credit: "Photo: SAP's School (official site)", sourceUrl: "https://www.sapsschool.com" },
+      { url: "https://www.sapsschool.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2F_MG_8928.f83c16d1.jpg&w=1920&q=50", alt: "A graduate with a certificate at SAP's School, Teshie", credit: "Photo: SAP's School (official site)", sourceUrl: "https://www.sapsschool.com" },
+      { url: "https://www.sapsschool.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FIMG_0046.feea2e6b.jpg&w=1920&q=50", alt: "Cadets at SAP's School, Teshie", credit: "Photo: SAP's School (official site)", sourceUrl: "https://www.sapsschool.com" },
+    ],
     imageQuery: "school Teshie Accra",
   },
   {
@@ -5975,6 +5995,9 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://static.wixstatic.com/media/51e5d7_2fb9b272e003402999ae8575c5b1500c~mv2.jpeg/v1/fill/w_1024,h_729,al_c,q_85,enc_avif,quality_auto/51e5d7_2fb9b272e003402999ae8575c5b1500c~mv2.jpeg", alt: "Children with national flags in class at Beanstalk Montessori International School", credit: "Photo: Beanstalk Montessori International School (official site)", sourceUrl: "https://www.beanstalkghana.com" },
+    ],
     imageQuery: "Montessori classroom Labone Accra",
   },
   {
@@ -6585,6 +6608,11 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://static.wixstatic.com/media/24f697_9b8a97182aec49ceb7f0b19146188bd6~mv2_d_4608_3456_s_4_2.jpg/v1/fill/w_1440,h_980,fp_0.50_0.50,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/24f697_9b8a97182aec49ceb7f0b19146188bd6~mv2_d_4608_3456_s_4_2.jpg", alt: "The school buildings at Takoradi International School", credit: "Photo: Takoradi International School (official site)", sourceUrl: "https://annantis.wixsite.com/tis-tkdi" },
+      { url: "https://static.wixstatic.com/media/24f697_4a03ad335a5644f89f28f5fe386468e0~mv2_d_4608_3456_s_4_2.jpg/v1/fill/w_630,h_520,fp_0.54_0.27,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/24f697_4a03ad335a5644f89f28f5fe386468e0~mv2_d_4608_3456_s_4_2.jpg", alt: "Staff marking the school's twentieth year at Takoradi International School", credit: "Photo: Takoradi International School (official site)", sourceUrl: "https://annantis.wixsite.com/tis-tkdi" },
+      { url: "https://static.wixstatic.com/media/24f697_ead0b37f47df4b2ab1ffa44b3ad5cb76~mv2_d_4608_3456_s_4_2.jpg/v1/fill/w_630,h_520,fp_0.50_0.50,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/24f697_ead0b37f47df4b2ab1ffa44b3ad5cb76~mv2_d_4608_3456_s_4_2.jpg", alt: "Basketball at Takoradi International School", credit: "Photo: Takoradi International School (official site)", sourceUrl: "https://annantis.wixsite.com/tis-tkdi" },
+    ],
     imageQuery: "international school Takoradi",
   },
   {
@@ -6653,6 +6681,11 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://0201.nccdn.net/4_2/000/000/03f/ac7/iRix-0098-2000x1333.jpg#RDAMDAID21336657", alt: "Pupils with trophies at Agyiba International School, Takoradi", credit: "Photo: Agyiba International School (official site)", sourceUrl: "https://agyibaonline.com" },
+      { url: "https://0201.nccdn.net/4_2/000/000/064/d40/iRix-1035-2000x1333.jpg#RDAMDAID21336634", alt: "A science lesson at Agyiba International School, Takoradi", credit: "Photo: Agyiba International School (official site)", sourceUrl: "https://agyibaonline.com" },
+      { url: "https://0201.nccdn.net/4_2/000/000/07d/95b/iRix-0885-2000x1333.jpg#RDAMDAID21336699", alt: "Pupils boarding the school bus at Agyiba International School", credit: "Photo: Agyiba International School (official site)", sourceUrl: "https://agyibaonline.com" },
+    ],
     imageQuery: "school Takoradi",
   },
   {
@@ -6950,6 +6983,11 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://tuwohofo-holly.net/lovable-uploads/6dfabd1b-a1d2-400f-8422-d1970964e6f1.png", alt: "Pupils at Tuwohofo-Holly International School", credit: "Photo: Tuwohofo-Holly International School (official site)", sourceUrl: "https://tuwohofo-holly.net" },
+      { url: "https://tuwohofo-holly.net/lovable-uploads/ccfa138e-034d-44e5-9f57-41d014534934.png", alt: "Pupils in uniform at Tuwohofo-Holly International School", credit: "Photo: Tuwohofo-Holly International School (official site)", sourceUrl: "https://tuwohofo-holly.net" },
+      { url: "https://tuwohofo-holly.net/lovable-uploads/acc05394-99e1-48a7-9723-cdd188098a83.png", alt: "Pupils reading at Tuwohofo-Holly International School", credit: "Photo: Tuwohofo-Holly International School (official site)", sourceUrl: "https://tuwohofo-holly.net" },
+    ],
     imageQuery: "school Cape Coast",
   },
   {
@@ -7171,6 +7209,11 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://www.uew.edu.gh/sites/default/files/2025-06/uewbs_cover.jpg", alt: "Pupils at UEW Basic Schools, Winneba", credit: "Photo: UEW Basic Schools (official site)", sourceUrl: "https://www.uew.edu.gh/uewbs" },
+      { url: "https://www.uew.edu.gh/sites/default/files/2025-06/c3.jpg", alt: "Pupils in costume on a careers day at UEW Basic Schools", credit: "Photo: UEW Basic Schools (official site)", sourceUrl: "https://www.uew.edu.gh/uewbs" },
+      { url: "https://www.uew.edu.gh/sites/default/files/2025-06/c1.jpg", alt: "Pupils in costume at UEW Basic Schools, Winneba", credit: "Photo: UEW Basic Schools (official site)", sourceUrl: "https://www.uew.edu.gh/uewbs" },
+    ],
     imageQuery: "basic school Winneba",
   },
   {
@@ -7237,6 +7280,11 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://www.nkunimprepschool.com/wp-content/uploads/2026/07/4-1536x1152.jpg", alt: "The computer room at Nkunim Preparatory School", credit: "Photo: Nkunim Preparatory School (official site)", sourceUrl: "https://www.nkunimprepschool.com" },
+      { url: "https://www.nkunimprepschool.com/wp-content/uploads/2026/06/PXL_20241212_200353705-1536x1157.jpg", alt: "A classroom mural at Nkunim Preparatory School", credit: "Photo: Nkunim Preparatory School (official site)", sourceUrl: "https://www.nkunimprepschool.com" },
+      { url: "https://www.nkunimprepschool.com/wp-content/uploads/2026/08/IMG_5683-scaled.jpg", alt: "A scholarship presentation at Nkunim Preparatory School", credit: "Photo: Nkunim Preparatory School (official site)", sourceUrl: "https://www.nkunimprepschool.com" },
+    ],
     imageQuery: "school Millennium City Kasoa",
   },
   {
@@ -7304,6 +7352,11 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://static.wixstatic.com/media/fdb73d_33c6ea678d3e40c18f8725c1cdb0633a~mv2.jpg/v1/fill/w_711,h_451,q_90,enc_avif,quality_auto/fdb73d_33c6ea678d3e40c18f8725c1cdb0633a~mv2.jpg", alt: "The campus pathway at Novastar Academy", credit: "Photo: Novastar Academy (official site)", sourceUrl: "https://www.novastargh.com" },
+      { url: "https://static.wixstatic.com/media/fdb73d_f96bdce82993437dadf77710354720a0~mv2.jpg/v1/fill/w_711,h_451,q_90,enc_avif,quality_auto/fdb73d_f96bdce82993437dadf77710354720a0~mv2.jpg", alt: "The school building and forecourt at Novastar Academy", credit: "Photo: Novastar Academy (official site)", sourceUrl: "https://www.novastargh.com" },
+      { url: "https://static.wixstatic.com/media/fdb73d_62142000ca624fceacebdfc55552caa9f002.jpg/v1/fill/w_784,h_441,enc_auto/file.jpeg", alt: "Basketball at Novastar Academy", credit: "Photo: Novastar Academy (official site)", sourceUrl: "https://www.novastargh.com" },
+    ],
     imageQuery: "school Nyanyano Kasoa",
   },
 ];
