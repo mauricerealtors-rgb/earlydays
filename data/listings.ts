@@ -528,6 +528,11 @@ export const LISTINGS: Listing[] = [
     sourceUrls: ["https://www.giromondmontessori.com/"],
     lastVerifiedAt: today,
     updatedAt: today,
+    images: [
+      { url: "https://www.giromondmontessori.com/assets/MusicLessons-SjlLaZiK.webp", alt: "Pupils at a music lesson at Giro Mond Montessori School, Adenta", credit: "Photo: Giro Mond Montessori School (official site)", sourceUrl: "https://www.giromondmontessori.com/" },
+      { url: "https://www.giromondmontessori.com/assets/traditionalValues-s0l-A8dV.webp", alt: "Children in traditional dress at Giro Mond Montessori School, Adenta", credit: "Photo: Giro Mond Montessori School (official site)", sourceUrl: "https://www.giromondmontessori.com/" },
+      { url: "https://www.giromondmontessori.com/assets/UCMAS-DGXzx0KP.webp", alt: "Pupils at work in class at Giro Mond Montessori School", credit: "Photo: Giro Mond Montessori School (official site)", sourceUrl: "https://www.giromondmontessori.com/" },
+    ],
     imageQuery: "Montessori Adenta children",
   },
 
@@ -2277,6 +2282,11 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://weis.edu.gh/wp-content/uploads/2021/04/MG_9393_29_11zon_12_11zon_4_11zon-1536x1023.jpg", alt: "Pupils in front of the school building at West End International School, Weija", credit: "Photo: West End International School (official site)", sourceUrl: "https://weis.edu.gh" },
+      { url: "https://weis.edu.gh/wp-content/uploads/2021/04/weis_graduation_11zon-scaled.jpg", alt: "Graduation at West End International School, Weija", credit: "Photo: West End International School (official site)", sourceUrl: "https://weis.edu.gh" },
+      { url: "https://weis.edu.gh/wp-content/uploads/2021/05/weis_student-scaled.jpg", alt: "Pupils in uniform at West End International School", credit: "Photo: West End International School (official site)", sourceUrl: "https://weis.edu.gh" },
+    ],
     imageQuery: "international school classroom Weija Accra",
   },
   {
@@ -2344,6 +2354,11 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://rincyroyal.edu.gh/wp-content/uploads/2023/03/IMG-20211212-WA0002.jpg", alt: "The school building at Rincy Royal Montessori School, Weija", credit: "Photo: Rincy Royal Montessori School (official site)", sourceUrl: "https://rincyroyal.edu.gh" },
+      { url: "https://rincyroyal.edu.gh/wp-content/uploads/2023/03/IMG-20211212-WA0004.jpg", alt: "The school block at Rincy Royal Montessori School, Weija", credit: "Photo: Rincy Royal Montessori School (official site)", sourceUrl: "https://rincyroyal.edu.gh" },
+      { url: "https://rincyroyal.edu.gh/wp-content/uploads/2023/02/pic2.jpeg", alt: "Children at Rincy Royal Montessori School", credit: "Photo: Rincy Royal Montessori School (official site)", sourceUrl: "https://rincyroyal.edu.gh" },
+    ],
     imageQuery: "Montessori school Weija Accra",
   },
   {
@@ -2412,6 +2427,11 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://static.wixstatic.com/media/f6afe6_891b6b4bc40b40fe9103921c8f94349c~mv2.jpg/v1/fit/w_960,h_675,q_90,enc_avif,quality_auto/f6afe6_891b6b4bc40b40fe9103921c8f94349c~mv2.jpg", alt: "Graduation at KinderKids International School, Gbawe", credit: "Photo: KinderKids International School (official site)", sourceUrl: "https://www.kinderkidsghana.com" },
+      { url: "https://static.wixstatic.com/media/f6afe6_586012e357d546dfbfe1ba44ac7ae46e~mv2.jpg/v1/fit/w_480,h_320,q_90,enc_avif,quality_auto/f6afe6_586012e357d546dfbfe1ba44ac7ae46e~mv2.jpg", alt: "Pupils presenting their work at KinderKids International School, Gbawe", credit: "Photo: KinderKids International School (official site)", sourceUrl: "https://www.kinderkidsghana.com" },
+      { url: "https://static.wixstatic.com/media/f6afe6_d337c9a1c9e943f5a555ef62c99113d1~mv2.jpg/v1/fit/w_480,h_320,q_90,enc_avif,quality_auto/f6afe6_d337c9a1c9e943f5a555ef62c99113d1~mv2.jpg", alt: "A school ceremony at KinderKids International School", credit: "Photo: KinderKids International School (official site)", sourceUrl: "https://www.kinderkidsghana.com" },
+    ],
     imageQuery: "daycare New Gbawe Accra",
   },
   {
@@ -2581,6 +2601,11 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://static.wixstatic.com/media/18d5b1_e852f913e26a4de79f1e86c9d39afb70~mv2.jpg/v1/fill/w_792,h_510,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/18d5b1_e852f913e26a4de79f1e86c9d39afb70~mv2.jpg", alt: "Pupils at the school gate at St Nicholas Mission Academy, Kokrobite", credit: "Photo: St Nicholas Mission Academy (official site)", sourceUrl: "https://www.stnicma.org" },
+      { url: "https://static.wixstatic.com/media/18d5b1_fb90e996785a448ea4cde3792510dea1~mv2.jpg/v1/fill/w_1440,h_900,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/18d5b1_fb90e996785a448ea4cde3792510dea1~mv2.jpg", alt: "Pupils in uniform at St Nicholas Mission Academy, Kokrobite", credit: "Photo: St Nicholas Mission Academy (official site)", sourceUrl: "https://www.stnicma.org" },
+      { url: "https://static.wixstatic.com/media/18d5b1_bd61b788c895425197c0fcb5da1d0d9f~mv2.jpg/v1/fill/w_1440,h_900,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/18d5b1_bd61b788c895425197c0fcb5da1d0d9f~mv2.jpg", alt: "A classroom at St Nicholas Mission Academy", credit: "Photo: St Nicholas Mission Academy (official site)", sourceUrl: "https://www.stnicma.org" },
+    ],
     imageQuery: "primary school children Kokrobite Ghana",
   },
   {
@@ -2615,6 +2640,11 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://www.techtots.edu.gh/images/activity2.jpeg", alt: "The school entrance at TechTots International School, Pokuase", credit: "Photo: TechTots International School (official site)", sourceUrl: "https://www.techtots.edu.gh" },
+      { url: "https://www.techtots.edu.gh/images/campus-2.jpeg", alt: "The campus at TechTots International School, Pokuase", credit: "Photo: TechTots International School (official site)", sourceUrl: "https://www.techtots.edu.gh" },
+      { url: "https://www.techtots.edu.gh/images/learningspace2.jpeg", alt: "A learning space at TechTots International School", credit: "Photo: TechTots International School (official site)", sourceUrl: "https://www.techtots.edu.gh" },
+    ],
     imageQuery: "Cambridge early years classroom Pokuase Accra",
   },
   {
@@ -2853,6 +2883,10 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://bambinomontessorigh.com/Themes/Learn/img/IMG-20210901-WA0009.jpg", alt: "A classroom at Bambino Montessori School, Achimota", credit: "Photo: Bambino Montessori School (official site)", sourceUrl: "https://bambinomontessorigh.com" },
+      { url: "https://bambinomontessorigh.com/Themes/Learn/img/IMG-20210901-WA0014.jpg", alt: "A child at work at Bambino Montessori School, Achimota", credit: "Photo: Bambino Montessori School (official site)", sourceUrl: "https://bambinomontessorigh.com" },
+    ],
     imageQuery: "Montessori creche New Achimota Accra",
   },
   {
@@ -2884,6 +2918,11 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://images.squarespace-cdn.com/content/v1/614cfb59ef200f4b75bec50f/45994a45-35e6-4be3-9574-ee742046b7a8/IMG_9848.jpg?format=1500w", alt: "A pupil on the first day back at Delsi Montessori School, Achimota", credit: "Photo: Delsi Montessori School (official site)", sourceUrl: "https://www.delsimontessori.edu.gh" },
+      { url: "https://images.squarespace-cdn.com/content/v1/614cfb59ef200f4b75bec50f/1697452445919-A8EXFB51D4EIQ03ZPDCB/IMG_9764+%281%29.jpg?format=750w", alt: "Pupils at Delsi Montessori School, Achimota", credit: "Photo: Delsi Montessori School (official site)", sourceUrl: "https://www.delsimontessori.edu.gh" },
+      { url: "https://images.squarespace-cdn.com/content/v1/614cfb59ef200f4b75bec50f/1686758989027-7ICWD3LN484T5L5XA5TE/IMG_7879.jpg?format=750w", alt: "Children in traditional dress at Delsi Montessori School", credit: "Photo: Delsi Montessori School (official site)", sourceUrl: "https://www.delsimontessori.edu.gh" },
+    ],
     imageQuery: "Montessori school New Achimota Accra",
   },
   {
@@ -3022,6 +3061,11 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://ris.edu.gh/wp-content/uploads/2022/10/ROCKIES-INT-5-1-scaled.jpg", alt: "The school courtyard at Rockies International School, Tantra Hills", credit: "Photo: Rockies International School (official site)", sourceUrl: "https://ris.edu.gh" },
+      { url: "https://ris.edu.gh/wp-content/uploads/2022/10/ROCKIES-INT-30-1536x1024.jpg", alt: "Two pupils reading at Rockies International School, Tantra Hills", credit: "Photo: Rockies International School (official site)", sourceUrl: "https://ris.edu.gh" },
+      { url: "https://ris.edu.gh/wp-content/uploads/2022/10/ROCKIES_02-9-1536x1024.jpg", alt: "Pupils at Rockies International School", credit: "Photo: Rockies International School (official site)", sourceUrl: "https://ris.edu.gh" },
+    ],
     imageQuery: "international school Tantra Hills Accra",
   },
   {
@@ -3378,6 +3422,11 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://img1.wsimg.com/isteam/ip/2d9b679d-67ba-459d-b691-a76966c6603e/IMG_2728.jpg/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:1535,m", alt: "A pupil in a Gold Avenue School shirt, Agbogba", credit: "Photo: Gold Avenue School (official site)", sourceUrl: "https://goldavenueschool.com" },
+      { url: "https://img1.wsimg.com/isteam/ip/2d9b679d-67ba-459d-b691-a76966c6603e/IMG_3832-cf86372.jpg/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:1535,m", alt: "Pupils at a school event at Gold Avenue School, Agbogba", credit: "Photo: Gold Avenue School (official site)", sourceUrl: "https://goldavenueschool.com" },
+      { url: "https://img1.wsimg.com/isteam/ip/2d9b679d-67ba-459d-b691-a76966c6603e/IMG_8573.jpg/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:1535,m", alt: "Children at work in class at Gold Avenue School", credit: "Photo: Gold Avenue School (official site)", sourceUrl: "https://goldavenueschool.com" },
+    ],
     imageQuery: "primary school Agbogba Accra",
   },
   {
@@ -3476,6 +3525,11 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://static.wixstatic.com/media/1ceaff_e19ab9f2ef554eadb4b3bd0f25c28c4c~mv2.jpg/v1/fit/w_960,h_721,q_90,enc_avif,quality_auto/1ceaff_e19ab9f2ef554eadb4b3bd0f25c28c4c~mv2.jpg", alt: "Children in class at De Youngster's International School, Adenta", credit: "Photo: De Youngster's International School, Adenta (official site)", sourceUrl: "https://www.deyis.edu.gh" },
+      { url: "https://static.wixstatic.com/media/87b33c_8f6690fe888d40fd841cc3cec7c41fc9~mv2.jpg/v1/fill/w_576,h_360,al_c,lg_1,q_80,enc_avif,quality_auto/87b33c_8f6690fe888d40fd841cc3cec7c41fc9~mv2.jpg", alt: "The school building at De Youngster's International School, Adenta", credit: "Photo: De Youngster's International School, Adenta (official site)", sourceUrl: "https://www.deyis.edu.gh" },
+      { url: "https://static.wixstatic.com/media/3ec285fa1a8b4ebebaa2f9db7e5a5a10.jpg/v1/fill/w_640,h_713,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/3ec285fa1a8b4ebebaa2f9db7e5a5a10.jpg", alt: "The library at De Youngster's International School", credit: "Photo: De Youngster's International School, Adenta (official site)", sourceUrl: "https://www.deyis.edu.gh" },
+    ],
     imageQuery: "school Adenta Accra",
   },
   {
@@ -4063,6 +4117,11 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://static.wixstatic.com/media/5e984a_905fe302a1624a48b86bc35f96bc260a~mv2.jpg/v1/fill/w_1280,h_900,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/5e984a_905fe302a1624a48b86bc35f96bc260a~mv2.jpg", alt: "A pupil in class at Nazareth Montessori School, Kumasi", credit: "Photo: Nazareth Montessori School (official site)", sourceUrl: "https://www.nazarethmontessorigh.com" },
+      { url: "https://static.wixstatic.com/media/5e984a_c1062ea8687e4c918fbf638288761015~mv2.jpg/v1/fill/w_1440,h_456,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/5e984a_c1062ea8687e4c918fbf638288761015~mv2.jpg", alt: "Cultural performance at Nazareth Montessori School, Kumasi", credit: "Photo: Nazareth Montessori School (official site)", sourceUrl: "https://www.nazarethmontessorigh.com" },
+      { url: "https://static.wixstatic.com/media/5e984a_a5dcdf2acbaa404681a96b68f9183354~mv2.jpg/v1/fill/w_1440,h_700,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/5e984a_a5dcdf2acbaa404681a96b68f9183354~mv2.jpg", alt: "A school event at Nazareth Montessori School", credit: "Photo: Nazareth Montessori School (official site)", sourceUrl: "https://www.nazarethmontessorigh.com" },
+    ],
     imageQuery: "Montessori school Kumasi",
   },
   {
@@ -4132,6 +4191,11 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://usercontent.one/wp/lutheranschoolsghana.com/wp-content/uploads/2024/05/Holy_Trinity-scaled.jpg", alt: "The school building and field at Holy Trinity Lutheran School, Kwadaso", credit: "Photo: Holy Trinity Lutheran School (official site)", sourceUrl: "https://lutheranschoolsghana.com/holy-trinity/" },
+      { url: "https://usercontent.one/wp/lutheranschoolsghana.com/wp-content/uploads/2024/04/STEP8084-scaled.jpg", alt: "Cultural dance at Holy Trinity Lutheran School, Kwadaso", credit: "Photo: Holy Trinity Lutheran School (official site)", sourceUrl: "https://lutheranschoolsghana.com/holy-trinity/" },
+      { url: "https://usercontent.one/wp/lutheranschoolsghana.com/wp-content/uploads/2024/04/STEP3936-scaled.jpg", alt: "A school procession at Holy Trinity Lutheran School", credit: "Photo: Holy Trinity Lutheran School (official site)", sourceUrl: "https://lutheranschoolsghana.com/holy-trinity/" },
+    ],
     imageQuery: "school Kwadaso Kumasi",
   },
   {
@@ -4198,6 +4262,9 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://www.froebeledu.org/assets/school-exterior-real-C1JqkXGL.jpg", alt: "The school building at Froebel Educational Centre, Patasi", credit: "Photo: Froebel Educational Centre (official site)", sourceUrl: "https://www.froebeledu.org" },
+    ],
     imageQuery: "STEM classroom Patasi Kumasi",
   },
   {
@@ -4302,6 +4369,11 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://cbinternationalschool.com/wp-content/uploads/2024/06/Photoroom_20250125_144319-1024x897.jpg", alt: "The signboard at Cherished Blossoms International School, Kumasi", credit: "Photo: Cherished Blossoms International School (official site)", sourceUrl: "https://cbinternationalschool.com" },
+      { url: "https://cbinternationalschool.com/wp-content/uploads/2026/07/bfebcc14-da85-4167-b91b-db28905c971b-1024x683.jpg", alt: "A child in school uniform at Cherished Blossoms International School", credit: "Photo: Cherished Blossoms International School (official site)", sourceUrl: "https://cbinternationalschool.com" },
+      { url: "https://cbinternationalschool.com/wp-content/uploads/2024/06/IMG_4944-1-768x1024.jpg", alt: "The school initials planted in the garden at Cherished Blossoms International School", credit: "Photo: Cherished Blossoms International School (official site)", sourceUrl: "https://cbinternationalschool.com" },
+    ],
     imageQuery: "Montessori nursery Odumase Kumasi",
   },
   {
@@ -4368,6 +4440,11 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://abrahamlincolngh.com/uploads/gallery/media/1731072450-1089576943672e11c298fb9!5db87148371b4555960599f0b775305e.jpg?1731178131", alt: "A class group at Abraham Lincoln Memorial School, Abuakwa", credit: "Photo: Abraham Lincoln Memorial School (official site)", sourceUrl: "https://abrahamlincolngh.com" },
+      { url: "https://abrahamlincolngh.com/uploads/gallery/media/1734195985-562979596675dbb112cb4f!WhatsApp%20Image%202024-12-14%20at%2013.12.17.jpeg.jpg?1734196610", alt: "Pupils at Abraham Lincoln Memorial School, Abuakwa", credit: "Photo: Abraham Lincoln Memorial School (official site)", sourceUrl: "https://abrahamlincolngh.com" },
+      { url: "https://abrahamlincolngh.com/uploads/gallery/media/1731176738-2018371909672fa922bcbe6!WhatsApp%20Image%202024-11-09%20at%2016.53.56%20(1).jpeg", alt: "The school building at Abraham Lincoln Memorial School", credit: "Photo: Abraham Lincoln Memorial School (official site)", sourceUrl: "https://abrahamlincolngh.com" },
+    ],
     imageQuery: "school Abuakwa Kumasi",
   },
   {
@@ -4840,6 +4917,10 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://images.squarespace-cdn.com/content/v1/5e95966297df352a10e10896/d846b8fe-0017-4d5e-8dd5-fbaceb8cf695/IMG_9926.jpg?format=1500w", alt: "Pupils studying at Aves International Academy, Tema", credit: "Photo: Aves International Academy (official site)", sourceUrl: "https://www.avesacademy.com" },
+      { url: "https://images.squarespace-cdn.com/content/v1/5e95966297df352a10e10896/7e0d2093-743a-444f-bcbf-167a9931cc0f/IMG_9835.jpg?format=1500w", alt: "Pupils working together at Aves International Academy, Tema", credit: "Photo: Aves International Academy (official site)", sourceUrl: "https://www.avesacademy.com" },
+    ],
     imageQuery: "IB school Tema",
   },
   {
@@ -4873,6 +4954,11 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://www.dpsghana.edu.gh/poweradmin/webfiles/infrastructure/20260518032735.webp", alt: "The basketball court at DPS International Ghana, Tema", credit: "Photo: DPS International Ghana (official site)", sourceUrl: "https://www.dpsghana.edu.gh" },
+      { url: "https://www.dpsghana.edu.gh/poweradmin/webfiles/infrastructure/20260518024715.webp", alt: "A science lesson at DPS International Ghana, Tema", credit: "Photo: DPS International Ghana (official site)", sourceUrl: "https://www.dpsghana.edu.gh" },
+      { url: "https://www.dpsghana.edu.gh/poweradmin/webfiles/infrastructure/20260622012324.webp", alt: "The art room at DPS International Ghana", credit: "Photo: DPS International Ghana (official site)", sourceUrl: "https://www.dpsghana.edu.gh" },
+    ],
     imageQuery: "international school Tema",
   },
   {
