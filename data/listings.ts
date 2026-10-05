@@ -4439,7 +4439,7 @@ export const LISTINGS: Listing[] = [
     shortDescription:
       "Daycare through junior high across two Santasi campuses, since 1991.",
     description:
-      "Nagie's Angels Educational Centre runs a pre-school campus on the Dr. Tuffour By-Pass near Santasi Roundabout and a basic school campus at Anyinam off the Obuasi Highway. Founded on 4 February 1991 with four children, it now reports more than 1,000 pupils and around 120 staff across creche, day care, nursery, kindergarten, primary and junior high. Its former website no longer resolves.",
+      "Nagie's Angels Educational Centre runs a pre-school campus on the Dr. Tuffour By-Pass near Santasi Roundabout and a basic school campus at Anyinam off the Obuasi Highway. Founded on 4 February 1991 with four children, it now reports more than 1,000 pupils and around 120 staff across creche, day care, nursery, kindergarten, primary and junior high.",
     listingTypes: ["creche","preschool","kindergarten","primary"],
     ageBlurb: "Day care to junior high",
     curriculum: [],
@@ -4459,6 +4459,11 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "/schools/nagies-angels-educational-centre/jhs.jpg", alt: "Junior high pupils in class at Nagie's Angels Educational Centre, Santasi", credit: "Photo: Nagie's Angels Educational Centre (official site)", sourceUrl: "http://nagiesangels.edu.gh/" },
+      { url: "/schools/nagies-angels-educational-centre/primary.jpg", alt: "Pupils in the computer lab at Nagie's Angels Educational Centre, Kumasi", credit: "Photo: Nagie's Angels Educational Centre (official site)", sourceUrl: "http://nagiesangels.edu.gh/" },
+      { url: "/schools/nagies-angels-educational-centre/preschool.jpg", alt: "A teacher working with pre-school children at Nagie's Angels Educational Centre", credit: "Photo: Nagie's Angels Educational Centre (official site)", sourceUrl: "http://nagiesangels.edu.gh/" },
+    ],
     imageQuery: "daycare Santasi Kumasi",
   },
   {
@@ -4488,6 +4493,9 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://www.graphic.com.gh/images/2016/jun29/graduands.png", alt: "Graduands at Martyrs of Uganda Preparatory School, Santasi, Kumasi", credit: "Photo: Graphic Online", sourceUrl: "https://www.graphic.com.gh/junior-graphic/junior-news/martyrs-of-uganda-prep-st-lwanga-jhs-hold-graduation.html" },
+    ],
     imageQuery: "Catholic school Santasi Kumasi",
   },
   {
@@ -4664,6 +4672,9 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://avatars.mds.yandex.net/get-altay/4079181/2a000001780c96482f3c9e005cd0189ae84a/XXL_height", alt: "The signboard and buildings at African Child School Complex, Boadi-Emena, Kumasi", credit: "Photo: contributor via Yandex Maps", sourceUrl: "https://yandex.com/maps/org/african_child_school_complex/200142485637/" },
+    ],
     imageQuery: "school Boadi Kumasi",
   },
   {
@@ -6904,6 +6915,10 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://africassnd.org/wp-content/uploads/sites/3/2025/05/mary-queen-of-peace-catholic-school.jpg", alt: "The school block at Mary Queen of Peace Catholic School, Cape Coast", credit: "Photo: School Sisters of Notre Dame, Africa", sourceUrl: "https://africassnd.org/about-us/how-we-serve/mary-queen-of-peace-catholic-school/" },
+      { url: "https://africassnd.org/wp-content/uploads/sites/3/2025/05/peace-pole-dedication.jpg", alt: "Pupils gathered for the peace pole dedication at Mary Queen of Peace Catholic School", credit: "Photo: School Sisters of Notre Dame, Africa", sourceUrl: "https://africassnd.org/about-us/how-we-serve/mary-queen-of-peace-catholic-school/" },
+    ],
     imageQuery: "school 4th Ridge",
   },
   {
@@ -6932,6 +6947,10 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://basicschool.ucc.edu.gh/assets/img/s2.jpeg", alt: "Primary pupils in class at University Primary School, UCC, Cape Coast", credit: "Photo: University of Cape Coast Basic Schools (official site)", sourceUrl: "https://basicschool.ucc.edu.gh/" },
+      { url: "https://basicschool.ucc.edu.gh/assets/img/s3.jpeg", alt: "Children on the playground at University Primary School, UCC", credit: "Photo: University of Cape Coast Basic Schools (official site)", sourceUrl: "https://basicschool.ucc.edu.gh/" },
+    ],
     imageQuery: "school UCC South Campus",
   },
   {
