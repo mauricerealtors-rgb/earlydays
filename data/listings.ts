@@ -2849,6 +2849,10 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://cdn.modernghana.com/content/1200/1440/rect_academy.jpg", alt: "The school block at Rect Academy, Kwashiebu, with the school sign", credit: "Photo: Modern Ghana", sourceUrl: "https://www.modernghana.com/news/496411/rect-academy-celebrates-22nd-anniversary-with-100-distinct.html" },
+      { url: "https://citinewsroom.com/wp-content/uploads/2021/07/OKKKIMG_1132.jpg", alt: "Pupils in Rect Academy uniform during a literacy roadshow visit", credit: "Photo: Modern Ghana", sourceUrl: "https://www.modernghana.com/news/496411/rect-academy-celebrates-22nd-anniversary-with-100-distinct.html" },
+    ],
     imageQuery: "bilingual school Santa Maria Accra",
   },
   {
@@ -2990,6 +2994,10 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://pub-fdcab5c8980d45229f0720a73099768f.r2.dev/CB-uploads/school-photos/e1b365c48469d9e2c1f6fdf5b41e9b2e.jpg", alt: "A pupil on the astroturf at Ecole Bilingue Edulingua, Achimota", credit: "Photo: via ChildBlossoms", sourceUrl: "https://www.childblossoms.com/schools/ecole-bilingue-edulingua-achimota" },
+      { url: "https://pub-fdcab5c8980d45229f0720a73099768f.r2.dev/CB-uploads/school-photos/5bd286ae6baf40d489a3a4bbf1562f3b.jpg", alt: "Pupils and staff with certificates at Ecole Bilingue Edulingua, Achimota", credit: "Photo: via ChildBlossoms", sourceUrl: "https://www.childblossoms.com/schools/ecole-bilingue-edulingua-achimota" },
+    ],
     imageQuery: "bilingual French English classroom Achimota Accra",
   },
   {
@@ -3558,6 +3566,10 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://pub-5bcc3edf34304d04b59dc91e1ad9d2fd.r2.dev/schoolfinder.tortoisepath.com/uploads/2024/07/13034659/Hallmark-International-School-Accra-Ghana-SchoolFinder-TortoisePathcom.jpeg", alt: "The frontage of Hallmark International School, Haatso, with the school name on the fascia", credit: "Photo: via SchoolFinder", sourceUrl: "https://schoolfinder.tortoisepath.com/school/hallmark-international-school/" },
+      { url: "https://pub-5bcc3edf34304d04b59dc91e1ad9d2fd.r2.dev/schoolfinder.tortoisepath.com/uploads/2024/07/13034705/Hallmark-International-School-Accra-Ghana-SchoolFinder-TortoisePathcom-3.jpeg", alt: "Hallmark International School seen from the Haatso-Atomic road", credit: "Photo: via SchoolFinder", sourceUrl: "https://schoolfinder.tortoisepath.com/school/hallmark-international-school/" },
+    ],
     imageQuery: "school Haatso Accra",
   },
   {
@@ -3646,6 +3658,10 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://ancillaschools.com/wp-content/uploads/2024/09/ancilla-primary-school.png", alt: "Pupils in the school yard at Ancilla Catholic Primary and JHS, Haatso", credit: "Photo: Ancilla Catholic Primary and JHS (official site)", sourceUrl: "https://ancillaschools.com/" },
+      { url: "https://ancillaschools.com/wp-content/uploads/2024/12/ancilla-team.jpg", alt: "Handmaids of the Holy Child Jesus sisters in the courtyard at Ancilla Catholic Primary and JHS", credit: "Photo: Ancilla Catholic Primary and JHS (official site)", sourceUrl: "https://ancillaschools.com/" },
+    ],
     imageQuery: "Catholic primary school Haatso Accra",
   },
   {
@@ -3674,6 +3690,9 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://pub-5bcc3edf34304d04b59dc91e1ad9d2fd.r2.dev/schoolfinder.tortoisepath.com/uploads/2024/07/13042556/West-Hatch-School-Kwabenya-Ghana-SchoolFinder-TortoisePathcom.jpeg", alt: "The playground and school buses at West Hatch School, Kwabenya", credit: "Photo: via SchoolFinder", sourceUrl: "https://schoolfinder.tortoisepath.com/school/west-hatch-school/" },
+    ],
     imageQuery: "preschool Kwabenya Accra",
   },
   {
@@ -3843,6 +3862,9 @@ export const LISTINGS: Listing[] = [
     ],
     lastVerifiedAt: "2026-10-01",
     updatedAt: "2026-10-01",
+    images: [
+      { url: "https://pub-5bcc3edf34304d04b59dc91e1ad9d2fd.r2.dev/schoolfinder.tortoisepath.com/uploads/2024/07/13034557/Faith-Community-Baptist-School-Madina-Ghana-SchoolFinder-TortoisePathcom.jpeg", alt: "The campus and school bus at Faith Community Baptist School, Madina", credit: "Photo: via SchoolFinder", sourceUrl: "https://schoolfinder.tortoisepath.com/school/faith-community-baptist-school/" },
+    ],
     imageQuery: "preschool Madina Accra",
   },
   {
