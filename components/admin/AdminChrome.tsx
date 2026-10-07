@@ -10,6 +10,7 @@ const ADMIN_EMAIL = "stackflown@gmail.com";
 const NAV = [
   { href: "/admin", label: "Overview", icon: OverviewIcon },
   { href: "/admin/claims", label: "Claims", icon: ClaimsIcon },
+  { href: "/admin/calls", label: "Calls", icon: CallsIcon },
   { href: "/admin/outreach", label: "Outreach", icon: OutreachIcon },
   { href: "/admin/schools", label: "Schools", icon: SchoolsIcon },
   { href: "/admin/enquiries", label: "Enquiries", icon: EnquiriesIcon },
@@ -185,6 +186,19 @@ function ClaimsIcon({ active }: { active: boolean }) {
     </svg>
   );
 }
+function CallsIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path
+        d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 6.5 6.5L17 13l4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.2 2 2 0 0 1 6.5 3Z"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 function OutreachIcon({ active }: { active: boolean }) {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className={active ? "text-black" : "text-white/60 group-hover:text-white"}>
