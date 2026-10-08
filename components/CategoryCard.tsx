@@ -55,7 +55,6 @@ export function CategoryCard({
           fill
           sizes="(min-width: 1024px) 25vw, 50vw"
           className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-          unoptimized
         />
         {/* Dark overlay for legibility. heavier at bottom where text sits */}
         <div

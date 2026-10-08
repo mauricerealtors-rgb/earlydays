@@ -42,7 +42,6 @@ export function ListingCard({ listing, compact = false }: { listing: Listing; co
             fill
             sizes="(min-width: 1280px) 380px, (min-width: 640px) 50vw, 100vw"
             className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-            unoptimized
           />
         ) : (
           <>

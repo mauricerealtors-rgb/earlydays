@@ -258,7 +258,6 @@ function renderListing(listing: import("@/lib/types").Listing) {
                 sizes="(min-width: 1024px) 720px, 100vw"
                 className="object-cover"
                 priority
-                unoptimized
               />
             </div>
             {listing.images[1] && (
@@ -269,7 +268,6 @@ function renderListing(listing: import("@/lib/types").Listing) {
                   fill
                   sizes="(min-width: 1024px) 360px, 100vw"
                   className="object-cover"
-                  unoptimized
                 />
               </div>
             )}
