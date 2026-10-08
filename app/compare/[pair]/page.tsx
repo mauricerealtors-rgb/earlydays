@@ -6,6 +6,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CompareTable } from "@/components/CompareTable";
 import { ShareRow } from "@/components/ShareRow";
 import { curatedPairs, findPair, verdictFor } from "@/lib/comparisons";
+import { mergeManyListings } from "@/lib/listing-overrides";
 import { findLocation } from "@/data/locations";
 import { SITE } from "@/lib/site";
 
@@ -51,7 +52,12 @@ export default async function ComparePage({
   const { pair } = await params;
   const p = findPair(pair);
   if (!p) notFound();
-  const { a, b, reason } = p;
+  // Merge Firestore overrides, as every other listing surface does. Without
+  // this, a school that has uploaded photos through its dashboard shows a
+  // blank tile here while its own profile page shows the pictures — which is
+  // exactly the inconsistency that made the comparison pages look broken.
+  const [a, b] = await mergeManyListings([p.a, p.b]);
+  const { reason } = p;
 
   const heroA = a.images?.[0];
   const heroB = b.images?.[0];
