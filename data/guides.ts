@@ -111,6 +111,7 @@ export const GUIDES: Guide[] = [
  {
  paragraphs: [
  "There is no single figure for preschool fees in Accra. Use the approximate ranges as a starting point, then compare the complete three-term cost, ask about registration, PTA levies, exam fees and end-of-term extras, and visit the school before you enrol. The most useful comparison is not simply the cheapest school, but the option that fits your child's needs and your family's budget.",
+  "Fees at the under-three end work differently, because low adult-to-child ratios make care expensive. [Creche, daycare or nursery in Ghana](/guides/creche-daycare-nursery-difference-ghana) explains why a creche place can cost as much as a primary one.",
  ],
  },
  ],
@@ -199,6 +200,7 @@ export const GUIDES: Guide[] = [
  paragraphs: [
  "Browse [creches and daycares by area](/creches) on EarlyDays and shortlist two or three within a realistic commute, then take [the visit checklist](/guides/questions-to-ask-before-enrolling) with you.",
  "If your child is approaching three, [preschool versus KG](/guides/preschool-vs-kg-when-to-start) explains what comes next and when to move.",
+  "If the terminology itself is part of the confusion, [creche, daycare or nursery — what the words mean in Ghana](/guides/creche-daycare-nursery-difference-ghana) explains why the labels are used interchangeably below age three, and which differences actually matter.",
  ],
  },
  ],
@@ -266,6 +268,7 @@ export const GUIDES: Guide[] = [
  paragraphs: [
  "You can browse [Montessori schools](/montessori-schools) and [preschools](/preschools) by area on EarlyDays, and each profile lists the curriculum the school itself reports.",
  "Take [the visit checklist](/guides/questions-to-ask-before-enrolling) with you — the questions about what a Tuesday actually looks like will tell you more than the label on the gate.",
+  "Whichever approach suits your child, a separate question is worth settling: whether a school describing itself as Montessori is actually running the method. [How to tell a real Montessori school in Ghana](/guides/how-to-tell-a-real-montessori-school-ghana) covers what to look for in the first ten minutes of a visit.",
  ],
  },
  ],
@@ -335,6 +338,7 @@ export const GUIDES: Guide[] = [
  paragraphs: [
  "Visit at least two schools before you commit, and try to go at drop-off or pick-up rather than during the mid-morning quiet. Write down how each visit felt within five minutes of leaving, because by the third school they blur together.",
  "Then compare what you saw against what the school publishes. You can [browse schools by area](/schools) on EarlyDays to line up two or three within a realistic commute before booking any visits at all.",
+  "If you are still deciding where to look rather than what to ask, [finding good schools near you in Accra](/guides/good-schools-near-me-accra) is the place to start.",
  ],
  },
  ],
@@ -394,6 +398,7 @@ export const GUIDES: Guide[] = [
  paragraphs: [
  "If you are weighing up the stage before this one, [how to choose a creche in Accra](/guides/how-to-choose-a-creche-in-accra) covers what to look for with under-threes. For costs, see [what preschool actually costs in Accra](/guides/how-much-does-preschool-cost-in-accra).",
  "When you are ready to compare real options, browse [preschools](/preschools) or [kindergartens](/kindergartens) by area, and take [the visit checklist](/guides/questions-to-ask-before-enrolling) with you.",
+  "If your child is not yet three, the decision is about care rather than curriculum. [Creche, daycare or nursery — what the words mean in Ghana](/guides/creche-daycare-nursery-difference-ghana) covers that end of the ladder.",
  ],
  },
  ],
@@ -945,6 +950,7 @@ export const GUIDES: Guide[] = [
  "Do not be afraid to remove a famous school from the list if the practical fit is poor.",
  "If you are making the trip from abroad and would rather arrive with the comparison already narrowed down, [EarlyDays Concierge](/concierge) can shortlist three schools around your child's age, preferred area and budget and coordinate tours.",
  "There is no universal “best international school in Accra”. There is a best-fit school for a particular child and family. Start with the pathway you need, verify what each school actually offers, consider the daily route and compare current admissions and fees directly. That will give you a more useful answer than any generic ranking.",
+  "Before shortlisting on the name, it is worth knowing that “International” is not a protected title in Ghana and carries no common standard. [What “International School” actually means in Ghana](/guides/what-international-school-means-ghana) explains what the word can mean and how to check which kind of school you are looking at.",
  ],
  },
  ],
@@ -1265,6 +1271,7 @@ export const GUIDES: Guide[] = [
  "And if you're ready to narrow down actual schools, you can explore [schools on EarlyDays](/schools) by age, programme and location rather than relying only on the name of the class.",
  "If you're planning a school visit from abroad and would rather not spend weeks researching options yourself, EarlyDays' [Diaspora Concierge](/concierge) can shortlist three schools around your child's age, area and budget and arrange the visits for you.",
  "Because sometimes the most important difference isn't between Nursery and KG. It's between a school that understands your child's stage and one that doesn't.",
+  "For the under-threes specifically, where the words are used most loosely, [creche, daycare or nursery in Ghana](/guides/creche-daycare-nursery-difference-ghana) goes further into what is regulated, what is not, and what to ask before leaving a baby anywhere.",
  ],
  },
  ],
@@ -1334,6 +1341,7 @@ export const GUIDES: Guide[] = [
  "If you're comparing several options, don't just compare the curriculum label. Look at the child's actual day, the location, programme, facilities and how the school communicates with parents.",
  "And if you're coming from abroad and need someone to do that comparison with you, EarlyDays' [Diaspora Concierge](/concierge) is designed to shortlist three schools around your child's needs, preferred area and budget and arrange the visits.",
  "The goal isn't to find the school with the most impressive label. It's to find the environment that makes sense for your child.",
+  "If a school tells you it does both, it is fair to ask how far the Montessori side goes. [How to tell a real Montessori school in Ghana](/guides/how-to-tell-a-real-montessori-school-ghana) sets out the questions that separate a full programme from a borrowed shelf of materials.",
  ],
  },
  ],
@@ -1407,6 +1415,7 @@ export const GUIDES: Guide[] = [
  "If you're researching from outside Ghana, EarlyDays' [Diaspora Concierge](/concierge) can also take the comparison work off your plate by shortlisting three schools around your child's needs, preferred area and budget and arranging the visits.",
  "Because choosing a school isn't really choosing a curriculum.",
  "You're choosing a daily life for your child.",
+  "One word to treat carefully while you compare: “international”. It is not regulated in Ghana and a third of schools use it, so on its own it tells you nothing about which curriculum is taught. [What “International School” actually means in Ghana](/guides/what-international-school-means-ghana) sets out the five questions that do.",
  ],
  },
  ],
@@ -1493,6 +1502,7 @@ export const GUIDES: Guide[] = [
  "And if you're planning your school search from outside Ghana, EarlyDays' [Diaspora Concierge](/concierge) can help you narrow the options to three schools that fit your child's age, area and budget before arranging your visits.",
  "The point isn't to find the school with the most worksheets or the least.",
  "It's to find a place where your child is genuinely learning.",
+  "Montessori sits between the two and is often named in this conversation. If a school on your list uses the word, [how to tell a real Montessori school in Ghana](/guides/how-to-tell-a-real-montessori-school-ghana) explains what the method actually involves.",
  ],
  },
  ],
@@ -1563,6 +1573,213 @@ export const GUIDES: Guide[] = [
  "For a shortlist based on your area and your child's age, start with the [Accra school directory](/schools/accra). Every listing on EarlyDays is a real school, contact details cross-checked from the school's own sources.",
  "If you are moving back to Ghana from abroad, [EarlyDays Concierge](/concierge) can shortlist three schools around your child's age, area and budget, and arrange the visits for a single Accra trip.",
  "A \"good school near you\" is usually not the school with the loudest marketing. It's the one that a year from now, still feels like a good fit for your child, your budget and your daily life.",
+ ],
+ },
+ ],
+ },
+ {
+ slug: "what-international-school-means-ghana",
+ title: "What does “International School” actually mean in Ghana?",
+ dek: "The word is not regulated in Ghana, and a third of schools use it. Here is what it can mean, what it often does not, and the five questions that tell you which kind you are looking at.",
+ tag: "Education",
+ updatedAt: "2026-10-08",
+ readingMinutes: 7,
+ body: [
+ {
+ paragraphs: [
+ "What does “International School” mean in Ghana? In short: it is not a protected or regulated title. No authority grants it and no standard defines it. A school can put “International” on its signboard on the day it opens, and many do.",
+ "That is not an accusation. Some Ghanaian schools using the word teach a genuine foreign curriculum, enter pupils for international examinations and hold recognised accreditation. Others use it to signal ambition, or because the name sounded right. Both are legal and both are common.",
+ "Of the 203 schools listed on EarlyDays, **74 have “International” in their name** — more than a third. If the word narrowed your search, it would be doing useful work. It does not. So this guide is about what to look at instead.",
+ ],
+ },
+ {
+ heading: "The three things “international” can actually mean",
+ paragraphs: [
+ "When the label is meaningful, it is usually pointing at one of three things. They are independent of each other, and a school may have one without the others.",
+ "**A foreign curriculum.** The school teaches Cambridge, the British National Curriculum, an American programme or the International Baccalaureate instead of, or alongside, the Ghana Education Service curriculum. This is the most common honest meaning and the easiest to verify.",
+ "**Recognised accreditation.** An outside body has inspected the school against a published standard. Names worth hearing include the Council of International Schools, the Council of British International Schools, and IB World School authorisation. Accreditation is costly and periodic, so a school that holds it will usually say so plainly and name the body.",
+ "**A genuinely mixed community.** A meaningful share of pupils, teachers or both are not Ghanaian. This is the original sense of the word — a school serving an expatriate and diplomatic community — and it is the meaning least often true of schools that use the name today.",
+ ],
+ },
+ {
+ heading: "What the word does not tell you",
+ paragraphs: [
+ "It does not tell you the fees. The range among schools calling themselves international in Accra is enormous, and overlaps heavily with schools that do not use the word. If budget is your constraint, read our guide to [preschool fees in Accra](/guides/how-much-does-preschool-cost-in-accra) rather than filtering on the name.",
+ "It does not tell you the class size, the staff qualifications, the facilities or the outdoor space. Those vary as much inside the group as outside it.",
+ "It does not tell you where your child ends up. A school may teach a British-style primary programme and then enter pupils for the BECE anyway, because that is what the next school in the chain expects. The exit examination matters more than the label, and it is a separate question.",
+ ],
+ },
+ {
+ heading: "Five questions that tell you which kind of school you are looking at",
+ paragraphs: [
+ "**1. Which curriculum do you teach, by name?** A clear answer sounds like “Cambridge Primary, then Lower Secondary” or “the GES curriculum with additional French”. A vague answer — “a blend of international standards” — usually means the GES curriculum with extras, which is a perfectly good thing to be and no reason to hedge.",
+ "**2. Which examinations do your pupils sit, and at what age?** This is the single most revealing question. BECE at the end of JHS means the Ghanaian track. Cambridge Checkpoint and then IGCSE means the Cambridge track. Some schools run both and let families choose; ask when the choice is made and whether it changes the fee.",
+ "**3. Who accredits you, and when were you last inspected?** If the answer is a named body with a date, that is strong. If the answer is “we are registered with the Ghana Education Service”, that is registration, not international accreditation — every school has it.",
+ "**4. What proportion of your teachers trained outside Ghana, and what proportion of pupils are not Ghanaian?** You are not looking for a particular number. You are listening for whether the school knows its own answer.",
+ "**5. What happens if we move abroad in two years?** A school genuinely running an international programme will have a ready answer about transferring records and matching year groups. It is a fair question and a revealing one.",
+ ],
+ },
+ {
+ heading: "If you are moving to Ghana, or moving away",
+ paragraphs: [
+ "For families relocating, the curriculum question stops being about prestige and becomes logistics. A child moving mid-year between an English school and a Ghanaian one faces a different year-group structure and a different academic calendar, and the curriculum match decides how hard that is.",
+ "We cover this in more depth in [the Ghanaian curriculum compared with the British curriculum](/guides/ghanaian-curriculum-vs-british-curriculum) and in [British curriculum schools in Accra for UK families](/guides/british-curriculum-schools-accra-uk-diaspora). If your timing is the problem rather than the curriculum, [the Ghanaian school year compared with the UK and US](/guides/ghana-school-year-vs-uk-us-when-to-time-your-move) is the one to read.",
+ ],
+ },
+ {
+ heading: "How to search without relying on the word",
+ paragraphs: [
+ "Search by what you actually need. If you want a particular stage, browse [preschools](/preschools), [kindergartens](/kindergartens) or [primary schools](/primary-schools). If you want a teaching method, [Montessori schools](/montessori-schools) is a separate filter from the age bands.",
+ "If location is the real constraint — and for most Accra families it is, because of traffic — start from the area. [Schools in Greater Accra](/schools/accra) breaks down by neighbourhood, and the busiest areas have their own pages, such as [preschools in East Legon](/preschools/accra/east-legon).",
+ "Then take our [list of questions to ask before enrolling](/guides/questions-to-ask-before-enrolling) to the visit. The name on the gate is the least informative thing about a school. Ten minutes in a classroom tells you more than the letterhead ever will.",
+ ],
+ },
+ {
+ heading: "The short version",
+ paragraphs: [
+ "“International” in a Ghanaian school name is a marketing word unless the school can name its curriculum, its examinations and its accreditor. Those three answers take two minutes to obtain and tell you everything the name does not.",
+ "If you would rather not make the calls yourself, [tell us what you are looking for](/concierge) and we will come back with schools that match — by curriculum, area and budget rather than by what is painted on the wall.",
+ ],
+ },
+ ],
+ },
+ {
+ slug: "how-to-tell-a-real-montessori-school-ghana",
+ title: "How to tell a real Montessori school in Ghana",
+ dek: "“Montessori” is not a protected word anywhere in the world. Here is what the method actually involves, what to look for in a classroom in ten minutes, and the questions that separate the real thing from the signboard.",
+ tag: "Curriculum",
+ updatedAt: "2026-10-08",
+ readingMinutes: 8,
+ body: [
+ {
+ paragraphs: [
+ "Can any school call itself Montessori? Yes. The word has never been trademarked successfully and is treated as generic, which means no body anywhere in the world licenses its use. A school in Accra can call itself Montessori tomorrow, with no materials and no trained staff, and break no rule.",
+ "That makes parents suspicious, and the suspicion is often unfair. On EarlyDays, **58 of 203 schools declare Montessori as their method while 40 carry it in their name** — so around twenty practise it without advertising it, and only two use the name without claiming the method. In this market the word is used more honestly than its reputation suggests.",
+ "Still, “honestly” and “faithfully” are different things. This guide is about telling which you are looking at, in a single visit.",
+ ],
+ },
+ {
+ heading: "What Montessori actually is",
+ paragraphs: [
+ "Maria Montessori was an Italian physician who opened her first classroom in Rome in 1907. Her method is not a curriculum in the usual sense — it does not prescribe what a child must know by a given age. It prescribes how the classroom works.",
+ "**Mixed ages in one room.** The classic grouping puts three-, four- and five-year-olds together, so younger children learn by watching older ones and older children consolidate by teaching. A room sorted strictly by age is the clearest sign that the method is not being followed.",
+ "**A long, uninterrupted work period.** Traditionally around three hours, in which children choose their own activity and are not called to a whole-class lesson. The length is the point: deep concentration is the thing the method is built to protect.",
+ "**A specific set of materials.** The pink tower, the brown stair, knobbed cylinders, sandpaper letters, the movable alphabet, golden beads, number rods. These are not toys and not decoration; each isolates one concept and is designed so the child can see their own mistake without being told.",
+ "**The child chooses.** Within the prepared environment, the child selects what to work on and for how long. The adult observes and gives short individual presentations rather than teaching from the front.",
+ "**No grades, stars or prizes.** The method holds that the satisfaction of the work is the reward, and that external incentives interrupt it.",
+ ],
+ },
+ {
+ heading: "What to look for in the first ten minutes of a visit",
+ paragraphs: [
+ "You do not need to know the method to read a room. Five things are visible immediately.",
+ "**Are the materials there, complete, and on open shelves at child height?** Montessori materials are expensive and a full set is a serious investment. A room with two or three pieces displayed near the entrance and nothing beyond is telling you something.",
+ "**Are children choosing, or is everyone doing the same thing?** Walk in unannounced if you can. Twenty children doing one worksheet is a normal classroom, which is fine — but it is not a Montessori work cycle.",
+ "**Where is the adult?** In a Montessori room the teacher is usually kneeling beside one child or quietly observing, not standing at a board addressing the class.",
+ "**Are the ages mixed?** Ask what ages are in the room. “Three to six together” is the answer you are listening for.",
+ "**Is there a practical life area?** Pouring, sweeping, buttoning, polishing, handwashing. It looks like housework and it is central to the method — a room without it has usually taken the academic materials and left the rest.",
+ ],
+ },
+ {
+ heading: "The questions to ask",
+ paragraphs: [
+ "**Where did your Montessori teachers train, and with which body?** The recognised training routes are the Association Montessori Internationale, founded by Maria Montessori herself, and the American Montessori Society. There are reputable others. What matters is that the school names something specific rather than saying the staff are “Montessori trained” without a source.",
+ "**How long is your work cycle, and is it ever interrupted?** A school running a genuine three-hour cycle will say so with some pride. A school running forty-minute periods broken by whole-class activities is doing something else.",
+ "**Which materials do you have, and may I see them?** A confident school will walk you to the shelves.",
+ "**Are your classes mixed-age?** If not, ask why. There are honest answers — small intakes, a new setting — but you should hear one.",
+ "**Do you give grades, stars or prizes?** This is a quiet but revealing question about how deep the method goes.",
+ ],
+ },
+ {
+ heading: "A school that borrows from Montessori is not necessarily worse",
+ paragraphs: [
+ "This matters, and it is often lost in the debate. Plenty of excellent Ghanaian schools use Montessori materials, child-led choice and mixed-age grouping without running a full, orthodox programme — and plenty of children thrive in them.",
+ "The problem is not borrowing. The problem is paying for one thing and receiving another without being told. If a school says “we use Montessori principles alongside the GES curriculum”, that is a clear and respectable answer. If it says “we are a Montessori school” and the room is rows of desks, the issue is the description, not the teaching.",
+ "It is also worth deciding whether the method is what you actually want. Our guide on [play-based and academic approaches in Ghana](/guides/play-based-vs-academic-preschool-learning-ghana) sets out the alternatives, and [Montessori compared with the Ghanaian curriculum](/guides/montessori-vs-ghanaian-curriculum) explains why the two are not competing answers to the same question. If you are weighing it against an English early-years framework, read [Montessori and EYFS compared](/guides/montessori-vs-eyfs).",
+ ],
+ },
+ {
+ heading: "What happens after the early years",
+ paragraphs: [
+ "One practical point parents often discover late. Montessori is strongest and most complete in the three-to-six years. Many Ghanaian schools that run a genuine Montessori preschool switch to a conventional classroom for primary, because the next stage is shaped by the BECE and by what receiving schools expect.",
+ "Ask directly: at what age does the Montessori programme end, and what replaces it? There is no wrong answer, but there is a wrong time to find out.",
+ ],
+ },
+ {
+ heading: "Where to look",
+ paragraphs: [
+ "Browse the [Montessori schools listed on EarlyDays](/montessori-schools), or start from your area if traffic is the deciding factor — [schools in Greater Accra](/schools/accra) lists by neighbourhood, and areas like [East Legon](/preschools/accra/east-legon) and [Adjiringanor](/preschools/accra/adjiringanor) have pages of their own.",
+ "Take [our questions to ask before enrolling](/guides/questions-to-ask-before-enrolling) with you, and add the five above. Or [tell us what you are after](/concierge) and we will shortlist schools whose Montessori claim we have actually asked about.",
+ ],
+ },
+ ],
+ },
+ {
+ slug: "creche-daycare-nursery-difference-ghana",
+ title: "Creche, daycare or nursery? What the words mean in Ghana",
+ dek: "For children under three the labels are used interchangeably, and the differences that matter are not in the name. What to understand about ages, what is regulated, and what to ask before you leave a baby anywhere.",
+ tag: "Starting out",
+ updatedAt: "2026-10-08",
+ readingMinutes: 7,
+ body: [
+ {
+ paragraphs: [
+ "What is the difference between a creche, a daycare and a nursery in Ghana? For the under-threes, very little. “Creche” is the ordinary Ghanaian word, “daycare” is the American one for the same thing, and “nursery” usually suggests slightly older children and a bit more structure. Many Ghanaian settings use two or three of these words for the same room.",
+ "So do not spend long on the vocabulary. The questions that matter for a child under three are about ratios, safety and who actually holds your baby — and none of those are answered by the sign on the gate.",
+ "What does change meaningfully is what happens at four, when children enter kindergarten and the formal system begins.",
+ ],
+ },
+ {
+ heading: "The ages, roughly, as Ghanaian settings use them",
+ paragraphs: [
+ "**Creche or daycare, about 3 months to 2 years.** Primarily care. Feeding, nappies, sleep, supervised play, and as much one-to-one attention as the staffing allows. Some learning happens, but the honest purpose is safe, warm care while parents work.",
+ "**Nursery, about 2 to 4 years.** More routine and more structure. Songs, stories, early mark-making, learning to share and to sit for short periods. Still play-led.",
+ "**Preschool, about 3 to 5 years.** Education-led, with school readiness as the stated goal — letters, numbers, following instructions, managing a school day.",
+ "These bands overlap and schools set their own. A setting calling itself a creche may take children to four; one calling itself a nursery may take babies. Ask for the actual age range rather than inferring it.",
+ ],
+ },
+ {
+ heading: "The part that is regulated, and the part that is not",
+ paragraphs: [
+ "This is the single most useful thing to understand, and most parents learn it late.",
+ "**Kindergarten is where the formal system starts.** KG1 and KG2, for children aged roughly four and five, are the first two years of basic education under the Ghana Education Service. KG then runs into Primary 1 to 6, and on into Junior High School, finishing with the BECE. That whole ladder sits inside a national structure with a national curriculum.",
+ "**Everything below KG largely sits outside it.** Creches, daycares and nurseries are overwhelmingly private and are not part of the GES curriculum structure. Standards therefore vary far more at this end than they do once children reach KG.",
+ "That is not a reason to avoid them — most Ghanaian families need care before four, and there are excellent settings. It is a reason to look harder, and to rely on what you see rather than on what the stage is called. Our guide to [nursery, preschool and KG in Ghana](/guides/nursery-preschool-kg-difference-ghana) covers where each one sits, and [preschool or KG, when should my child start](/guides/preschool-vs-kg-when-to-start) deals with the timing.",
+ ],
+ },
+ {
+ heading: "What to ask before you leave a baby anywhere",
+ paragraphs: [
+ "For the under-threes, these matter more than curriculum, facilities or price.",
+ "**How many children per adult, in this room, today?** Ask about the actual room your child would be in, not the setting's average. Then ask what happens when a staff member is off sick.",
+ "**Who will be with my child most of the day, and how long have they worked here?** Turnover is the quiet problem in baby care. A child under two forms an attachment to a person, not an institution.",
+ "**What is the sleep arrangement?** Where do babies nap, how are they checked, and is anyone in the room while they sleep?",
+ "**What happens if my child is ill, or there is an emergency?** Ask for the actual procedure, who calls you, and which hospital they would use.",
+ "**May I see the kitchen and the changing area?** A setting comfortable with its hygiene will show you without hesitating.",
+ "**Can I visit unannounced once my child has started?** The answer to this one tells you a great deal.",
+ "For the full visit checklist, including the questions that apply at every age, see [what to ask before enrolling](/guides/questions-to-ask-before-enrolling). If you are at the stage of comparing settings rather than deciding what to ask, [how to choose a creche in Accra](/guides/how-to-choose-a-creche-in-accra) walks through it.",
+ ],
+ },
+ {
+ heading: "Cost, and why the word on the sign does not predict it",
+ paragraphs: [
+ "Care for under-threes is labour-intensive, because the ratios have to be low. That makes it expensive relative to what parents expect, and it is the reason a creche place can cost as much as a primary school place at the same setting.",
+ "Fees vary widely by area and by what is included — meals, nappies, transport and holiday cover are the usual variables. Our [guide to preschool fees in Accra](/guides/how-much-does-preschool-cost-in-accra) sets out the ranges and, more usefully, the extras that turn one school's quoted figure into another's.",
+ ],
+ },
+ {
+ heading: "One thing that genuinely does differ",
+ paragraphs: [
+ "There is one real distinction hiding behind the vocabulary, and it is worth naming: some settings are built around **care**, and some around **early education**. Both are legitimate and your child may need either.",
+ "A care-led setting is organised around the working day — long hours, flexible drop-off, meals, naps. An education-led setting is organised around a programme, often with shorter hours and term dates that assume a parent can collect at midday.",
+ "Decide which you need before you tour, because a setting that is excellent at one is often indifferent at the other. And ask about the hours in plain terms: what time can I drop off, what time must I collect, and what does it cost if I am late.",
+ ],
+ },
+ {
+ heading: "Where to look",
+ paragraphs: [
+ "Browse [creches](/creches) for the under-threes, [preschools](/preschools) for three to five, and [kindergartens](/kindergartens) once your child reaches four. If your constraint is the commute rather than the stage, start from [schools in Greater Accra](/schools/accra) and work outwards from your area.",
+ "Or [tell us your child's age, your area and your hours](/concierge) and we will come back with settings that actually fit — including the ones that never show up in a search because they have no website.",
  ],
  },
  ],
