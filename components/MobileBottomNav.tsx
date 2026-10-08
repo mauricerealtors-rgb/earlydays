@@ -68,8 +68,16 @@ export function MobileBottomNav() {
       <ul className="mx-auto grid max-w-lg grid-cols-5 px-2 pt-2">
         {items.map((it) => (
           <li key={it.href} className="flex">
+            {/*
+              No prefetch. These five sit in the viewport on every page, so
+              Next fetched all five RSC payloads on every view — and /compare
+              alone was 3.1MB, downloaded by every visitor whether or not they
+              ever tapped it. A persistent nav bar is a deliberate navigation,
+              not a likely next click worth paying for in advance.
+            */}
             <Link
               href={it.href}
+              prefetch={false}
               className="flex flex-1 flex-col items-center gap-1 rounded-xl px-1 py-1.5 text-[11px] font-semibold text-[color:var(--color-navy)]"
             >
               {it.icon}

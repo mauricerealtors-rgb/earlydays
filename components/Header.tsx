@@ -44,8 +44,11 @@ export function Header() {
 
 function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
+    // Same reason as the mobile bar: a persistent header link is not a
+    // likely next click, and /compare's payload is enormous.
     <Link
       href={href}
+      prefetch={false}
       className="rounded-full px-3 py-2 text-sm font-semibold text-[color:var(--color-navy)] hover:bg-[color:var(--color-cream-deep)]"
     >
       {children}
