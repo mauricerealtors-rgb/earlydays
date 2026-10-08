@@ -2,7 +2,7 @@ import Link from "next/link";
 import { SearchHero } from "@/components/SearchHero";
 import { CategoryCard } from "@/components/CategoryCard";
 import { LocationCard } from "@/components/LocationCard";
-import { ListingCard } from "@/components/ListingCard";
+import { FeaturedGrid } from "@/components/FeaturedGrid";
 import {
   categoriesWithListings,
   categoryCounts,
@@ -21,7 +21,8 @@ export default async function HomePage() {
   const catCounts = categoryCounts();
   const locations = locationsWithListings().filter((l) => l.region === "accra");
   const locCounts = locationCounts();
-  const featured = await mergeManyListings(featuredListings(6));
+  // Four pages' worth, all rendered server-side; the grid reveals 12 at a time.
+  const featured = await mergeManyListings(featuredListings(48));
 
   return (
     <>
@@ -65,11 +66,7 @@ export default async function HomePage() {
         seeAllHref="/schools"
         seeAllLabel="Browse all schools"
       >
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {featured.map((l) => (
-            <ListingCard key={l.id} listing={l} />
-          ))}
-        </div>
+        <FeaturedGrid listings={featured} />
       </Section>
 
       {/* Popular searches — direct authority pass to top combo pages */}

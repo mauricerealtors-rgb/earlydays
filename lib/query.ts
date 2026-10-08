@@ -28,8 +28,42 @@ export function findListing(slug: string): Listing | undefined {
   return LISTINGS.find((l) => l.slug === slug);
 }
 
+/**
+ * Schools for the "worth a closer look" rail.
+ *
+ * Only 16 listings carry the hand-set `featured` flag, which is not enough to
+ * fill a paged grid. So those come first, and the rest of the pool is ranked
+ * by the two things the section actually claims to sort on: how complete the
+ * profile is, and how recently it was checked. A school with photos, fees and
+ * a website is genuinely more useful to a parent than one with a phone number,
+ * so this ordering is the honest version of the copy above the grid.
+ */
 export function featuredListings(limit = 6): Listing[] {
-  return LISTINGS.filter((l) => l.featured).slice(0, limit);
+  const flagged = LISTINGS.filter((l) => l.featured);
+  if (flagged.length >= limit) return flagged.slice(0, limit);
+
+  const seen = new Set(flagged.map((l) => l.slug));
+  const rest = LISTINGS.filter((l) => !seen.has(l.slug))
+    .map((l) => ({ l, rank: usefulness(l) }))
+    .filter((x) => x.rank > 0)
+    .sort((a, b) => b.rank - a.rank || (b.l.updatedAt ?? "").localeCompare(a.l.updatedAt ?? ""))
+    .map((x) => x.l);
+
+  return [...flagged, ...rest].slice(0, limit);
+}
+
+/** How much a parent can learn from this profile without phoning. */
+function usefulness(l: Listing): number {
+  let n = 0;
+  if (l.images?.length) n += 4;
+  if (l.feesHint) n += 3;
+  if (l.website) n += 2;
+  if (l.hours) n += 2;
+  if (l.curriculum.length) n += 1;
+  if (l.email) n += 1;
+  if (l.address) n += 1;
+  if (l.description && l.description.length > 220) n += 1;
+  return n;
 }
 
 export function listingsByCategory(slug: string): Listing[] {

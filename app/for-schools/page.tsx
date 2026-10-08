@@ -54,48 +54,6 @@ export default function ForSchools() {
         </div>
       </section>
 
-      {/* Free tier callout */}
-      <section className="container-page mt-14 md:mt-20">
-        <div className="mx-auto max-w-4xl rounded-3xl border border-[color:var(--color-line)] bg-white p-6 md:p-10">
-          <div className="flex flex-wrap items-center justify-between gap-6">
-            <div className="max-w-xl">
-              <span className="chip chip-leaf">Free forever</span>
-              <h2 className="mt-3 font-display text-[24px] leading-tight md:text-[32px]">
-                Start with your free EarlyDays profile.
-              </h2>
-              <p className="mt-2 text-[14px] leading-relaxed text-[color:var(--color-ink-mute)] md:text-[15px]">
-                Every real school in Ghana can claim its EarlyDays profile at
-                no cost. Keep your contact details, ages, curriculum and
-                photos up to date. Receive enquiries from parents who are
-                already looking for a place.
-              </p>
-              <div className="mt-4 flex flex-wrap gap-3">
-                <Link href="/claim" className="btn btn-primary text-sm">
-                  Claim your profile
-                </Link>
-                <Link href="/schools" className="btn btn-ghost text-sm">
-                  See how listings look
-                </Link>
-              </div>
-            </div>
-            <ul className="min-w-[200px] space-y-2 text-[13px] text-[color:var(--color-navy)]">
-              <li className="flex items-center gap-2">
-                <Tick /> Verified profile
-              </li>
-              <li className="flex items-center gap-2">
-                <Tick /> Parent enquiries by email
-              </li>
-              <li className="flex items-center gap-2">
-                <Tick /> Photos and programmes
-              </li>
-              <li className="flex items-center gap-2">
-                <Tick /> Basic analytics
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
       {/* Pricing */}
       <section
         id="pricing"
@@ -236,21 +194,3 @@ function Step({
   );
 }
 
-function Tick() {
-  return (
-    <svg
-      aria-hidden
-      className="mt-0.5 h-4 w-4 shrink-0 text-[color:var(--color-leaf)]"
-      viewBox="0 0 20 20"
-      fill="none"
-    >
-      <path
-        d="M4 10.5l4 4 8-9"
-        stroke="currentColor"
-        strokeWidth="2.4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
