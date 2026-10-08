@@ -76,7 +76,7 @@ export default async function SchoolsPage({
         }
       />
 
-      <div className="grid gap-6 lg:grid-cols-[280px_1fr]">
+      <div className="grid gap-6 lg:grid-cols-[280px_minmax(0,1fr)]">
         <aside className="lg:sticky lg:top-24 lg:self-start">
           <div className="card-soft rounded-2xl bg-white p-5">
             <form method="get" className="space-y-4">

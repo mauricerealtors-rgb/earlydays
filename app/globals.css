@@ -124,7 +124,18 @@
     line-height: 1;
     transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
     min-height: 44px;
+    max-width: 100%;
     white-space: nowrap;
+  }
+  /* Buttons whose label is a school name and cannot be shortened. min-width
+     matters as much as the wrap: these sit in a flex row, and a flex item
+     will not shrink below its longest word unless told to. */
+  .btn-wrap {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    min-width: 0;
+    line-height: 1.25;
+    text-align: center;
   }
   .btn:active { transform: translateY(1px); }
   .btn-primary {

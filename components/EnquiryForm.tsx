@@ -132,7 +132,7 @@ export function EnquiryForm({
         </p>
       )}
 
-      <button type="submit" disabled={sending} className="btn btn-pink mt-4 w-full sm:w-auto">
+      <button type="submit" disabled={sending} className="btn btn-pink btn-wrap mt-4 w-full sm:w-auto">
         {sending ? "Sending…" : `Send to ${schoolName}`}
       </button>
     </form>

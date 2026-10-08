@@ -32,7 +32,14 @@ export function CompareTable({ a, b }: { a: Listing; b: Listing }) {
 
   return (
     <div className="overflow-hidden rounded-3xl border border-[color:var(--color-line)] bg-white">
-      <div className="grid grid-cols-[1.2fr_1fr_1fr] text-[13px] md:text-[14px]">
+      {/*
+        minmax(0,…) on every column. A bare fr column has min-width:auto, so it
+        refuses to shrink below its longest word — and school names here run to
+        "De Youngster's International School, Adenta". On a phone that pushed
+        the table past the viewport and took the whole page with it, leaving
+        the reader scrolled sideways with no way back.
+      */}
+      <div className="grid grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)_minmax(0,1fr)] text-[13px] md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)_minmax(0,1fr)] md:text-[14px]">
         <ColumnHeader label="" />
         <ColumnHeader label={a.name} accent="sky" />
         <ColumnHeader label={b.name} accent="coral" />
@@ -145,7 +152,10 @@ function ColumnHeader({
         : "bg-[color:var(--color-cream-deep)] text-[color:var(--color-navy)]";
   return (
     <div
-      className={`${bg} px-4 py-3 font-display text-[13px] uppercase tracking-widest md:text-[14px]`}
+      // Sentence case and normal tracking on a phone: uppercase with wide
+      // tracking makes "International" wider than the column, so it broke
+      // mid-word into "INTERNATI ONAL". Uppercase returns at md.
+      className={`${bg} min-w-0 break-words px-2.5 py-3 font-display text-[12px] leading-tight tracking-normal md:px-4 md:text-[14px] md:uppercase md:tracking-widest`}
     >
       {label}
     </div>
@@ -161,7 +171,7 @@ function Row({
 }) {
   return (
     <>
-      <div className="border-t border-[color:var(--color-line)] bg-[color:var(--color-cream)] px-4 py-3 text-[11px] font-bold uppercase tracking-widest text-[color:var(--color-ink-mute)] md:text-[12px]">
+      <div className="min-w-0 break-words border-t border-[color:var(--color-line)] bg-[color:var(--color-cream)] px-3 py-3 text-[10px] font-bold uppercase tracking-wide text-[color:var(--color-ink-mute)] md:px-4 md:text-[12px] md:tracking-widest">
         {label}
       </div>
       {children}
@@ -186,7 +196,7 @@ function Cell({
 }) {
   return (
     <div
-      className={`border-t border-[color:var(--color-line)] bg-white px-4 py-3 text-[color:var(--color-navy)] ${
+      className={`min-w-0 break-words border-t border-[color:var(--color-line)] bg-white px-3 py-3 text-[color:var(--color-navy)] md:px-4 ${
         center ? "text-center" : ""
       }`}
     >

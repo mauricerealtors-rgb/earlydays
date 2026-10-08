@@ -419,7 +419,7 @@ export function AdminCallList() {
                     </div>
                   </div>
 
-                  <div className="grid gap-3 sm:grid-cols-[1fr_1fr_auto]">
+                  <div className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto]">
                     <label className="text-xs font-semibold uppercase tracking-widest text-white/40">
                       Next action
                       <select

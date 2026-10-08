@@ -120,13 +120,13 @@ export default async function ComparePage({
         <div className="mt-6 flex flex-wrap justify-center gap-3">
           <Link
             href={`/schools/${a.slug}`}
-            className="btn btn-primary text-sm"
+            className="btn btn-primary btn-wrap text-sm"
           >
             See {a.name}
           </Link>
           <Link
             href={`/schools/${b.slug}`}
-            className="btn btn-primary text-sm"
+            className="btn btn-primary btn-wrap text-sm"
           >
             See {b.name}
           </Link>

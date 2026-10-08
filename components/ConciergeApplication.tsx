@@ -811,7 +811,7 @@ function ShortlistOption({
 
 function Row({ label, value }: { label: string; value: string }) {
   return (
-    <div className="grid gap-1 p-3 sm:grid-cols-[140px_1fr]">
+    <div className="grid gap-1 p-3 sm:grid-cols-[140px_minmax(0,1fr)]">
       <dt className="text-xs font-semibold uppercase tracking-widest text-[color:var(--color-ink-mute)]">
         {label}
       </dt>

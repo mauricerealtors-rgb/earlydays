@@ -249,7 +249,7 @@ function renderListing(listing: import("@/lib/types").Listing) {
         />
 
         {listing.images && listing.images.length > 0 && (
-          <div className="mb-8 grid gap-2 overflow-hidden rounded-3xl md:grid-cols-[2fr_1fr] md:gap-2">
+          <div className="mb-8 grid gap-2 overflow-hidden rounded-3xl md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] md:gap-2">
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl md:aspect-auto md:h-[380px]">
               <Image
                 src={listing.images[0].url}
@@ -281,7 +281,7 @@ function renderListing(listing: import("@/lib/types").Listing) {
           </p>
         )}
 
-        <header className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
+        <header className="grid gap-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
           <div>
             <div className="mb-3 flex flex-wrap items-center gap-2">
               {primaryCat && <span className="chip chip-sky">{primaryCat.singular}</span>}
@@ -427,7 +427,7 @@ function renderListing(listing: import("@/lib/types").Listing) {
           />
         )}
 
-        <section className="mt-10 grid gap-6 lg:grid-cols-[1.4fr_1fr]">
+        <section className="mt-10 grid gap-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
           <div>
             <h2 className="mb-3 font-display text-2xl">About {listing.name}</h2>
             <p className="text-[16px] leading-relaxed text-[color:var(--color-ink)]">

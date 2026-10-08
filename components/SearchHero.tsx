@@ -38,7 +38,7 @@ export function SearchHero() {
         <form
           action="/schools"
           method="get"
-          className="card mt-8 grid gap-3 p-3 md:mt-10 md:grid-cols-[1.2fr_1fr_1fr_auto] md:items-center md:gap-2 md:p-2"
+          className="card mt-8 grid gap-3 p-3 md:mt-10 md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)_minmax(0,1fr)_auto] md:items-center md:gap-2 md:p-2"
         >
           <div className="field rounded-2xl bg-[color:var(--color-cream)] p-3 md:p-4">
             <label htmlFor="q-category">You're looking for</label>
