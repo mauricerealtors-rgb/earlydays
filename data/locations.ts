@@ -675,6 +675,15 @@ export const LOCATIONS: Location[] = [
     intro:
       "Airport Ridge is one of Takoradi's established residential areas, and has a small cluster of preparatory and preschool provision. It sits close to Anaji and the town centre, so families here typically consider all three. Provision is modest in number but the area is a recognised, searchable Takoradi address.",
   },
+  {
+    slug: "lartebiokorshie",
+    name: "Lartebiokorshie",
+    region: "accra",
+    regionName: "Greater Accra",
+    blurb: "Residential district between Kaneshie and the coast, west of the city centre.",
+    intro:
+      "Lartebiokorshie sits west of central Accra, between Kaneshie and the coast, and is residential rather than commercial. Provision is mostly neighbourhood creches and preschools serving families who live locally, with a few long-established basic schools. It runs into Korle Gonno, Mamprobi and Abossey Okai, so addresses often reference a neighbouring area, and the Graphic Road and Winneba Road corridors set how long the school run actually takes.",
+  },
 ];
 
 export const REGIONS = [
