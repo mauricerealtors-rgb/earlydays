@@ -4,27 +4,27 @@ import type { Category } from "@/lib/types";
 
 const gradients: Record<Category["accent"], { bg: string; ring: string; art: string }> = {
   sky: {
-    bg: "linear-gradient(160deg, #E4F1FF 0%, #C7E1FF 100%)",
+    bg: "var(--color-paper-deep)",
     ring: "rgba(31,122,214,0.15)",
     art: "#66B7FF",
   },
   leaf: {
-    bg: "linear-gradient(160deg, #EAF6E5 0%, #C9EABD 100%)",
+    bg: "var(--color-paper-deep)",
     ring: "rgba(47,124,37,0.15)",
     art: "#7AC66B",
   },
   sun: {
-    bg: "linear-gradient(160deg, #FFF3D1 0%, #FFE39B 100%)",
+    bg: "var(--color-marigold-soft)",
     ring: "rgba(122,90,0,0.15)",
     art: "#FFC845",
   },
   coral: {
-    bg: "linear-gradient(160deg, #FFE1D5 0%, #FFC5B0 100%)",
+    bg: "var(--color-paper-deep)",
     ring: "rgba(178,58,26,0.15)",
     art: "#FF7A59",
   },
   blossom: {
-    bg: "linear-gradient(160deg, #FFE8F1 0%, #FFC5DC 100%)",
+    bg: "var(--color-marigold-soft)",
     ring: "rgba(168,48,106,0.15)",
     art: "#FF9FC0",
   },
@@ -62,7 +62,7 @@ export function CategoryCard({
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(15,42,74,0.20) 0%, rgba(15,42,74,0.35) 45%, rgba(15,42,74,0.72) 100%)",
+              "linear-gradient(180deg, rgba(16,36,59,0.35) 0%, rgba(16,36,59,0.55) 45%, rgba(16,36,59,0.86) 100%)",
           }}
         />
 

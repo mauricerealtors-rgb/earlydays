@@ -226,7 +226,7 @@ function ForSchoolsCTA() {
         className="card relative overflow-hidden p-8 md:p-14"
         style={{
           background:
-            "linear-gradient(120deg,#081A33 0%,#0F2A4A 40%,#1B355A 100%)",
+            "var(--color-ink)",
           color: "white",
         }}
       >
@@ -234,12 +234,12 @@ function ForSchoolsCTA() {
         <span
           aria-hidden
           className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full opacity-60"
-          style={{ background: "radial-gradient(circle,#FFC845 0%,transparent 65%)" }}
+          style={{ background: "transparent" }}
         />
         <span
           aria-hidden
           className="pointer-events-none absolute -bottom-24 -left-20 h-80 w-80 rounded-full opacity-40"
-          style={{ background: "radial-gradient(circle,#EC1E7A 0%,transparent 65%)" }}
+          style={{ background: "transparent" }}
         />
         {/* Contrast underlay behind the copy so text stays legible on the bright gradient */}
         <div
