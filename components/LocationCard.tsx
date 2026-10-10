@@ -11,7 +11,7 @@ export function LocationCard({ location, count }: { location: Location; count: n
         <span
           aria-hidden
           className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl"
-          style={{ background: "linear-gradient(135deg,#DDEEFF,#E4F5DF)" }}
+          style={{ background: "var(--color-marigold-soft)" }}
         >
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden>
             <path

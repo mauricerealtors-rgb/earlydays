@@ -14,7 +14,7 @@ export function SearchHero() {
       }}
     >
       <HeroDecor />
-      <div className="container-page relative pt-10 pb-14 md:pt-20 md:pb-20">
+      <div className="container-page relative pt-10 pb-8 md:pt-20 md:pb-10">
         <div className="max-w-3xl">
           <h1
             id="hero-title"

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SearchHero } from "@/components/SearchHero";
+import { TrustStrip } from "@/components/TrustStrip";
 import { CategoryCard } from "@/components/CategoryCard";
 import { LocationCard } from "@/components/LocationCard";
 import { FeaturedGrid } from "@/components/FeaturedGrid";
@@ -27,6 +28,7 @@ export default async function HomePage() {
   return (
     <>
       <SearchHero />
+      <TrustStrip />
 
       {/* Explore by programme */}
       <Section
@@ -37,7 +39,10 @@ export default async function HomePage() {
         seeAllLabel="See all programmes"
       >
         <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-          {categories.map((c) => (
+          {/* Eight, not nine: a ninth card orphans a row in a four-column
+              grid and leaves a dead band above the next section. The rest are
+              behind "See all programmes" in this section's own header. */}
+          {categories.slice(0, 8).map((c) => (
             <CategoryCard key={c.slug} category={c} count={catCounts[c.slug]} />
           ))}
         </div>
