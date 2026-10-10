@@ -10,29 +10,22 @@ export function SearchHero() {
       className="relative overflow-hidden"
       style={{
         background:
-          "var(--color-paper)",
+          "radial-gradient(1200px 500px at 100% -10%, rgba(102,183,255,0.20), transparent 60%), radial-gradient(900px 500px at 0% 0%, rgba(255,159,192,0.30), transparent 60%)",
       }}
     >
       <HeroDecor />
-      <div className="container-page relative pt-10 pb-8 md:pt-20 md:pb-10">
+      <div className="container-page relative pt-10 pb-14 md:pt-20 md:pb-20">
         <div className="max-w-3xl">
           <h1
             id="hero-title"
             className="font-display text-[42px] leading-[1.02] tracking-tight md:text-[68px]"
           >
-            {/*
-              One colour, one accent phrase. This previously ran six colours
-              through a single sentence via classes actually named
-              "rainbow-word" — the clearest signal on the page that nobody had
-              decided what the brand looked like.
-
-              The accent uses the darker gold, not the button gold: #F2A20C on
-              paper is about 1.9:1 and fails contrast even at display size.
-            */}
-            Find your child a place to{" "}
-            <span className="text-[color:var(--color-coral)]">
-              grow, play and learn.
-            </span>
+            <span className="rainbow-word-sky">Find your child</span>{" "}
+            <span className="rainbow-word-coral">a place</span>{" "}
+            <span className="rainbow-word-leaf">to grow,</span>{" "}
+            <span className="rainbow-word-pink">play</span>{" "}
+            <span className="rainbow-word-navy">and</span>{" "}
+            <span className="rainbow-word-sun">learn.</span>
           </h1>
 
           <p className="mt-5 max-w-xl text-lg text-[color:var(--color-ink)]">
@@ -94,10 +87,10 @@ export function SearchHero() {
 
         {/* Value chips under the search bar */}
         <ul className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-semibold text-[color:var(--color-navy)]">
-          <FeatureChip color="var(--color-coral)" icon="heart">Made for parents</FeatureChip>
-          <FeatureChip color="var(--color-ink-mute)" icon="cap">Honest profiles</FeatureChip>
-          <FeatureChip color="var(--color-ink-mute)" icon="leaf">Verified where it counts</FeatureChip>
-          <FeatureChip color="var(--color-coral)" icon="star">Free to search</FeatureChip>
+          <FeatureChip color="#EC1E7A" icon="heart">Made for parents</FeatureChip>
+          <FeatureChip color="#1F7AD6" icon="cap">Honest profiles</FeatureChip>
+          <FeatureChip color="#2F7C25" icon="leaf">Verified where it counts</FeatureChip>
+          <FeatureChip color="#E5A800" icon="star">Free to search</FeatureChip>
         </ul>
 
         {/* Popular quick chips */}
@@ -175,12 +168,12 @@ function HeroDecor() {
       <div
         aria-hidden
         className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full opacity-70"
-        style={{ background: "var(--color-marigold-soft)" }}
+        style={{ background: "radial-gradient(circle at 30% 30%, #FFC845 0, transparent 60%)" }}
       />
       <div
         aria-hidden
         className="pointer-events-none absolute -left-24 top-32 h-72 w-72 rounded-full opacity-60"
-        style={{ background: "var(--color-paper-deep)" }}
+        style={{ background: "radial-gradient(circle at 60% 60%, #66B7FF 0, transparent 60%)" }}
       />
 
       {/* Scattered stars */}
@@ -217,6 +210,32 @@ function HeroDecor() {
           );
         })}
       </svg>
+
+      {/* Speech-bubble callouts */}
+      <span
+        aria-hidden
+        className="callout-bubble absolute hidden md:inline-flex"
+        style={{
+          top: "24%",
+          right: "5%",
+          background: "linear-gradient(160deg,#7AC66B 0%,#5FA553 100%)",
+          fontSize: "13px",
+        }}
+      >
+        Play &nbsp;·&nbsp; Learn &nbsp;·&nbsp; Grow
+      </span>
+      <span
+        aria-hidden
+        className="callout-bubble absolute hidden md:inline-flex"
+        style={{
+          top: "58%",
+          right: "3%",
+          background: "linear-gradient(160deg,#66B7FF 0%,#1F7AD6 100%)",
+          fontSize: "13px",
+        }}
+      >
+        Brighter days ahead
+      </span>
     </>
   );
 }

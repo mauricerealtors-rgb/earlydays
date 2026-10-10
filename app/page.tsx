@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { SearchHero } from "@/components/SearchHero";
-import { TrustStrip } from "@/components/TrustStrip";
 import { CategoryCard } from "@/components/CategoryCard";
 import { LocationCard } from "@/components/LocationCard";
 import { FeaturedGrid } from "@/components/FeaturedGrid";
@@ -28,7 +27,6 @@ export default async function HomePage() {
   return (
     <>
       <SearchHero />
-      <TrustStrip />
 
       {/* Explore by programme */}
       <Section
@@ -39,10 +37,7 @@ export default async function HomePage() {
         seeAllLabel="See all programmes"
       >
         <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-          {/* Eight, not nine: a ninth card orphans a row in a four-column
-              grid and leaves a dead band above the next section. The rest are
-              behind "See all programmes" in this section's own header. */}
-          {categories.slice(0, 8).map((c) => (
+          {categories.map((c) => (
             <CategoryCard key={c.slug} category={c} count={catCounts[c.slug]} />
           ))}
         </div>
@@ -231,7 +226,7 @@ function ForSchoolsCTA() {
         className="card relative overflow-hidden p-8 md:p-14"
         style={{
           background:
-            "var(--color-ink)",
+            "linear-gradient(120deg,#081A33 0%,#0F2A4A 40%,#1B355A 100%)",
           color: "white",
         }}
       >
@@ -239,12 +234,12 @@ function ForSchoolsCTA() {
         <span
           aria-hidden
           className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full opacity-60"
-          style={{ background: "transparent" }}
+          style={{ background: "radial-gradient(circle,#FFC845 0%,transparent 65%)" }}
         />
         <span
           aria-hidden
           className="pointer-events-none absolute -bottom-24 -left-20 h-80 w-80 rounded-full opacity-40"
-          style={{ background: "transparent" }}
+          style={{ background: "radial-gradient(circle,#EC1E7A 0%,transparent 65%)" }}
         />
         {/* Contrast underlay behind the copy so text stays legible on the bright gradient */}
         <div

@@ -6,15 +6,22 @@ import { VerifiedCheck } from "./VerifiedCheck";
 import { schoolInitials } from "@/lib/initials";
 import type { Listing } from "@/lib/types";
 
-// One flat surface for every category. Nine pastel gradients meant a grid
-// of cards read as a colour chart; the school's name is the thing that
-// should distinguish it, not a different shade of peach.
-const PLACEHOLDER_BG = "var(--color-paper-deep)";
+const decor: Record<string, string> = {
+  creche: "linear-gradient(135deg,#FFE1D5,#FFC5B0)",
+  preschool: "linear-gradient(135deg,#DDEEFF,#C7E1FF)",
+  kindergarten: "linear-gradient(135deg,#FFF3D1,#FFE39B)",
+  primary: "linear-gradient(135deg,#EAF6E5,#C9EABD)",
+  montessori: "linear-gradient(135deg,#FFE8F1,#FFC5DC)",
+  "learning-centre": "linear-gradient(135deg,#DDEEFF,#EAF6E5)",
+  "language-centre": "linear-gradient(135deg,#FFE1D5,#FFE8F1)",
+  stem: "linear-gradient(135deg,#EAF6E5,#DDEEFF)",
+  "activity-centre": "linear-gradient(135deg,#FFF3D1,#FFE1D5)",
+};
 
 export function ListingCard({ listing, compact = false }: { listing: Listing; compact?: boolean }) {
   const loc = findLocation(listing.neighbourhood);
   const primaryCategory = findCategoryByType(listing.listingTypes[0]);
-  
+  const gradient = decor[listing.listingTypes[0]] ?? decor.preschool;
   const heroImage = listing.images?.[0];
   return (
     <article
@@ -25,7 +32,7 @@ export function ListingCard({ listing, compact = false }: { listing: Listing; co
       <Link
         href={`/schools/${listing.slug}`}
         className="relative block h-40 w-full overflow-hidden"
-        style={heroImage ? undefined : { background: PLACEHOLDER_BG }}
+        style={heroImage ? undefined : { background: gradient }}
         aria-label={`${listing.name} — view profile`}
       >
         {heroImage ? (
@@ -38,6 +45,14 @@ export function ListingCard({ listing, compact = false }: { listing: Listing; co
           />
         ) : (
           <>
+            <div
+              aria-hidden
+              className="absolute inset-0 opacity-70"
+              style={{
+                backgroundImage:
+                  "radial-gradient(circle at 20% 30%, rgba(255,255,255,0.6), transparent 45%), radial-gradient(circle at 80% 70%, rgba(255,255,255,0.4), transparent 45%)",
+              }}
+            />
             {/* Initials rather than a stock photo. We have no picture of this
                 school we can stand behind, and saying so plainly beats
                 borrowing someone else's classroom. */}
