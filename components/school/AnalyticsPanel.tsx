@@ -1,11 +1,19 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { doc, onSnapshot } from "firebase/firestore";
 import { firestore } from "@/lib/firebase";
-import { Locked } from "./Locked";
-import { hasFullAnalytics, money, yearlyTotal, findPlan, type Tier } from "@/lib/plans";
+
+/**
+ * Every number here is free.
+ *
+ * Contact clicks, channel breakdown and the fortnight trend used to be behind
+ * a paid tier, blurred out with an upgrade button over them. Listings are free
+ * now, so a school that claims its profile sees all of it. The blur was also
+ * the wrong instinct: a school that cannot tell a quiet week from a broken
+ * phone number stops trusting the dashboard, and a dashboard nobody opens
+ * tells us nothing either.
+ */
 
 interface Stats {
   views: number;
@@ -29,14 +37,6 @@ const empty: Stats = {
 
 export function AnalyticsPanel({ slug }: { slug: string }) {
   const [stats, setStats] = useState<Stats>(empty);
-  const [tier, setTier] = useState<Tier>("free");
-
-  useEffect(() => {
-    const unsub = onSnapshot(doc(firestore(), "subscriptions", slug), (snap) => {
-      setTier((snap.data()?.tier as Tier) ?? "free");
-    });
-    return () => unsub();
-  }, [slug]);
 
   useEffect(() => {
     const unsub = onSnapshot(doc(firestore(), "stats", slug), (snap) => {
@@ -74,7 +74,6 @@ export function AnalyticsPanel({ slug }: { slug: string }) {
     });
   }
   const maxDaily = Math.max(1, ...days.map((d) => Math.max(d.views, d.contacts)));
-  const full = hasFullAnalytics(tier);
 
   return (
     <div className="space-y-6">
@@ -87,38 +86,29 @@ export function AnalyticsPanel({ slug }: { slug: string }) {
         </p>
       </div>
 
-      {/* KPI grid — views and enquiries are free; the rest is a paid feature. */}
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
         <KPI label="Profile views" value={stats.views} accent="sky" />
         <KPI label="Enquiries" value={stats.enquiries} accent="coral" />
-        <Locked locked={!full} slug={slug} inline>
-          <KPI label="Contact clicks" value={totalContacts} accent="leaf" />
-        </Locked>
-        <Locked locked={!full} slug={slug} inline>
-          <KPI
-            label="Conversion"
-            value={`${conversion.toFixed(1)}%`}
-            accent="sun"
-            hint="Contacts ÷ views"
-          />
-        </Locked>
+        <KPI label="Contact clicks" value={totalContacts} accent="leaf" />
+        <KPI
+          label="Conversion"
+          value={`${conversion.toFixed(1)}%`}
+          accent="sun"
+          hint="Contacts ÷ views"
+        />
       </div>
-
-      {!full && <UpgradeCallout slug={slug} />}
 
       {/* Contact breakdown */}
       <section>
         <h3 className="mb-2 font-display text-base text-[color:var(--color-navy)]">
           Contact channel breakdown
         </h3>
-        <Locked locked={!full} slug={slug}>
-          <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
-            <MiniStat label="Calls" value={stats.calls} />
-            <MiniStat label="WhatsApp" value={stats.whatsapps} />
-            <MiniStat label="Website" value={stats.websiteClicks} />
-            <MiniStat label="Email" value={stats.emails} />
-          </div>
-        </Locked>
+        <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
+          <MiniStat label="Calls" value={stats.calls} />
+          <MiniStat label="WhatsApp" value={stats.whatsapps} />
+          <MiniStat label="Website" value={stats.websiteClicks} />
+          <MiniStat label="Email" value={stats.emails} />
+        </div>
       </section>
 
       {/* 14-day chart */}
@@ -126,7 +116,6 @@ export function AnalyticsPanel({ slug }: { slug: string }) {
         <h3 className="mb-2 font-display text-base text-[color:var(--color-navy)]">
           Last 14 days
         </h3>
-        <Locked locked={!full} slug={slug}>
         <div className="card-soft overflow-x-auto rounded-2xl p-4">
           <div className="flex items-end gap-2" style={{ height: 160 }}>
             {days.map((d, i) => (
@@ -160,7 +149,6 @@ export function AnalyticsPanel({ slug }: { slug: string }) {
             </span>
           </div>
         </div>
-        </Locked>
       </section>
 
       {stats.updatedAt && (
@@ -168,27 +156,6 @@ export function AnalyticsPanel({ slug }: { slug: string }) {
           Last event tracked: {new Date(stats.updatedAt).toLocaleString("en-GB")}
         </p>
       )}
-    </div>
-  );
-}
-
-function UpgradeCallout({ slug }: { slug: string }) {
-  const verified = findPlan("verified");
-  return (
-    <div className="card-soft rounded-2xl p-5">
-      <p className="font-display text-base text-[color:var(--color-navy)]">
-        See what parents do next.
-      </p>
-      <p className="mt-1 text-sm text-[color:var(--color-ink-mute)]">
-        Your free listing shows profile views and enquiries. Verified adds
-        contact clicks, which channel parents use, your conversion rate and the
-        14-day trend — so you can tell a quiet week from a broken phone number.
-      </p>
-      <Link href={`/school/${slug}/billing`} className="btn btn-pink mt-3 text-sm">
-        {verified
-          ? `Upgrade — ${money(yearlyTotal(verified.monthly))}/year`
-          : "See plans"}
-      </Link>
     </div>
   );
 }

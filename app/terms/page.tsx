@@ -96,7 +96,7 @@ export default function Terms() {
           </p>
         </Section>
 
-        <Section title="School accounts and website plans">
+        <Section title="School accounts and paid services">
           <p>
             A school can claim its free EarlyDays profile at any time from the{" "}
             <Link
@@ -105,15 +105,18 @@ export default function Terms() {
             >
               claim
             </Link>{" "}
-            page. Paid website and management plans are described on the{" "}
+            page. A listing is free and always will be. The services we charge
+            for, websites, school management systems, social media, local SEO
+            and paid ads, are described on the{" "}
             <Link
               href="/for-schools"
               className="text-[color:var(--color-sky-deep)] hover:underline"
             >
               for-schools
             </Link>{" "}
-            page. Fees, deliverables and timelines for those plans are agreed
-            in writing before work starts.
+            page. We publish no prices for them, because the work is quoted per
+            school. Fees, deliverables and timelines are agreed in writing
+            before any work starts.
           </p>
         </Section>
 

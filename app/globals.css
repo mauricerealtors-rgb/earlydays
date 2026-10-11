@@ -342,3 +342,105 @@
 @media (prefers-reduced-motion: reduce) {
   .concierge-step { animation: none; opacity: 1; transform: none; }
 }
+
+/* ---------------------------------------------------------------------------
+   /for-schools only.
+
+   This page sells to the person who owns the school, not to a parent, and it
+   is the one surface where the nursery palette works against us: an owner
+   deciding whether to spend money wants to read something that looks like a
+   company. So the route re-declares the brand tokens for its own subtree.
+
+   Scoped, not global. The last attempt at this changed @theme and took the
+   whole site with it. Custom properties inherit down the tree and no further,
+   so the header, the footer and every parent-facing page are untouched by
+   everything below.
+
+   Ink and marigold, measured off childcare.marketing. The accent never
+   carries white text: #F2A20C under white is about 2:1 and fails outright,
+   while ink on gold is around 8:1, which is why .btn-pink is overridden here
+   rather than inherited.
+   --------------------------------------------------------------------------- */
+.svc {
+  --color-ink: #10243B;
+  --color-ink-mute: #5B6B7D;
+  --color-navy: #10243B;
+  --color-navy-2: #1D3A5C;
+
+  --color-line: #E3E7EC;
+  --color-line-2: #EFF2F5;
+  --color-cream: #FFFFFF;
+  --color-cream-deep: #F5F8FA;
+
+  --color-sun: #F2A20C;
+  --color-sun-soft: #FDF1D6;
+  --color-pink-hot: #F2A20C;
+  --color-pink-hot-deep: #D98F05;
+  --color-coral: #B5760A;
+  --color-coral-soft: #FDF1D6;
+
+  --color-sky-deep: #10243B;
+  --color-sky-soft: #EEF1F4;
+  --color-leaf: #3F7D5A;
+  --color-leaf-soft: #E9F1EB;
+
+  --radius-lg: 14px;
+  --radius-xl: 16px;
+  --radius-2xl: 16px;
+  --shadow-card: none;
+
+  background: #FFFFFF;
+  color: var(--color-ink);
+  font-family: var(--font-svc, var(--font-sans));
+}
+
+/* One typeface, heavy and tight. Fraunces is a characterful serif and reads
+   as a children's brand, which is the wrong signal on a sales page. */
+.svc h1,
+.svc h2,
+.svc h3,
+.svc h4 {
+  font-family: var(--font-svc, var(--font-sans));
+  font-weight: 800;
+  letter-spacing: -0.028em;
+}
+
+/* No colour above. This block sits outside @layer, so an unlayered
+   `color` here outranks every Tailwind utility no matter how specific, and
+   a heading marked text-white on the two dark sections rendered ink on ink,
+   which is to say invisible. Headings inherit from .svc instead, and the
+   base-layer h1-h4 rule resolves through the remapped --color-navy. */
+
+.svc .btn {
+  border-radius: 10px;
+  box-shadow: none;
+}
+.svc .btn-pink {
+  background: var(--color-sun);
+  color: var(--color-ink);
+}
+.svc .btn-pink:hover {
+  background: var(--color-pink-hot-deep);
+  filter: none;
+}
+.svc .btn-ghost {
+  border-color: var(--color-ink);
+  color: var(--color-ink);
+}
+.svc .card {
+  box-shadow: none;
+  border: 1px solid var(--color-line);
+}
+
+/* The FAQ runs on <details>, so it opens with no JavaScript and is still
+   expandable if the bundle never arrives. */
+.svc details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+.svc details > summary::-webkit-details-marker {
+  display: none;
+}
+.svc details[open] .svc-chev {
+  transform: rotate(180deg);
+}

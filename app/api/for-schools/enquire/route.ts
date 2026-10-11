@@ -10,7 +10,22 @@ function clean(v: unknown, max = MAX.short): string {
   return String(v ?? "").trim().slice(0, max);
 }
 
-const ALLOWED_PLANS = new Set(["starter", "professional", "complete"]);
+/**
+ * Which service the school was reading about when it decided to call.
+ *
+ * This used to be a plan key, because the form was triggered by a price card.
+ * Listings are free now and nothing on the page carries a price, so the useful
+ * thing to record is the subject, not the tier.
+ */
+const ALLOWED_SERVICES = new Set([
+  "general",
+  "listing",
+  "website",
+  "management",
+  "social",
+  "seo",
+  "ads",
+]);
 const ALLOWED_MODES = new Set(["book", "message"]);
 
 export async function POST(req: Request) {
@@ -18,7 +33,7 @@ export async function POST(req: Request) {
     const body = await req.json();
 
     const mode = clean(body.mode);
-    const plan = clean(body.plan);
+    const service = clean(body.service);
     const schoolName = clean(body.schoolName);
     const contactName = clean(body.contactName);
     const phone = clean(body.phone);
@@ -30,8 +45,8 @@ export async function POST(req: Request) {
     if (!ALLOWED_MODES.has(mode)) {
       return NextResponse.json({ error: "Invalid mode" }, { status: 400 });
     }
-    if (!ALLOWED_PLANS.has(plan)) {
-      return NextResponse.json({ error: "Invalid plan" }, { status: 400 });
+    if (!ALLOWED_SERVICES.has(service)) {
+      return NextResponse.json({ error: "Invalid service" }, { status: 400 });
     }
     if (!schoolName || !contactName || !phone) {
       return NextResponse.json(
@@ -56,7 +71,7 @@ export async function POST(req: Request) {
     const now = new Date().toISOString();
     const ref = await db.collection("schoolServiceEnquiries").add({
       mode,
-      plan,
+      service,
       schoolName,
       contactName,
       phone,
@@ -71,7 +86,7 @@ export async function POST(req: Request) {
     await db.doc("stats/schoolServiceEnquiries").set(
       {
         total: FieldValue.increment(1),
-        [`byPlan.${plan}`]: FieldValue.increment(1),
+        [`byService.${service}`]: FieldValue.increment(1),
         [`byMode.${mode}`]: FieldValue.increment(1),
         [`daily.${now.slice(0, 10)}`]: FieldValue.increment(1),
         updatedAt: now,

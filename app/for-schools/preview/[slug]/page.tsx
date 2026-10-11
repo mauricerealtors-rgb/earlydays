@@ -61,15 +61,15 @@ export default async function PreviewPage({
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-[color:var(--color-sun)]" />
             <strong className="font-semibold">Website preview</strong>
             <span className="hidden opacity-70 md:inline">
-              this is what a Professional plan would look like for{" "}
+              this is what a website we build would look like for{" "}
               {listing.name}.
             </span>
           </span>
           <Link
-            href="/for-schools#pricing"
+            href="/for-schools"
             className="rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold text-white hover:bg-white/20"
           >
-            View plans
+            Book a call
           </Link>
         </div>
       </div>

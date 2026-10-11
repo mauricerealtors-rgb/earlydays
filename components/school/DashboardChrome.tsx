@@ -76,7 +76,6 @@ export function DashboardChrome({
         { href: `/school/${currentSlug}/enquiries`, label: "Enquiries", icon: MessagesIcon },
         { href: `/school/${currentSlug}/analytics`, label: "Analytics", icon: ChartIcon },
         { href: `/school/${currentSlug}/badge`, label: "Badge", icon: BadgeIcon },
-        { href: `/school/${currentSlug}/billing`, label: "Billing", icon: BillingIcon },
       ]
     : [];
 
@@ -292,14 +291,6 @@ function ChartIcon({ active }: { active: boolean }) {
         strokeWidth="1.8"
         strokeLinecap="round"
       />
-    </svg>
-  );
-}
-function BillingIcon({ active }: { active: boolean }) {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className={iconClass(active)}>
-      <rect x="3" y="6" width="18" height="13" rx="2" stroke="currentColor" strokeWidth="1.8" />
-      <path d="M3 10h18M7 15h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
     </svg>
   );
 }

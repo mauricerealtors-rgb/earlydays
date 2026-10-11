@@ -74,8 +74,8 @@ export default function Privacy() {
           </p>
           <p>
             <strong>Service providers:</strong> we rely on Google Firebase
-            (Auth and Firestore), Cloudinary (for school-uploaded photos),
-            Paystack (for payments) and Vercel (for hosting). These providers
+            (Auth and Firestore), Cloudinary (for school-uploaded photos) and
+            Vercel (for hosting). These providers
             process data on our behalf under their own privacy terms.
           </p>
           <p>
@@ -129,8 +129,8 @@ export default function Privacy() {
           <p>
             The site runs on HTTPS. Database access is protected by Firebase
             Security Rules. School accounts require a password managed by
-            Firebase Authentication. Payments are processed by Paystack; card
-            details never touch our servers.
+            Firebase Authentication. We take no payments on this site, so there
+            are no card details here to lose.
           </p>
           <p>
             No online service is completely secure. If you notice something

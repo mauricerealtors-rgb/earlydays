@@ -1,8 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { Locked } from "./Locked";
-import { hasFullAnalytics } from "@/lib/plans";
 import { useEffect, useState } from "react";
 import {
   collection,
@@ -47,7 +45,6 @@ export function OverviewPanel({
   listingName: string;
 }) {
   const [stats, setStats] = useState<Stats>(empty);
-  const [tier, setTier] = useState<"free" | "verified" | "featured">("free");
   const [recentEnquiries, setRecentEnquiries] = useState<Enquiry[]>([]);
   const [unread, setUnread] = useState(0);
 
@@ -63,10 +60,6 @@ export function OverviewPanel({
         enquiries: data.enquiries ?? 0,
         daily: data.daily ?? {},
       });
-    });
-    const unsubSub = onSnapshot(doc(firestore(), "subscriptions", slug), (snap) => {
-      const t = snap.data()?.tier ?? "free";
-      setTier(t as "free" | "verified" | "featured");
     });
     const unsubEnq = onSnapshot(
       query(
@@ -93,7 +86,6 @@ export function OverviewPanel({
     );
     return () => {
       unsubStats();
-      unsubSub();
       unsubEnq();
     };
   }, [slug]);
@@ -101,7 +93,6 @@ export function OverviewPanel({
   const totalContacts =
     stats.calls + stats.whatsapps + stats.websiteClicks + stats.emails;
   const conversion = stats.views ? (totalContacts / stats.views) * 100 : 0;
-  const fullAnalytics = hasFullAnalytics(tier);
 
   // 14-day chart
   const days: { label: string; views: number; contacts: number }[] = [];
@@ -132,9 +123,8 @@ export function OverviewPanel({
         </p>
       </header>
 
-      {/* KPI strip — views, enquiries and unread are free. Anything about what
-          parents did next is the paid tier, gated the same way as /analytics;
-          gating only that page left the numbers on show here. */}
+      {/* Every number here is free. The contact figures used to be blurred
+          behind an upgrade button, which is gone along with the tiers. */}
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
         <Kpi label="Profile views" value={stats.views} tint="sky" />
         <Kpi label="Enquiries" value={stats.enquiries} tint="coral" />
@@ -145,41 +135,15 @@ export function OverviewPanel({
           delta={unread > 0 ? "Needs reply" : "All clear"}
           deltaMood={unread > 0 ? "warn" : "good"}
         />
-        <Locked locked={!fullAnalytics} slug={slug} inline>
-          <Kpi label="Contact clicks" value={totalContacts} tint="leaf" />
-        </Locked>
+        <Kpi label="Contact clicks" value={totalContacts} tint="leaf" />
       </div>
 
-      <Locked locked={!fullAnalytics} slug={slug}>
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-          <MiniKpi label="Calls" value={stats.calls} />
-          <MiniKpi label="WhatsApp" value={stats.whatsapps} />
-          <MiniKpi label="Website" value={stats.websiteClicks} />
-          <MiniKpi label="Conversion" value={`${conversion.toFixed(1)}%`} />
-        </div>
-      </Locked>
-
-      {/* Plan callout */}
-      <section className="admin-card rounded-2xl border border-[color:var(--color-line)] bg-white p-5">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <div>
-            <p className="text-[10px] font-bold uppercase tracking-widest text-[color:var(--color-ink-mute)]">
-              Current plan
-            </p>
-            <p className="mt-1 font-display text-xl capitalize text-[color:var(--color-navy)]">
-              {tier}
-              {tier === "free" && (
-                <span className="ml-2 text-sm font-normal text-[color:var(--color-ink-mute)]">
-                  · Free listing
-                </span>
-              )}
-            </p>
-          </div>
-          <Link href={`/school/${slug}/billing`} className={tier === "free" ? "btn btn-pink text-sm" : "btn btn-ghost text-sm"}>
-            {tier === "free" ? "Upgrade to Verified" : "Manage plan"}
-          </Link>
-        </div>
-      </section>
+      <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+        <MiniKpi label="Calls" value={stats.calls} />
+        <MiniKpi label="WhatsApp" value={stats.whatsapps} />
+        <MiniKpi label="Website" value={stats.websiteClicks} />
+        <MiniKpi label="Conversion" value={`${conversion.toFixed(1)}%`} />
+      </div>
 
       {/* 14-day chart */}
       <section className="admin-card rounded-2xl border border-[color:var(--color-line)] bg-white p-5">
@@ -203,7 +167,6 @@ export function OverviewPanel({
             </span>
           </div>
         </div>
-        <Locked locked={!fullAnalytics} slug={slug}>
         <div className="flex items-end gap-2 overflow-x-auto" style={{ height: 160 }}>
           {days.map((d, i) => (
             <div key={i} className="flex flex-1 min-w-[24px] flex-col items-center gap-1">
@@ -225,7 +188,6 @@ export function OverviewPanel({
             </div>
           ))}
         </div>
-        </Locked>
       </section>
 
       {/* Activity + quick actions */}
