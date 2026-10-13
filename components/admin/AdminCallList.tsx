@@ -27,6 +27,7 @@ import type { Listing } from "@/lib/types";
 type Filter =
   | "due"
   | "todo"
+  | "no-website"
   | "weak"
   | "interested"
   | "visits"
@@ -36,12 +37,24 @@ type Filter =
 const FILTERS: { value: Filter; label: string }[] = [
   { value: "due", label: "Due today" },
   { value: "todo", label: "Not called" },
+  { value: "no-website", label: "No website" },
   { value: "weak", label: "Weakest first" },
   { value: "interested", label: "Interested" },
   { value: "visits", label: "Visits" },
   { value: "contacted", label: "Contacted" },
   { value: "all", label: "All" },
 ];
+
+/**
+ * A Facebook or Instagram page sitting in the website field is not a website.
+ * The school believes it has one, which makes it a different call, not an
+ * easier one, so these count as having no site and surface in the same filter.
+ */
+const NOT_A_WEBSITE = /facebook|instagram|linktr|wixsite|blogspot|sites\.google/i;
+
+function hasNoWebsite(l: Listing): boolean {
+  return !l.website || NOT_A_WEBSITE.test(l.website);
+}
 
 const BAND_CLASS: Record<string, string> = {
   weak: "bg-red-500/15 text-red-300",
@@ -120,6 +133,7 @@ export function AdminCallList() {
 
   const stats = useMemo(() => {
     let due = 0, todo = 0, interested = 0, visits = 0, contacted = 0, callable = 0;
+    let noSite = 0;
     for (const l of listings) {
       const r = records[l.slug];
       if (dialable(l.phone) || dialable(l.whatsapp)) callable++;
@@ -128,8 +142,9 @@ export function AdminCallList() {
       if (r?.status === "interested") interested++;
       if (r?.status === "visit-booked") visits++;
       if (r?.lastContactedAt) contacted++;
+      if (hasNoWebsite(l)) noSite++;
     }
-    return { due, todo, interested, visits, contacted, callable };
+    return { due, todo, interested, visits, contacted, callable, noSite };
   }, [listings, records, today]);
 
   const rows = useMemo(() => {
@@ -150,6 +165,8 @@ export function AdminCallList() {
           return isDue(r, today);
         case "todo":
           return !r || r.status === "not-contacted";
+        case "no-website":
+          return hasNoWebsite(l);
         case "weak":
           return !r || !CLOSED.has(r.status);
         case "interested":
@@ -163,7 +180,16 @@ export function AdminCallList() {
       }
     });
 
-    if (filter === "weak") {
+    if (filter === "no-website") {
+      // Uncalled first, then least complete. The top of this list is the call
+      // sheet: no site, nothing logged, and the most to talk about.
+      list = [...list].sort((a, b) => {
+        const ar = records[a.slug]?.lastContactedAt ? 1 : 0;
+        const br = records[b.slug]?.lastContactedAt ? 1 : 0;
+        if (ar !== br) return ar - br;
+        return auditPresence(a).percent - auditPresence(b).percent;
+      });
+    } else if (filter === "weak") {
       // Least complete profile first: most to offer, easiest conversation.
       list = [...list].sort(
         (a, b) => auditPresence(a).percent - auditPresence(b).percent,
@@ -223,9 +249,10 @@ export function AdminCallList() {
         </p>
       </header>
 
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-5">
+      <div className="grid grid-cols-2 gap-3 md:grid-cols-6">
         <Kpi label="Due today" value={stats.due} tone={stats.due ? "text-violet-300" : undefined} />
         <Kpi label="Not called" value={stats.todo} />
+        <Kpi label="No website" value={stats.noSite} tone="text-amber-300" />
         <Kpi label="Contacted" value={stats.contacted} tone="text-sky-300" />
         <Kpi label="Interested" value={stats.interested} tone="text-emerald-300" />
         <Kpi label="Visits booked" value={stats.visits} tone="text-emerald-200" />
