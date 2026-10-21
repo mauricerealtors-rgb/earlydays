@@ -14,6 +14,7 @@ const NAV = [
   { href: "/admin/outreach", label: "Outreach", icon: OutreachIcon },
   { href: "/admin/schools", label: "Schools", icon: SchoolsIcon },
   { href: "/admin/enquiries", label: "Enquiries", icon: EnquiriesIcon },
+  { href: "/admin/leads", label: "Leads", icon: LeadsIcon },
   { href: "/admin/concierge", label: "Concierge", icon: ConciergeIcon },
   { href: "/admin/analytics", label: "Analytics", icon: AnalyticsIcon },
   { href: "/admin/subscriptions", label: "Subscriptions", icon: BillingIcon },
@@ -219,6 +220,15 @@ function EnquiriesIcon({ active }: { active: boolean }) {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className={active ? "text-black" : "text-white/60 group-hover:text-white"}>
       <path d="M5 5h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-7l-5 4v-4H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+    </svg>
+  );
+}
+function LeadsIcon({ active }: { active: boolean }) {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className={active ? "text-black" : "text-white/60 group-hover:text-white"}>
+      <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+      <rect x="3" y="7" width="18" height="13" rx="2" stroke="currentColor" strokeWidth="1.8" />
+      <path d="M3 12h18" stroke="currentColor" strokeWidth="1.8" />
     </svg>
   );
 }
