@@ -65,55 +65,22 @@ export default async function ClaimPage({
         </h1>
         <p className="mt-3 text-[17px] leading-relaxed text-[color:var(--color-text-body)]">
           {loc?.name ?? listing.neighbourhood}, {listing.region}. Your school is
-          already listed and parents can already find it. Claiming is how you
-          take the page over: your words, your photographs, your fees, and every
-          enquiry that comes off it.
+          already listed. Claiming makes it yours.
         </p>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
           <Perk
-            title="Say it in your words"
-            body="Your description, programmes, ages, hours, admissions status and fees. Fees are what parents search for most, and almost no school in Ghana publishes them."
+            title="Your words"
+            body="Programmes, ages, hours and fees. Fees are what parents search for most."
           />
           <Perk
-            title="Your own photographs"
-            body="Your building, your classrooms, your children at work. A profile with real photos gets opened. One with none gets scrolled past."
+            title="Your photographs"
+            body="A profile with real photos gets opened. One with none gets scrolled past."
           />
           <Perk
-            title="Every enquiry, direct"
-            body="Parents reach you from the page and it lands in your inbox. You also see who viewed, who called and who tapped WhatsApp."
+            title="Your enquiries"
+            body="Parents reach you from the page, and you see who viewed and who called."
           />
-        </div>
-
-        <div className="mt-6 rounded-2xl border-2 border-[color:var(--color-ink)] bg-[color:var(--color-cream)] p-4 md:p-5">
-          <h2 className="font-display text-[16px] leading-tight md:text-[18px]">
-            Three things before you start
-          </h2>
-          <ul className="mt-3 space-y-2 text-[14px] leading-relaxed text-[color:var(--color-text-body)]">
-            <li>
-              <strong className="font-bold text-[color:var(--color-ink)]">
-                We ring the school, not you.
-              </strong>{" "}
-              Give us the school&rsquo;s own line. We call it and ask for you by
-              name, which is how we know the page goes to the right person and
-              why nobody can take it from you later.
-            </li>
-            <li>
-              <strong className="font-bold text-[color:var(--color-ink)]">
-                You do not need an account yet.
-              </strong>{" "}
-              No password to invent today. We set the login up after the call
-              and email it to you.
-            </li>
-            <li>
-              <strong className="font-bold text-[color:var(--color-ink)]">
-                Managing the page is a yearly plan.
-              </strong>{" "}
-              Being listed is free and stays free. We show you what the year
-              costs on the next screen, before you have paid anything or
-              committed to anything.
-            </li>
-          </ul>
         </div>
 
         {alreadyClaimed ? (

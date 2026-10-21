@@ -39,10 +39,8 @@ export default function Claim() {
           Find your school and <span className="marker">take the page over</span>.
         </h1>
         <p className="mt-3 text-[17px] leading-relaxed text-[color:var(--color-text-body)]">
-          Your school is almost certainly on EarlyDays already, and parents can
-          already find it. Claiming is how it becomes yours: your words, your
-          photographs, your fees, and every enquiry landing with you instead of
-          nowhere.
+          Your school is almost certainly listed already. Claiming makes it
+          yours: your photographs, your fees, your enquiries.
         </p>
       </div>
 
@@ -53,30 +51,20 @@ export default function Claim() {
           <h2 className="font-display text-[18px] leading-tight md:text-[20px]">
             How claiming works
           </h2>
-          <ol className="mt-4 space-y-4">
-            <Step n={1} title="Pick your school and tell us who you are">
-              Your name, your role, and a number we can reach you on. No
-              password to invent today, and no account needed yet.
+          <ol className="mt-4 space-y-3">
+            <Step n={1} title="Tell us who you are">
+              Your name, your role, a number we can reach you on.
             </Step>
             <Step n={2} title="We ring the school, not you">
-              Within one working day we call the school&rsquo;s own line and ask
-              for you by name. That call is how we know the page goes to the
-              right person, and why nobody can take it from you later.
+              We call the school&rsquo;s own line and ask for you by name.
             </Step>
             <Step n={3} title="Your account opens">
-              We email your login, you set your own password, and you can edit
-              the profile, add photographs and start taking enquiries the same
-              day.
+              We email your login and you can edit the page the same day.
             </Step>
           </ol>
           <p className="mt-5 border-t-2 border-dashed border-[color:var(--color-line)] pt-4 text-[14px] leading-relaxed text-[color:var(--color-text-body)]">
-            <strong className="font-bold text-[color:var(--color-ink)]">
-              Being listed is free and stays free.
-            </strong>{" "}
-            Managing the page yourself is a yearly plan. We show you what the
-            year costs once you have picked your school and filled the form, so
-            you see the figure before you have paid anything or committed to
-            anything.
+            Listing is free. Managing it is a yearly plan, and we show the cost
+            before you pay anything.
           </p>
         </div>
       </div>

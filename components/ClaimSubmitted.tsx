@@ -46,8 +46,7 @@ export function ClaimSubmitted({
               Your claim for {schoolName} is in.
             </h2>
             <p className="mt-1 text-[14px] leading-relaxed text-[color:var(--color-text-body)]">
-              Nothing to do this minute. We call you first, and there is no
-              password to remember yet.
+              We call you first. Nothing to do this minute.
             </p>
           </div>
         </div>
@@ -62,18 +61,15 @@ export function ClaimSubmitted({
           <Step n={1} title="We ring the school, not you">
             Within one working day we call{" "}
             <Strong>{schoolPhone || "the school number you gave us"}</Strong> and
-            ask for you by name. That call is how we know you really work at{" "}
-            {schoolName}, and it is why nobody can take your profile from you.
+            ask for you by name.
           </Step>
           <Step n={2} title="You pay for the year">
-            Once we have spoken, send the mobile money below. You can send it
-            before the call if you prefer, it changes nothing. If we cannot
+            Send the mobile money below, before or after the call. If we cannot
             verify you, you get every pesewa back.
           </Step>
           <Step n={3} title="Your account opens">
-            We email your login to <Strong>{submittedEmail}</Strong> and attach{" "}
-            {schoolName} to it. You set your own password, then edit your
-            profile, add photographs and start taking enquiries the same day.
+            We email your login to <Strong>{submittedEmail}</Strong>. You can
+            edit the page the same day.
           </Step>
         </ol>
       </section>
@@ -110,10 +106,8 @@ export function ClaimSubmitted({
           ))}
         </ul>
         <p className="mt-4 border-t-2 border-dashed border-[color:var(--color-line)] pt-3 text-[13px] leading-relaxed text-[color:var(--color-text-muted)]">
-          Your school stays listed whether you pay or not. Parents will still
-          find {schoolName} on EarlyDays, with the information we have. What
-          the year buys is control of it, and everything a parent does on the
-          page.
+          {schoolName} stays listed whether you pay or not. The year buys you
+          control of the page.
         </p>
       </section>
     </div>

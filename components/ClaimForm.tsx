@@ -62,9 +62,8 @@ export function ClaimForm({
     <form onSubmit={handleSubmit} className="mt-8 space-y-4">
       <div className="rounded-2xl border-2 border-[color:var(--color-ink)] bg-[color:var(--color-cream)] p-4">
         <p className="text-[14px] leading-relaxed text-[color:var(--color-text-body)]">
-          No account needed yet. Tell us how to reach you and how to reach{" "}
-          {schoolName}. We ring the school to check you work there, then help
-          you set up a login. Takes about a minute.
+          We ring the school&rsquo;s own line to check you work there, then
+          email your login. No account to set up today.
         </p>
       </div>
 
@@ -153,6 +152,13 @@ export function ClaimForm({
       <button type="submit" disabled={submitting} className="btn btn-pink w-full">
         {submitting ? "Submitting…" : `Submit claim for ${schoolName}`}
       </button>
+
+      {/* The one line that stops this being a bait and switch. The box that
+          used to carry it said the same thing in a paragraph. */}
+      <p className="text-center text-[13px] text-[color:var(--color-text-body)]">
+        Listing is free. Managing it is a yearly plan, and we show the cost on
+        the next screen.
+      </p>
 
       <p className="text-center text-xs text-[color:var(--color-ink-mute)]">
         By claiming you agree to the EarlyDays{" "}
