@@ -1,5 +1,27 @@
 import type { Metadata, Viewport } from "next";
+import { Archivo, Figtree } from "next/font/google";
 import "./globals.css";
+
+/**
+ * Archivo ExtraBold over Figtree, from the Print Compare design system.
+ *
+ * Archivo carries its width axis, which is what gives the headlines their
+ * wide, heavy voice; without `axes: ["wdth"]` the font-stretch: 118% in
+ * globals.css does nothing. Loaded through next/font so both faces are
+ * self-hosted and there is no render-blocking request to Google on first
+ * paint, which the old <link> in <head> was.
+ */
+const display = Archivo({
+  variable: "--font-display",
+  subsets: ["latin"],
+  axes: ["wdth"],
+  display: "swap",
+});
+const body = Figtree({
+  variable: "--font-body",
+  subsets: ["latin"],
+  display: "swap",
+});
 import { JsonLd } from "@/components/JsonLd";
 import { AuthProvider } from "@/components/AuthProvider";
 import { PublicChrome } from "@/components/PublicChrome";
@@ -79,22 +101,10 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-GH">
-      <head>
-        <link
-          rel="preconnect"
-          href="https://fonts.googleapis.com"
-        />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin=""
-        />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito:wght@400;600;700;800&display=swap"
-        />
-      </head>
+    <html
+      lang="en-GH"
+      className={`${display.variable} ${body.variable} antialiased`}
+    >
       <body>
         <JsonLd
           data={{

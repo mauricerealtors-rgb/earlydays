@@ -7,11 +7,7 @@ export function SearchHero() {
   return (
     <section
       aria-labelledby="hero-title"
-      className="relative overflow-hidden"
-      style={{
-        background:
-          "radial-gradient(1200px 500px at 100% -10%, rgba(102,183,255,0.20), transparent 60%), radial-gradient(900px 500px at 0% 0%, rgba(255,159,192,0.30), transparent 60%)",
-      }}
+      className="relative overflow-hidden border-b-2 border-[color:var(--color-ink)] bg-[color:var(--color-cream)]"
     >
       <HeroDecor />
       <div className="container-page relative pt-10 pb-14 md:pt-20 md:pb-20">
@@ -161,21 +157,22 @@ function FeatureChip({
   );
 }
 
+/**
+ * What is left of the hero decoration.
+ *
+ * The two corner sunbeams were radial gradients and the two speech bubbles
+ * were linear ones, which the design system rules out: the marker swipe is
+ * the only gradient allowed anywhere. The bubbles were also floating over the
+ * search form at 1280px, a collision the old soft styling hid and the new 2px
+ * outline made obvious.
+ *
+ * The sun and the stars stay. They are flat solid fills, they are the one
+ * thing on the page that reads as a children's brand rather than a price
+ * comparison site, and nothing is layered on top of anything.
+ */
 function HeroDecor() {
   return (
     <>
-      {/* Corner sunbeams */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full opacity-70"
-        style={{ background: "radial-gradient(circle at 30% 30%, #FFC845 0, transparent 60%)" }}
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -left-24 top-32 h-72 w-72 rounded-full opacity-60"
-        style={{ background: "radial-gradient(circle at 60% 60%, #66B7FF 0, transparent 60%)" }}
-      />
-
       {/* Scattered stars */}
       <StarSprite className="hidden md:block" style={{ top: "18%", right: "44%" }} size={20} />
       <StarSprite className="hidden md:block" style={{ top: "62%", right: "8%" }} size={16} />
@@ -211,31 +208,6 @@ function HeroDecor() {
         })}
       </svg>
 
-      {/* Speech-bubble callouts */}
-      <span
-        aria-hidden
-        className="callout-bubble absolute hidden md:inline-flex"
-        style={{
-          top: "24%",
-          right: "5%",
-          background: "linear-gradient(160deg,#7AC66B 0%,#5FA553 100%)",
-          fontSize: "13px",
-        }}
-      >
-        Play &nbsp;·&nbsp; Learn &nbsp;·&nbsp; Grow
-      </span>
-      <span
-        aria-hidden
-        className="callout-bubble absolute hidden md:inline-flex"
-        style={{
-          top: "58%",
-          right: "3%",
-          background: "linear-gradient(160deg,#66B7FF 0%,#1F7AD6 100%)",
-          fontSize: "13px",
-        }}
-      >
-        Brighter days ahead
-      </span>
     </>
   );
 }

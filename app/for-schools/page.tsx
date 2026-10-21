@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Barlow } from "next/font/google";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import { BookCallButton } from "@/components/for-schools/BookCall";
@@ -10,18 +9,6 @@ import {
   SearchMock,
 } from "@/components/for-schools/Mocks";
 import { SITE } from "@/lib/site";
-
-/**
- * Loaded through next/font so it ships on this route and nowhere else. The
- * rest of the site is on Nunito and Fraunces, and a school owner weighing a
- * spend should not be reading a nursery typeface.
- */
-const barlow = Barlow({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-svc",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "For schools. Get found by the parents already searching",
@@ -125,7 +112,7 @@ const SERVICES = [
 
 export default function ForSchools() {
   return (
-    <div className={`svc ${barlow.variable}`}>
+    <div>
       <JsonLd
         data={{
           "@context": "https://schema.org",
@@ -360,13 +347,13 @@ export default function ForSchools() {
         <div className="mt-8 max-w-3xl divide-y divide-[color:var(--color-line)] border-y border-[color:var(--color-line)]">
           {FAQS.map((f) => (
             <details key={f.q} className="group">
-              <summary className="flex w-full items-start justify-between gap-4 py-4 text-left">
+              <summary className="flex w-full cursor-pointer list-none items-start justify-between gap-4 py-4 text-left">
                 <span className="min-w-0 break-words text-[15px] font-bold leading-snug text-[color:var(--color-ink)] md:text-[17px]">
                   {f.q}
                 </span>
                 <span
                   aria-hidden
-                  className="svc-chev mt-0.5 shrink-0 text-[color:var(--color-coral)] transition-transform"
+                  className="chev mt-0.5 shrink-0 text-[color:var(--color-brand)] transition-transform"
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                     <path
