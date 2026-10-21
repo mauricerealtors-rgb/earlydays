@@ -51,6 +51,14 @@ service cloud.firestore {
       allow write: if false; // only Admin SDK from /api/admin/outreach
     }
 
+    // Editable settings, currently the outreach email template. Read and
+    // written only through /api/admin/outreach/template on the Admin SDK, so
+    // the editor does not depend on these rules being deployed. Denied here
+    // to say so rather than to rely on the default.
+    match /settings/{key} {
+      allow read, write: if false;
+    }
+
     // Listing overrides — school users can only edit listings they've claimed
     // and been approved for. Approval writes an entry in listingOwners.
     match /listingOverrides/{slug} {

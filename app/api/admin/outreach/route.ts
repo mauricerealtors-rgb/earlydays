@@ -3,7 +3,13 @@ import { Resend } from "resend";
 import { adminDb } from "@/lib/firebase-admin";
 import { verifyIdToken } from "@/lib/verify-id-token";
 import { findListing } from "@/lib/query";
-import { outreachHtml, outreachSubject, outreachText } from "@/lib/outreach";
+import {
+  DEFAULT_TEMPLATE,
+  outreachHtml,
+  outreachSubject,
+  outreachText,
+  type OutreachTemplate,
+} from "@/lib/outreach";
 
 export const runtime = "nodejs";
 
@@ -17,7 +23,34 @@ const FROM = process.env.OUTREACH_FROM ?? process.env.INBOUND_FORWARD_FROM ?? ""
 const SENDER_NAME = process.env.OUTREACH_SENDER_NAME ?? "Maurice Nyamah";
 const REPLY_TO = process.env.OUTREACH_REPLY_TO ?? FROM;
 
-type Action = "send" | "save-email" | "skip" | "reset";
+type Action = "send" | "send-bulk" | "save-email" | "skip" | "reset";
+
+/**
+ * How many schools one bulk request may touch.
+ *
+ * Not a performance limit. A new sending domain that suddenly mails fifty
+ * strangers gets filtered, and a template mistake found halfway through a
+ * blast cannot be recalled, so the cap keeps a bad batch survivable. Send a
+ * couple of batches a day rather than the whole list in one go.
+ */
+const BULK_MAX = 25;
+
+/** Spacing between sends, so a batch does not arrive as one burst. */
+const BULK_GAP_MS = 700;
+
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+async function loadTemplate(
+  db: FirebaseFirestore.Firestore,
+): Promise<OutreachTemplate> {
+  try {
+    const snap = await db.doc("settings/outreachTemplate").get();
+    const saved = snap.exists ? (snap.data() as OutreachTemplate) : null;
+    return saved?.body ? saved : DEFAULT_TEMPLATE;
+  } catch {
+    return DEFAULT_TEMPLATE;
+  }
+}
 
 /**
  * School outreach — one school per request, on purpose.
@@ -47,6 +80,10 @@ export async function POST(req: Request) {
       testTo?: string;
     };
     const email = String(body.email ?? "").trim().toLowerCase();
+
+    if (action === "send-bulk") {
+      return bulkSend(body.slugs, adminEmail);
+    }
 
     if (!slug || !action) {
       return NextResponse.json({ error: "Missing fields" }, { status: 400 });
@@ -108,15 +145,16 @@ export async function POST(req: Request) {
       );
     }
 
+    const template = await loadTemplate(db);
     const resend = new Resend(process.env.RESEND_API_KEY);
     const { data, error } = await resend.emails.send(
       {
         from: `${SENDER_NAME} <${FROM}>`,
         to,
         replyTo: REPLY_TO,
-        subject: outreachSubject(listing),
-        html: outreachHtml(listing, SENDER_NAME),
-        text: outreachText(listing, SENDER_NAME),
+        subject: outreachSubject(listing, template),
+        html: outreachHtml(listing, SENDER_NAME, template),
+        text: outreachText(listing, SENDER_NAME, template),
       },
       { idempotencyKey: isTest ? undefined : `outreach_${slug}` }
     );
@@ -154,4 +192,123 @@ export async function POST(req: Request) {
       { status: 500 }
     );
   }
+}
+
+/**
+ * Send to several schools in one request.
+ *
+ * Sequential, with a gap, and every school reports its own outcome. A batch
+ * never fails as a unit: one bad address must not stop the other twenty four,
+ * and the caller needs to know exactly which ones went so a retry does not
+ * double-send. The already-sent guard still applies per school, so a slug
+ * that has had its email simply reports that and is skipped.
+ */
+async function bulkSend(rawSlugs: unknown, adminEmail: string) {
+  if (!process.env.RESEND_API_KEY || !FROM) {
+    return NextResponse.json(
+      { error: "Sending is not configured. Set RESEND_API_KEY and OUTREACH_FROM." },
+      { status: 500 },
+    );
+  }
+
+  const slugs = Array.isArray(rawSlugs)
+    ? [...new Set(rawSlugs.map((s) => String(s)))].slice(0, BULK_MAX)
+    : [];
+  if (slugs.length === 0) {
+    return NextResponse.json({ error: "No schools selected" }, { status: 400 });
+  }
+
+  const db = adminDb();
+  const template = await loadTemplate(db);
+  const resend = new Resend(process.env.RESEND_API_KEY);
+
+  const results: Array<{
+    slug: string;
+    name: string;
+    ok: boolean;
+    email?: string;
+    reason?: string;
+  }> = [];
+
+  for (const [i, slug] of slugs.entries()) {
+    const listing = findListing(slug);
+    if (!listing) {
+      results.push({ slug, name: slug, ok: false, reason: "Unknown school" });
+      continue;
+    }
+
+    const ref = db.doc(`outreach/${slug}`);
+    const snap = await ref.get();
+    const stored = snap.data() as { email?: string; status?: string } | undefined;
+    const to = (stored?.email || listing.email || "").trim().toLowerCase();
+    const now = new Date().toISOString();
+
+    if (stored?.status === "sent") {
+      results.push({
+        slug,
+        name: listing.name,
+        ok: false,
+        reason: "Already sent, reset it first",
+      });
+      continue;
+    }
+    if (!/^\S+@\S+\.\S+$/.test(to)) {
+      results.push({ slug, name: listing.name, ok: false, reason: "No email on file" });
+      continue;
+    }
+
+    if (i > 0) await sleep(BULK_GAP_MS);
+
+    try {
+      const { data, error } = await resend.emails.send(
+        {
+          from: `${SENDER_NAME} <${FROM}>`,
+          to,
+          replyTo: REPLY_TO,
+          subject: outreachSubject(listing, template),
+          html: outreachHtml(listing, SENDER_NAME, template),
+          text: outreachText(listing, SENDER_NAME, template),
+        },
+        { idempotencyKey: `outreach_${slug}` },
+      );
+
+      if (error) {
+        await ref.set(
+          { slug, email: to, status: "failed", error: error.message, updatedAt: now },
+          { merge: true },
+        );
+        results.push({ slug, name: listing.name, ok: false, email: to, reason: error.message });
+        continue;
+      }
+
+      await ref.set(
+        {
+          slug,
+          email: to,
+          status: "sent",
+          sentAt: now,
+          sentBy: adminEmail,
+          messageId: data?.id ?? null,
+          error: null,
+          updatedAt: now,
+        },
+        { merge: true },
+      );
+      results.push({ slug, name: listing.name, ok: true, email: to });
+    } catch (err) {
+      const reason = err instanceof Error ? err.message : "Send failed";
+      await ref.set(
+        { slug, email: to, status: "failed", error: reason, updatedAt: now },
+        { merge: true },
+      );
+      results.push({ slug, name: listing.name, ok: false, email: to, reason });
+    }
+  }
+
+  return NextResponse.json({
+    ok: true,
+    sent: results.filter((r) => r.ok).length,
+    failed: results.filter((r) => !r.ok).length,
+    results,
+  });
 }
