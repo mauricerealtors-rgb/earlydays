@@ -113,15 +113,46 @@ service cloud.firestore {
       allow write: if false;
     }
 
-    // Enquiries (parent leads) — parent submits without auth; only owner reads.
+    // Enquiries (parent leads) — parent submits without auth; the school that
+    // owns the listing reads its own.
+    //
+    // isAdmin() is in the read because /admin/enquiries lists the collection
+    // with no where-clause. Without it every document fails the owner check
+    // (admin owns no listings) and the whole query is rejected, not just the
+    // rows it cannot see.
     match /enquiries/{enquiryId} {
       allow create: if request.resource.data.keys().hasOnly(
         ['slug','parentName','parentEmail','parentPhone','message','createdAt']
       );
-      allow read, update: if request.auth != null &&
-                            exists(/databases/$(database)/documents/listingOwners/$(resource.data.slug)) &&
-                            get(/databases/$(database)/documents/listingOwners/$(resource.data.slug)).data.uid == request.auth.uid;
+      allow read: if isAdmin() ||
+                    (request.auth != null &&
+                     exists(/databases/$(database)/documents/listingOwners/$(resource.data.slug)) &&
+                     get(/databases/$(database)/documents/listingOwners/$(resource.data.slug)).data.uid == request.auth.uid);
+      allow update: if isAdmin() ||
+                      (request.auth != null &&
+                       exists(/databases/$(database)/documents/listingOwners/$(resource.data.slug)) &&
+                       get(/databases/$(database)/documents/listingOwners/$(resource.data.slug)).data.uid == request.auth.uid);
       allow delete: if isAdmin();
+    }
+
+    // Per-school counters: profile views, contact clicks, enquiries. Written
+    // only by the tracking API on the Admin SDK, read by the school that owns
+    // the listing and by admin.
+    //
+    // This block was missing entirely, so the dashboard's analytics and
+    // overview panels were denied on every read. It matters more now that
+    // those figures are free for every claimed school rather than gated.
+    //
+    // The document id here is a listing slug. The three aggregate documents
+    // (stats/concierge and friends) match their own blocks above and stay
+    // admin-only: no school owns a listing called "concierge", so the owner
+    // branch below can never grant them.
+    match /stats/{slug} {
+      allow read: if isAdmin() ||
+                    (request.auth != null &&
+                     exists(/databases/$(database)/documents/listingOwners/$(slug)) &&
+                     get(/databases/$(database)/documents/listingOwners/$(slug)).data.uid == request.auth.uid);
+      allow write: if false; // only Admin SDK from the tracking route
     }
 
     // ---------------------------------------------------------------------
