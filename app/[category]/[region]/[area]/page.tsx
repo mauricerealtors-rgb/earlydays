@@ -25,7 +25,7 @@ import { curatedPairs } from "@/lib/comparisons";
 import type { Listing } from "@/lib/types";
 
 export const dynamicParams = false;
-export const revalidate = 60;
+export const revalidate = 3600;
 
 /**
  * Programmatic SEO rule (guide §16):

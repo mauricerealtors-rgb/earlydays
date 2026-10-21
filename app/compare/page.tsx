@@ -6,7 +6,7 @@ import { indexablePairs } from "@/lib/comparisons";
 import { findLocation } from "@/data/locations";
 import { SITE } from "@/lib/site";
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Compare Ghanaian schools side by side",

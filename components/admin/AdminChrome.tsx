@@ -104,8 +104,14 @@ export function AdminChrome({ children }: { children: ReactNode }) {
                 const Icon = n.icon;
                 return (
                   <li key={n.href}>
+                    {/* No prefetch. Four of these routes are force-dynamic
+                        and read every stats, listingOwners and subscriptions
+                        document to render, so prefetching the sidebar ran
+                        those queries on every admin page view, before any
+                        click. That is what emptied the Firestore quota. */}
                     <Link
                       href={n.href}
+                      prefetch={false}
                       className={`group flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition ${
                         active
                           ? "bg-white text-black shadow"

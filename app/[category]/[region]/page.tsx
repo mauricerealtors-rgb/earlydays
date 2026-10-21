@@ -17,7 +17,7 @@ import { mergeManyListings } from "@/lib/listing-overrides";
 import { SITE } from "@/lib/site";
 
 export const dynamicParams = false;
-export const revalidate = 60;
+export const revalidate = 3600;
 
 export async function generateStaticParams() {
   const out: { category: string; region: string }[] = [];

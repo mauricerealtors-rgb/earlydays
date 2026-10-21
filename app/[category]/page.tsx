@@ -14,7 +14,7 @@ import { SITE } from "@/lib/site";
 import { itemListJsonLd, faqJsonLd } from "@/lib/schema";
 
 export const dynamicParams = false;
-export const revalidate = 60;
+export const revalidate = 3600;
 
 export async function generateStaticParams() {
   return CATEGORIES.map((c) => ({ category: c.slug }));

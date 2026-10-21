@@ -33,7 +33,7 @@ import { SITE } from "@/lib/site";
 export const dynamicParams = false;
 // Drop from 1h to 60s so schools' edits appear on the public site
 // within a minute of saving from the dashboard.
-export const revalidate = 60;
+export const revalidate = 1800;
 
 export async function generateStaticParams() {
   const listingSlugs = allListings().map((l) => ({ slug: l.slug }));

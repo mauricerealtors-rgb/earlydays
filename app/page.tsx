@@ -14,7 +14,7 @@ import { mergeManyListings } from "@/lib/listing-overrides";
 
 // Revalidate at the same 60s cadence as the merged listing pages so
 // school-uploaded photos + edits show on the homepage cards.
-export const revalidate = 60;
+export const revalidate = 1800;
 
 export default async function HomePage() {
   const categories = categoriesWithListings();

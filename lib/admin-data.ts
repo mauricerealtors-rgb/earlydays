@@ -2,6 +2,54 @@ import { adminDb } from "./firebase-admin";
 import { allListings } from "./query";
 import type { Listing } from "./types";
 
+/**
+ * The admin dashboard's three unbounded collections, read once and shared.
+ *
+ * getAdminOverview and getSchoolsCrm both need every stats document, because
+ * both aggregate across all schools, and /admin/analytics calls both: that
+ * page alone was reading the whole stats collection twice in a single render.
+ * Four admin pages are force-dynamic, so this happened on every view of any
+ * of them, and the sidebar prefetched all four.
+ *
+ * With roughly 200 stats documents that came to about a thousand reads for
+ * one visit to the admin area, which is how a site with almost no traffic
+ * spent a 50,000-a-day quota. Shared for twenty seconds, navigating around
+ * admin costs one read set instead of one per page.
+ */
+const SHARED_TTL_MS = 20_000;
+
+interface SharedSnaps {
+  owners: FirebaseFirestore.QuerySnapshot;
+  subs: FirebaseFirestore.QuerySnapshot;
+  stats: FirebaseFirestore.QuerySnapshot;
+}
+
+let sharedCache: { at: number; data: SharedSnaps } | null = null;
+let sharedInFlight: Promise<SharedSnaps> | null = null;
+
+async function sharedSnaps(): Promise<SharedSnaps> {
+  const now = Date.now();
+  if (sharedCache && now - sharedCache.at < SHARED_TTL_MS) return sharedCache.data;
+
+  if (!sharedInFlight) {
+    const db = adminDb();
+    sharedInFlight = Promise.all([
+      db.collection("listingOwners").get(),
+      db.collection("subscriptions").get(),
+      db.collection("stats").get(),
+    ])
+      .then(([owners, subs, stats]) => {
+        const data = { owners, subs, stats };
+        sharedCache = { at: Date.now(), data };
+        return data;
+      })
+      .finally(() => {
+        sharedInFlight = null;
+      });
+  }
+  return sharedInFlight;
+}
+
 export interface AdminOverview {
   totals: {
     schools: number;
@@ -68,19 +116,12 @@ export async function getAdminOverview(): Promise<AdminOverview> {
 
   try {
     const db = adminDb();
-    const [
-      ownersSnap,
-      claimsSnap,
-      subsSnap,
-      statsSnap,
-      enquiriesSnap,
-    ] = await Promise.all([
-      db.collection("listingOwners").get(),
+    const [shared, claimsSnap, enquiriesSnap] = await Promise.all([
+      sharedSnaps(),
       db.collection("claims").orderBy("createdAt", "desc").limit(20).get(),
-      db.collection("subscriptions").where("status", "==", "active").get(),
-      db.collection("stats").get(),
       db.collection("enquiries").orderBy("createdAt", "desc").limit(20).get(),
     ]);
+    const { owners: ownersSnap, subs: subsSnap, stats: statsSnap } = shared;
 
     const claimed = ownersSnap.size;
     let pendingClaims = 0;
@@ -90,8 +131,14 @@ export async function getAdminOverview(): Promise<AdminOverview> {
 
     let mrrGhs = 0;
     const paidTiers = new Map<string, string>();
+    // The shared read is unfiltered, because getSchoolsCrm needs every
+    // subscription. The active-only filter that used to be in the query
+    // therefore moves here, or an expired subscription would count towards MRR.
+    let activeSubs = 0;
     subsSnap.forEach((d) => {
       const data = d.data();
+      if ((data.status ?? "active") !== "active") return;
+      activeSubs++;
       const tier = data.tier ?? "free";
       const mrr = PLAN_MRR[tier] ?? 0;
       mrrGhs += mrr;
@@ -183,7 +230,7 @@ export async function getAdminOverview(): Promise<AdminOverview> {
         schools: listings.length,
         claimed,
         pendingClaims,
-        approvedSubscriptions: subsSnap.size,
+        approvedSubscriptions: activeSubs,
         mrrGhs,
         viewsWeek,
         enquiriesWeek,
@@ -235,12 +282,8 @@ export async function getSchoolsCrm(): Promise<SchoolRow[]> {
   const rows: SchoolRow[] = listings.map((l) => baselineRow(l));
 
   try {
-    const db = adminDb();
-    const [ownersSnap, subsSnap, statsSnap] = await Promise.all([
-      db.collection("listingOwners").get(),
-      db.collection("subscriptions").get(),
-      db.collection("stats").get(),
-    ]);
+    const { owners: ownersSnap, subs: subsSnap, stats: statsSnap } =
+      await sharedSnaps();
 
     const owned = new Set<string>();
     ownersSnap.forEach((d) => owned.add(d.data().slug ?? d.id));

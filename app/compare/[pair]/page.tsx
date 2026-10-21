@@ -11,7 +11,7 @@ import { findLocation } from "@/data/locations";
 import { SITE } from "@/lib/site";
 
 export const dynamicParams = false;
-export const revalidate = 60;
+export const revalidate = 3600;
 
 export async function generateStaticParams() {
   return curatedPairs().map((p) => ({ pair: p.slug }));

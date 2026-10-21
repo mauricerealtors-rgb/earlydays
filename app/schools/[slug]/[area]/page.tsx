@@ -19,7 +19,7 @@ import { SITE } from "@/lib/site";
 import { itemListJsonLd, faqJsonLd } from "@/lib/schema";
 
 export const dynamicParams = false;
-export const revalidate = 60;
+export const revalidate = 1800;
 
 export async function generateStaticParams() {
   const pairs: { slug: string; area: string }[] = [];
