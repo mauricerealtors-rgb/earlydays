@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { adminDb } from "@/lib/firebase-admin";
 import { findListing } from "@/lib/query";
+import { MEMBERSHIP } from "@/lib/membership";
 
 export const runtime = "nodejs";
 
@@ -81,6 +82,18 @@ export async function POST(req: Request) {
       // uid is attached later, once they have an account and we assign it.
       uid: null,
       status: "pending",
+      // What was quoted at the moment of claiming, not what the price is
+      // today. A rise next year must not rewrite what an open claim owes.
+      // The reference is the school's own name, which is what the payer is
+      // told to type, so a MoMo alert can be matched by eye.
+      payment: {
+        status: "awaiting",
+        amount: MEMBERSHIP.amount,
+        currency: MEMBERSHIP.currency,
+        method: "momo",
+        reference: findListing(slug)?.name ?? slug,
+        quotedAt: now,
+      },
       createdAt: now,
     });
 

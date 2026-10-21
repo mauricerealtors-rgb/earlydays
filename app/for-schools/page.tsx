@@ -13,7 +13,7 @@ import { SITE } from "@/lib/site";
 export const metadata: Metadata = {
   title: "For schools. Get found by the parents already searching",
   description:
-    "Your EarlyDays listing is free forever. We also build school websites, custom school management systems, social media, local SEO and paid ads. Book a call.",
+    "Your school is already listed on EarlyDays, free. We also build school websites, custom school management systems, social media, local SEO and paid ads. Book a call.",
   alternates: { canonical: `${SITE.url}/for-schools` },
   openGraph: {
     title: "EarlyDays for schools",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 const FAQS: Array<{ q: string; a: string }> = [
   {
     q: "Do I have to pay to be listed on EarlyDays?",
-    a: "No. Your listing is free and it stays free. You can claim your profile today, add your photos and your fees, and never speak to us about money. We make nothing from your listing and we are not going to start.",
+    a: "No. We listed your school ourselves and it stays listed whether you ever speak to us or not. Parents can already find it. What costs money is taking the page over and running it yourself, with your own photographs, your fees and every enquiry coming to you. That is a yearly plan, and you see the figure when you claim, before you have committed to anything.",
   },
   {
     q: "So what does the rest of it cost?",
@@ -72,10 +72,10 @@ const FAQS: Array<{ q: string; a: string }> = [
 const SERVICES = [
   {
     key: "listing" as const,
-    kicker: "Free forever",
+    kicker: "Already listed, free",
     title: "Your school on the directory parents already search",
-    body: "Photos, programmes, hours, location and your fees if you want them shown, on a page built to be found. A button that rings your phone and a button that opens WhatsApp. You never pay for this and there is no upgrade we are waiting to sell you.",
-    cta: "Claim it yourself",
+    body: "Programmes, hours, location and a button that rings your phone, on a page built to be found. We put it there ourselves and it costs you nothing. Claiming it is how you take it over: your own photographs, your fees, and the enquiries landing with you instead of nowhere.",
+    cta: "Claim your school",
     href: "/claim",
   },
   {
@@ -156,12 +156,12 @@ export default function ForSchools() {
                   className="text-base"
                 />
                 <Link href="/claim" className="btn btn-ghost btn-wrap text-base">
-                  Claim your free listing
+                  Claim your school
                 </Link>
               </div>
               <p className="mt-4 text-[13px] text-[color:var(--color-ink-mute)]">
-                Your listing is free and stays free. Everything else we quote
-                after we have seen your school.
+                Your school is already listed, free. Everything else we quote
+                after we have seen it.
               </p>
             </div>
 
@@ -380,7 +380,7 @@ export default function ForSchools() {
           <div className="max-w-3xl">
             <SectionKicker>How it works</SectionKicker>
             <h2 className="mt-3 text-[26px] leading-tight md:text-[40px]">
-              Three steps, and the first one is free.
+              Three steps, and the first one costs nothing.
             </h2>
           </div>
           <ol className="mt-10 grid gap-4 md:grid-cols-3">
@@ -422,7 +422,7 @@ export default function ForSchools() {
               className="text-base"
             />
             <Link href="/claim" className="btn btn-ghost btn-wrap text-base">
-              Claim your free listing
+              Claim your school
             </Link>
           </div>
         </div>

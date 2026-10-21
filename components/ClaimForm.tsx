@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { ClaimSubmitted } from "./ClaimSubmitted";
 
 export function ClaimForm({
   slug,
@@ -49,42 +50,21 @@ export function ClaimForm({
 
   if (done) {
     return (
-      <div className="mt-8 rounded-2xl border border-[color:var(--color-line)] bg-[color:var(--color-leaf-soft)] p-6">
-        <p className="font-display text-xl text-[color:var(--color-navy)]">
-          Thanks. Your claim for {schoolName} is in.
-        </p>
-        <ol className="mt-4 space-y-3 text-sm text-[color:var(--color-ink-mute)]">
-          <Step n={1}>
-            We call {schoolPhone || "the school number you gave us"} within one
-            working day to check you work at {schoolName}.
-          </Step>
-          <Step n={2}>
-            Once that call goes through, we set up your account and email your
-            login to{" "}
-            <span className="font-semibold text-[color:var(--color-navy)]">
-              {submittedEmail}
-            </span>
-            . You can change the password once you are in.
-          </Step>
-          <Step n={3}>
-            {schoolName} is attached to that account, so you can edit your
-            profile straight away.
-          </Step>
-        </ol>
-        <p className="mt-4 text-xs text-[color:var(--color-ink-mute)]">
-          Nothing to do until you hear from us. There is no password to
-          remember yet.
-        </p>
-      </div>
+      <ClaimSubmitted
+        schoolName={schoolName}
+        schoolPhone={schoolPhone}
+        submittedEmail={submittedEmail}
+      />
     );
   }
 
   return (
     <form onSubmit={handleSubmit} className="mt-8 space-y-4">
-      <div className="rounded-2xl border border-[color:var(--color-line)] bg-[color:var(--color-cream)] p-4">
-        <p className="text-sm text-[color:var(--color-ink-mute)]">
+      <div className="rounded-2xl border-2 border-[color:var(--color-ink)] bg-[color:var(--color-cream)] p-4">
+        <p className="text-[14px] leading-relaxed text-[color:var(--color-text-body)]">
           No account needed yet. Tell us how to reach you and how to reach{" "}
-          {schoolName}. We verify by phone first, then help you set up a login.
+          {schoolName}. We ring the school to check you work there, then help
+          you set up a login. Takes about a minute.
         </p>
       </div>
 
@@ -165,7 +145,7 @@ export function ClaimForm({
       </Field>
 
       {error && (
-        <p className="rounded-lg bg-[color:var(--color-coral-soft)] p-3 text-sm text-[color:var(--color-coral)]">
+        <p className="rounded-lg border-2 border-[color:var(--color-ink)] bg-[color:var(--color-peach)] p-3 text-sm font-semibold text-[color:var(--color-ink)]">
           {error}
         </p>
       )}
@@ -184,18 +164,7 @@ export function ClaimForm({
 }
 
 const inputCls =
-  "w-full rounded-xl border border-[color:var(--color-line)] bg-white px-4 py-3 text-[15px] outline-none focus:border-[color:var(--color-navy)]";
-
-function Step({ n, children }: { n: number; children: React.ReactNode }) {
-  return (
-    <li className="flex gap-3">
-      <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[color:var(--color-navy)] text-[11px] font-bold text-white">
-        {n}
-      </span>
-      <span>{children}</span>
-    </li>
-  );
-}
+  "w-full rounded-xl border-2 border-[color:var(--color-ink)] bg-white px-4 py-3 text-[15px] outline-none focus:shadow-[var(--shadow-hard-sm)]";
 
 function Field({
   label,
@@ -210,12 +179,12 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-sm font-semibold text-[color:var(--color-navy)]">
-        {label} {required && <span className="text-[color:var(--color-coral)]">*</span>}
+      <span className="mb-1 block text-sm font-bold text-[color:var(--color-ink)]">
+        {label} {required && <span className="text-[color:var(--color-brand)]">*</span>}
       </span>
       {children}
       {hint && (
-        <span className="mt-1 block text-xs text-[color:var(--color-ink-mute)]">
+        <span className="mt-1 block text-xs leading-snug text-[color:var(--color-text-muted)]">
           {hint}
         </span>
       )}

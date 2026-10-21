@@ -30,7 +30,7 @@ export async function generateMetadata({
   if (!listing) return {};
   return {
     title: `Claim ${listing.name} on EarlyDays`,
-    description: `Verify you run ${listing.name} and take control of your EarlyDays profile. Free to claim.`,
+    description: `Verify you run ${listing.name} and take control of your EarlyDays profile: your photos, your fees, and every parent enquiry.`,
     alternates: { canonical: `${SITE.url}/claim/${listing.slug}` },
     robots: { index: false, follow: false },
   };
@@ -58,27 +58,71 @@ export default async function ClaimPage({
         ]}
       />
       <div className="mx-auto max-w-2xl pb-16">
-        <span className="chip chip-coral">Claim your school</span>
-        <h1 className="mt-3 font-display text-[32px] leading-tight tracking-tight md:text-[44px]">
-          Take control of <span className="text-[color:var(--color-pink-hot)]">{listing.name}</span> on EarlyDays.
+        <span className="chip chip-sun">Claim your school</span>
+        <h1 className="mt-3 font-display text-[32px] leading-tight md:text-[44px]">
+          Take control of <span className="marker">{listing.name}</span> on
+          EarlyDays.
         </h1>
-        <p className="mt-3 text-lg text-[color:var(--color-ink-mute)]">
-          {loc?.name ?? listing.neighbourhood}, {listing.region} · Claiming is free and takes about a minute.
+        <p className="mt-3 text-[17px] leading-relaxed text-[color:var(--color-text-body)]">
+          {loc?.name ?? listing.neighbourhood}, {listing.region}. Your school is
+          already listed and parents can already find it. Claiming is how you
+          take the page over: your words, your photographs, your fees, and every
+          enquiry that comes off it.
         </p>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
-          <Perk title="Edit your profile" body="Update your description, hours, phone, WhatsApp, admissions status and website." />
-          <Perk title="Upload real photos" body="Show parents your own gallery: building, classrooms, activities." />
-          <Perk title="Reach real parents" body="Get enquiries direct from parents searching in your area." />
+          <Perk
+            title="Say it in your words"
+            body="Your description, programmes, ages, hours, admissions status and fees. Fees are what parents search for most, and almost no school in Ghana publishes them."
+          />
+          <Perk
+            title="Your own photographs"
+            body="Your building, your classrooms, your children at work. A profile with real photos gets opened. One with none gets scrolled past."
+          />
+          <Perk
+            title="Every enquiry, direct"
+            body="Parents reach you from the page and it lands in your inbox. You also see who viewed, who called and who tapped WhatsApp."
+          />
+        </div>
+
+        <div className="mt-6 rounded-2xl border-2 border-[color:var(--color-ink)] bg-[color:var(--color-cream)] p-4 md:p-5">
+          <h2 className="font-display text-[16px] leading-tight md:text-[18px]">
+            Three things before you start
+          </h2>
+          <ul className="mt-3 space-y-2 text-[14px] leading-relaxed text-[color:var(--color-text-body)]">
+            <li>
+              <strong className="font-bold text-[color:var(--color-ink)]">
+                We ring the school, not you.
+              </strong>{" "}
+              Give us the school&rsquo;s own line. We call it and ask for you by
+              name, which is how we know the page goes to the right person and
+              why nobody can take it from you later.
+            </li>
+            <li>
+              <strong className="font-bold text-[color:var(--color-ink)]">
+                You do not need an account yet.
+              </strong>{" "}
+              No password to invent today. We set the login up after the call
+              and email it to you.
+            </li>
+            <li>
+              <strong className="font-bold text-[color:var(--color-ink)]">
+                Managing the page is a yearly plan.
+              </strong>{" "}
+              Being listed is free and stays free. We show you what the year
+              costs on the next screen, before you have paid anything or
+              committed to anything.
+            </li>
+          </ul>
         </div>
 
         {alreadyClaimed ? (
-          <div className="mt-8 rounded-2xl border border-[color:var(--color-sky-soft)] bg-[color:var(--color-sky-soft)] p-5">
-            <p className="flex items-center gap-2 font-semibold text-[#1F7AD6]">
+          <div className="mt-8 rounded-2xl border-2 border-[color:var(--color-ink)] bg-[color:var(--color-sky)] p-5">
+            <p className="flex items-center gap-2 font-bold text-[color:var(--color-ink)]">
               <VerifiedCheck size={18} />
               Managed by {listing.name}
             </p>
-            <p className="mt-1 text-sm text-[color:var(--color-ink-mute)]">
+            <p className="mt-1 text-sm text-[color:var(--color-text-body)]">
               This profile has already been claimed and is kept up to date by
               the school, so there is nothing to claim here.{" "}
               <Link href={`/schools/${listing.slug}`} className="underline">
@@ -101,9 +145,11 @@ export default async function ClaimPage({
 
 function Perk({ title, body }: { title: string; body: string }) {
   return (
-    <div className="card-soft rounded-2xl p-4">
-      <p className="font-display text-base text-[color:var(--color-navy)]">{title}</p>
-      <p className="mt-1 text-[13px] text-[color:var(--color-ink-mute)]">{body}</p>
+    <div className="rounded-2xl border-2 border-[color:var(--color-ink)] bg-white p-4">
+      <p className="font-display text-[16px] leading-tight">{title}</p>
+      <p className="mt-1.5 text-[13px] leading-relaxed text-[color:var(--color-text-body)]">
+        {body}
+      </p>
     </div>
   );
 }
